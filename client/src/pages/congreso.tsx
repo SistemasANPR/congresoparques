@@ -258,8 +258,10 @@ export default function Congreso() {
               <img 
                 src={lineaTiempo} 
                 alt="Línea del tiempo del Congreso Parques 2018-2024" 
-                className="w-full h-auto"
+                className="w-full h-auto max-w-full"
+                style={{ imageRendering: 'auto', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
                 data-testid="linea-tiempo-img"
+                loading="eager"
               />
             </div>
           </div>
