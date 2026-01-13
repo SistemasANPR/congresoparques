@@ -230,7 +230,7 @@ export default function Congreso() {
                 <iframe 
                   width="100%" 
                   height="100%" 
-                  src="https://www.youtube.com/embed/uqru5Tgoj_U?si=T_yqMzbu_xmEw33u" 
+                  src="https://www.youtube.com/embed/Lr_ADiUJijc?si=T_yqMzbu_xmEw33u" 
                   title="YouTube video player" 
                   frameBorder="0" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
