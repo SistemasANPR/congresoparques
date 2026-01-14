@@ -55,7 +55,7 @@ export default function Organizadores() {
                 <p className="text-gray-700 text-lg leading-relaxed">
                   Si deseas conocer más información sobre la ANPR México y los beneficios de obtener una membresía, visita su página web{" "}
                   <a 
-                    href="https://anprm.connectedcommunity.org/home" 
+                    href="https://anpr.org.mx/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-[#6847f6] hover:text-[#0e0477] underline font-semibold"
