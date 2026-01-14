@@ -305,22 +305,22 @@ export default function Congreso() {
                           className="w-full h-64 object-cover"
                         />
                       </div>
-                      <CardContent className="p-4 flex flex-col h-48">
+                      <CardContent className={`p-4 flex flex-col ${experiencia.title === "Expo Espacio Público" ? "h-56" : "h-48"}`}>
                         <div className="flex-1">
                           <h3 className="text-xl font-semibold mb-2 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
                           <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                          {experiencia.title === "Expo Espacio Público" && (
+                            <a
+                              href="https://www.expoespaciopublico.com"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-full transition-all duration-300 hover:opacity-90"
+                              style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
+                            >
+                              Ver más
+                            </a>
+                          )}
                         </div>
-                        {experiencia.title === "Expo Espacio Público" && (
-                          <a
-                            href="https://www.expoespaciopublico.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center px-4 py-2 mb-2 text-sm font-semibold text-white rounded-full transition-all duration-300 hover:opacity-90"
-                            style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
-                          >
-                            Más información
-                          </a>
-                        )}
                         <div className="flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
                           <Calendar className="w-4 h-4 mr-2" />
                           {experiencia.fecha}
