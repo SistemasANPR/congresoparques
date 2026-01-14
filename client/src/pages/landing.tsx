@@ -650,13 +650,15 @@ export default function Landing() {
                       >
                         Pósters Científicos
                       </Link>
-                      <Link 
-                        href="/voluntarios"
+                      <a 
+                        href="https://congresoparques.com/registro_voluntarios.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                         data-testid="nav-dropdown-voluntarios"
                       >
                         Voluntarios
-                      </Link>
+                      </a>
                       <Link 
                         href="/comite-evaluador"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
@@ -901,14 +903,16 @@ export default function Landing() {
                       >
                         Pósters Científicos
                       </Link>
-                      <Link 
-                        href="/voluntarios"
+                      <a 
+                        href="https://congresoparques.com/registro_voluntarios.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                         data-testid="mobile-nav-voluntarios"
                       >
                         Voluntarios
-                      </Link>
+                      </a>
                       <Link 
                         href="/comite-evaluador"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
