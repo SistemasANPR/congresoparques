@@ -90,6 +90,39 @@ export default function Organizadores() {
         </section>
 
         {/* Línea divisora */}
+        <div className="container mx-auto px-4 bg-white pb-8">
+          <div className="h-px bg-gray-300 max-w-6xl mx-auto"></div>
+        </div>
+
+        {/* Aliado Estratégico */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Aliado Estratégico
+              </h2>
+              <h3 className="text-xl font-semibold text-[#6847f6] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Aliado Estratégico: CDT Tijuana
+              </h3>
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                El Congreso Parques se lleva a cabo de la mano del Consejo de Desarrollo de Tijuana (CDT), una institución que ha marcado la pauta en la planeación estratégica y el impulso de proyectos que transforman la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad, el CDT es un aliado clave para hacer realidad esta edición del Congreso.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Si deseas conocer más sobre CDT Tijuana visita{" "}
+                <a 
+                  href="https://cdt.org.mx/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#6847f6] hover:text-[#0e0477] underline font-semibold"
+                >
+                  cdt.org.mx
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Línea divisora final */}
         <div className="container mx-auto px-4 bg-white pb-16">
           <div className="h-px bg-gray-300 max-w-6xl mx-auto"></div>
         </div>
