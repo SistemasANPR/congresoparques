@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import gearsImageUrl from "@assets/generated_images/gears_illustration_teamwork_concept.png";
 
 export default function Ponentes() {
   return (
@@ -50,9 +51,16 @@ export default function Ponentes() {
             
             {/* Content Container */}
             <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
-              <p className="text-gray-600 text-center text-lg">
-                Contenido próximamente disponible.
+              <p className="text-gray-700 text-center text-lg md:text-xl leading-relaxed mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Nuestro equipo está seleccionando a los expertos que construirán el programa más innovador. ¡Mantente atento para conocerlos!
               </p>
+              <div className="flex justify-center">
+                <img 
+                  src={gearsImageUrl} 
+                  alt="Ilustración de engranajes representando trabajo en equipo" 
+                  className="w-full max-w-md rounded-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
