@@ -1451,7 +1451,7 @@ export default function Landing() {
                 />
               </div>
               
-              <div className="grid md:grid-cols-2 gap-10 mb-12 stagger-children relative z-10">
+              <div className="grid lg:grid-cols-2 gap-10 mb-12 stagger-children relative z-10">
               {/* Convocatoria Sesiones Educativas */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
