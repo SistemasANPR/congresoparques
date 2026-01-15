@@ -1974,16 +1974,16 @@ export default function Landing() {
                 
                 {/* Social Icons */}
                 <div className="flex gap-4 mt-4">
-                  <a href="https://www.facebook.com/ANPRMexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Facebook" data-testid="social-facebook">
+                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Facebook" data-testid="social-facebook">
                     <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="https://www.instagram.com/anprmexico/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Instagram" data-testid="social-instagram">
+                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Instagram" data-testid="social-instagram">
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href="https://x.com/ANPRMexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
+                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
                     <FaXTwitter className="w-5 h-5" />
                   </a>
-                  <a href="https://www.youtube.com/@anprmexico" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
+                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
                     <Youtube className="w-5 h-5" />
                   </a>
                 </div>
