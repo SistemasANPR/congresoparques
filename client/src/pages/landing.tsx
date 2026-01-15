@@ -1977,13 +1977,13 @@ export default function Landing() {
                   <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Facebook" data-testid="social-facebook">
                     <Facebook className="w-5 h-5" />
                   </a>
-                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Instagram" data-testid="social-instagram">
+                  <a href="https://www.instagram.com/congreso_parques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Instagram" data-testid="social-instagram">
                     <Instagram className="w-5 h-5" />
                   </a>
-                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
+                  <a href="https://x.com/congreso_parque" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
                     <FaXTwitter className="w-5 h-5" />
                   </a>
-                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
+                  <a href="https://www.youtube.com/channel/UC_ExzrmxP5er7qZHeVpWidQ" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
                     <Youtube className="w-5 h-5" />
                   </a>
                 </div>
