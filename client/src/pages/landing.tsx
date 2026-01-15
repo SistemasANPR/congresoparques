@@ -434,8 +434,14 @@ export default function Landing() {
 
   return (
     <div className="bg-background text-foreground">
+      {/* Announcement Banner */}
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
+        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
+        </p>
+      </div>
       {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
+      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12" aria-label="Navegación principal">
           <div className="flex items-center justify-between h-20 md:h-24 lg:h-28">
             {/* Left Side: Logo + Tijuana 2026 */}

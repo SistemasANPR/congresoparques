@@ -5,7 +5,13 @@ import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 export default function PostersCientificos() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
+      {/* Announcement Banner */}
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
+        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
+        </p>
+      </div>
+      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3 md:py-4">
             <Link href="/" className="flex items-center gap-3" data-testid="logo-link">
