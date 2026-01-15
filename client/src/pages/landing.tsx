@@ -645,13 +645,15 @@ export default function Landing() {
                       >
                         Sesiones Educativas
                       </a>
-                      <Link 
-                        href="/posters-cientificos"
+                      <a 
+                        href="https://congresoparques.com/registro_posters.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                         data-testid="nav-dropdown-posters"
                       >
                         Pósters Científicos
-                      </Link>
+                      </a>
                       <a 
                         href="https://congresoparques.com/registro_voluntarios.php"
                         target="_blank"
@@ -899,14 +901,16 @@ export default function Landing() {
                       >
                         Sesiones Educativas
                       </a>
-                      <Link 
-                        href="/posters-cientificos"
+                      <a 
+                        href="https://congresoparques.com/registro_posters.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                         data-testid="mobile-nav-posters"
                       >
                         Pósters Científicos
-                      </Link>
+                      </a>
                       <a 
                         href="https://congresoparques.com/registro_voluntarios.php"
                         target="_blank"
