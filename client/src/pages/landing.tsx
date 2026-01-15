@@ -1372,15 +1372,13 @@ export default function Landing() {
                       <div className={`mt-auto pt-2 transition-all duration-300 ${
                         isExpanded ? 'opacity-100' : 'opacity-70'
                       }`}>
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            scrollToSection('convocatorias');
-                          }}
-                          className="bg-black/20 hover:bg-black/30 text-white text-[10px] md:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                        <Link 
+                          href="/congreso"
+                          onClick={(e) => e.stopPropagation()}
+                          className="bg-black/20 hover:bg-black/30 text-white text-[10px] md:text-xs font-semibold px-3 py-1.5 rounded-full border border-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 inline-block"
                         >
                           MÁS INFO →
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
