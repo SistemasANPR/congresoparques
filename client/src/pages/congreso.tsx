@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import logoAnprBlanco from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
@@ -18,6 +19,105 @@ import talleresIconUrl from "@assets/Talleres Vivenciales_1758578569495.png";
 import expoIconUrl from "@assets/Expo Espacio Publico_1758580313612.png";
 import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
+// Imágenes adicionales para carruseles
+import congresoParques1 from "@assets/Congreso Parques 1_1761672357092.jpg";
+import congresoParques2 from "@assets/Congreso Parques 2_1761672357092.jpg";
+import congresoParques3 from "@assets/Congreso Parques 3_1761672357092.jpg";
+import congresoParques4 from "@assets/Congreso Parques 4_1761672357092.jpg";
+
+// Componente de carrusel con indicadores de navegación
+interface ImageCarouselProps {
+  images: string[];
+  title: string;
+}
+
+function ImageCarousel({ images, title }: ImageCarouselProps) {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const scrollPrev = useCallback(() => {
+    api?.scrollPrev();
+  }, [api]);
+
+  const scrollNext = useCallback(() => {
+    api?.scrollNext();
+  }, [api]);
+
+  const scrollTo = useCallback((index: number) => {
+    api?.scrollTo(index);
+  }, [api]);
+
+  return (
+    <div className="relative group">
+      <Carousel setApi={setApi} opts={{ loop: true }} className="w-full">
+        <CarouselContent className="ml-0">
+          {images.map((image, index) => (
+            <CarouselItem key={index} className="pl-0">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={image}
+                  alt={`${title} - Imagen ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+
+      {/* Flechas de navegación */}
+      {count > 1 && (
+        <>
+          <button
+            onClick={scrollPrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"
+            aria-label="Imagen anterior"
+          >
+            <ChevronLeft className="w-5 h-5 text-[#0e0477]" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"
+            aria-label="Siguiente imagen"
+          >
+            <ChevronRight className="w-5 h-5 text-[#0e0477]" />
+          </button>
+        </>
+      )}
+
+      {/* Indicadores de puntos */}
+      {count > 1 && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollTo(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === current
+                  ? "bg-white w-4"
+                  : "bg-white/60 hover:bg-white/80"
+              }`}
+              aria-label={`Ir a imagen ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Congreso() {
   const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
