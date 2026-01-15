@@ -368,7 +368,7 @@ export default function Congreso() {
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Objetivo del Evento
+                  Objetivo del congreso Tijuana
                 </h2>
                 <p className="text-gray-700 text-lg leading-relaxed">
                   Reunir, integrar y capacitar presencialmente a profesionales, autoridades, academia, industria y sociedad civil del espacio público.
