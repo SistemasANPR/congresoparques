@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Clock, Calendar, MapPin, Globe } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
@@ -19,6 +20,99 @@ import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
 
 export default function Congreso() {
+  const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
+
+  const timelineData = [
+    {
+      year: "2018",
+      city: "Mérida",
+      conferencias: 8,
+      sesiones: 64,
+      talleres: 9,
+      asistentes: "1,866",
+      ponentes: 136,
+      paises: 22,
+      expositores: 51
+    },
+    {
+      year: "2019",
+      city: "Monterrey",
+      conferencias: 4,
+      sesiones: 55,
+      talleres: 18,
+      asistentes: "1,600",
+      ponentes: 128,
+      paises: 19,
+      expositores: 62
+    },
+    {
+      year: "2019",
+      city: "Salta",
+      conferencias: 5,
+      sesiones: 30,
+      talleres: 7,
+      asistentes: "400",
+      ponentes: 28,
+      paises: 15,
+      expositores: 9
+    },
+    {
+      year: "2020",
+      city: "León",
+      conferencias: 4,
+      sesiones: 41,
+      talleres: 9,
+      asistentes: "537",
+      ponentes: 88,
+      paises: 18,
+      expositores: 20
+    },
+    {
+      year: "2020",
+      city: "Guayaquil",
+      conferencias: 6,
+      sesiones: 22,
+      talleres: 7,
+      asistentes: "1,179",
+      ponentes: 30,
+      paises: 20,
+      expositores: 12
+    },
+    {
+      year: "2022",
+      city: "Mundial",
+      conferencias: 7,
+      sesiones: 34,
+      talleres: 17,
+      asistentes: "1,690",
+      ponentes: 80,
+      paises: 37,
+      expositores: 54
+    },
+    {
+      year: "2023",
+      city: "León",
+      conferencias: 5,
+      sesiones: 27,
+      talleres: 11,
+      asistentes: "1,273",
+      ponentes: 60,
+      paises: 8,
+      expositores: 21
+    },
+    {
+      year: "2024",
+      city: "Mérida",
+      conferencias: 5,
+      sesiones: 24,
+      talleres: 9,
+      asistentes: "+600",
+      ponentes: "+64",
+      paises: 7,
+      expositores: 29
+    }
+  ];
+
   const experienciasCards = [
     {
       iconUrl: conferenciasIconUrl,
@@ -248,21 +342,213 @@ export default function Congreso() {
           </div>
         </section>
 
-        {/* Nuestro Legado */}
+        {/* Nuestro Legado - Interactive Timeline */}
         <section className="py-16 bg-[#0e0477]">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Nuestro Legado
             </h2>
-            <div className="max-w-4xl mx-auto">
-              <img 
-                src={lineaTiempo} 
-                alt="Línea del tiempo del Congreso Parques 2018-2024" 
-                className="w-full h-auto max-w-full"
-                style={{ imageRendering: 'auto', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden' }}
-                data-testid="linea-tiempo-img"
-                loading="eager"
-              />
+            <p className="text-white/70 text-center mb-12 max-w-2xl mx-auto">
+              Una trayectoria de impacto en la transformación de espacios públicos en América Latina
+            </p>
+            
+            {/* Timeline Container */}
+            <div className="max-w-6xl mx-auto">
+              {/* Desktop Timeline */}
+              <div className="hidden md:block relative">
+                {/* Timeline Line */}
+                <div className="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-[#d0dd15] via-[#6847f6] to-[#d0dd15] rounded-full"></div>
+                
+                {/* Timeline Events */}
+                <div className="grid grid-cols-8 gap-2">
+                  {timelineData.map((event, index) => (
+                    <div 
+                      key={index}
+                      className="relative flex flex-col items-center"
+                    >
+                      {/* Year Dot */}
+                      <button
+                        onClick={() => setExpandedEvent(expandedEvent === index ? null : index)}
+                        className={`relative z-10 w-16 h-16 rounded-full flex flex-col items-center justify-center transition-all duration-300 cursor-pointer border-4 ${
+                          expandedEvent === index 
+                            ? 'bg-[#d0dd15] border-white scale-110 shadow-lg shadow-[#d0dd15]/40' 
+                            : 'bg-[#6847f6] border-[#d0dd15] hover:scale-105 hover:bg-[#7c5df7]'
+                        }`}
+                      >
+                        <span className={`text-xs font-bold ${expandedEvent === index ? 'text-[#0e0477]' : 'text-white'}`} style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {event.year}
+                        </span>
+                      </button>
+                      
+                      {/* City Label */}
+                      <div className={`mt-3 text-center transition-all duration-300 ${expandedEvent === index ? 'text-[#d0dd15]' : 'text-white/80'}`}>
+                        <span className="text-sm font-semibold block" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                          {event.city}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Expanded Details Card */}
+                {expandedEvent !== null && (
+                  <div className="mt-8 bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 animate-in fade-in slide-in-from-top-4 duration-300">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-4">
+                        <div className="bg-[#d0dd15] text-[#0e0477] px-4 py-2 rounded-lg">
+                          <span className="text-2xl font-black" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                            {timelineData[expandedEvent].year}
+                          </span>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                            {timelineData[expandedEvent].city}
+                          </h3>
+                          <p className="text-white/60 text-sm">Congreso Internacional de Parques Urbanos</p>
+                        </div>
+                      </div>
+                      <button 
+                        onClick={() => setExpandedEvent(null)}
+                        className="text-white/60 hover:text-white transition-colors"
+                      >
+                        <ChevronUp className="w-6 h-6" />
+                      </button>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                      <div className="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <Mic className="w-6 h-6 text-[#d0dd15] mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {timelineData[expandedEvent].conferencias}
+                        </div>
+                        <div className="text-xs text-white/60">Conferencias</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <GraduationCap className="w-6 h-6 text-[#d0dd15] mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {timelineData[expandedEvent].sesiones}
+                        </div>
+                        <div className="text-xs text-white/60">Sesiones Educativas</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <Wrench className="w-6 h-6 text-[#d0dd15] mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {timelineData[expandedEvent].talleres}
+                        </div>
+                        <div className="text-xs text-white/60">Talleres</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <Users className="w-6 h-6 text-[#d0dd15] mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {timelineData[expandedEvent].asistentes}
+                        </div>
+                        <div className="text-xs text-white/60">Asistentes</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <Mic className="w-6 h-6 text-[#d0dd15] mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {timelineData[expandedEvent].ponentes}
+                        </div>
+                        <div className="text-xs text-white/60">Ponentes</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <Globe className="w-6 h-6 text-[#d0dd15] mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {timelineData[expandedEvent].paises}
+                        </div>
+                        <div className="text-xs text-white/60">Países</div>
+                      </div>
+                      <div className="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-colors">
+                        <Building className="w-6 h-6 text-[#d0dd15] mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-white" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                          {timelineData[expandedEvent].expositores}
+                        </div>
+                        <div className="text-xs text-white/60">Expositores</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Hint text */}
+                {expandedEvent === null && (
+                  <p className="text-center text-white/50 text-sm mt-8">
+                    Haz clic en un año para ver los detalles del congreso
+                  </p>
+                )}
+              </div>
+              
+              {/* Mobile Timeline */}
+              <div className="md:hidden space-y-4">
+                {timelineData.map((event, index) => (
+                  <div 
+                    key={index}
+                    className={`bg-white/5 rounded-xl overflow-hidden border transition-all duration-300 ${
+                      expandedEvent === index ? 'border-[#d0dd15]' : 'border-white/10'
+                    }`}
+                  >
+                    <button
+                      onClick={() => setExpandedEvent(expandedEvent === index ? null : index)}
+                      className="w-full p-4 flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                          expandedEvent === index ? 'bg-[#d0dd15]' : 'bg-[#6847f6]'
+                        }`}>
+                          <span className={`text-sm font-bold ${expandedEvent === index ? 'text-[#0e0477]' : 'text-white'}`} style={{ fontFamily: 'Antonio, sans-serif' }}>
+                            {event.year}
+                          </span>
+                        </div>
+                        <div className="text-left">
+                          <h3 className="text-white font-semibold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                            {event.city}
+                          </h3>
+                          <p className="text-white/50 text-xs">{event.asistentes} asistentes</p>
+                        </div>
+                      </div>
+                      {expandedEvent === index ? (
+                        <ChevronUp className="w-5 h-5 text-[#d0dd15]" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-white/50" />
+                      )}
+                    </button>
+                    
+                    {expandedEvent === index && (
+                      <div className="px-4 pb-4 grid grid-cols-2 gap-3 animate-in fade-in slide-in-from-top-2 duration-200">
+                        <div className="bg-white/5 rounded-lg p-3 text-center">
+                          <Mic className="w-5 h-5 text-[#d0dd15] mx-auto mb-1" />
+                          <div className="text-lg font-bold text-white">{event.conferencias}</div>
+                          <div className="text-[10px] text-white/60">Conferencias</div>
+                        </div>
+                        <div className="bg-white/5 rounded-lg p-3 text-center">
+                          <GraduationCap className="w-5 h-5 text-[#d0dd15] mx-auto mb-1" />
+                          <div className="text-lg font-bold text-white">{event.sesiones}</div>
+                          <div className="text-[10px] text-white/60">Sesiones</div>
+                        </div>
+                        <div className="bg-white/5 rounded-lg p-3 text-center">
+                          <Wrench className="w-5 h-5 text-[#d0dd15] mx-auto mb-1" />
+                          <div className="text-lg font-bold text-white">{event.talleres}</div>
+                          <div className="text-[10px] text-white/60">Talleres</div>
+                        </div>
+                        <div className="bg-white/5 rounded-lg p-3 text-center">
+                          <Users className="w-5 h-5 text-[#d0dd15] mx-auto mb-1" />
+                          <div className="text-lg font-bold text-white">{event.ponentes}</div>
+                          <div className="text-[10px] text-white/60">Ponentes</div>
+                        </div>
+                        <div className="bg-white/5 rounded-lg p-3 text-center">
+                          <Globe className="w-5 h-5 text-[#d0dd15] mx-auto mb-1" />
+                          <div className="text-lg font-bold text-white">{event.paises}</div>
+                          <div className="text-[10px] text-white/60">Países</div>
+                        </div>
+                        <div className="bg-white/5 rounded-lg p-3 text-center">
+                          <Building className="w-5 h-5 text-[#d0dd15] mx-auto mb-1" />
+                          <div className="text-lg font-bold text-white">{event.expositores}</div>
+                          <div className="text-[10px] text-white/60">Expositores</div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

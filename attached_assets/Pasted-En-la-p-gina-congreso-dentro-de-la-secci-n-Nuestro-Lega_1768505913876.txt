@@ -1,0 +1,165 @@
+En la página /congreso, dentro de la sección “Nuestro Legado”, diseña y genera una línea de tiempo visual e interactiva que muestre la historia de los congresos pasados.
+
+La línea de tiempo debe:
+
+Presentarse de forma cronológica.
+
+Tener un diseño moderno, limpio y atractivo, alineado con un sitio web institucional.
+
+Ser interactiva, permitiendo explorar cada edición (hover, clic o expansión).
+
+Estar preparada para escalar, de modo que en el futuro se puedan agregar fácilmente nuevas ediciones sin romper el diseño ni la lógica visual.
+
+Mostrar claramente año, sede y métricas clave de cada congreso.
+
+Cada evento debe incluir los siguientes datos estructurados:
+
+Año
+
+Ciudad / Sede
+
+Conferencias magistrales
+
+Sesiones educativas
+
+Talleres
+
+Asistentes
+
+Ponentes
+
+Países
+
+Expositores
+
+Datos a integrar en la línea de tiempo:
+
+2018 – Mérida
+
+Conferencias magistrales: 8
+
+Sesiones educativas: 64
+
+Talleres: 9
+
+Asistentes: 1,866
+
+Ponentes: 136
+
+Países: 22
+
+Expositores: 51
+
+2019 – Monterrey
+
+Conferencias magistrales: 4
+
+Sesiones educativas: 55
+
+Talleres: 18
+
+Asistentes: 1,600
+
+Ponentes: 128
+
+Países: 19
+
+Expositores: 62
+
+2019 – Salta
+
+Conferencias magistrales: 5
+
+Sesiones educativas: 30
+
+Talleres: 7
+
+Asistentes: 400
+
+Ponentes: 28
+
+Países: 15
+
+Expositores: 9
+
+2020 – León
+
+Conferencias magistrales: 4
+
+Sesiones educativas: 41
+
+Talleres: 9
+
+Asistentes: 537
+
+Ponentes: 88
+
+Países: 18
+
+Expositores: 20
+
+2020 – Guayaquil
+
+Conferencias magistrales: 6
+
+Sesiones educativas: 22
+
+Talleres: 7
+
+Asistentes: 1,179
+
+Ponentes: 30
+
+Países: 20
+
+Expositores: 12
+
+2022 – Mundial
+
+Conferencias magistrales: 7
+
+Sesiones educativas: 34
+
+Talleres: 17
+
+Asistentes: 1,690
+
+Ponentes: 80
+
+Países: 37
+
+Expositores: 54
+
+2023 – León
+
+Conferencias magistrales: 5
+
+Sesiones educativas: 27
+
+Talleres: 11
+
+Asistentes: 1,273
+
+Ponentes: 60
+
+Países: 8
+
+Expositores: 21
+
+2024 – Mérida
+
+Conferencias magistrales: 5
+
+Sesiones educativas: 24
+
+Talleres: 9
+
+Asistentes: +600
+
+Ponentes: +64
+
+Países: 7
+
+Expositores: 29
+
+Mantén coherencia visual, jerarquía clara de la información y una experiencia intuitiva para el usuario.
