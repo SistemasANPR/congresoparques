@@ -362,7 +362,7 @@ export default function Congreso() {
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Objetivo del evento
+                  Objetivo del congreso Tijuana
                 </h2>
                 <p className="text-gray-700 text-lg leading-relaxed">
                   Reunir, integrar y capacitar presencialmente a profesionales, autoridades, academia, industria y sociedad civil del espacio público.
@@ -701,6 +701,7 @@ export default function Congreso() {
                                 href="/expo-espacio-publico"
                                 className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-full transition-all duration-300 hover:opacity-90"
                                 style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
+                                onClick={() => window.scrollTo(0, 0)}
                               >
                                 Ver más
                               </Link>
