@@ -18,7 +18,6 @@ import Conectividad from "@/pages/conectividad";
 import Hospedaje from "@/pages/hospedaje";
 import SesionesEducativas from "@/pages/sesiones-educativas";
 import PostersCientificos from "@/pages/posters-cientificos";
-import Voluntarios from "@/pages/voluntarios";
 import ComiteEvaluador from "@/pages/comite-evaluador";
 import ExpoEspacioPublico from "@/pages/expo-espacio-publico";
 import ConstruccionComunitaria from "@/pages/construccion-comunitaria";
@@ -41,7 +40,6 @@ function Router() {
       <Route path="/hospedaje" component={Hospedaje} />
       <Route path="/sesiones-educativas" component={SesionesEducativas} />
       <Route path="/posters-cientificos" component={PostersCientificos} />
-      <Route path="/voluntarios" component={Voluntarios} />
       <Route path="/comite-evaluador" component={ComiteEvaluador} />
       <Route path="/expo-espacio-publico" component={ExpoEspacioPublico} />
       <Route path="/construccion-comunitaria" component={ConstruccionComunitaria} />
