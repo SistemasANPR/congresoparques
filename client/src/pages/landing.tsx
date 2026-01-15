@@ -636,13 +636,15 @@ export default function Landing() {
                   {convocatoriasDropdownOpen && (
                     <div className="absolute top-full left-0 pt-2 z-50">
                       <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
-                      <Link 
-                        href="/sesiones-educativas"
+                      <a 
+                        href="https://congresoparques.com/registro_sesiones.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                         data-testid="nav-dropdown-sesiones-educativas"
                       >
                         Sesiones Educativas
-                      </Link>
+                      </a>
                       <Link 
                         href="/posters-cientificos"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
@@ -887,14 +889,16 @@ export default function Landing() {
                   
                   {mobileConvocatoriasOpen && (
                     <div className="pl-4 space-y-1 mt-1">
-                      <Link 
-                        href="/sesiones-educativas"
+                      <a 
+                        href="https://congresoparques.com/registro_sesiones.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                         data-testid="mobile-nav-sesiones-educativas"
                       >
                         Sesiones Educativas
-                      </Link>
+                      </a>
                       <Link 
                         href="/posters-cientificos"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
