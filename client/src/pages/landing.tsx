@@ -458,9 +458,9 @@ export default function Landing() {
             {/* Center: Desktop Navigation */}
             <div className="hidden lg:flex items-center justify-center flex-1 mx-4 xl:mx-8">
               <div className="flex items-center gap-0.5 xl:gap-1">
-                {/* Acerca de Dropdown - HIDDEN */}
+                {/* Acerca de Dropdown */}
                 <div 
-                  className="relative hidden"
+                  className="relative"
                   onMouseEnter={() => setAboutDropdownOpen(true)}
                   onMouseLeave={() => setAboutDropdownOpen(false)}
                 >
@@ -524,9 +524,9 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Actividades Dropdown - HIDDEN */}
+                {/* Actividades Dropdown */}
                 <div 
-                  className="relative hidden"
+                  className="relative"
                   onMouseEnter={() => setActivitiesDropdownOpen(true)}
                   onMouseLeave={() => setActivitiesDropdownOpen(false)}
                 >
@@ -570,9 +570,9 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Sede Dropdown - HIDDEN */}
+                {/* Sede Dropdown */}
                 <div 
-                  className="relative hidden"
+                  className="relative"
                   onMouseEnter={() => setSedeDropdownOpen(true)}
                   onMouseLeave={() => setSedeDropdownOpen(false)}
                 >
@@ -665,7 +665,7 @@ export default function Landing() {
                       </a>
                       <Link 
                         href="/comite-evaluador"
-                        className="hidden px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                         data-testid="nav-dropdown-comite"
                       >
                         Comité Evaluador
@@ -675,20 +675,20 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Expo Espacio Público - Direct Link - HIDDEN */}
+                {/* Expo Espacio Público - Direct Link */}
                 <Link 
                   href="/expo-espacio-publico"
-                  className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md hidden"
+                  className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md"
                   style={{fontFamily: 'Montserrat, sans-serif'}}
                   data-testid="nav-expo-espacio-publico"
                 >
                   <span className="relative z-10">Expo</span>
                 </Link>
 
-                {/* Construcción Comunitaria - Direct Link - HIDDEN */}
+                {/* Construcción Comunitaria - Direct Link */}
                 <Link 
                   href="/construccion-comunitaria"
-                  className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md whitespace-nowrap hidden"
+                  className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md whitespace-nowrap"
                   style={{fontFamily: 'Montserrat, sans-serif'}}
                   data-testid="nav-construccion-comunitaria"
                 >
@@ -733,8 +733,8 @@ export default function Landing() {
           {mobileMenuOpen && (
             <div className="lg:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
-                {/* Mobile Acerca de Accordion - HIDDEN */}
-                <div className="hidden">
+                {/* Mobile Acerca de Accordion */}
+                <div>
                   <button 
                     onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
                     className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
@@ -796,8 +796,8 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Mobile Actividades Accordion - HIDDEN */}
-                <div className="hidden">
+                {/* Mobile Actividades Accordion */}
+                <div>
                   <button 
                     onClick={() => setMobileActivitiesOpen(!mobileActivitiesOpen)}
                     className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
@@ -837,8 +837,8 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Mobile Sede Accordion - HIDDEN */}
-                <div className="hidden">
+                {/* Mobile Sede Accordion */}
+                <div>
                   <button 
                     onClick={() => setMobileSedeOpen(!mobileSedeOpen)}
                     className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
@@ -923,7 +923,7 @@ export default function Landing() {
                       </a>
                       <Link 
                         href="/comite-evaluador"
-                        className="hidden text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                         data-testid="mobile-nav-comite"
                       >
@@ -933,20 +933,20 @@ export default function Landing() {
                   )}
                 </div>
 
-                {/* Mobile Expo Espacio Público - Direct Link - HIDDEN */}
+                {/* Mobile Expo Espacio Público - Direct Link */}
                 <Link 
                   href="/expo-espacio-publico"
-                  className="hidden text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                   data-testid="mobile-nav-expo-espacio-publico"
                 >
                   Expo Espacio Público
                 </Link>
 
-                {/* Mobile Construcción Comunitaria - Direct Link - HIDDEN */}
+                {/* Mobile Construcción Comunitaria - Direct Link */}
                 <Link 
                   href="/construccion-comunitaria"
-                  className="hidden text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                   data-testid="mobile-nav-construccion-comunitaria"
                 >
