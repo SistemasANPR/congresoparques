@@ -1964,7 +1964,7 @@ export default function Landing() {
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center gap-2">
                     <Mail className="w-4 h-4" />
-                    <a href="mailto:info@congresoparques.com" className="hover:opacity-80 transition-colors" data-testid="footer-email">info@congresoparques.com</a>
+                    <a href="mailto:info@anpr.org.mx" className="hover:opacity-80 transition-colors" data-testid="footer-email">info@anpr.org.mx</a>
                   </li>
                   <li className="flex items-center gap-2">
                     <Phone className="w-4 h-4" />
