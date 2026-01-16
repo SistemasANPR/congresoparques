@@ -462,7 +462,7 @@ export default function Landing() {
             </div>
             
             {/* Center: Desktop Navigation */}
-            <div className="hidden items-center justify-center flex-1 mx-4 xl:mx-8">
+            <div className="hidden md:flex items-center justify-center flex-1 mx-4 xl:mx-8">
               <div className="flex items-center gap-0.5 xl:gap-1">
                 {/* Acerca de Dropdown */}
                 <div 
@@ -708,7 +708,7 @@ export default function Landing() {
               {/* Desktop CTA Button - Disabled */}
               <button
                 disabled
-                className="hidden items-center gap-2 bg-white/20 text-white/50 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full text-[13px] xl:text-sm font-semibold cursor-not-allowed opacity-60 border border-white/20"
+                className="hidden md:flex items-center gap-2 bg-white/20 text-white/50 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full text-[13px] xl:text-sm font-semibold cursor-not-allowed opacity-60 border border-white/20"
                 style={{fontFamily: 'Montserrat, sans-serif'}}
                 data-testid="btn-adquirir-entradas"
                 title="Próximamente disponible"
@@ -718,7 +718,7 @@ export default function Landing() {
               </button>
               
               {/* Mobile Menu Button */}
-              <div className="hidden">
+              <div className="md:hidden">
                 <Button 
                   variant="ghost"
                   size="sm"
@@ -737,7 +737,7 @@ export default function Landing() {
           
           {/* Mobile Navigation Dropdown */}
           {mobileMenuOpen && (
-            <div className="hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
+            <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
               <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
                 {/* Mobile Acerca de Accordion */}
                 <div>
