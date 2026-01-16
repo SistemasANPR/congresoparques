@@ -4,11 +4,10 @@ import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 
 export default function Organizadores() {
   const contactos = [
-    { titulo: "Dir. de Contenido y Educación:", email: "contenido@congresoparques.com" },
-    { titulo: "Dir. Comercial y Ventas:", email: "comercial@anpr.org.mx" },
-    { titulo: "Coordinación Comercial:", email: "expo@congresoparques.com" },
-    { titulo: "Comunicación y Prensa:", email: "comunicacion@congresoparques.com" },
-    { titulo: "Información General:", email: "info@congresoparques.com" }
+    { titulo: "Contenido y Programas:", email: "contenido@anpr.org.mx" },
+    { titulo: "Comercial y Ventas:", email: "vinculacion@anpr.org.mx" },
+    { titulo: "Comunicación y Prensa:", email: "comunicacion@anpr.org.mx" },
+    { titulo: "Información General y Boletos:", email: "hola@anpr.org.mx" }
   ];
 
   return (
@@ -53,13 +52,13 @@ export default function Organizadores() {
               {/* Descripción */}
               <div className="md:col-span-2">
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  El Congreso Parques, es un evento organizado por la <strong className="text-[#0e0477]">Asociación Nacional de Parques y Recreación de México</strong>, una organización no gubernamental dedicada a la profesionalización y capacitación de las personas que se dedican al cuidado, administración, planeación y diseño de parques urbanos y espacios públicos en México y América Latina.
+                  El Congreso Parques es organizado por la <strong className="text-[#0e0477]">Asociación Nacional de Parques y Recreación de México</strong>, una organización no gubernamental dedicada a la profesionalización y capacitación de quienes trabajan en el cuidado, administración, planeación y diseño de parques urbanos y espacios públicos en México y América Latina.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                  La suma de sus esfuerzos y sus diversos colaboradores, se reflejan en convertir la información en herramientas y de esta forma ofrecer a sus miembros, diferentes recursos para capacitarse entre ellos: Estudios e investigaciones, webinars mensuales, la Revista Parques, certificaciones, presentaciones y libros así como la organización anual del Congreso Parques.
+                  Su labor, junto con la de sus colaboradores, se refleja en la construcción de herramientas útiles para sus miembros, ofreciendo recursos como estudios e investigaciones, webinars mensuales, la Revista Parques, certificaciones, presentaciones, libros y, por supuesto, la organización anual del Congreso Parques.
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  Si deseas conocer más información sobre la ANPR México y los beneficios de obtener una membresía, visita su página web{" "}
+                  Si deseas conocer más sobre la ANPR México y los beneficios de obtener una membresía, visita{" "}
                   <a 
                     href="https://anpr.org.mx/" 
                     target="_blank" 
