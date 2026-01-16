@@ -103,9 +103,6 @@ export default function Organizadores() {
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Aliado Estratégico
-              </h2>
               <h3 className="text-xl font-semibold text-[#6847f6] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Aliado Estratégico: CDT Tijuana
               </h3>
