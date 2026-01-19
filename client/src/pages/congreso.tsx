@@ -1,9 +1,9 @@
 import { useState, useCallback, useEffect } from "react";
-import { Link } from "wouter";
-import { ArrowLeft, Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Target, BookOpen, PartyPopper } from "lucide-react";
+import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Target, BookOpen, PartyPopper } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
-import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import { Navigation } from "@/components/Navigation";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import logoAnprBlanco from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
@@ -318,28 +318,17 @@ export default function Congreso() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Announcement Banner */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
-        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
-        </p>
-      </div>
-      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 md:py-4">
-            <Link href="/" className="flex items-center gap-3" data-testid="logo-link">
-              <img src={logoUrl} alt="IX Congreso Internacional de Parques Urbanos y Espacio Público" className="h-12 sm:h-14 md:h-16 w-auto" data-testid="header-logo" />
-              <div className="bg-[#0e0477] px-2.5 py-1 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-xs md:text-sm tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>TIJUANA <span className="text-[#1edede]">2026</span></span>
-              </div>
-            </Link>
-            <Link href="/" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors" data-testid="back-to-home">
-              <ArrowLeft className="w-5 h-5" /><span className="hidden sm:inline">Volver al inicio</span>
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <AnnouncementBanner
+        messages={[
+          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
+          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
+        ]}
+        speed="normal"
+      />
+      {/* Header Navigation */}
+      <Navigation />
 
-      <main className="pt-20 md:pt-24">
+      <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
         <section 
           className="relative py-20 md:py-28 lg:py-32 text-center text-white overflow-hidden"
@@ -363,7 +352,7 @@ export default function Congreso() {
         </section>
 
         {/* CONOCE EL CONGRESO PARQUES / ¿Por qué asistir? */}
-        <section id="info" className="py-20 bg-white section-animate animate-fadeInUp">
+        <section id="info" className="py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
