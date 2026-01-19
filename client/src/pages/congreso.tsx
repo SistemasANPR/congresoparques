@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Target, BookOpen, PartyPopper } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
@@ -362,20 +362,67 @@ export default function Congreso() {
           </div>
         </section>
 
-        {/* Objetivo del Evento */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Objetivo del congreso Tijuana
-                </h2>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  Reunir, integrar y capacitar presencialmente a profesionales, autoridades, academia, industria y sociedad civil del espacio público.
-                </p>
-              </div>
-              <div className="text-center">
-                <img src={logoUrl} alt="Congreso Parques" className="max-w-[280px] mx-auto" />
+        {/* CONOCE EL CONGRESO PARQUES / ¿Por qué asistir? */}
+        <section id="info" className="py-20 bg-white section-animate animate-fadeInUp">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                {/* Left Column - Text Content */}
+                <div className="text-left">
+                  {/* Main Title */}
+                  <h2 className="mb-8" data-testid="info-title">
+                    <span className="title-conoce">CONOCE</span>
+                    <span className="title-congreso">EL CONGRESO PARQUES</span>
+                  </h2>
+
+                  {/* Subtitle */}
+                  <h3 className="subtitle-section" data-testid="info-subtitle">¿Por qué asistir?</h3>
+
+                  {/* Description */}
+                  <p className="text-description" data-testid="info-description">
+                    Un evento internacional de capacitación, intercambio y experiencias inmersivas, dirigido a quienes gestionan, diseñan y promueven los parques urbanos y los espacios públicos. Reunimos presencialmente a profesionales, sociedad civil, funcionarios públicos, académicos y empresas de la industria para generar conocimiento, crear redes y transformar ciudades.
+                  </p>
+                </div>
+
+                {/* Right Column - Icons aligned with subtitle */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-20 lg:mt-0 stagger-children" data-testid="info-value-proposition">
+                  <svg width="0" height="0" style={{ position: 'absolute' }}>
+                    <defs>
+                      <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#d0dd15" />
+                        <stop offset="100%" stopColor="#00deff" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div className="text-center">
+                    <div className="icon-container-gradient mb-6">
+                      <Users className="w-8 h-8" />
+                    </div>
+                    <div className="keyword-text">Conecta</div>
+                    <div className="description-text">Con líderes y profesionales del sector</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="icon-container-gradient mb-6">
+                      <Target className="w-8 h-8" />
+                    </div>
+                    <div className="keyword-text">Descubre</div>
+                    <div className="description-text">Tendencias globales y soluciones innovadoras</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="icon-container-gradient mb-6">
+                      <BookOpen className="w-8 h-8" />
+                    </div>
+                    <div className="keyword-text">Aprende</div>
+                    <div className="description-text">De expertos nacionales e internacionales</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="icon-container-gradient mb-6">
+                      <PartyPopper className="w-8 h-8" />
+                    </div>
+                    <div className="keyword-text">Vive</div>
+                    <div className="description-text">Una experiencia única de capacitación, inspiración y networking</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
