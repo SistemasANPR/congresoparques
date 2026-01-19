@@ -1,6 +1,6 @@
-import { Link } from "wouter";
-import { ArrowLeft, Plane, Bus, Car } from "lucide-react";
-import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import { Plane, Bus, Car } from "lucide-react";
+import { Navigation } from "@/components/Navigation";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 
 export default function Conectividad() {
   const vuelosNacionales = [
@@ -41,28 +41,17 @@ export default function Conectividad() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Announcement Banner */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
-        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
-        </p>
-      </div>
-      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 md:py-4">
-            <Link href="/" className="flex items-center gap-3" data-testid="logo-link">
-              <img src={logoUrl} alt="IX Congreso Internacional de Parques Urbanos y Espacio Público" className="h-12 sm:h-14 md:h-16 w-auto" data-testid="header-logo" />
-              <div className="bg-[#0e0477] px-2.5 py-1 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-xs md:text-sm tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>TIJUANA <span className="text-[#1edede]">2026</span></span>
-              </div>
-            </Link>
-            <Link href="/" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors" data-testid="back-to-home">
-              <ArrowLeft className="w-5 h-5" /><span className="hidden sm:inline">Volver al inicio</span>
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <AnnouncementBanner
+        messages={[
+          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
+          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
+        ]}
+        speed="normal"
+      />
+      {/* Header Navigation */}
+      <Navigation />
 
-      <main className="pt-20 md:pt-24">
+      <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
         <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
           <div className="container mx-auto px-4">

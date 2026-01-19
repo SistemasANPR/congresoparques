@@ -1,48 +1,23 @@
-import { Link } from "wouter";
-import { ArrowLeft } from "lucide-react";
-import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import { Cog, Settings, Wrench } from "lucide-react";
+import { Navigation } from "@/components/Navigation";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 
 export default function Programa() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
       {/* Announcement Banner */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
-        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
-        </p>
-      </div>
-      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 md:py-4">
-            <Link href="/" className="flex items-center gap-3" data-testid="logo-link">
-              <img 
-                src={logoUrl} 
-                alt="IX Congreso Internacional de Parques Urbanos y Espacio Público" 
-                className="h-12 sm:h-14 md:h-16 w-auto"
-                data-testid="header-logo"
-              />
-              <div className="bg-[#0e0477] px-2.5 py-1 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-xs md:text-sm tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>
-                  TIJUANA <span className="text-[#1edede]">2026</span>
-                </span>
-              </div>
-            </Link>
-            
-            <Link 
-              href="/"
-              className="flex items-center gap-2 text-white/90 hover:text-white transition-colors"
-              data-testid="back-to-home"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span className="hidden sm:inline">Volver al inicio</span>
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <AnnouncementBanner
+        messages={[
+          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
+          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
+        ]}
+        speed="normal"
+      />
+      {/* Header Navigation */}
+      <Navigation />
 
       {/* Main Content */}
-      <main className="pt-24 md:pt-28 pb-16">
+      <main className="pt-28 md:pt-36 lg:pt-40 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Page Title */}
@@ -54,10 +29,26 @@ export default function Programa() {
               Programa
             </h1>
             
-            {/* Content Container */}
+            {/* Actividades Section */}
             <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
-              <p className="text-gray-600 text-center text-lg">
-                Contenido próximamente disponible.
+              <h2
+                className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#0e0477]"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Actividades
+              </h2>
+
+              {/* Ilustración de engranajes */}
+              <div className="flex justify-center items-center gap-2 mb-8">
+                <Cog className="w-12 h-12 text-[#6847f6] animate-spin" style={{ animationDuration: '8s' }} />
+                <Settings className="w-16 h-16 text-[#0e0477] animate-spin" style={{ animationDuration: '6s', animationDirection: 'reverse' }} />
+                <Cog className="w-10 h-10 text-[#BCCE16] animate-spin" style={{ animationDuration: '10s' }} />
+                <Wrench className="w-8 h-8 text-[#6847f6] ml-2" />
+              </div>
+
+              <p className="text-gray-700 text-center text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                Nuestro equipo está seleccionando a los expertos que construirán el programa más innovador.
+                <span className="block mt-2 font-semibold text-[#0e0477]">¡Mantente atento para conocerlos!</span>
               </p>
             </div>
           </div>

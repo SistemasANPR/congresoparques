@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nReplace ''Objetivo del congreso Tijuana'' section with ''CONOCE EL CONGRESO PARQUES'' section\n\nReplicate the \"¿Por qué asistir?\" section from the Home page to the /congreso page,\nmaintaining the same HTML structure, CSS classes, and visual design.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(npx tsc:*)",
+      "Bash(curl:*)",
+      "Bash(npx eslint:*)"
+    ]
+  }
+}

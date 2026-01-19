@@ -2,18 +2,18 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { 
-  Menu, 
-  X, 
-  ArrowUp, 
-  Calendar, 
-  MapPin, 
-  Users, 
-  Mic, 
-  BookOpen, 
-  Hammer, 
-  Target, 
-  Building, 
+import {
+  Menu,
+  X,
+  ArrowUp,
+  Calendar,
+  MapPin,
+  Users,
+  Mic,
+  BookOpen,
+  Hammer,
+  Target,
+  Building,
   PartyPopper,
   Mail,
   Phone,
@@ -30,8 +30,12 @@ import {
   Compass,
   Zap,
   DollarSign,
-  Ticket
+  Ticket,
+  GraduationCap,
+  FlaskConical,
+  HeartHandshake
 } from "lucide-react";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Link } from "wouter";
 import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
@@ -57,8 +61,6 @@ import logoANPRWhiteUrl from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png"
 import logoFIDEMUrl from "@assets/LOGO FIDEM_1758652591788.png";
 import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
 import logoBCCUrl from "@assets/LOGO BCC color_1761676598707.png";
-import hojasIzquierdaImg from "@assets/hojas izquierda_1758644374397.png";
-import hojasDerechaImg from "@assets/hojas derecha_1758644374401.png";
 import expoEspacioPublico2026Img from "@assets/expo-espacio-publico-2026.jpg";
 import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.png";
 import parquesAlegresLogoUrl from "@assets/Parques_Alegres_1766080172845.png";
@@ -435,11 +437,19 @@ export default function Landing() {
   return (
     <div className="bg-background text-foreground">
       {/* Announcement Banner */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
-        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
-        </p>
-      </div>
+      <AnnouncementBanner
+        messages={[
+          {
+            id: "convocatorias",
+            text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO",
+          },
+          {
+            id: "boletos",
+            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+          },
+        ]}
+        speed="normal"
+      />
       {/* Header Navigation */}
       <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12" aria-label="Navegación principal">
@@ -505,14 +515,7 @@ export default function Landing() {
                       >
                         Ponentes
                       </Link>
-                      <Link 
-                        href="/preguntas-frecuentes"
-                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
-                        data-testid="nav-dropdown-faq"
-                      >
-                        Preguntas Frecuentes
-                      </Link>
-                      <Link 
+                      <Link
                         href="/preparate"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                         data-testid="nav-dropdown-preparate"
@@ -623,12 +626,12 @@ export default function Landing() {
                 </div>
 
                 {/* Convocatorias Dropdown */}
-                <div 
+                <div
                   className="relative"
                   onMouseEnter={() => setConvocatoriasDropdownOpen(true)}
                   onMouseLeave={() => setConvocatoriasDropdownOpen(false)}
                 >
-                  <button 
+                  <button
                     className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${convocatoriasDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
                     style={{fontFamily: 'Montserrat, sans-serif'}}
                     data-testid="nav-convocatorias"
@@ -637,12 +640,12 @@ export default function Landing() {
                     <span className="relative z-10">Convocatorias</span>
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${convocatoriasDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
-                  
+
                   {/* Desktop Convocatorias Dropdown Menu */}
                   {convocatoriasDropdownOpen && (
                     <div className="absolute top-full left-0 pt-2 z-50">
                       <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
-                      <a 
+                      <a
                         href="https://congresoparques.com/registro_sesiones.php"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -651,7 +654,7 @@ export default function Landing() {
                       >
                         Sesiones Educativas
                       </a>
-                      <a 
+                      <a
                         href="https://congresoparques.com/registro_posters.php"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -660,7 +663,7 @@ export default function Landing() {
                       >
                         Pósters Científicos
                       </a>
-                      <a 
+                      <a
                         href="https://congresoparques.com/registro_voluntarios.php"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -669,7 +672,7 @@ export default function Landing() {
                       >
                         Voluntarios
                       </a>
-                      <Link 
+                      <Link
                         href="/comite-evaluador"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                         data-testid="nav-dropdown-comite"
@@ -776,15 +779,7 @@ export default function Landing() {
                       >
                         Ponentes
                       </Link>
-                      <Link 
-                        href="/preguntas-frecuentes"
-                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                        data-testid="mobile-nav-faq"
-                      >
-                        Preguntas Frecuentes
-                      </Link>
-                      <Link 
+                      <Link
                         href="/preparate"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
@@ -886,7 +881,7 @@ export default function Landing() {
 
                 {/* Mobile Convocatorias Accordion */}
                 <div>
-                  <button 
+                  <button
                     onClick={() => setMobileConvocatoriasOpen(!mobileConvocatoriasOpen)}
                     className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                     data-testid="mobile-nav-convocatorias"
@@ -894,10 +889,10 @@ export default function Landing() {
                     <span>Convocatorias</span>
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileConvocatoriasOpen ? 'rotate-180' : ''}`} />
                   </button>
-                  
+
                   {mobileConvocatoriasOpen && (
                     <div className="pl-4 space-y-1 mt-1">
-                      <a 
+                      <a
                         href="https://congresoparques.com/registro_sesiones.php"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -907,7 +902,7 @@ export default function Landing() {
                       >
                         Sesiones Educativas
                       </a>
-                      <a 
+                      <a
                         href="https://congresoparques.com/registro_posters.php"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -917,7 +912,7 @@ export default function Landing() {
                       >
                         Pósters Científicos
                       </a>
-                      <a 
+                      <a
                         href="https://congresoparques.com/registro_voluntarios.php"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -927,7 +922,7 @@ export default function Landing() {
                       >
                         Voluntarios
                       </a>
-                      <Link 
+                      <Link
                         href="/comite-evaluador"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
@@ -1414,95 +1409,57 @@ export default function Landing() {
       {/* Convocatorias Section */}
       <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="calls-title">Convocatorias 2026</h2>
-            
-            {/* Wrapper para grid y hojas */}
-            <div className="relative">
-              {/* Imagen decorativa hojas izquierda */}
-              <div 
-                className="absolute pointer-events-none hidden lg:block hojas-decorativas-izq" 
-                style={{ 
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  left: '-80px',
-                  width: '150px',
-                  height: '180px',
-                  zIndex: 1
-                }}
-              >
-                <img 
-                  src={hojasIzquierdaImg} 
-                  alt="Decoración natural hojas verdes - Congreso Parques Urbanos Tijuana 2026"
-                  className="w-full h-full object-contain drop-shadow-lg"
-                />
-              </div>
-              
-              {/* Imagen decorativa hojas derecha */}
-              <div 
-                className="absolute pointer-events-none hidden lg:block hojas-decorativas-der" 
-                style={{ 
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  right: '-80px',
-                  width: '150px',
-                  height: '180px',
-                  zIndex: 1
-                }}
-              >
-                <img 
-                  src={hojasDerechaImg} 
-                  alt="Elementos vegetales áreas verdes - Congreso Espacio Público México 2026"
-                  className="w-full h-full object-contain drop-shadow-lg"
-                />
-              </div>
-              
-              <div className="grid lg:grid-cols-2 gap-10 mb-12 stagger-children relative z-10">
+
+            {/* Grid de convocatorias */}
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-educational">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
-                  <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-4" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
+                  <h3 className="text-xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
-                
+
                 {/* Content */}
-                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
-                  <div>
-                    {/* Título */}
-                    <div style={{ height: '60px' }} className="flex items-center justify-center">
-                      <h4 className="text-xl font-bold text-center uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        SESIONES EDUCATIVAS
-                      </h4>
-                    </div>
-                    
-                    {/* Descripción */}
-                    <div style={{ height: '120px' }} className="flex items-center justify-center mb-8">
-                      <p className="text-gray-600 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
-                      </p>
-                    </div>
-                    
-                    {/* Fechas */}
-                    <div className="space-y-3 mb-8" style={{ height: '80px' }}>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
-                        <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
-                      </div>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
-                        <span><strong>Cierre:</strong> 15 de enero, 2026</span>
-                      </div>
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Ícono */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#35219b' }}>
+                      <GraduationCap className="w-7 h-7 text-white" />
                     </div>
                   </div>
-                  
+
+                  {/* Título */}
+                  <h4 className="text-lg font-bold text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    SESIONES EDUCATIVAS
+                  </h4>
+
+                  {/* Descripción */}
+                  <p className="text-gray-600 text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
+                  </p>
+
+                  {/* Fechas */}
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Inicio:</strong> 26 de septiembre, 2025</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Cierre:</strong> 25 de enero, 2026</span>
+                    </div>
+                  </div>
+
                   {/* Botón */}
-                  <div className="text-center">
-                    <button 
+                  <div className="text-center mt-auto">
+                    <button
                       onClick={() => window.open('https://congresoparques.com/registro_sesiones.php', '_blank')}
-                      className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
-                      style={{ 
+                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300 text-sm"
+                      style={{
                         backgroundColor: '#35219b',
                         fontFamily: 'Montserrat, sans-serif'
                       }}
@@ -1515,50 +1472,51 @@ export default function Landing() {
               </div>
               
               {/* Convocatoria Poster Científico */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="call-poster">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-6" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)', height: '84px' }}>
-                  <h3 className="text-2xl font-bold text-white uppercase flex items-center justify-center h-full" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                <div className="text-center py-4" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
+                  <h3 className="text-xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
                     CONVOCATORIA
                   </h3>
                 </div>
-                
+
                 {/* Content */}
-                <div className="p-8 flex flex-col justify-between" style={{ minHeight: '500px' }}>
-                  <div>
-                    {/* Título */}
-                    <div style={{ height: '60px' }} className="flex items-center justify-center">
-                      <h4 className="text-xl font-bold text-center uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        POSTER CIENTÍFICO
-                      </h4>
-                    </div>
-                    
-                    {/* Descripción */}
-                    <div style={{ height: '120px' }} className="flex items-center justify-center mb-8">
-                      <p className="text-gray-600 text-center leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
-                      </p>
-                    </div>
-                    
-                    {/* Fechas */}
-                    <div className="space-y-3 mb-8" style={{ height: '80px' }}>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
-                        <span><strong>Apertura:</strong> 26 de septiembre, 2025</span>
-                      </div>
-                      <div className="flex items-center justify-center gap-2 text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        <Calendar className="w-4 h-4" />
-                        <span><strong>Cierre:</strong> 15 de enero, 2026</span>
-                      </div>
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Ícono */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#35219b' }}>
+                      <FlaskConical className="w-7 h-7 text-white" />
                     </div>
                   </div>
-                  
+
+                  {/* Título */}
+                  <h4 className="text-lg font-bold text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    POSTER CIENTÍFICO
+                  </h4>
+
+                  {/* Descripción */}
+                  <p className="text-gray-600 text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
+                  </p>
+
+                  {/* Fechas */}
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Inicio:</strong> 26 de septiembre, 2025</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Cierre:</strong> 25 de enero, 2026</span>
+                    </div>
+                  </div>
+
                   {/* Botón */}
-                  <div className="text-center">
-                    <button 
+                  <div className="text-center mt-auto">
+                    <button
                       onClick={() => window.open('https://congresoparques.com/registro_posters.php', '_blank')}
-                      className="convocatoria-btn px-10 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300"
-                      style={{ 
+                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300 text-sm"
+                      style={{
                         backgroundColor: '#35219b',
                         fontFamily: 'Montserrat, sans-serif'
                       }}
@@ -1569,7 +1527,63 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
-            </div>
+
+              {/* Convocatoria Voluntarios */}
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-volunteers">
+                {/* Header con "CONVOCATORIA" */}
+                <div className="text-center py-4" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
+                  <h3 className="text-xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                    CONVOCATORIA
+                  </h3>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Ícono */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#35219b' }}>
+                      <HeartHandshake className="w-7 h-7 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Título */}
+                  <h4 className="text-lg font-bold text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    VOLUNTARIOS
+                  </h4>
+
+                  {/* Descripción */}
+                  <p className="text-gray-600 text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Sé parte del equipo que hace posible el Congreso Parques: apoya en actividades clave, accede a beneficios exclusivos y genera conexiones profesionales.
+                  </p>
+
+                  {/* Fechas */}
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Inicio:</strong> 15 de enero, 2026</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Cierre:</strong> 30 de marzo, 2026</span>
+                    </div>
+                  </div>
+
+                  {/* Botón */}
+                  <div className="text-center mt-auto">
+                    <button
+                      onClick={() => window.open('https://congresoparques.com/registro_voluntarios.php', '_blank')}
+                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300 text-sm"
+                      style={{
+                        backgroundColor: '#35219b',
+                        fontFamily: 'Montserrat, sans-serif'
+                      }}
+                      data-testid="cta-volunteers"
+                    >
+                      REGÍSTRATE
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

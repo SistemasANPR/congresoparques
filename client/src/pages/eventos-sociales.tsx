@@ -1,34 +1,23 @@
-import { Link } from "wouter";
-import { ArrowLeft, Clock, MapPin } from "lucide-react";
-import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import { Clock, MapPin, Calendar } from "lucide-react";
+import { Navigation } from "@/components/Navigation";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import eventosSocialesImg from "@assets/Eventos Sociales_1758578349366.jpg";
 
 export default function EventosSociales() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Announcement Banner */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
-        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
-        </p>
-      </div>
-      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 md:py-4">
-            <Link href="/" className="flex items-center gap-3" data-testid="logo-link">
-              <img src={logoUrl} alt="IX Congreso Internacional de Parques Urbanos y Espacio Público" className="h-12 sm:h-14 md:h-16 w-auto" data-testid="header-logo" />
-              <div className="bg-[#0e0477] px-2.5 py-1 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-xs md:text-sm tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>TIJUANA <span className="text-[#1edede]">2026</span></span>
-              </div>
-            </Link>
-            <Link href="/" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors" data-testid="back-to-home">
-              <ArrowLeft className="w-5 h-5" /><span className="hidden sm:inline">Volver al inicio</span>
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <AnnouncementBanner
+        messages={[
+          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
+          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
+        ]}
+        speed="normal"
+      />
+      {/* Header Navigation */}
+      <Navigation />
 
-      <main className="pt-20 md:pt-24">
+      <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
         <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
           <div className="container mx-auto px-4">
@@ -36,7 +25,7 @@ export default function EventosSociales() {
               Eventos Sociales
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <p className="text-white/90 text-lg">¡Ha llegado el momento de intercambiar tarjetas y divertirse!</p>
+            <p className="text-white/90 text-lg">¡Llegó la hora de convivir, relajarte y hacer nuevos contactos!</p>
           </div>
         </section>
 
@@ -44,14 +33,14 @@ export default function EventosSociales() {
         <section className="bg-gradient-to-r from-[#0e0477] to-[#6847f6] py-12">
           <div className="container mx-auto px-4 text-center">
             <p className="text-white text-lg md:text-xl max-w-4xl mx-auto">
-              Expande tus horizontes profesionales y sumérgete en una experiencia única con los eventos sociales exclusivos que hemos organizado especialmente para ti; donde la diversión se mezcla con la innovación y el networking, en un ambiente relajado y lleno de posibilidades; <strong className="text-[#BCCE16]">disfruta, conecta y forja relaciones</strong> que impulsarán el futuro de los parques y espacios públicos.
+              Únete a los tres eventos sociales del Congreso Parques —<strong className="text-[#BCCE16]">Cena de Consejo, Beer and Mix Party y Evento de Clausura</strong>—, un evento especial por día, cuidadosamente organizado para brindarte un espacio único donde podrás ampliar tu red en un ambiente casual, relajado y divertido.
             </p>
           </div>
         </section>
 
-        {/* Beer and Mix Party */}
+        {/* Cena de Consejo */}
         <section className="relative min-h-[500px] flex items-center">
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${eventosSocialesImg})` }}
           >
@@ -61,19 +50,67 @@ export default function EventosSociales() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Beer and Mix Party
+                  Cena de Consejo
                 </h2>
-                <h3 className="text-[#BCCE16] text-lg mb-4">Octubre 2026</h3>
                 <p className="text-white/90 mb-6">
-                  Únete a nosotros en la Beer and Mix Party, un evento social vibrante y lleno de sabor que se celebra en el corazón del Congreso Parques. Disfruta de una noche única en la que la cerveza artesanal, la música y el buen ambiente se combinan para ofrecerte una experiencia inolvidable. ¡No te pierdas esta oportunidad de brindar por el futuro de nuestros espacios públicos!
+                  Participa y conecta en la exclusiva Cena de Consejo, donde podrás conocer de cerca a los ponentes magistrales y a los miembros del Consejo de la ANPR tras el primer gran día del congreso. ¡El ambiente perfecto para relajarte, descubrir al panel y generar nuevas conexiones!
                 </p>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                      <Calendar className="w-4 h-4" />
+                      <span className="font-semibold">Fecha:</span>
+                    </div>
+                    <p className="text-white/90">13 de mayo</p>
+                  </div>
                   <div>
                     <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
                       <Clock className="w-4 h-4" />
                       <span className="font-semibold">Hora:</span>
                     </div>
-                    <p className="text-white/90">5:30 p.m. - 8:00 p.m.</p>
+                    <p className="text-white/90">(por definir)</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                      <MapPin className="w-4 h-4" />
+                      <span className="font-semibold">Lugar:</span>
+                    </div>
+                    <p className="text-white/90">(por definir)</p>
+                  </div>
+                </div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Beer and Mix Party */}
+        <section className="relative min-h-[500px] flex items-center bg-gray-900">
+          <div className="absolute inset-0 bg-gradient-to-l from-[#0e0477]/95 via-[#0e0477]/80 to-[#6847f6]/60"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div></div>
+              <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Beer and Mix Party
+                </h2>
+                <p className="text-white/90 mb-6">
+                  Asiste a la Beer and Mix Party, un evento integrado al programa del Congreso Parques y creado para ofrecerte una experiencia auténtica: disfrutar de la cerveza artesanal de Tijuana mientras conoces a los expositores y fortaleces tu red de contactos en un ambiente social y agradable.
+                </p>
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                      <Calendar className="w-4 h-4" />
+                      <span className="font-semibold">Fecha:</span>
+                    </div>
+                    <p className="text-white/90">14 de mayo</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-semibold">Hora:</span>
+                    </div>
+                    <p className="text-white/90">(por definir)</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
@@ -84,42 +121,52 @@ export default function EventosSociales() {
                   </div>
                 </div>
               </div>
-              <div></div>
             </div>
           </div>
         </section>
 
         {/* Evento de Clausura */}
-        <section className="relative min-h-[500px] flex items-center bg-gray-900">
-          <div className="absolute inset-0 bg-gradient-to-l from-[#0e0477]/95 via-[#0e0477]/80 to-[#6847f6]/60"></div>
+        <section className="relative min-h-[500px] flex items-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${eventosSocialesImg})` }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-l from-[#0e0477]/95 via-[#0e0477]/80 to-transparent"></div>
+          </div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-8">
-              <div></div>
               <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   Evento de Clausura
                 </h2>
-                <h3 className="text-[#BCCE16] text-lg mb-4">Octubre 2026</h3>
                 <p className="text-white/90 mb-6">
-                  Después de aprender de los expertos y adquirir nuevas experiencias, ¡es hora de celebrar en el Evento de Clausura! Participa en el ambiente vibrante de una de las cantinas más típicas de Tijuana, donde te esperan antojitos regionales, música, baile y un ambiente único. Disfruta de la deliciosa comida local y la buena compañía, mientras brindas por los logros compartidos durante el Congreso Parques.
+                  Tras días de aprendizaje y nuevas experiencias, el Evento de Clausura se convierte en el momento ideal para celebrar lo vivido, seguir conectando y compartir contactos. Todo esto en un ambiente especial que hará de este cierre una experiencia memorable.
                 </p>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                      <Calendar className="w-4 h-4" />
+                      <span className="font-semibold">Fecha:</span>
+                    </div>
+                    <p className="text-white/90">15 de mayo</p>
+                  </div>
                   <div>
                     <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
                       <Clock className="w-4 h-4" />
                       <span className="font-semibold">Hora:</span>
                     </div>
-                    <p className="text-white/90">6:30 p.m. - 10 p.m.</p>
+                    <p className="text-white/90">(por definir)</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
                       <MapPin className="w-4 h-4" />
                       <span className="font-semibold">Lugar:</span>
                     </div>
-                    <p className="text-white/90">Por confirmar</p>
+                    <p className="text-white/90">(por definir)</p>
                   </div>
                 </div>
               </div>
+              <div></div>
             </div>
           </div>
         </section>

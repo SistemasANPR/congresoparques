@@ -1,33 +1,22 @@
-import { Link } from "wouter";
-import { ArrowLeft, Download, FileText, CreditCard, Link2, BookOpen } from "lucide-react";
-import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
+import { Download, FileText, CreditCard, Link2, BookOpen } from "lucide-react";
+import { Navigation } from "@/components/Navigation";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 
 export default function Preparate() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Announcement Banner */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#0e0477] h-5 flex items-center justify-center">
-        <p className="text-white text-[10px] sm:text-xs font-semibold tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          <span className="text-[#d0dd15]">★</span> REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO <span className="text-[#d0dd15]">★</span>
-        </p>
-      </div>
-      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-3 md:py-4">
-            <Link href="/" className="flex items-center gap-3" data-testid="logo-link">
-              <img src={logoUrl} alt="IX Congreso Internacional de Parques Urbanos y Espacio Público" className="h-12 sm:h-14 md:h-16 w-auto" data-testid="header-logo" />
-              <div className="bg-[#0e0477] px-2.5 py-1 rounded-sm">
-                <span className="text-[#d2dd0a] font-black text-xs md:text-sm tracking-wide" style={{fontFamily: 'Montserrat, sans-serif'}}>TIJUANA <span className="text-[#1edede]">2026</span></span>
-              </div>
-            </Link>
-            <Link href="/" className="flex items-center gap-2 text-white/90 hover:text-white transition-colors" data-testid="back-to-home">
-              <ArrowLeft className="w-5 h-5" /><span className="hidden sm:inline">Volver al inicio</span>
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <AnnouncementBanner
+        messages={[
+          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
+          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
+        ]}
+        speed="normal"
+      />
+      {/* Header Navigation */}
+      <Navigation />
 
-      <main className="pt-20 md:pt-24">
+      <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
         <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
           <div className="container mx-auto px-4">
@@ -49,11 +38,11 @@ export default function Preparate() {
                 <ul className="space-y-4 text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>Antes de poder discutir con tu jefe tu posible participación al Congreso, es importante que <strong className="text-[#0e0477]">conozcas a fondo la estructura</strong> del mismo, fechas, horarios, logística, tipos de conferencias y conferencistas y precios.</span>
+                    <span>Antes de discutir con tu jefe la posibilidad de asistir al Congreso, es importante <strong className="text-[#0e0477]">conocer a fondo su estructura</strong>, fechas, horarios, logística, tipos de conferencias, ponentes y precios.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>A través de conocer toda esta información <strong className="text-[#0e0477]">establece metas</strong> a corto y largo plazo que te <strong className="text-[#0e0477]">ayuden a cumplir mejor tu trabajo.</strong> Estas metas deben de ser apoyadas por la idea de asistir al evento.</span>
+                    <span>Al revisar toda esta información, <strong className="text-[#0e0477]">establece metas</strong> a corto y largo plazo que te <strong className="text-[#0e0477]">ayuden a mejorar tu desempeño profesional.</strong> Estas metas deben estar acompañadas de la intención de asistir al evento.</span>
                   </li>
                 </ul>
 
@@ -99,11 +88,11 @@ export default function Preparate() {
                 <ul className="space-y-4 text-white/90">
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>Alinea tus objetivos laborales y los de tu organización con los objetivos de las conferencias y talleres a los que te gustaría asistir. La mejor forma de justificar tu asistencia al Congreso es que lo que vas a aprender te ayude a poder hacer mejor tu trabajo.</span>
+                    <span>Alinea tus objetivos laborales y los de tu organización con los temas de las conferencias y talleres que te gustaría tomar. La mejor forma de justificar tu asistencia es demostrar que lo que aprenderás contribuye directamente a tu trabajo.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>Establece una agenda de contactos y planea un posible acercamiento con algún conferencista con el cual le llegue interesar a tu organización hacer relación.</span>
+                    <span>Establece también una agenda de contactos y considera acercarte a algún conferencista con quien tu organización pudiera estar interesada en colaborar.</span>
                   </li>
                 </ul>
               </div>
@@ -131,19 +120,19 @@ export default function Preparate() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>Ampliar tus contactos y generar valiosas relaciones públicas.</span>
+                    <span>Ampliar tus contactos y generar valiosas relaciones profesionales.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>Conocer a los proveedores más importantes de la industria en Latinoamérica así como descubrir las últimas tendencias del mercado.</span>
+                    <span>Conocer a los proveedores más importantes de la industria en Latinoamérica y descubrir tendencias, nuevos productos, calidades y oportunidades.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>Aprender de historias de éxito sobre parques y espacios públicos en Latinoamérica.</span>
+                    <span>Aprender de historias de éxito sobre parques y espacios públicos en la región.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
-                    <span>Llevar a tu organización nuevas ideas para el desarrollo de proyectos.</span>
+                    <span>Llevar a tu organización nuevas ideas para desarrollar proyectos.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
@@ -183,14 +172,14 @@ export default function Preparate() {
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors">
+                  <a href="https://docs.google.com/document/d/1yrYyA94zhhCIbENY-JctGt3lpOSw6vC0/edit?usp=sharing&ouid=102768518971014749797&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors">
                     <Download className="w-5 h-5" />
                     Descargar Carta Invitación
-                  </button>
-                  <button className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors">
+                  </a>
+                  <a href="https://docs.google.com/document/d/1G19wuAHa9j7VzFc8Ba9uAAqX3daxYcKTlbqP1srapg0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors">
                     <Download className="w-5 h-5" />
                     Descargar Carta Molde
-                  </button>
+                  </a>
                 </div>
               </div>
               <div className="text-center">

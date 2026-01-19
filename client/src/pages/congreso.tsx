@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
-import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Target, BookOpen, PartyPopper } from "lucide-react";
+import { Link } from "wouter";
+import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Navigation } from "@/components/Navigation";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
-import logoAnprBlanco from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
 import conferenciaMagistral from "@assets/Conferencia Magistral_1758578349365.jpg";
 import sesionEducativa from "@assets/Sesion educativa_1758578349360.jpg";
@@ -351,67 +351,60 @@ export default function Congreso() {
           </div>
         </section>
 
-        {/* CONOCE EL CONGRESO PARQUES / ¿Por qué asistir? */}
-        <section id="info" className="py-20 bg-white">
+        {/* ¿Por qué asistir? */}
+        <section className="py-16 md:py-20 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                {/* Left Column - Text Content */}
-                <div className="text-left">
-                  {/* Main Title */}
-                  <h2 className="mb-8" data-testid="info-title">
-                    <span className="title-conoce">CONOCE</span>
-                    <span className="title-congreso">EL CONGRESO PARQUES</span>
+            <div className="max-w-6xl mx-auto">
+
+              {/* Grid: 2 columnas en desktop, 1 en mobile */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+
+                {/* Columna izquierda: Texto */}
+                <div>
+                  <h2
+                    className="text-3xl md:text-4xl lg:text-5xl font-black mb-6"
+                    style={{
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontWeight: 900,
+                      color: '#0e0477'
+                    }}
+                  >
+                    ¿Por qué asistir?
                   </h2>
-
-                  {/* Subtitle */}
-                  <h3 className="subtitle-section" data-testid="info-subtitle">¿Por qué asistir?</h3>
-
-                  {/* Description */}
-                  <p className="text-description" data-testid="info-description">
-                    Un evento internacional de capacitación, intercambio y experiencias inmersivas, dirigido a quienes gestionan, diseñan y promueven los parques urbanos y los espacios públicos. Reunimos presencialmente a profesionales, sociedad civil, funcionarios públicos, académicos y empresas de la industria para generar conocimiento, crear redes y transformar ciudades.
+                  <p
+                    className="text-base md:text-lg leading-relaxed"
+                    style={{
+                      fontFamily: 'Montserrat, sans-serif',
+                      fontWeight: 400,
+                      color: '#374151'
+                    }}
+                  >
+                    Un evento internacional de capacitación, intercambio y experiencias
+                    inmersivas, dirigido a quienes gestionan, diseñan y promueven los
+                    parques urbanos y los espacios públicos. Reunimos presencialmente a
+                    profesionales, sociedad civil, funcionarios públicos, académicos y
+                    empresas de la industria para generar conocimiento, crear redes y
+                    transformar ciudades.
                   </p>
                 </div>
 
-                {/* Right Column - Icons aligned with subtitle */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-20 lg:mt-0 stagger-children" data-testid="info-value-proposition">
-                  <svg width="0" height="0" style={{ position: 'absolute' }}>
-                    <defs>
-                      <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#d0dd15" />
-                        <stop offset="100%" stopColor="#00deff" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <div className="text-center">
-                    <div className="icon-container-gradient mb-6">
-                      <Users className="w-8 h-8" />
-                    </div>
-                    <div className="keyword-text">Conecta</div>
-                    <div className="description-text">Con líderes y profesionales del sector</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="icon-container-gradient mb-6">
-                      <Target className="w-8 h-8" />
-                    </div>
-                    <div className="keyword-text">Descubre</div>
-                    <div className="description-text">Tendencias globales y soluciones innovadoras</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="icon-container-gradient mb-6">
-                      <BookOpen className="w-8 h-8" />
-                    </div>
-                    <div className="keyword-text">Aprende</div>
-                    <div className="description-text">De expertos nacionales e internacionales</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="icon-container-gradient mb-6">
-                      <PartyPopper className="w-8 h-8" />
-                    </div>
-                    <div className="keyword-text">Vive</div>
-                    <div className="description-text">Una experiencia única de capacitación, inspiración y networking</div>
+                {/* Columna derecha: Video */}
+                <div className="w-full">
+                  <div
+                    className="w-full rounded-2xl overflow-hidden shadow-lg bg-black"
+                    style={{ aspectRatio: '16 / 9', minHeight: '280px' }}
+                  >
+                    <iframe
+                      src="https://www.youtube.com/embed/9A7G7Ar9Ji8"
+                      title="Congreso Parques Video"
+                      className="w-full h-full border-0"
+                      loading="lazy"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -453,32 +446,6 @@ export default function Congreso() {
                 </div>
                 <h4 className="text-lg font-bold text-[#0e0477] mb-2">Lenguaje Oficial</h4>
                 <p className="text-gray-600">Español</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Video y Organizado por */}
-        <section className="bg-[#0e0477] py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
-              <div className="aspect-video">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src="https://www.youtube.com/embed/Lr_ADiUJijc?si=T_yqMzbu_xmEw33u" 
-                  title="YouTube video player" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                  className="rounded-lg"
-                ></iframe>
-              </div>
-              <div className="text-center py-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Organizado por:
-                </h2>
-                <img src={logoAnprBlanco} alt="ANPR" className="max-w-[200px] mx-auto" />
               </div>
             </div>
           </div>
