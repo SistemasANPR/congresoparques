@@ -673,11 +673,11 @@ export default function Landing() {
                         Voluntarios
                       </a>
                       <Link
-                        href="/comite-evaluador"
+                        href="/consejo-evaluador"
                         className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                         data-testid="nav-dropdown-comite"
                       >
-                        Comité Evaluador
+                        Consejo Evaluador
                       </Link>
                       </div>
                     </div>
@@ -694,8 +694,8 @@ export default function Landing() {
                   <span className="relative z-10">Expo</span>
                 </Link>
 
-                {/* Construcción Comunitaria - Direct Link */}
-                <Link 
+                {/* Construcción Comunitaria - Direct Link (OCULTO)
+                <Link
                   href="/construccion-comunitaria"
                   className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md whitespace-nowrap"
                   style={{fontFamily: 'Montserrat, sans-serif'}}
@@ -703,6 +703,7 @@ export default function Landing() {
                 >
                   <span className="relative z-10">Comunidad</span>
                 </Link>
+                */}
               </div>
             </div>
             
@@ -923,12 +924,12 @@ export default function Landing() {
                         Voluntarios
                       </a>
                       <Link
-                        href="/comite-evaluador"
+                        href="/consejo-evaluador"
                         className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                         data-testid="mobile-nav-comite"
                       >
-                        Comité Evaluador
+                        Consejo Evaluador
                       </Link>
                     </div>
                   )}
@@ -944,8 +945,8 @@ export default function Landing() {
                   Expo Espacio Público
                 </Link>
 
-                {/* Mobile Construcción Comunitaria - Direct Link */}
-                <Link 
+                {/* Mobile Construcción Comunitaria - Direct Link (OCULTO)
+                <Link
                   href="/construccion-comunitaria"
                   className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
@@ -953,6 +954,7 @@ export default function Landing() {
                 >
                   Construcción Comunitaria
                 </Link>
+                */}
 
                 {/* Mobile CTA Button - Disabled */}
                 <div className="pt-3 mt-2 border-t border-white/20">
