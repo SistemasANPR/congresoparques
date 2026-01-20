@@ -343,7 +343,7 @@ export default function PreguntasFrecuentes() {
         },
         {
           pregunta: "¿Cómo puedo ser expositor en Expo Espacio Público?",
-          respuesta: "Para más información sobre patrocinios o venta de stands, puedes ponerte en contacto con nosotros de lunes a viernes de 9:00 am a 6:00 pm. Teléfono: 01 999 944 353 0691. Email: comercial@congresoparques.com o expo@congresoparques.com"
+          respuesta: "Para más información sobre patrocinios o venta de stands, puedes ponerte en contacto con nosotros de lunes a viernes de 9:00 am a 6:00 pm. Teléfono: 01 999 944 353 0691. Email: vinculacion@anpr.org.mx"
         }
       ]
     },
