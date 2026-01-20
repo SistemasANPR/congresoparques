@@ -38,6 +38,40 @@ export default function EventosSociales() {
           </div>
         </section>
 
+        {/* Almuerzo */}
+        <section className="relative min-h-[500px] flex items-center bg-gray-900">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#6847f6]/90 via-[#0e0477]/80 to-[#0e0477]/60"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Almuerzo (jueves y viernes)
+                </h2>
+                <p className="text-white/90 mb-6">
+                  Disfruta del almuerzo incluido en tu boleto, una experiencia integrada al programa del Congreso Parques para que recargues energía sin salir del recinto, conozcas a más participantes y continúes el networking en un ambiente cómodo y ágil. Servido en la Expo Espacio Público ambos días, solo presenta tu gafete.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                      <Calendar className="w-4 h-4" />
+                      <span className="font-semibold">Fechas:</span>
+                    </div>
+                    <p className="text-white/90">14 y 15 de mayo</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                      <MapPin className="w-4 h-4" />
+                      <span className="font-semibold">Lugar:</span>
+                    </div>
+                    <p className="text-white/90">Expo Espacio Público</p>
+                  </div>
+                </div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </section>
+
         {/* Cena de Consejo */}
         <section className="relative min-h-[500px] flex items-center">
           <div
