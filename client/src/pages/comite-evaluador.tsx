@@ -21,6 +21,12 @@ import mariaLeticiaImg from "@assets/Maria_Leticia_Roche_Cano_1768852622382.jpg"
 import marianaProneImg from "@assets/Mariana_Prone_(2)_1768852622383.jpg";
 import matiasHonourImg from "@assets/Matias_Honour_1768852622383.jpg";
 import miguelCalderonImg from "@assets/Miguel_Calderón_(1)_1768852622384.jpg";
+import alejandroRomeroImg from "@assets/Alejandro_Romero_1768929344694.jpeg";
+import clearkVillatoroImg from "@assets/Cleark_Villatoro_1768929344699.jpeg";
+import gerardoIbarraImg from "@assets/Gerardo-Ibarra.jpeg_1768929344701.jpg";
+import luisRomahnImg from "@assets/Luis_Romahn_1768929344702.jpeg";
+import taniaJaimeImg from "@assets/Tania_Jaime_de_la_Torre_1768929344703.png";
+import victorSantillanImg from "@assets/Victor_Santillan_1768929344704.jpg";
 
 interface MemberCardProps {
   name: string;
@@ -28,9 +34,10 @@ interface MemberCardProps {
   organization: string;
   country: string;
   image?: string;
+  imagePosition?: string;
 }
 
-function MemberCard({ name, title, organization, image }: MemberCardProps) {
+function MemberCard({ name, title, organization, image, imagePosition }: MemberCardProps) {
   return (
     <div className="text-center p-4">
       <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden flex items-center justify-center">
@@ -39,6 +46,7 @@ function MemberCard({ name, title, organization, image }: MemberCardProps) {
             src={image} 
             alt={name} 
             className="w-full h-full object-cover"
+            style={imagePosition ? { objectPosition: imagePosition } : undefined}
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-[#6847f6] to-[#0e0477] flex items-center justify-center">
@@ -57,14 +65,14 @@ function MemberCard({ name, title, organization, image }: MemberCardProps) {
 export default function ComiteEvaluador() {
   const members: MemberCardProps[] = [
     { name: "Adriana Romero", title: "Especialista en Comunicaciones", organization: "Glasswing International", country: "", image: adrianaRomeroImg },
-    { name: "Alejandro Romero", title: "Director de Conservación", organization: "San Pedro + Parques", country: "" },
+    { name: "Alejandro Romero", title: "Director de Conservación", organization: "San Pedro + Parques", country: "", image: alejandroRomeroImg, imagePosition: "top" },
     { name: "Bárbara Apodaca", title: "Directora", organization: "Sociedad Botánica y Zoológica de Sinaloa", country: "", image: barbaraApodacaImg },
-    { name: "Cleark Espinoza Villatoro", title: "Administradora", organization: "Parque Cuscatlán y Parque Bicentenario", country: "" },
+    { name: "Cleark Espinoza Villatoro", title: "Administradora", organization: "Parque Cuscatlán y Parque Bicentenario", country: "", image: clearkVillatoroImg },
     { name: "David Montañez", title: "Director", organization: "MetropoliMID", country: "", image: davidMontanezImg },
     { name: "Edwin J. Rivera Guzmán", title: "Presidente / Guardabosques", organization: "Hispanic Professionals in Parks and Recreation (HPPR) / US National Park Service", country: "", image: edwinRiveraImg },
     { name: "Edwin Moo", title: "Coordinador de Proyectos", organization: "Parques de México", country: "", image: edwinMooImg },
     { name: "Francisco Ramírez Salazar", title: "Director de Administración y Soporte", organization: "San Pedro + Parques", country: "", image: franciscoRamirezImg },
-    { name: "Gerardo Ibarra", title: "Director", organization: "Centro de Ciencias Explora", country: "" },
+    { name: "Gerardo Ibarra", title: "Director", organization: "Centro de Ciencias Explora", country: "", image: gerardoIbarraImg },
     { name: "Jesús Alexandro Félix Gastélum", title: "Administrador General", organization: "AMBU", country: "", image: jesusAlexandroImg },
     { name: "Jorge Sánchez", title: "Subdirector de Control de Obra e Imagen Urbana", organization: "SUPRATERRA", country: "", image: jorgeSanchezImg },
     { name: "Karina Aguilar Vizcaíno", title: "Gerencia de Conservación y Mejoramiento al Ecosistema", organization: "Agencia Metropolitana de Bosques Urbanos del AMG", country: "", image: karinaAguilarImg },
@@ -73,15 +81,15 @@ export default function ComiteEvaluador() {
     { name: "Lilia Haua Miguel", title: "Directora", organization: "Fideicomiso Pro Bosque de Chapultepec", country: "", image: liliaHauaImg },
     { name: "Lorena Barrera González", title: "Vicepresidenta", organization: "Foro Urbano A.C", country: "", image: lorenaBarreraImg },
     { name: "Lorena Vázquez-Ordaz", title: "Directora", organization: "Reserva Natural Chipinque", country: "", image: lorenaVazquezImg },
-    { name: "Luis Romahn", title: "Director", organization: "World Urban Parks", country: "" },
+    { name: "Luis Romahn", title: "Director", organization: "World Urban Parks", country: "", image: luisRomahnImg },
     { name: "María Isabel Velázquez", title: "Directora", organization: "Parques de México", country: "", image: mariaIsabelImg },
     { name: "María Leticia Roche Cano", title: "Subdirectora de Infraestructura Verde", organization: "Unidad de Medio Ambiente y Bienestar Animal", country: "", image: mariaLeticiaImg },
     { name: "Mariana Prone", title: "Directora", organization: "Parques de Argentina", country: "", image: marianaProneImg },
     { name: "Matías Honour", title: "Director de Proyectos", organization: "Fundación Mi Parque", country: "", image: matiasHonourImg },
     { name: "Miguel Enrique Calderón Quevedo", title: "Presidente", organization: "Parques Alegres", country: "", image: miguelCalderonImg },
     { name: "Ricardo Eugenio Bonilla López", title: "Director General", organization: "San Pedro + Parques", country: "", image: ricardoBonillaImg },
-    { name: "Tania Jaime de la Torre", title: "Directora de Recreación", organization: "San Pedro + Parques", country: "" },
-    { name: "Víctor Santillán", title: "Administración", organization: "Parque La Mexicana", country: "" },
+    { name: "Tania Jaime de la Torre", title: "Directora de Recreación", organization: "San Pedro + Parques", country: "", image: taniaJaimeImg },
+    { name: "Víctor Santillán", title: "Administración", organization: "Parque La Mexicana", country: "", image: victorSantillanImg },
   ];
 
   return (
