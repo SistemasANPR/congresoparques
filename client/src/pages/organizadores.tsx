@@ -88,27 +88,40 @@ export default function Organizadores() {
           <div className="h-px bg-gray-300 max-w-6xl mx-auto"></div>
         </div>
 
-        {/* Aliado Estratégico */}
+        {/* APOYA - Flip Card */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h3 className="text-xl font-semibold text-[#6847f6] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Aliado Estratégico: CDT Tijuana
-              </h3>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
-                El Congreso Parques se lleva a cabo de la mano del Consejo de Desarrollo de Tijuana (CDT), una institución que ha marcado la pauta en la planeación estratégica y el impulso de proyectos que transforman la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad, el CDT es un aliado clave para hacer realidad esta edición del Congreso.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Si deseas conocer más sobre CDT Tijuana visita{" "}
-                <a 
-                  href="https://cdt.org.mx/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[#6847f6] hover:text-[#0e0477] underline font-semibold"
+            <div className="max-w-6xl mx-auto flex justify-center">
+              <div className="group w-full max-w-2xl h-80" style={{ perspective: '1000px' }}>
+                <div 
+                  className="relative w-full h-full transition-transform duration-700"
+                  style={{ transformStyle: 'preserve-3d' }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'rotateY(180deg)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'rotateY(0deg)'}
                 >
-                  cdt.org.mx
-                </a>
-              </p>
+                  {/* Front */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-br from-[#0e0477] to-[#6847f6] rounded-xl flex items-center justify-center shadow-lg"
+                    style={{ backfaceVisibility: 'hidden' }}
+                  >
+                    <h3 className="text-5xl md:text-6xl font-black text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      APOYA
+                    </h3>
+                  </div>
+                  {/* Back */}
+                  <div 
+                    className="absolute inset-0 bg-white border-2 border-[#0e0477] rounded-xl p-6 md:p-8 overflow-y-auto shadow-lg"
+                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                  >
+                    <h4 className="text-lg font-bold text-[#0e0477] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      Proyecto apoyado con los recursos de:
+                    </h4>
+                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                      El Congreso Parques se realiza de la mano y gracias al Fideicomiso Empresarial del Estado de Baja California (FIDEM) y del Consejo de Desarrollo de Tijuana (CDT), una institución que marca la pauta en la planeación estratégica y el impulso de proyectos de largo plazo para la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad civil, el CDT articula voluntades, facilita alianzas y potencia iniciativas que elevan la competitividad y la calidad de vida. Su participación es clave para hacer realidad esta edición del Congreso.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
