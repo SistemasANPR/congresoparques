@@ -26,6 +26,8 @@ import {
   ZoomIn,
   ChevronUp,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Leaf,
   Compass,
   Zap,
@@ -127,6 +129,7 @@ export default function Landing() {
   const [convocatoriasDropdownOpen, setConvocatoriasDropdownOpen] = useState(false);
   const [mobileConvocatoriasOpen, setMobileConvocatoriasOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [videoCarouselIndex, setVideoCarouselIndex] = useState(0);
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
@@ -1615,30 +1618,82 @@ export default function Landing() {
               })}
             </div>
 
-            {/* Videos del Legado */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {videosLegado.map((video, index) => (
+            {/* Videos del Legado - Carousel */}
+            <div className="relative">
+              {/* Left Arrow */}
+              <button
+                onClick={() => setVideoCarouselIndex(prev => Math.max(0, prev - 1))}
+                disabled={videoCarouselIndex === 0}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center transition-all ${
+                  videoCarouselIndex === 0 
+                    ? 'opacity-40 cursor-not-allowed' 
+                    : 'hover:bg-[#d0dd15] hover:scale-110'
+                }`}
+                aria-label="Ver videos anteriores"
+              >
+                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-[#0e0477]" />
+              </button>
+
+              {/* Videos Container */}
+              <div className="overflow-hidden mx-6 md:mx-10">
                 <div 
-                  key={index}
-                  className="relative overflow-hidden rounded-lg shadow-lg"
-                  data-testid={`legacy-video-${index}`}
+                  className="flex transition-transform duration-500 ease-in-out gap-6"
+                  style={{ transform: `translateX(-${videoCarouselIndex * (100 / 3 + 2)}%)` }}
                 >
-                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                    <iframe
-                      src={video.embedUrl}
-                      title={video.título}
-                      className="absolute top-0 left-0 w-full h-full"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                  <div className="p-4 bg-white">
-                    <h3 className="font-bold text-lg text-primary mb-1">{video.título}</h3>
-                    <p className="text-sm text-muted-foreground">{video.año}</p>
-                  </div>
+                  {videosLegado.map((video, index) => (
+                    <div 
+                      key={index}
+                      className="relative overflow-hidden rounded-lg shadow-lg flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                      data-testid={`legacy-video-${index}`}
+                    >
+                      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                        <iframe
+                          src={video.embedUrl}
+                          title={video.título}
+                          className="absolute top-0 left-0 w-full h-full"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                      <div className="p-4 bg-white">
+                        <h3 className="font-bold text-lg text-primary mb-1">{video.título}</h3>
+                        <p className="text-sm text-muted-foreground">{video.año}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                onClick={() => setVideoCarouselIndex(prev => Math.min(videosLegado.length - 3, prev + 1))}
+                disabled={videoCarouselIndex >= videosLegado.length - 3}
+                className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-lg flex items-center justify-center transition-all ${
+                  videoCarouselIndex >= videosLegado.length - 3 
+                    ? 'opacity-40 cursor-not-allowed' 
+                    : 'hover:bg-[#d0dd15] hover:scale-110'
+                }`}
+                aria-label="Ver más videos"
+              >
+                <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-[#0e0477]" />
+              </button>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center gap-2 mt-6">
+                {Array.from({ length: videosLegado.length - 2 }).map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setVideoCarouselIndex(idx)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all ${
+                      videoCarouselIndex === idx 
+                        ? 'bg-[#d0dd15] scale-125' 
+                        : 'bg-white/50 hover:bg-white/80'
+                    }`}
+                    aria-label={`Ir al video ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
