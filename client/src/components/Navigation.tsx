@@ -87,19 +87,19 @@ export function Navigation() {
                     >
                       Prepárate
                     </Link>
+                    <Link
+                      href="/comite-evaluador"
+                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      data-testid="nav-dropdown-comite"
+                    >
+                      Consejo Evaluador
+                    </Link>
                     <span
                       className="block px-4 py-2.5 text-white/50 cursor-default text-sm"
                       data-testid="nav-dropdown-galerias"
                     >
                       Galerías
                     </span>
-                    <Link
-                      href="/comite-evaluador"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
-                      data-testid="nav-dropdown-comite"
-                    >
-                      Comité Evaluador
-                    </Link>
                     </div>
                   </div>
                 )}
@@ -352,20 +352,20 @@ export function Navigation() {
                     >
                       Prepárate
                     </Link>
-                    <span
-                      className="block text-white/40 px-3 py-2 text-sm cursor-default"
-                      data-testid="mobile-nav-galerias"
-                    >
-                      Galerías
-                    </span>
                     <Link
                       href="/comite-evaluador"
                       className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-comite"
                     >
-                      Comité Evaluador
+                      Consejo Evaluador
                     </Link>
+                    <span
+                      className="block text-white/40 px-3 py-2 text-sm cursor-default"
+                      data-testid="mobile-nav-galerias"
+                    >
+                      Galerías
+                    </span>
                   </div>
                 )}
               </div>
