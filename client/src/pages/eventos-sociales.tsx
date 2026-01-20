@@ -55,7 +55,7 @@ export default function EventosSociales() {
                 <p className="text-white/90 mb-6">
                   Participa y conecta en la exclusiva Cena de Consejo, donde podrás conocer de cerca a los ponentes magistrales y a los miembros del Consejo de la ANPR tras el primer gran día del congreso. ¡El ambiente perfecto para relajarte, descubrir al panel y generar nuevas conexiones!
                 </p>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
                       <Calendar className="w-4 h-4" />
@@ -64,18 +64,7 @@ export default function EventosSociales() {
                     <p className="text-white/90">13 de mayo</p>
                   </div>
                   <div>
-                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
-                      <Clock className="w-4 h-4" />
-                      <span className="font-semibold">Hora:</span>
-                    </div>
-                    <p className="text-white/90">(por definir)</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
-                      <MapPin className="w-4 h-4" />
-                      <span className="font-semibold">Lugar:</span>
-                    </div>
-                    <p className="text-white/90">(por definir)</p>
+                    <p className="text-[#BCCE16] font-semibold">Evento Exclusivo</p>
                   </div>
                 </div>
               </div>
@@ -162,7 +151,7 @@ export default function EventosSociales() {
                       <MapPin className="w-4 h-4" />
                       <span className="font-semibold">Lugar:</span>
                     </div>
-                    <p className="text-white/90">(por definir)</p>
+                    <p className="text-white/90">Parque Esperanto</p>
                   </div>
                 </div>
               </div>

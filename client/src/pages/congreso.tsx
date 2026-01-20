@@ -120,7 +120,7 @@ function ImageCarousel({ images, title }: ImageCarouselProps) {
 }
 
 export default function Congreso() {
-  const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
+  const [expandedEvent, setExpandedEvent] = useState<number | null>(0);
 
   const timelineData = [
     {

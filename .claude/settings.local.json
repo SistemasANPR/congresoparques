@@ -8,7 +8,9 @@
       "Bash(git commit:*)",
       "Bash(npx tsc:*)",
       "Bash(curl:*)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(pgrep:*)",
+      "Bash(npm run check:*)"
     ]
   }
 }
