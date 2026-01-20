@@ -8,8 +8,7 @@
       "Bash(git commit:*)",
       "Bash(npx tsc:*)",
       "Bash(curl:*)",
-      "Bash(npx eslint:*)",
-      "Bash(find:*)"
+      "Bash(npx eslint:*)"
     ]
   }
 }

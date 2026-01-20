@@ -345,9 +345,13 @@ export default function ExpoEspacioPublico() {
                       <MessageCircle className="w-5 h-5 text-[#BCCE16]" />
                       +52 999 960 0765
                     </p>
-                    <a href="mailto:vinculacion@anpr.org.mx" className="flex items-center gap-2 hover:text-white transition-colors">
+                    <a href="mailto:comercial@congresoparques.com" className="flex items-center gap-2 hover:text-white transition-colors">
                       <Mail className="w-5 h-5 text-[#BCCE16]" />
-                      vinculacion@anpr.org.mx
+                      comercial@congresoparques.com
+                    </a>
+                    <a href="mailto:expo@congresoparques.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                      <Mail className="w-5 h-5 text-[#BCCE16]" />
+                      expo@congresoparques.com
                     </a>
                   </div>
                 </div>
