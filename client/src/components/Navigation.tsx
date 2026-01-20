@@ -258,16 +258,6 @@ export function Navigation() {
               >
                 <span className="relative z-10">Expo</span>
               </Link>
-
-              {/* Construcción Comunitaria - Direct Link */}
-              <Link
-                href="/construccion-comunitaria"
-                className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md whitespace-nowrap"
-                style={{fontFamily: 'Montserrat, sans-serif'}}
-                data-testid="nav-construccion-comunitaria"
-              >
-                <span className="relative z-10">Comunidad</span>
-              </Link>
             </div>
           </div>
 
@@ -507,16 +497,6 @@ export function Navigation() {
                 data-testid="mobile-nav-expo-espacio-publico"
               >
                 Expo Espacio Público
-              </Link>
-
-              {/* Mobile Construcción Comunitaria - Direct Link */}
-              <Link
-                href="/construccion-comunitaria"
-                className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-                data-testid="mobile-nav-construccion-comunitaria"
-              >
-                Construcción Comunitaria
               </Link>
 
               {/* Mobile CTA Button - Disabled */}
