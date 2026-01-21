@@ -88,48 +88,27 @@ export default function Organizadores() {
           <div className="h-px bg-gray-300 max-w-6xl mx-auto"></div>
         </div>
 
-        {/* APOYA - Flip Card */}
+        {/* Aliado Estratégico */}
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto flex justify-center">
-              <div className="group w-full max-w-2xl h-80" style={{ perspective: '1000px' }}>
-                <div 
-                  className="relative w-full h-full transition-transform duration-700"
-                  style={{ transformStyle: 'preserve-3d' }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'rotateY(180deg)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'rotateY(0deg)'}
+            <div className="max-w-6xl mx-auto">
+              <h3 className="text-xl font-semibold text-[#6847f6] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Aliado Estratégico: CDT Tijuana
+              </h3>
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                El Congreso Parques se lleva a cabo de la mano del Consejo de Desarrollo de Tijuana (CDT), una institución que ha marcado la pauta en la planeación estratégica y el impulso de proyectos que transforman la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad, el CDT es un aliado clave para hacer realidad esta edición del Congreso.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Si deseas conocer más sobre CDT Tijuana visita{" "}
+                <a 
+                  href="https://cdt.org.mx/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#6847f6] hover:text-[#0e0477] underline font-semibold"
                 >
-                  {/* Front */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-br from-[#0e0477] to-[#6847f6] rounded-xl flex items-center justify-center shadow-lg"
-                    style={{ backfaceVisibility: 'hidden' }}
-                  >
-                    <h3 className="text-5xl md:text-6xl font-black text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      APOYA
-                    </h3>
-                  </div>
-                  {/* Back */}
-                  <div 
-                    className="absolute inset-0 bg-white border-2 border-[#0e0477] rounded-xl p-6 md:p-8 overflow-y-auto shadow-lg"
-                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-                  >
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4">
-                      El Congreso Parques es organizado por la Asociación Nacional de Parques y Recreación de México (ANPR México), una organización no gubernamental dedicada a la profesionalización del sector de parques y espacios públicos en México y América Latina, a través de contenidos, certificaciones y eventos que convierten el conocimiento en herramientas prácticas.
-                    </p>
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                      Conoce más en{" "}
-                      <a 
-                        href="https://www.anpr.org.mx" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#6847f6] hover:text-[#0e0477] underline font-semibold"
-                      >
-                        www.anpr.org.mx
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
+                  cdt.org.mx
+                </a>
+              </p>
             </div>
           </div>
         </section>

@@ -662,6 +662,73 @@ export default function Congreso() {
           </div>
         </section>
 
+        {/* Línea divisora */}
+        <div className="container mx-auto px-4 bg-gray-50">
+          <div className="h-px bg-gray-300 max-w-6xl mx-auto"></div>
+        </div>
+
+        {/* Diseña tu experiencia - Tarjetas */}
+        <section className="py-16" style={{ backgroundColor: '#35219b' }}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Diseña tu experiencia
+                </h2>
+                <p className="text-white/80 text-lg">Los asistentes pueden participar en:</p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {experienciasCards.map((experiencia, index) => (
+                  <div 
+                    key={index} 
+                    className="experience-card animate"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                    data-testid={`congreso-experience-${index}`}
+                  >
+                    <Card className="bg-white overflow-visible relative card-content" style={{ margin: '10px 8px' }}>
+                      <div className="experience-icon">
+                        <img 
+                          src={experiencia.iconUrl}
+                          alt={`${experiencia.title} icon`}
+                        />
+                      </div>
+                      <div className="relative overflow-hidden rounded-t-lg">
+                        <img 
+                          src={experiencia.image} 
+                          alt={experiencia.title}
+                          className="w-full h-64 object-cover"
+                        />
+                      </div>
+                      <CardContent className={`p-4 flex flex-col ${experiencia.title === "Expo Espacio Público" ? "h-56" : "h-48"}`}>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-semibold mb-2 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                          <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                          {experiencia.title === "Expo Espacio Público" && (
+                            <div className="flex justify-center mt-2">
+                              <Link
+                                href="/expo-espacio-publico"
+                                className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white rounded-full transition-all duration-300 hover:opacity-90"
+                                style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
+                                onClick={() => window.scrollTo(0, 0)}
+                              >
+                                Ver más
+                              </Link>
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                          <Calendar className="w-4 h-4 mr-2" />
+                          {experiencia.fecha}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Secciones detalladas de experiencias */}
         {experienciasDetalle.map((exp, index) => (
