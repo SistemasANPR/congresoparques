@@ -648,7 +648,7 @@ export default function Landing() {
               {experiencias.map((experiencia, index) => {
                 const hasLink = !!experiencia.link;
                 const cardContent = (
-                  <Card className={`bg-white overflow-visible relative card-content transition-all duration-300 ${hasLink ? 'cursor-pointer group-hover:shadow-2xl group-hover:-translate-y-2 group-focus:shadow-2xl group-focus:-translate-y-2' : ''}`} style={{ margin: '10px 8px' }}>
+                  <Card className={`bg-white overflow-visible relative card-content h-full ${hasLink ? 'transition-all duration-300 cursor-pointer group-hover:shadow-2xl group-hover:-translate-y-2' : ''}`} style={{ margin: '10px 8px' }}>
                     <div className="experience-icon">
                       <img
                         src={experiencia.iconUrl}
@@ -662,12 +662,12 @@ export default function Landing() {
                         className="w-full h-64 object-cover"
                       />
                     </div>
-                    <CardContent className="p-4 flex flex-col h-48">
-                      <div className="flex-1">
-                        <h3 className={`text-xl font-semibold mb-2 transition-colors duration-300 ${hasLink ? 'text-gray-900 group-hover:text-[#6847f6] group-focus:text-[#6847f6] group-active:text-[#6847f6]' : 'text-gray-900'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
-                        <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
+                    <CardContent className="p-4 flex flex-col" style={{ height: '200px' }}>
+                      <div className="flex-1 overflow-hidden">
+                        <h3 className={`text-xl font-semibold mb-2 ${hasLink ? 'transition-colors duration-300 text-gray-900 group-hover:text-[#6847f6]' : 'text-gray-900'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                        <p className="text-gray-600 leading-relaxed line-clamp-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
                       </div>
-                      <div className="flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                      <div className="flex items-center justify-center text-sm font-medium pt-2 border-t border-gray-100 mt-auto" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
                         <Calendar className="w-4 h-4 mr-2" />
                         {experiencia.fecha}
                       </div>
@@ -678,12 +678,12 @@ export default function Landing() {
                 return (
                   <div
                     key={index}
-                    className={`experience-card animate ${hasLink ? 'group' : ''}`}
+                    className={`experience-card animate h-full ${hasLink ? 'group' : ''}`}
                     style={{ animationDelay: `${index * 0.1}s` }}
                     data-testid={`experience-${index}`}
                   >
                     {hasLink ? (
-                      <Link href={experiencia.link} className="block focus:outline-none">
+                      <Link href={experiencia.link} className="block h-full focus:outline-none">
                         {cardContent}
                       </Link>
                     ) : (
