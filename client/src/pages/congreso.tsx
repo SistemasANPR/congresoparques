@@ -689,13 +689,13 @@ export default function Congreso() {
             className="relative min-h-[450px] md:min-h-[500px] bg-cover bg-center flex items-center overflow-hidden"
             style={{ backgroundImage: `url(${exp.imagen})` }}
           >
-            {/* Duotone overlay similar to Hero */}
+            {/* Duotone overlay similar to Hero - inverted gradient for better text contrast */}
             <div 
               className="absolute inset-0"
               style={{
                 background: exp.posicionImagen === 'left' 
-                  ? 'linear-gradient(to left, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.92) 45%, rgba(14, 4, 119, 0.98) 100%)'
-                  : 'linear-gradient(to right, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.92) 45%, rgba(14, 4, 119, 0.98) 100%)'
+                  ? 'linear-gradient(to right, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.88) 50%, rgba(14, 4, 119, 0.95) 100%)'
+                  : 'linear-gradient(to left, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.88) 50%, rgba(14, 4, 119, 0.95) 100%)'
               }}
             />
             {/* Additional cyan/magenta duotone effect */}
