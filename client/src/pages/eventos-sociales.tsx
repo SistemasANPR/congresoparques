@@ -1,5 +1,6 @@
 import { Clock, MapPin, Calendar } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import eventosSocialesImg from "@assets/Eventos Sociales_1758578349366.jpg";
 
@@ -194,37 +195,9 @@ export default function EventosSociales() {
           </div>
         </section>
 
-        {/* Recomendaciones */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto border-2 border-gray-200 rounded-lg p-8">
-              <h3 className="text-xl font-bold text-[#0e0477] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Recomendaciones:
-              </h3>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span>Las fiestas no cuentan con un código de vestimenta estricto.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span>Al momento del registro se te proporcionarán los tickets correspondientes a los alimentos y bebidas de cada fiesta. Estos tickets tienen que ser entregados en los eventos por lo que es indispensable llevarlos.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span>Si los tickets anteriormente mencionados no son presentados en la fiesta, las personas encargadas de las áreas de alimentos y bebidas no podrán entregar ninguno de estos servicios.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
       </main>
 
-      <footer className="py-8 bg-[#0e0477] text-white text-center">
-        <div className="container mx-auto px-4">
-          <p className="text-white/80 text-sm">© 2026 IX Congreso Internacional de Parques Urbanos y Espacio Público. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
