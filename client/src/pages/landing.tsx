@@ -117,6 +117,7 @@ export default function Landing() {
   const [hoveredAxis, setHoveredAxis] = useState<number | null>(null);
   const [selectedAxis, setSelectedAxis] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [showAllVideos, setShowAllVideos] = useState(false);
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const [timeRemaining, setTimeRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [currentBgImage, setCurrentBgImage] = useState(0);
@@ -1065,7 +1066,10 @@ export default function Landing() {
       <section id="legado" className="py-16 section-animate animate-scaleIn" style={{ backgroundColor: '#6847f6' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase text-white" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="legacy-title">NUESTRO LEGADO</h2>
+            <h2 className="text-3xl md:text-4xl text-center mb-4 uppercase text-white" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="legacy-title">NUESTRO LEGADO</h2>
+            <p className="text-center text-white mb-12 text-lg md:text-xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+              Una trayectoria de impacto en la transformación de espacios públicos en América Latina
+            </p>
             
             {/* Statistics */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16 stagger-children">
@@ -1089,7 +1093,7 @@ export default function Landing() {
 
             {/* Videos del Legado */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {videosLegado.map((video, index) => (
+              {videosLegado.slice(0, 3).map((video, index) => (
                 <div 
                   key={index}
                   className="relative overflow-hidden rounded-lg shadow-lg"
@@ -1112,6 +1116,49 @@ export default function Landing() {
                 </div>
               ))}
             </div>
+            
+            {/* Videos adicionales (acordeón) */}
+            {videosLegado.length > 3 && (
+              <>
+                <div 
+                  className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 overflow-hidden transition-all duration-500 ease-in-out ${showAllVideos ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                  {videosLegado.slice(3).map((video, index) => (
+                    <div 
+                      key={index + 3}
+                      className="relative overflow-hidden rounded-lg shadow-lg"
+                      data-testid={`legacy-video-${index + 3}`}
+                    >
+                      <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                        <iframe
+                          src={video.embedUrl}
+                          title={video.título}
+                          className="absolute top-0 left-0 w-full h-full"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                      <div className="p-4 bg-white">
+                        <h3 className="font-bold text-lg text-primary mb-1">{video.título}</h3>
+                        <p className="text-sm text-muted-foreground">{video.año}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="flex justify-center mt-8">
+                  <button
+                    onClick={() => setShowAllVideos(!showAllVideos)}
+                    className="flex items-center gap-2 px-6 py-3 bg-white text-[#6847f6] font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  >
+                    {showAllVideos ? 'Ver menos' : 'Eventos anteriores'}
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${showAllVideos ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
