@@ -10,9 +10,7 @@
       "Bash(curl:*)",
       "Bash(npx eslint:*)",
       "Bash(pgrep:*)",
-      "Bash(npm run check:*)",
-      "Bash(pkill:*)",
-      "Bash(npx vite:*)"
+      "Bash(npm run check:*)"
     ]
   }
 }

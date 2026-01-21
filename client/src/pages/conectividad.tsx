@@ -1,6 +1,5 @@
 import { Plane, Bus, Car } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 
 export default function Conectividad() {
@@ -187,7 +186,11 @@ export default function Conectividad() {
         </section>
       </main>
 
-      <Footer />
+      <footer className="py-8 bg-[#0e0477] text-white text-center">
+        <div className="container mx-auto px-4">
+          <p className="text-white/80 text-sm">© 2026 IX Congreso Internacional de Parques Urbanos y Espacio Público. Todos los derechos reservados.</p>
+        </div>
+      </footer>
     </div>
   );
 }

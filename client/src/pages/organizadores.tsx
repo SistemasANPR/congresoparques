@@ -1,6 +1,5 @@
 import { Mail } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 
 export default function Organizadores() {
@@ -114,19 +113,11 @@ export default function Organizadores() {
                     className="absolute inset-0 bg-white border-2 border-[#0e0477] rounded-xl p-6 md:p-8 overflow-y-auto shadow-lg"
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                   >
-                    <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4">
-                      El Congreso Parques es organizado por la Asociación Nacional de Parques y Recreación de México (ANPR México), una organización no gubernamental dedicada a la profesionalización del sector de parques y espacios públicos en México y América Latina, a través de contenidos, certificaciones y eventos que convierten el conocimiento en herramientas prácticas.
-                    </p>
+                    <h4 className="text-lg font-bold text-[#0e0477] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      Proyecto apoyado con los recursos de:
+                    </h4>
                     <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                      Conoce más en{" "}
-                      <a 
-                        href="https://www.anpr.org.mx" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#6847f6] hover:text-[#0e0477] underline font-semibold"
-                      >
-                        www.anpr.org.mx
-                      </a>
+                      El Congreso Parques se realiza de la mano y gracias al Fideicomiso Empresarial del Estado de Baja California (FIDEM) y del Consejo de Desarrollo de Tijuana (CDT), una institución que marca la pauta en la planeación estratégica y el impulso de proyectos de largo plazo para la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad civil, el CDT articula voluntades, facilita alianzas y potencia iniciativas que elevan la competitividad y la calidad de vida. Su participación es clave para hacer realidad esta edición del Congreso.
                     </p>
                   </div>
                 </div>
@@ -141,7 +132,11 @@ export default function Organizadores() {
         </div>
       </main>
 
-      <Footer />
+      <footer className="py-8 bg-[#0e0477] text-white text-center">
+        <div className="container mx-auto px-4">
+          <p className="text-white/80 text-sm">© 2026 IX Congreso Internacional de Parques Urbanos y Espacio Público. Todos los derechos reservados.</p>
+        </div>
+      </footer>
     </div>
   );
 }

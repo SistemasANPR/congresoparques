@@ -36,8 +36,6 @@ import {
   HeartHandshake
 } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import { Link } from "wouter";
 import { FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
@@ -111,6 +109,7 @@ function StatCounter({ target, duration = 2000 }: StatCounterProps) {
 }
 
 export default function Landing() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
@@ -120,6 +119,14 @@ export default function Landing() {
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const [timeRemaining, setTimeRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [currentBgImage, setCurrentBgImage] = useState(0);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [activitiesDropdownOpen, setActivitiesDropdownOpen] = useState(false);
+  const [mobileActivitiesOpen, setMobileActivitiesOpen] = useState(false);
+  const [sedeDropdownOpen, setSedeDropdownOpen] = useState(false);
+  const [mobileSedeOpen, setMobileSedeOpen] = useState(false);
+  const [convocatoriasDropdownOpen, setConvocatoriasDropdownOpen] = useState(false);
+  const [mobileConvocatoriasOpen, setMobileConvocatoriasOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
@@ -310,8 +317,7 @@ export default function Landing() {
       title: "Expo Espacio Público",
       description: "Encuentro de negocios con las empresas líderes del sector en México y el mundo.",
       fecha: "14 y 15 de mayo",
-      image: expoEspacioPublicoUrl,
-      link: "/expo-espacio-publico"
+      image: expoEspacioPublicoUrl
     },
     {
       iconUrl: eventosIconUrl,
@@ -445,7 +451,506 @@ export default function Landing() {
         speed="normal"
       />
       {/* Header Navigation */}
-      <Navigation />
+      <header className="fixed top-5 left-0 right-0 z-50 bg-[#6847f6] shadow-lg">
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12" aria-label="Navegación principal">
+          <div className="flex items-center justify-between h-20 md:h-24 lg:h-28">
+            {/* Left Side: Logo + Tijuana 2026 */}
+            <div className="flex flex-row items-end gap-2 md:flex-col md:items-center md:gap-1.5 shrink-0">
+              <img 
+                src={logoUrl} 
+                alt="IX Congreso Internacional de Parques Urbanos y Espacio Público - Logo Oficial ANPR Tijuana 2026" 
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto"
+                data-testid="header-logo"
+              />
+              
+              {/* Tijuana 2026 Badge - al lado en móvil (alineado al fondo), debajo en desktop (centrado) */}
+              <div className="bg-[#0e0477] px-2 py-0.5 md:px-2.5 md:py-1 rounded">
+                <span className="text-[#d2dd0a] font-black text-[0.6rem] sm:text-[0.65rem] md:text-xs lg:text-sm tracking-wider uppercase" style={{fontFamily: 'Montserrat, sans-serif'}}>
+                  TIJUANA <span className="text-[#1edede]">2026</span>
+                </span>
+              </div>
+            </div>
+            
+            {/* Center: Desktop Navigation */}
+            <div className="hidden md:flex items-center justify-center flex-1 mx-4 xl:mx-8">
+              <div className="flex items-center gap-0.5 xl:gap-1">
+                {/* Acerca de Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setAboutDropdownOpen(true)}
+                  onMouseLeave={() => setAboutDropdownOpen(false)}
+                >
+                  <button 
+                    className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${aboutDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                    style={{fontFamily: 'Montserrat, sans-serif'}}
+                    data-testid="nav-acerca-de"
+                    onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                  >
+                    <span className="relative z-10">Acerca de</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Desktop Dropdown Menu */}
+                  {aboutDropdownOpen && (
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
+                      <Link 
+                        href="/congreso"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-congreso"
+                      >
+                        Congreso
+                      </Link>
+                      <Link 
+                        href="/organizadores"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-organizadores"
+                      >
+                        Organizadores
+                      </Link>
+                      <Link 
+                        href="/ponentes"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-ponentes"
+                      >
+                        Ponentes
+                      </Link>
+                      <Link
+                        href="/preparate"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-preparate"
+                      >
+                        Prepárate
+                      </Link>
+                      <span 
+                        className="block px-4 py-2.5 text-white/50 cursor-default text-sm"
+                        data-testid="nav-dropdown-galerias"
+                      >
+                        Galerías
+                      </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Actividades Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setActivitiesDropdownOpen(true)}
+                  onMouseLeave={() => setActivitiesDropdownOpen(false)}
+                >
+                  <button 
+                    className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${activitiesDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                    style={{fontFamily: 'Montserrat, sans-serif'}}
+                    data-testid="nav-actividades"
+                    onClick={() => setActivitiesDropdownOpen(!activitiesDropdownOpen)}
+                  >
+                    <span className="relative z-10">Actividades</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activitiesDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Desktop Actividades Dropdown Menu */}
+                  {activitiesDropdownOpen && (
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
+                      <Link 
+                        href="/programa"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-programa"
+                      >
+                        Programa
+                      </Link>
+                      <Link 
+                        href="/talleres"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-talleres"
+                      >
+                        Talleres
+                      </Link>
+                      <Link 
+                        href="/eventos-sociales"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-eventos-sociales"
+                      >
+                        Eventos Sociales
+                      </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Sede Dropdown */}
+                <div 
+                  className="relative"
+                  onMouseEnter={() => setSedeDropdownOpen(true)}
+                  onMouseLeave={() => setSedeDropdownOpen(false)}
+                >
+                  <button 
+                    className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${sedeDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                    style={{fontFamily: 'Montserrat, sans-serif'}}
+                    data-testid="nav-sede"
+                    onClick={() => setSedeDropdownOpen(!sedeDropdownOpen)}
+                  >
+                    <span className="relative z-10">Sede</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${sedeDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Desktop Sede Dropdown Menu */}
+                  {sedeDropdownOpen && (
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
+                      <Link 
+                        href="/sede"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-sede"
+                      >
+                        Tijuana, Baja California
+                      </Link>
+                      <Link 
+                        href="/conectividad"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-conectividad"
+                      >
+                        Conectividad
+                      </Link>
+                      <Link 
+                        href="/hospedaje"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-hospedaje"
+                      >
+                        Hospedaje
+                      </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Convocatorias Dropdown */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setConvocatoriasDropdownOpen(true)}
+                  onMouseLeave={() => setConvocatoriasDropdownOpen(false)}
+                >
+                  <button
+                    className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${convocatoriasDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                    style={{fontFamily: 'Montserrat, sans-serif'}}
+                    data-testid="nav-convocatorias"
+                    onClick={() => setConvocatoriasDropdownOpen(!convocatoriasDropdownOpen)}
+                  >
+                    <span className="relative z-10">Convocatorias</span>
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${convocatoriasDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {/* Desktop Convocatorias Dropdown Menu */}
+                  {convocatoriasDropdownOpen && (
+                    <div className="absolute top-full left-0 pt-2 z-50">
+                      <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
+                      <a
+                        href="https://congresoparques.com/registro_sesiones.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-sesiones-educativas"
+                      >
+                        Sesiones Educativas
+                      </a>
+                      <a
+                        href="https://congresoparques.com/registro_posters.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-posters"
+                      >
+                        Pósters Científicos
+                      </a>
+                      <a
+                        href="https://congresoparques.com/registro_voluntarios.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-voluntarios"
+                      >
+                        Voluntarios
+                      </a>
+                      <Link
+                        href="/comite-evaluador"
+                        className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                        data-testid="nav-dropdown-comite"
+                      >
+                        Comité Evaluador
+                      </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Expo Espacio Público - Direct Link */}
+                <Link 
+                  href="/expo-espacio-publico"
+                  className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md"
+                  style={{fontFamily: 'Montserrat, sans-serif'}}
+                  data-testid="nav-expo-espacio-publico"
+                >
+                  <span className="relative z-10">Expo</span>
+                </Link>
+              </div>
+            </div>
+            
+            {/* Right Side: CTA Button + Mobile Menu */}
+            <div className="flex items-center gap-3 shrink-0">
+              {/* Desktop CTA Button - Disabled */}
+              <button
+                disabled
+                className="hidden md:flex items-center gap-2 bg-white/20 text-white/50 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full text-[13px] xl:text-sm font-semibold cursor-not-allowed opacity-60 border border-white/20"
+                style={{fontFamily: 'Montserrat, sans-serif'}}
+                data-testid="btn-adquirir-entradas"
+                title="Próximamente disponible"
+              >
+                <Ticket className="w-4 h-4" />
+                <span>Adquirir entradas</span>
+              </button>
+              
+              {/* Mobile Menu Button */}
+              <div className="md:hidden">
+                <Button 
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="text-white/90 hover:text-white hover:bg-white/10"
+                  aria-controls="mobile-menu" 
+                  aria-expanded={mobileMenuOpen}
+                  data-testid="mobile-menu-button"
+                >
+                  <span className="sr-only">Abrir menú principal</span>
+                  {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Mobile Navigation Dropdown */}
+          {mobileMenuOpen && (
+            <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
+                {/* Mobile Acerca de Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-acerca-de"
+                  >
+                    <span>Acerca de</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileAboutOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <Link 
+                        href="/congreso"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-congreso"
+                      >
+                        Congreso
+                      </Link>
+                      <Link 
+                        href="/organizadores"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-organizadores"
+                      >
+                        Organizadores
+                      </Link>
+                      <Link 
+                        href="/ponentes"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-ponentes"
+                      >
+                        Ponentes
+                      </Link>
+                      <Link
+                        href="/preparate"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-preparate"
+                      >
+                        Prepárate
+                      </Link>
+                      <span 
+                        className="block text-white/40 px-3 py-2 text-sm cursor-default"
+                        data-testid="mobile-nav-galerias"
+                      >
+                        Galerías
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Actividades Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileActivitiesOpen(!mobileActivitiesOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-actividades"
+                  >
+                    <span>Actividades</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileActivitiesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileActivitiesOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <Link 
+                        href="/programa"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-programa"
+                      >
+                        Programa
+                      </Link>
+                      <Link 
+                        href="/talleres"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-talleres"
+                      >
+                        Talleres
+                      </Link>
+                      <Link 
+                        href="/eventos-sociales"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-eventos-sociales"
+                      >
+                        Eventos Sociales
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Sede Accordion */}
+                <div>
+                  <button 
+                    onClick={() => setMobileSedeOpen(!mobileSedeOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-sede"
+                  >
+                    <span>Sede</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileSedeOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileSedeOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <Link 
+                        href="/sede"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-sede"
+                      >
+                        Tijuana, Baja California
+                      </Link>
+                      <Link 
+                        href="/conectividad"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-conectividad"
+                      >
+                        Conectividad
+                      </Link>
+                      <Link 
+                        href="/hospedaje"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-hospedaje"
+                      >
+                        Hospedaje
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Convocatorias Accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileConvocatoriasOpen(!mobileConvocatoriasOpen)}
+                    className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
+                    data-testid="mobile-nav-convocatorias"
+                  >
+                    <span>Convocatorias</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileConvocatoriasOpen ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {mobileConvocatoriasOpen && (
+                    <div className="pl-4 space-y-1 mt-1">
+                      <a
+                        href="https://congresoparques.com/registro_sesiones.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-sesiones-educativas"
+                      >
+                        Sesiones Educativas
+                      </a>
+                      <a
+                        href="https://congresoparques.com/registro_posters.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-posters"
+                      >
+                        Pósters Científicos
+                      </a>
+                      <a
+                        href="https://congresoparques.com/registro_voluntarios.php"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-voluntarios"
+                      >
+                        Voluntarios
+                      </a>
+                      <Link
+                        href="/comite-evaluador"
+                        className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                        data-testid="mobile-nav-comite"
+                      >
+                        Comité Evaluador
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Expo Espacio Público - Direct Link */}
+                <Link 
+                  href="/expo-espacio-publico"
+                  className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  data-testid="mobile-nav-expo-espacio-publico"
+                >
+                  Expo Espacio Público
+                </Link>
+
+                {/* Mobile CTA Button - Disabled */}
+                <div className="pt-3 mt-2 border-t border-white/20">
+                  <button
+                    disabled
+                    className="flex items-center justify-center gap-2 w-full bg-white/20 text-white/50 px-4 py-2.5 rounded-full text-sm font-semibold cursor-not-allowed opacity-60 border border-white/20"
+                    style={{fontFamily: 'Montserrat, sans-serif'}}
+                    data-testid="mobile-btn-adquirir-entradas"
+                  >
+                    <Ticket className="w-4 h-4" />
+                    <span>Adquirir entradas</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </nav>
+      </header>
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex items-center hero-bg-new pt-20 sm:pt-24 md:pt-36 lg:pt-40 pb-20 sm:pb-24 md:pb-28 overflow-hidden">
@@ -590,10 +1095,10 @@ export default function Landing() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {/* Section Title */}
-            <h2 className="text-2xl md:text-3xl text-center mb-16 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="info-subtitle">¿Por qué asistir?</h2>
+            <h3 className="subtitle-section text-center mb-12" data-testid="info-subtitle">¿Por qué asistir?</h3>
 
             {/* Icons - Full Width */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 stagger-children" data-testid="info-value-proposition">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 stagger-children" data-testid="info-value-proposition">
               <svg width="0" height="0" style={{ position: 'absolute' }}>
                 <defs>
                   <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -645,18 +1150,23 @@ export default function Landing() {
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {experiencias.map((experiencia, index) => {
-                const cardContent = (
-                  <Card className={`bg-white overflow-visible relative card-content ${experiencia.link ? 'cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1' : ''}`} style={{ margin: '10px 8px' }}>
+              {experiencias.map((experiencia, index) => (
+                <div 
+                  key={index} 
+                  className="experience-card animate"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  data-testid={`experience-${index}`}
+                >
+                  <Card className="bg-white overflow-visible relative card-content" style={{ margin: '10px 8px' }}>
                     <div className="experience-icon">
-                      <img
+                      <img 
                         src={experiencia.iconUrl}
                         alt={`${experiencia.title} icon`}
                       />
                     </div>
                     <div className="relative overflow-hidden rounded-t-lg">
-                      <img
-                        src={experiencia.image}
+                      <img 
+                        src={experiencia.image} 
                         alt={experiencia.title}
                         className="w-full h-64 object-cover"
                       />
@@ -666,38 +1176,14 @@ export default function Landing() {
                         <h3 className="text-xl font-semibold mb-2 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
                         <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
                       </div>
-                      <div className={`flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100 ${experiencia.link ? 'group-hover:text-[#6847f6]' : ''}`} style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                      <div className="flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
                         <Calendar className="w-4 h-4 mr-2" />
                         {experiencia.fecha}
                       </div>
                     </CardContent>
-                    {experiencia.link && (
-                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: '#6847f6', color: 'white', fontFamily: 'Montserrat, sans-serif' }}>
-                          Ver más →
-                        </span>
-                      </div>
-                    )}
                   </Card>
-                );
-
-                return (
-                  <div
-                    key={index}
-                    className={`experience-card animate ${experiencia.link ? 'group' : ''}`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                    data-testid={`experience-${index}`}
-                  >
-                    {experiencia.link ? (
-                      <Link href={experiencia.link} className="block">
-                        {cardContent}
-                      </Link>
-                    ) : (
-                      cardContent
-                    )}
-                  </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -1418,7 +1904,76 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <Footer />
+      <footer id="footer" className="py-12" style={{ backgroundColor: '#0e0477', color: 'white' }}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-8">
+              {/* Logo and Description */}
+              <div className="md:col-span-2">
+                <div className="flex items-center gap-3 mb-4">
+                  <a href="https://anpr.org.mx/" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src={logoANPRWhiteUrl} 
+                      alt="ANPR México - Organizadores IX Congreso Internacional Parques Urbanos Espacio Público Tijuana 2026" 
+                      className="h-16 object-contain hover:scale-105 transition-transform"
+                      data-testid="footer-logo-anpr"
+                    />
+                  </a>
+                </div>
+                <p className="text-white/80 mb-4">
+                  Asociación Nacional de Parques y Recreación de México - Transformando espacios públicos para un futuro sostenible.
+                </p>
+                <div className="text-2xl font-bold" style={{ color: '#BCCE16' }} data-testid="footer-hashtag">#CongresoParques2026</div>
+              </div>
+              
+              {/* Links */}
+              <div>
+                <h4 className="font-semibold mb-4">Enlaces</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li><a href="https://anpr.org.mx/privacidad" className="hover:opacity-80 transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
+                  <li><a href="https://anpr.org.mx/terminos" className="hover:opacity-80 transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
+                  <li><a href="https://anpr.org.mx/faq" className="hover:opacity-80 transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
+                </ul>
+              </div>
+              
+              {/* Contact */}
+              <div>
+                <h4 className="font-semibold mb-4">Contacto</h4>
+                <ul className="space-y-2 text-white/80">
+                  <li className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    <a href="mailto:info@anpr.org.mx" className="hover:opacity-80 transition-colors" data-testid="footer-email">info@anpr.org.mx</a>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Phone className="w-4 h-4" />
+                    <a href="https://wa.me/529993530691" className="hover:opacity-80 transition-colors" data-testid="footer-whatsapp">+52 999 353 0691</a>
+                  </li>
+                </ul>
+                
+                {/* Social Icons */}
+                <div className="flex gap-4 mt-4">
+                  <a href="https://www.facebook.com/CongresoParques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Facebook" data-testid="social-facebook">
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.instagram.com/congreso_parques/" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="Instagram" data-testid="social-instagram">
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                  <a href="https://x.com/congreso_parque" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="X (Twitter)" data-testid="social-twitter">
+                    <FaXTwitter className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.youtube.com/channel/UC_ExzrmxP5er7qZHeVpWidQ" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:opacity-80 transition-colors" aria-label="YouTube" data-testid="social-youtube">
+                    <Youtube className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
+              <p>&copy; 2026 Asociación Nacional de Parques y Recreación de México. Todos los derechos reservados.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       {/* Back to Top Button */}
       <Button

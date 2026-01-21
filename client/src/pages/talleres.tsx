@@ -1,5 +1,4 @@
 import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import tallerVivencialImg from "@assets/Taller vivencial_1758578349360.jpg";
 import masterClassesImg from "@assets/Master classes_1758578349365.jpg";
@@ -156,7 +155,11 @@ export default function Talleres() {
         </section>
       </main>
 
-      <Footer />
+      <footer className="py-8 bg-[#0e0477] text-white text-center">
+        <div className="container mx-auto px-4">
+          <p className="text-white/80 text-sm">© 2026 IX Congreso Internacional de Parques Urbanos y Espacio Público. Todos los derechos reservados.</p>
+        </div>
+      </footer>
     </div>
   );
 }
