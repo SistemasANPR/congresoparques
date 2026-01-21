@@ -590,10 +590,10 @@ export default function Landing() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {/* Section Title */}
-            <h2 className="text-2xl md:text-3xl text-center mb-16 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="info-subtitle">¿Por qué asistir?</h2>
+            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="info-subtitle">¿POR QUÉ ASISTIR?</h2>
 
             {/* Icons - Full Width */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 stagger-children" data-testid="info-value-proposition">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-4 stagger-children" data-testid="info-value-proposition">
               <svg width="0" height="0" style={{ position: 'absolute' }}>
                 <defs>
                   <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -647,7 +647,7 @@ export default function Landing() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiencias.map((experiencia, index) => {
                 const cardContent = (
-                  <Card className={`bg-white overflow-visible relative card-content ${experiencia.link ? 'cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1' : ''}`} style={{ margin: '10px 8px' }}>
+                  <Card className={`bg-white overflow-visible relative card-content ${experiencia.link ? 'cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ring-2 ring-[#6847f6]/30 hover:ring-[#6847f6]' : ''}`} style={{ margin: '10px 8px' }}>
                     <div className="experience-icon">
                       <img
                         src={experiencia.iconUrl}
@@ -660,10 +660,13 @@ export default function Landing() {
                         alt={experiencia.title}
                         className="w-full h-64 object-cover"
                       />
+                      {experiencia.link && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#6847f6]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      )}
                     </div>
                     <CardContent className="p-4 flex flex-col h-48">
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold mb-2 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                        <h3 className={`text-xl font-semibold mb-2 ${experiencia.link ? 'text-[#6847f6] group-hover:text-[#0e0477]' : 'text-gray-900'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
                         <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
                       </div>
                       <div className={`flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100 ${experiencia.link ? 'group-hover:text-[#6847f6]' : ''}`} style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
@@ -672,8 +675,8 @@ export default function Landing() {
                       </div>
                     </CardContent>
                     {experiencia.link && (
-                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: '#6847f6', color: 'white', fontFamily: 'Montserrat, sans-serif' }}>
+                      <div className="absolute bottom-16 left-0 right-0 flex justify-center">
+                        <span className="text-sm font-semibold px-4 py-2 rounded-full shadow-md transition-all duration-300 group-hover:scale-105" style={{ backgroundColor: '#6847f6', color: 'white', fontFamily: 'Montserrat, sans-serif' }}>
                           Ver más →
                         </span>
                       </div>
