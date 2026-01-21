@@ -228,46 +228,46 @@ export default function Congreso() {
 
   const experienciasCards = [
     {
-      iconUrl: conferenciasIconUrl,
+      iconUrl: iconoMagistrales,
       title: "Conferencias Magistrales",
       description: "Presentaciones de alto nivel con expertos internacionales en espacios públicos y sostenibilidad urbana.",
       fecha: "14 y 15 de mayo",
-      image: conferenciaMagistral
+      image: fondoMagistrales
     },
     {
-      iconUrl: sesionesIconUrl,
+      iconUrl: iconoSesiones,
       title: "Sesiones Educativas",
       description: "Más de 30 espacios de aprendizaje especializado con casos de estudio y mejores prácticas.",
       fecha: "14 y 15 de mayo",
-      image: sesionEducativa
+      image: fondoSesiones
     },
     {
-      iconUrl: talleresIconUrl,
+      iconUrl: iconoTalleres,
       title: "Talleres Vivenciales",
       description: "Experiencias prácticas hands-on para aplicar conocimientos en tiempo real.",
       fecha: "13 de mayo",
-      image: tallerVivencial
+      image: fondoTalleres
     },
     {
-      iconUrl: masterClassesIconUrl,
+      iconUrl: iconoMasterClass,
       title: "Master Classes",
       description: "Sesiones intensivas con maestros reconocidos internacionalmente.",
       fecha: "13 de mayo",
-      image: masterClasses
+      image: fondoMasterClass
     },
     {
-      iconUrl: expoIconUrl,
+      iconUrl: iconoExpo,
       title: "Expo Espacio Público",
       description: "Muestra comercial con las últimas innovaciones, tecnologías y soluciones del sector.",
       fecha: "14 y 15 de mayo",
-      image: expoEspacioPublico
+      image: fondoExpo
     },
     {
-      iconUrl: eventosIconUrl,
+      iconUrl: iconoEventos,
       title: "Eventos Sociales",
       description: "Beer and Mix Party y ceremonia de clausura para networking y celebración.",
       fecha: "14 y 15 de mayo",
-      image: eventosSociales
+      image: fondoEventosSociales
     }
   ];
 
