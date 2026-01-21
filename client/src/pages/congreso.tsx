@@ -20,6 +20,18 @@ import talleresIconUrl from "@assets/Talleres Vivenciales_1758578569495.png";
 import expoIconUrl from "@assets/Expo Espacio Publico_1758580313612.png";
 import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
+import fondoMagistrales from "@assets/fondo_Magistrales_1_1769038490767.jpg";
+import fondoSesiones from "@assets/fondo_Sesiones_1769038490765.jpg";
+import fondoTalleres from "@assets/fondo_Talleres_1769038490767.jpg";
+import fondoMasterClass from "@assets/Fondo_Master_Class_1769038490766.jpg";
+import fondoExpo from "@assets/fondo_expo_1769038490767.jpg";
+import fondoEventosSociales from "@assets/fondo_Eventos_sociales_1769038490767.jpg";
+import iconoMagistrales from "@assets/Conferencias_Magistrales_1769038571197.png";
+import iconoSesiones from "@assets/Sesiones_Educativas_1769038571198.png";
+import iconoTalleres from "@assets/Talleres_Vivenciales_1769038571197.png";
+import iconoMasterClass from "@assets/Master_Classes_1769038571193.png";
+import iconoExpo from "@assets/Expo_Espacio_Publico_1769038571197.png";
+import iconoEventos from "@assets/Eventos_Sociales_1769038571198.png";
 // Imágenes adicionales para carruseles
 import congresoParques1 from "@assets/Congreso Parques 1_1761672357092.jpg";
 import congresoParques2 from "@assets/Congreso Parques 2_1761672357092.jpg";
@@ -264,55 +276,61 @@ export default function Congreso() {
       titulo: "Conferencias Magistrales",
       fecha: "14 y 15 de mayo",
       descripcion: "Líderes en parques y espacios públicos ofrecerán charlas inspiradoras basadas en su trayectoria y en los desafíos urbanos actuales.",
-      imagen: conferenciaMagistral,
-      link: "/programa",
+      imagen: fondoMagistrales,
+      icono: iconoMagistrales,
+      link: "",
       posicionImagen: "left",
-      showButton: false
+      isActive: false
     },
     {
       titulo: "Sesiones Educativas",
       fecha: "14 y 15 de mayo",
       descripcion: "Más de 30 sesiones educativas impartidas por conferencistas nacionales e internacionales ofrecerán un espacio dedicado al aprendizaje y la capacitación.",
-      imagen: sesionEducativa,
-      link: "/programa",
+      imagen: fondoSesiones,
+      icono: iconoSesiones,
+      link: "",
       posicionImagen: "right",
-      showButton: false
+      isActive: false
     },
     {
       titulo: "Talleres Vivenciales",
       fecha: "13 de mayo",
       descripcion: "Explora parques urbanos, proyectos ciudadanos, centros recreativos y técnicas especializadas en temas clave del espacio público. Una oportunidad ideal para ampliar tus conocimientos.",
-      imagen: tallerVivencial,
-      link: "/talleres",
+      imagen: fondoTalleres,
+      icono: iconoTalleres,
+      link: "",
       posicionImagen: "left",
-      showButton: false
+      isActive: false
     },
     {
       titulo: "Master Classes",
       fecha: "13 de mayo",
       descripcion: "Aprende de especialistas que te brindarán herramientas y técnicas avanzadas para profundizar en temas esenciales del espacio público.",
-      imagen: masterClasses,
-      link: "/talleres",
+      imagen: fondoMasterClass,
+      icono: iconoMasterClass,
+      link: "",
       posicionImagen: "right",
-      showButton: false
+      isActive: false
     },
     {
       titulo: "Expo Espacio Público",
       fecha: "14 y 15 de mayo",
       descripcion: "El punto de encuentro de las compañías líderes que impulsan el sector, exhibiendo productos y servicios clave para transformar y equipar los espacios públicos.",
-      imagen: expoEspacioPublico,
+      imagen: fondoExpo,
+      icono: iconoExpo,
       link: "/expo-espacio-publico",
       posicionImagen: "left",
-      showButton: false
+      isActive: true
     },
     {
       titulo: "Eventos Sociales",
       fecha: "13 al 15 de mayo",
       descripcion: "Disfruta tres experiencias pensadas para conectar y celebrar: la cena de consejo, la fiesta de la cerveza y la clausura del Congreso. Un ambiente ideal para convivir y crear nuevas relaciones profesionales.",
-      imagen: eventosSociales,
-      link: "/eventos-sociales",
+      imagen: fondoEventosSociales,
+      icono: iconoEventos,
+      link: "",
       posicionImagen: "right",
-      showButton: false
+      isActive: false
     }
   ];
 
@@ -668,21 +686,64 @@ export default function Congreso() {
         {experienciasDetalle.map((exp, index) => (
           <div 
             key={index} 
-            className="relative min-h-[400px] bg-cover bg-center flex items-center"
-            style={{ backgroundImage: `linear-gradient(to ${exp.posicionImagen === 'left' ? 'left' : 'right'}, rgba(14, 4, 119, 0.85) 50%, transparent 100%), url(${exp.imagen})` }}
+            className="relative min-h-[450px] md:min-h-[500px] bg-cover bg-center flex items-center overflow-hidden"
+            style={{ backgroundImage: `url(${exp.imagen})` }}
           >
-            <div className="container mx-auto px-4">
+            {/* Duotone overlay similar to Hero */}
+            <div 
+              className="absolute inset-0"
+              style={{
+                background: exp.posicionImagen === 'left' 
+                  ? 'linear-gradient(to left, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.92) 45%, rgba(14, 4, 119, 0.98) 100%)'
+                  : 'linear-gradient(to right, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.92) 45%, rgba(14, 4, 119, 0.98) 100%)'
+              }}
+            />
+            {/* Additional cyan/magenta duotone effect */}
+            <div 
+              className="absolute inset-0 mix-blend-overlay opacity-30"
+              style={{
+                background: 'linear-gradient(135deg, rgba(30, 222, 222, 0.3) 0%, rgba(104, 71, 246, 0.4) 50%, rgba(188, 206, 22, 0.2) 100%)'
+              }}
+            />
+            
+            <div className="container mx-auto px-4 relative z-10">
               <div className={`max-w-xl ${exp.posicionImagen === 'left' ? 'ml-auto mr-0 md:mr-12' : 'mr-auto ml-0 md:ml-12'} text-white py-12`}>
-                <h3 className="text-2xl md:text-3xl font-bold mb-2">{exp.titulo}</h3>
-                <p className="text-[#BCCE16] font-semibold mb-4">{exp.fecha}</p>
-                <p className="text-white/90 mb-6 leading-relaxed">{exp.descripcion}</p>
-                {exp.showButton && (
+                {/* Icon */}
+                <div className="mb-6">
+                  <img 
+                    src={exp.icono} 
+                    alt={`Icono ${exp.titulo}`}
+                    className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg"
+                  />
+                </div>
+                
+                <h3 
+                  className="text-2xl md:text-3xl lg:text-4xl font-black uppercase mb-3 drop-shadow-md"
+                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                >
+                  {exp.titulo}
+                </h3>
+                <p className="text-[#1edede] font-semibold mb-4 text-lg">{exp.fecha}</p>
+                <p className="text-white/90 mb-8 leading-relaxed text-base md:text-lg">{exp.descripcion}</p>
+                
+                {/* Button - Active only for Expo Espacio Público */}
+                {exp.isActive ? (
                   <Link 
                     href={exp.link}
-                    className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors"
+                    className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white hover:text-[#0e0477] transition-all duration-300 text-sm uppercase tracking-wider"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}
                   >
-                    Ver Más
+                    Ver más
                   </Link>
+                ) : (
+                  <button
+                    disabled
+                    aria-disabled="true"
+                    className="inline-flex items-center gap-2 bg-transparent border-2 border-white/40 text-white/40 font-bold px-8 py-3 rounded-full cursor-not-allowed opacity-60 text-sm uppercase tracking-wider"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  >
+                    Ver más
+                  </button>
                 )}
               </div>
             </div>
