@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Users, Calendar, FileText, Award, ClipboardList, Send, Clock, CheckCircle, Target, BookOpen } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import conferenciaImg from "@assets/Conferencias Magistrales_1758578569495.png";
 import talleresImg from "@assets/Talleres Vivenciales_1758578569495.png";
@@ -294,11 +295,7 @@ export default function SesionesEducativas() {
         </section>
       </main>
 
-      <footer className="py-8 bg-[#0e0477] text-white text-center">
-        <div className="container mx-auto px-4">
-          <p className="text-white/80 text-sm">© 2026 IX Congreso Internacional de Parques Urbanos y Espacio Público. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

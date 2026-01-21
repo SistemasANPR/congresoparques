@@ -4,6 +4,7 @@ import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Buil
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
@@ -352,7 +353,7 @@ export default function Congreso() {
         </section>
 
         {/* ¿Por qué asistir? */}
-        <section className="py-16 md:py-20 bg-white">
+        <section className="py-20 md:py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
 
@@ -362,7 +363,7 @@ export default function Congreso() {
                 {/* Columna izquierda: Texto */}
                 <div>
                   <h2
-                    className="text-3xl md:text-4xl lg:text-5xl font-black mb-6"
+                    className="text-2xl md:text-3xl uppercase mb-8"
                     style={{
                       fontFamily: 'Montserrat, sans-serif',
                       fontWeight: 900,
@@ -689,11 +690,7 @@ export default function Congreso() {
         ))}
       </main>
 
-      <footer className="py-8 bg-[#0e0477] text-white text-center">
-        <div className="container mx-auto px-4">
-          <p className="text-white/80 text-sm">© 2026 IX Congreso Internacional de Parques Urbanos y Espacio Público. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

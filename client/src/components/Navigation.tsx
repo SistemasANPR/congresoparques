@@ -163,7 +163,7 @@ export function Navigation() {
                   data-testid="nav-sede"
                   onClick={() => setSedeDropdownOpen(!sedeDropdownOpen)}
                 >
-                  <span className="relative z-10">Sede</span>
+                  <span className="relative z-10">Prepárate</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${sedeDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -176,7 +176,7 @@ export function Navigation() {
                       className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-sede"
                     >
-                      Tijuana, Baja California
+                      Ciudad Sede
                     </Link>
                     <Link
                       href="/conectividad"
@@ -191,6 +191,13 @@ export function Navigation() {
                       data-testid="nav-dropdown-hospedaje"
                     >
                       Hospedaje
+                    </Link>
+                    <Link
+                      href="/recursos"
+                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      data-testid="nav-dropdown-recursos"
+                    >
+                      Recursos
                     </Link>
                     </div>
                   </div>
@@ -408,7 +415,7 @@ export function Navigation() {
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                   data-testid="mobile-nav-sede"
                 >
-                  <span>Sede</span>
+                  <span>Prepárate</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileSedeOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -420,7 +427,7 @@ export function Navigation() {
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-sede-link"
                     >
-                      Tijuana, Baja California
+                      Ciudad Sede
                     </Link>
                     <Link
                       href="/conectividad"
@@ -437,6 +444,14 @@ export function Navigation() {
                       data-testid="mobile-nav-hospedaje"
                     >
                       Hospedaje
+                    </Link>
+                    <Link
+                      href="/recursos"
+                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                      data-testid="mobile-nav-recursos"
+                    >
+                      Recursos
                     </Link>
                   </div>
                 )}

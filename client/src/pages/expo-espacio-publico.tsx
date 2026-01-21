@@ -1,5 +1,6 @@
 import { Calendar, MapPin, LayoutGrid, Store, Phone, Mail, Clock, Users, Eye, Building2, CheckCircle, Download, MessageCircle } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import expoLogoUrl from "@assets/logo-expo-espacio-publico-2026.png";
 import expoHeroUrl from "@assets/expo-espacio-publico-2026.jpg";
@@ -357,11 +358,7 @@ export default function ExpoEspacioPublico() {
         </section>
       </main>
 
-      <footer className="py-8 bg-black text-white text-center">
-        <div className="container mx-auto px-4">
-          <p className="text-white/80 text-sm">© 2026 IX Congreso Internacional de Parques Urbanos y Espacio Público. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
