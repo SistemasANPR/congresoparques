@@ -1368,7 +1368,7 @@ export default function Landing() {
                   href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1ea952] text-white font-bold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="hero-cta-button inline-flex items-center gap-3 text-white font-bold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                   data-testid="whatsapp-contact-button"
                 >

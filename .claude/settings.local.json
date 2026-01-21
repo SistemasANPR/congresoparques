@@ -12,7 +12,9 @@
       "Bash(pgrep:*)",
       "Bash(npm run check:*)",
       "Bash(pkill:*)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(npx tsx --watch server/index.ts)",
+      "Bash(lsof:*)"
     ]
   }
 }
