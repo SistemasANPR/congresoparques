@@ -647,7 +647,7 @@ export default function Landing() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiencias.map((experiencia, index) => {
                 const cardContent = (
-                  <Card className={`bg-white overflow-visible relative card-content ${experiencia.link ? 'cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ring-2 ring-[#6847f6]/30 hover:ring-[#6847f6]' : ''}`} style={{ margin: '10px 8px' }}>
+                  <Card className={`bg-white overflow-visible relative card-content ${experiencia.link ? 'cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ring-1 ring-[#6847f6]/40 hover:ring-2 hover:ring-[#6847f6]' : ''}`} style={{ margin: '10px 8px' }}>
                     <div className="experience-icon">
                       <img
                         src={experiencia.iconUrl}
@@ -660,27 +660,17 @@ export default function Landing() {
                         alt={experiencia.title}
                         className="w-full h-64 object-cover"
                       />
-                      {experiencia.link && (
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#6847f6]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      )}
                     </div>
                     <CardContent className="p-4 flex flex-col h-48">
                       <div className="flex-1">
-                        <h3 className={`text-xl font-semibold mb-2 ${experiencia.link ? 'text-[#6847f6] group-hover:text-[#0e0477]' : 'text-gray-900'}`} style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
+                        <h3 className="text-xl font-semibold mb-2 text-gray-900" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.title}</h3>
                         <p className="text-gray-600 mb-3 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>{experiencia.description}</p>
                       </div>
-                      <div className={`flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100 ${experiencia.link ? 'group-hover:text-[#6847f6]' : ''}`} style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
+                      <div className="flex items-center justify-center text-sm font-medium mt-auto pt-2 border-t border-gray-100" style={{ color: '#35219b', fontFamily: 'Montserrat, sans-serif' }}>
                         <Calendar className="w-4 h-4 mr-2" />
                         {experiencia.fecha}
                       </div>
                     </CardContent>
-                    {experiencia.link && (
-                      <div className="absolute bottom-16 left-0 right-0 flex justify-center">
-                        <span className="text-sm font-semibold px-4 py-2 rounded-full shadow-md transition-all duration-300 group-hover:scale-105" style={{ backgroundColor: '#6847f6', color: 'white', fontFamily: 'Montserrat, sans-serif' }}>
-                          Ver más →
-                        </span>
-                      </div>
-                    )}
                   </Card>
                 );
 
