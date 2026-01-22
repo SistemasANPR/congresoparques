@@ -7,7 +7,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
-import congresoIconUrl from "@assets/fondo-congreso-parques_1766092963263.png";
+import congresoIconUrl from "@assets/Recurso_10_1769118595799.png";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
 import conferenciaMagistral from "@assets/Conferencia Magistral_1758578349365.jpg";
