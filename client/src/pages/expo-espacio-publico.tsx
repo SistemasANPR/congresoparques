@@ -2,7 +2,9 @@ import { Calendar, MapPin, LayoutGrid, Store, Phone, Mail, Clock, Users, Eye, Bu
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 import expoLogoUrl from "@assets/logo-expo-espacio-publico-2026.png";
+import expoIconUrl from "@assets/Expo_Espacio_Publico_1769038571197.png";
 import expoHeroUrl from "@assets/expo-espacio-publico-2026.jpg";
 
 export default function ExpoEspacioPublico() {
@@ -73,24 +75,12 @@ export default function ExpoEspacioPublico() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Section */}
-        <section className="relative py-16 md:py-24 overflow-hidden" style={{ backgroundColor: '#6847F6' }}>
-          <div className="absolute inset-0 opacity-20">
-            <img src={expoHeroUrl} alt="" className="w-full h-full object-cover" />
-          </div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="flex flex-col items-center text-center">
-              <img src={expoLogoUrl} alt="Expo Espacio Público 2026" className="w-64 md:w-80 mb-8" data-testid="expo-logo" />
-              <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
-                Expo Espacio Público 2026
-              </h1>
-              <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-              <p className="text-xl md:text-2xl max-w-4xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
-                La exhibición especializada integrada al Congreso Parques 2026
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageHeader 
+          title="Expo Espacio Público 2026"
+          subtitle="La exhibición especializada integrada al Congreso Parques 2026"
+          icon={expoIconUrl}
+          iconAlt="Icono Expo Espacio Público"
+        />
 
         {/* Intro */}
         <section className="py-12 md:py-16 bg-white">

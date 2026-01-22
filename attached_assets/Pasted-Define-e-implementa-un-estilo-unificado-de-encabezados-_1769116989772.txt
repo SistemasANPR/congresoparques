@@ -1,0 +1,116 @@
+Define e implementa un estilo unificado de encabezados (page headers) para todas las páginas del sitio web del Congreso, incluyendo páginas futuras, con las siguientes especificaciones.
+⚠️ La página Home debe quedar explícitamente excluida de estos cambios.
+
+1. Alcance del cambio
+
+Aplicar este diseño a:
+
+Todas las páginas internas existentes.
+
+Todas las páginas que se creen en el futuro.
+
+Excluir completamente:
+
+Página Home (/).
+
+La solución debe ser reutilizable y escalable, idealmente mediante un componente común (layout o header compartido).
+
+2. Fondo del encabezado
+
+Fondo color sólido:
+
+#6847f6
+
+No usar degradados en el fondo del encabezado.
+
+El fondo debe cubrir:
+
+Al menos el alto del viewport inicial (hero/encabezado principal de cada página).
+
+3. Imagen decorativa inferior
+
+Agregar una imagen decorativa de hojas de colores (imagen adjunta) con estas reglas:
+
+Posicionada siempre en la parte inferior del encabezado.
+
+No debe escalarse para “rellenar” el ancho.
+
+No debe estirarse ni deformarse.
+
+En pantallas muy anchas:
+
+La imagen debe duplicarse horizontalmente (repeat-x).
+
+Mantener su tamaño original.
+
+La imagen funciona como un elemento decorativo, no interactivo.
+
+4. Icono representativo por página
+
+Todos los encabezados deben incluir un icono representativo de la sección/página.
+
+El icono debe:
+
+Estar dentro de un fondo hexagonal.
+
+El hexágono debe tener:
+
+Contorno grueso
+
+Degradado en el borde de:
+
+#d0dd15 → #00deff
+
+El interior del hexágono puede ser sólido o transparente, pero debe asegurar contraste.
+
+Posicionamiento:
+
+El icono hexagonal debe ir centrado y situado arriba del título principal.
+
+Mantener separación visual clara entre icono y título.
+
+5. Título principal
+
+El título principal de cada página debe:
+
+Mantener jerarquía clara y consistente.
+
+Usar la tipografía definida para encabezados (Montserrat Black, si ya es la regla del sitio).
+
+Estar alineado al centro dentro del encabezado.
+
+El icono + título deben funcionar como un bloque visual unificado.
+
+6. Consistencia y mantenimiento
+
+Todos los encabezados deben:
+
+Compartir exactamente el mismo layout base.
+
+Variar únicamente en:
+
+Texto del título.
+
+Icono representativo.
+
+Evitar soluciones “hardcodeadas” por página.
+
+Preparar el sistema para que:
+
+Nuevas páginas hereden automáticamente este encabezado sin ajustes manuales.
+
+7. Responsive
+
+Verificar correcta visualización en:
+
+Desktop
+
+Tablet
+
+Mobile
+
+El icono, título e imagen decorativa no deben superponerse ni perder legibilidad.
+
+Objetivo final
+
+Lograr un lenguaje visual consistente, reconocible y escalable en todos los encabezados del sitio del Congreso, reforzando identidad gráfica y experiencia de usuario, sin afectar el diseño especial del Home.

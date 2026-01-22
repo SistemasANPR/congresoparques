@@ -2,7 +2,9 @@ import { Clock, MapPin, Calendar } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 import eventosSocialesImg from "@assets/Eventos Sociales_1758578349366.jpg";
+import eventosIconUrl from "@assets/Eventos_Sociales_1769038571198.png";
 
 export default function EventosSociales() {
   return (
@@ -19,16 +21,12 @@ export default function EventosSociales() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
-              Eventos Sociales
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <p className="text-lg" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>¡Llegó la hora de convivir, relajarte y hacer nuevos contactos!</p>
-          </div>
-        </section>
+        <PageHeader 
+          title="Eventos Sociales"
+          subtitle="¡Llegó la hora de convivir, relajarte y hacer nuevos contactos!"
+          icon={eventosIconUrl}
+          iconAlt="Icono Eventos Sociales"
+        />
 
         {/* Intro Section */}
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>

@@ -6,6 +6,8 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/com
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
+import congresoIconUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
 import conferenciaMagistral from "@assets/Conferencia Magistral_1758578349365.jpg";
@@ -351,27 +353,12 @@ export default function Congreso() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section 
-          className="relative py-20 md:py-28 lg:py-32 text-center text-white overflow-hidden"
-          style={{
-            backgroundImage: `url(${fondoCongresoUrl})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center bottom',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0e0477]/30 to-transparent"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4 drop-shadow-lg" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
-              Congreso Parques 2026
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto text-white drop-shadow-md">
-              Un espacio de aprendizaje y formación creado para quienes transforman los parques y espacios públicos en motores de bienestar urbano.
-            </p>
-          </div>
-        </section>
+        <PageHeader 
+          title="Congreso Parques 2026"
+          subtitle="Un espacio de aprendizaje y formación creado para quienes transforman los parques y espacios públicos en motores de bienestar urbano."
+          icon={congresoIconUrl}
+          iconAlt="Icono Congreso Parques"
+        />
 
         {/* ¿Por qué asistir? */}
         <section className="py-20 md:py-24 bg-white">
@@ -780,18 +767,24 @@ export default function Congreso() {
                 {/* Card 1 - Organiza (ANPR) */}
                 <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
                   {/* Initial State */}
-                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px] text-center">
-                    <h3 
-                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase w-full text-center"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      Organiza
-                    </h3>
-                    <img 
-                      src={logoANPRNew} 
-                      alt="ANPR México" 
-                      className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto"
-                    />
+                  <div className="flex flex-col h-full transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                    {/* Title Area - Fixed height container */}
+                    <div className="h-16 flex items-center justify-center">
+                      <h3
+                        className="text-xl md:text-2xl font-black text-[#012787] uppercase text-center"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Organiza
+                      </h3>
+                    </div>
+                    {/* Logo Area - Flexible container */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <img
+                        src={logoANPRNew}
+                        alt="ANPR México"
+                        className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                      />
+                    </div>
                   </div>
                   
                   {/* Hover State */}
@@ -822,24 +815,30 @@ export default function Congreso() {
                 {/* Card 2 - Apoya (FIDEM & CDT) */}
                 <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
                   {/* Initial State */}
-                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px] text-center">
-                    <h3 
-                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase w-full text-center"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      Apoya
-                    </h3>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
-                      <img 
-                        src={logoFIDEMNew} 
-                        alt="FIDEM" 
-                        className="h-14 sm:h-16 md:h-20 max-w-[140px] sm:max-w-none object-contain"
-                      />
-                      <img 
-                        src={logoCDTNew} 
-                        alt="CDT" 
-                        className="h-10 sm:h-12 md:h-16 max-w-[120px] sm:max-w-none object-contain"
-                      />
+                  <div className="flex flex-col h-full transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                    {/* Title Area - Fixed height container (same as Card 1) */}
+                    <div className="h-16 flex items-center justify-center">
+                      <h3
+                        className="text-xl md:text-2xl font-black text-[#012787] uppercase text-center"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Apoya
+                      </h3>
+                    </div>
+                    {/* Logo Area - Vertical layout for both logos */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="flex flex-col items-center justify-center gap-5 w-full">
+                        <img
+                          src={logoFIDEMNew}
+                          alt="FIDEM"
+                          className="w-full max-w-[220px] h-auto object-contain"
+                        />
+                        <img
+                          src={logoCDTNew}
+                          alt="CDT"
+                          className="w-full max-w-[170px] h-auto object-contain"
+                        />
+                      </div>
                     </div>
                   </div>
                   
