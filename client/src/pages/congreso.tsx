@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { Link } from "wouter";
-import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { Navigation } from "@/components/Navigation";
@@ -780,9 +780,9 @@ export default function Congreso() {
                 {/* Card 1 - Organiza (ANPR) */}
                 <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
                   {/* Initial State */}
-                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px] text-center">
                     <h3 
-                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase"
+                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase w-full text-center"
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                     >
                       Organiza
@@ -790,7 +790,7 @@ export default function Congreso() {
                     <img 
                       src={logoANPRNew} 
                       alt="ANPR México" 
-                      className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                      className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto"
                     />
                   </div>
                   
@@ -822,23 +822,23 @@ export default function Congreso() {
                 {/* Card 2 - Apoya (FIDEM & CDT) */}
                 <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
                   {/* Initial State */}
-                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px] text-center">
                     <h3 
-                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase"
+                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase w-full text-center"
                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                     >
                       Apoya
                     </h3>
-                    <div className="flex items-center gap-6">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full">
                       <img 
                         src={logoFIDEMNew} 
                         alt="FIDEM" 
-                        className="h-16 md:h-20 object-contain"
+                        className="h-14 sm:h-16 md:h-20 max-w-[140px] sm:max-w-none object-contain"
                       />
                       <img 
                         src={logoCDTNew} 
                         alt="CDT" 
-                        className="h-12 md:h-16 object-contain"
+                        className="h-10 sm:h-12 md:h-16 max-w-[120px] sm:max-w-none object-contain"
                       />
                     </div>
                   </div>
@@ -872,12 +872,15 @@ export default function Congreso() {
               {/* Contact Block Column */}
               <div className="lg:col-span-1">
                 <div className="bg-[#35219b] rounded-2xl p-8 md:p-10 h-full">
-                  <h3 
-                    className="text-2xl md:text-3xl font-black text-white mb-8 uppercase"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
-                  >
-                    Contáctanos
-                  </h3>
+                  <div className="flex items-center gap-3 mb-8">
+                    <Mail className="w-7 h-7 md:w-8 md:h-8 text-[#BCCE16]" />
+                    <h3 
+                      className="text-2xl md:text-3xl font-black text-white uppercase"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Contáctanos
+                    </h3>
+                  </div>
                   
                   <div className="space-y-6">
                     <div>
