@@ -1,7 +1,8 @@
-import { Plane, Bus, Car } from "lucide-react";
+import { Plane, Bus, Car, Route } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function Conectividad() {
   const vuelosNacionales = [
@@ -53,15 +54,11 @@ export default function Conectividad() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
-              Conectividad
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
-          </div>
-        </section>
+        <PageHeader 
+          title="Conectividad"
+          subtitle="Descubre cómo llegar a Tijuana desde cualquier parte del mundo"
+          lucideIcon={Route}
+        />
 
         {/* Intro */}
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>

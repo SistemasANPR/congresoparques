@@ -1,7 +1,8 @@
-import { Download, FileText, CreditCard, Link2, BookOpen } from "lucide-react";
+import { Download, FileText, CreditCard, Link2, BookOpen, Lightbulb } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function Preparate() {
   return (
@@ -18,15 +19,11 @@ export default function Preparate() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
-              Prepárate Para<br />El Congreso
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
-          </div>
-        </section>
+        <PageHeader 
+          title="Prepárate Para El Congreso"
+          subtitle="Todo lo que necesitas saber para aprovechar al máximo tu experiencia"
+          lucideIcon={Lightbulb}
+        />
 
         {/* Sección 1: Conoce acerca del congreso */}
         <section className="py-16 bg-white">

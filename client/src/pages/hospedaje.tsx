@@ -1,7 +1,8 @@
-import { Hotel, Mail } from "lucide-react";
+import { Hotel, Mail, Bed } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function Hospedaje() {
   return (
@@ -18,16 +19,11 @@ export default function Hospedaje() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
-              Alojamiento
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <p className="text-xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>¡Elige tu hospedaje!</p>
-          </div>
-        </section>
+        <PageHeader 
+          title="Alojamiento"
+          subtitle="¡Elige tu hospedaje!"
+          lucideIcon={Bed}
+        />
 
         {/* Intro */}
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>

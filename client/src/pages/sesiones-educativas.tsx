@@ -1,8 +1,10 @@
 import { Link } from "wouter";
-import { Users, Calendar, FileText, Award, ClipboardList, Send, Clock, CheckCircle, Target, BookOpen } from "lucide-react";
+import { Users, Calendar, FileText, Award, ClipboardList, Send, Clock, CheckCircle, Target, BookOpen, GraduationCap } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
+import sesionesIconUrl from "@assets/Sesiones_Educativas_1769038571198.png";
 import conferenciaImg from "@assets/Conferencias Magistrales_1758578569495.png";
 import talleresImg from "@assets/Talleres Vivenciales_1758578569495.png";
 import sesionesImg from "@assets/Sesiones Educativas_1758578569496.png";
@@ -25,20 +27,16 @@ export default function SesionesEducativas() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
-              Convocatoria
-            </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Sesiones Educativas
-            </h2>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <a href="#" className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-8 py-3 rounded-lg hover:bg-[#d4e52a] transition-colors">
-              VER RESULTADOS
-            </a>
-          </div>
+        <PageHeader 
+          title="Convocatoria Sesiones Educativas"
+          subtitle="Comparte tus proyectos y experiencias con profesionales de toda Latinoamérica"
+          icon={sesionesIconUrl}
+        />
+        
+        <section className="py-6 text-center" style={{ backgroundColor: '#35219B' }}>
+          <a href="#" className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-8 py-3 rounded-lg hover:bg-[#d4e52a] transition-colors">
+            VER RESULTADOS
+          </a>
         </section>
 
         {/* Intro */}

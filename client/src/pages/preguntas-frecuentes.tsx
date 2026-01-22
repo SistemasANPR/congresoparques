@@ -1,8 +1,9 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 interface FAQItem {
   pregunta: string;
@@ -448,15 +449,11 @@ export default function PreguntasFrecuentes() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
-              Preguntas Frecuentes
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
-          </div>
-        </section>
+        <PageHeader 
+          title="Preguntas Frecuentes"
+          subtitle="Encuentra respuestas a las dudas más comunes sobre el congreso"
+          lucideIcon={HelpCircle}
+        />
 
         {/* FAQ Sections */}
         <section className="py-16 bg-white">

@@ -1,0 +1,88 @@
+Revisa y corrige la implementación del encabezado unificado en el sitio web del Congreso con las siguientes indicaciones:
+
+1. Páginas donde NO se aplicó el encabezado
+
+El nuevo estilo de encabezado no se está mostrando en las siguientes páginas y debe aplicarse correctamente:
+
+Consejo Evaluador
+
+Ponentes
+
+Programa
+
+Talleres
+
+Ciudad Sede
+
+Conectividad
+
+Hospedaje
+
+Recursos
+
+Estas páginas deben heredar exactamente el mismo encabezado definido para el resto de las páginas internas (excluyendo Home).
+
+2. Iconos por página
+Páginas sin icono existente
+
+En las páginas que no cuenten con un icono PNG previamente definido, agrega un icono genérico representativo de la sección.
+
+Ejemplo:
+
+Ciudad Sede: icono tipo pin / ubicación.
+
+El criterio de selección debe ser semántico y fácil de identificar por el usuario.
+
+Color y estilo de los iconos
+
+Todos los iconos (genéricos o con imagen) deben:
+
+Usar color #f71cdd.
+
+Mantener consistencia visual con el resto del sitio.
+
+El hexágono de fondo:
+
+No debe verse aplastado ni deformado.
+
+Mantener proporción correcta en todos los breakpoints.
+
+Respetar el contorno grueso con degradado definido previamente.
+
+3. Iconos con imagen (PNG)
+
+Para las páginas donde el icono es una imagen (por ejemplo, Eventos Sociales):
+
+La imagen debe:
+
+Verse al 100%, lo más grande posible dentro del hexágono.
+
+Mantener su proporción original (object-contain).
+
+Evitar padding excesivo que reduzca visualmente el tamaño del icono.
+
+El fondo del hexágono no debe competir visualmente con la imagen.
+
+Priorizar que el icono sea claramente legible incluso en mobile.
+
+4. Consideraciones técnicas
+
+No hardcodear soluciones por página.
+
+Centralizar la lógica del encabezado (layout o componente compartido).
+
+Verificar que:
+
+El encabezado se renderice correctamente en todas las rutas mencionadas.
+
+No existan excepciones involuntarias en el routing.
+
+5. Resultado esperado
+
+Todas las páginas internas comparten el mismo encabezado.
+
+Cada página tiene un icono coherente y bien proporcionado.
+
+Identidad visual consistente y profesional.
+
+Escalabilidad garantizada para páginas futuras.

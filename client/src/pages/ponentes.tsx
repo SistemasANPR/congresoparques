@@ -1,6 +1,8 @@
+import { Mic } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 import gearsImageUrl from "@assets/generated_images/gears_illustration_teamwork_concept.png";
 
 export default function Ponentes() {
@@ -17,21 +19,17 @@ export default function Ponentes() {
       {/* Header Navigation */}
       <Navigation />
 
-      {/* Main Content */}
-      <main className="pt-28 md:pt-36 lg:pt-40 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            {/* Page Title */}
-            <h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-black text-center mb-8 uppercase"
-              style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
-              data-testid="page-title"
-            >
-              Ponentes
-            </h1>
-            
-            {/* Content Container */}
-            <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
+      <main className="pt-28 md:pt-36 lg:pt-40">
+        <PageHeader 
+          title="Ponentes"
+          subtitle="Conoce a los expertos que construirán el programa más innovador"
+          lucideIcon={Mic}
+        />
+        
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-gray-50 rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
               <p className="text-gray-700 text-center text-lg md:text-xl leading-relaxed mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Nuestro equipo está seleccionando a los expertos que construirán el programa más innovador. ¡Mantente atento para conocerlos!
               </p>
@@ -42,9 +40,10 @@ export default function Ponentes() {
                   className="w-full max-w-md rounded-lg"
                 />
               </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
 
       {/* Footer */}

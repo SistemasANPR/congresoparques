@@ -1,7 +1,8 @@
-import { FileText, Download, BookOpen } from "lucide-react";
+import { FileText, Download, BookOpen, FolderOpen } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function Recursos() {
   return (
@@ -18,25 +19,11 @@ export default function Recursos() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
-              Recursos
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
-          </div>
-        </section>
-
-        {/* Intro */}
-        <section className="bg-gradient-to-r from-[#0e0477] to-[#6847f6] py-12">
-          <div className="container mx-auto px-4 text-center">
-            <h3 className="text-[#BCCE16] text-2xl font-bold mb-4">Materiales y Documentos</h3>
-            <p className="text-white text-lg max-w-4xl mx-auto">
-              En esta sección encontrarás todos los recursos, materiales y documentos relacionados con el IX Congreso Internacional de Parques Urbanos y Espacio Público.
-            </p>
-          </div>
-        </section>
+        <PageHeader 
+          title="Recursos"
+          subtitle="Materiales y documentos del IX Congreso Internacional de Parques Urbanos"
+          lucideIcon={FolderOpen}
+        />
 
         {/* Resources Content */}
         <section className="py-16 bg-white">

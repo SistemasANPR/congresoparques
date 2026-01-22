@@ -1,8 +1,9 @@
 import { Link } from "wouter";
-import { Users, Calendar, FileText, Award, CheckCircle, Send, Image, Printer, Eye, Scale } from "lucide-react";
+import { Users, Calendar, FileText, Award, CheckCircle, Send, Image, Printer, Eye, Scale, FileImage } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function PostersCientificos() {
   return (
@@ -19,20 +20,16 @@ export default function PostersCientificos() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
-              Convocatoria
-            </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Póster Científico
-            </h2>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <a href="#" className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-8 py-3 rounded-lg hover:bg-[#d4e52a] transition-colors">
-              Registrar Póster
-            </a>
-          </div>
+        <PageHeader 
+          title="Convocatoria Póster Científico"
+          subtitle="Difunde tus investigaciones y proyectos relacionados con el espacio público"
+          lucideIcon={FileImage}
+        />
+        
+        <section className="py-6 text-center" style={{ backgroundColor: '#35219B' }}>
+          <a href="#" className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-8 py-3 rounded-lg hover:bg-[#d4e52a] transition-colors">
+            Registrar Póster
+          </a>
         </section>
 
         {/* Instrucciones */}

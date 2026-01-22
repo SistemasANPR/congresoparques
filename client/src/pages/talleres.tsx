@@ -1,8 +1,10 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 import tallerVivencialImg from "@assets/Taller vivencial_1758578349360.jpg";
 import masterClassesImg from "@assets/Master classes_1758578349365.jpg";
+import talleresIconUrl from "@assets/Talleres_Vivenciales_1769038571197.png";
 
 export default function Talleres() {
   return (
@@ -19,15 +21,11 @@ export default function Talleres() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
-              Talleres
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
-          </div>
-        </section>
+        <PageHeader 
+          title="Talleres"
+          subtitle="Aprende haciendo, colaborando y resolviendo retos reales"
+          icon={talleresIconUrl}
+        />
 
         {/* Intro Section */}
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>

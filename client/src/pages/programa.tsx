@@ -1,7 +1,8 @@
-import { Cog, Settings, Wrench } from "lucide-react";
+import { Cog, Settings, Wrench, CalendarDays } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 export default function Programa() {
   return (
@@ -17,21 +18,17 @@ export default function Programa() {
       {/* Header Navigation */}
       <Navigation />
 
-      {/* Main Content */}
-      <main className="pt-28 md:pt-36 lg:pt-40 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            {/* Page Title */}
-            <h1
-              className="text-3xl md:text-4xl lg:text-5xl text-center mb-8 uppercase section-title"
-              style={{ color: '#0e0477' }}
-              data-testid="page-title"
-            >
-              Programa
-            </h1>
-
-            {/* Actividades Section */}
-            <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
+      <main className="pt-28 md:pt-36 lg:pt-40">
+        <PageHeader 
+          title="Programa"
+          subtitle="Descubre todas las actividades del congreso"
+          lucideIcon={CalendarDays}
+        />
+        
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-gray-50 rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
               <h2
                 className="text-2xl md:text-3xl text-center mb-8 uppercase"
                 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}
@@ -51,9 +48,10 @@ export default function Programa() {
                 Nuestro equipo está seleccionando a los expertos que construirán el programa más innovador.
                 <span className="block mt-2 font-semibold text-[#0e0477]">¡Mantente atento para conocerlos!</span>
               </p>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
 
       {/* Footer */}

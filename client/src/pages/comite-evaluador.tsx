@@ -1,6 +1,8 @@
+import { Users } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import { PageHeader } from "@/components/PageHeader";
 
 import ricardoBonillaImg from "@assets/Ricardo_Eugenio_Bonilla_1768852622373.jpg";
 import adrianaRomeroImg from "@assets/Adirana_Romero,_Especialista_de_Comunicaciones_1768852622374.jpg";
@@ -107,15 +109,11 @@ export default function ComiteEvaluador() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
-        {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
-              Consejo Evaluador
-            </h1>
-            <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
-          </div>
-        </section>
+        <PageHeader 
+          title="Consejo Evaluador"
+          subtitle="Conoce al equipo de expertos que evaluará las propuestas del congreso"
+          lucideIcon={Users}
+        />
 
         {/* Intro */}
         <section className="py-12 bg-white">
