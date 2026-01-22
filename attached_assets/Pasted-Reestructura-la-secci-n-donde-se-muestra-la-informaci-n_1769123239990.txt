@@ -1,0 +1,107 @@
+Reestructura la sección donde se muestra la información de Talleres para que el diseño se comporte visualmente como la página deseada (ejemplo adjunto), mejorando la visibilidad de las imágenes y la jerarquía del contenido.
+
+1. Carrusel de imágenes (Talleres Vivenciales y Master Classes)
+Cambio principal
+
+Implementar un carrusel de imágenes independiente para:
+
+Talleres Vivenciales
+
+Master Classes
+
+El carrusel debe ser el elemento visual principal de cada bloque.
+
+Comportamiento del carrusel
+
+Las imágenes deben:
+
+Verse completas y claras (object-cover o object-contain según mejor resultado).
+
+No quedar cubiertas por overlays pesados.
+
+Mantener buena proporción en desktop y mobile.
+
+Permitir navegación:
+
+Flechas laterales o swipe en mobile.
+
+Preparado para agregar más imágenes en el futuro sin romper el diseño.
+
+2. Posicionamiento del contenido (texto + icono)
+Nueva jerarquía visual
+
+El texto descriptivo y el icono deben:
+
+Situarse en la parte inferior del carrusel, no encima cubriendo la imagen.
+
+Aparecer dentro de una franja inferior o contenedor overlay sutil.
+
+El overlay inferior debe:
+
+Tener fondo sólido o semitransparente.
+
+Garantizar legibilidad del texto sin ocultar la fotografía.
+
+No ocupar más espacio del necesario.
+
+Icono
+
+El icono de cada sección debe:
+
+Mantener el estilo definido en el sitio.
+
+Ubicarse junto al título o alineado al inicio del bloque inferior.
+
+No competir visualmente con la imagen.
+
+3. Comparación con diseño actual (problema a corregir)
+
+Actualmente:
+
+El texto y el fondo cubren gran parte de las fotografías.
+
+Las imágenes no se aprecian ni comunican la experiencia.
+
+Objetivo:
+
+Que la imagen sea protagonista.
+
+Que el texto acompañe, no bloquee.
+
+4. Inspiración visual (referencia adjunta)
+
+Tomar como referencia la página deseada:
+
+Imagen visible y limpia.
+
+Contenido anclado abajo.
+
+Composición moderna, clara y editorial.
+
+5. Consideraciones técnicas
+
+No hardcodear alturas fijas que rompan el carrusel.
+
+Preparar la estructura para:
+
+Agregar más talleres.
+
+Reutilizar el componente en otras secciones.
+
+Verificar comportamiento responsive:
+
+Desktop
+
+Tablet
+
+Mobile
+
+Resultado esperado
+
+Carruseles visuales atractivos para Talleres Vivenciales y Master Classes.
+
+Imágenes claramente visibles.
+
+Texto e icono bien integrados en la parte inferior.
+
+Diseño alineado a la referencia deseada y a la experiencia del evento.

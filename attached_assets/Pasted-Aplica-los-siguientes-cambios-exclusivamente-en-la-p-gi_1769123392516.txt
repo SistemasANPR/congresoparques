@@ -1,0 +1,99 @@
+Aplica los siguientes cambios exclusivamente en la página /talleres, tomando como referencia visual la página deseada adjunta.
+
+1. Estructura general – Página /talleres
+
+Reestructura las secciones de Talleres Vivenciales y Master Classes para que el diseño priorice el contenido visual y mejore la jerarquía de información.
+
+2. Carrusel de imágenes
+Implementación
+
+En la página /talleres, agrega un carrusel de imágenes independiente para:
+
+Talleres Vivenciales
+
+Master Classes
+
+El carrusel debe ser el elemento principal de cada sección.
+
+Comportamiento del carrusel
+
+Las imágenes deben:
+
+Visualizarse de forma clara y completa (object-cover u object-contain, según el mejor resultado).
+
+Mantener proporción correcta en desktop, tablet y mobile.
+
+No quedar cubiertas por overlays pesados.
+
+Navegación:
+
+Flechas laterales en desktop.
+
+Swipe en dispositivos móviles.
+
+El carrusel debe permitir agregar más imágenes en el futuro sin afectar el layout.
+
+3. Contenido inferior (texto + icono)
+Jerarquía visual
+
+En cada carrusel de la página /talleres, el texto descriptivo y el icono deben:
+
+Posicionarse en la parte inferior de la imagen, no encima cubriéndola.
+
+Estar contenidos en una franja inferior u overlay sutil.
+
+El overlay inferior debe:
+
+Tener fondo sólido o semitransparente.
+
+Garantizar contraste y legibilidad del texto.
+
+Ocupar únicamente el espacio necesario, sin tapar la imagen.
+
+Iconografía
+
+El icono correspondiente a cada sección debe:
+
+Mantener el estilo visual definido para el sitio.
+
+Integrarse junto al título o alinearse al inicio del bloque inferior.
+
+No competir visualmente con la imagen del carrusel.
+
+4. Corrección del diseño actual
+
+En la página /talleres, actualmente:
+
+El texto y los fondos cubren gran parte de las imágenes.
+
+Las fotografías pierden protagonismo.
+
+Objetivo del cambio:
+
+Hacer que la imagen comunique la experiencia del taller.
+
+Usar el texto solo como acompañamiento informativo.
+
+5. Referencia visual
+
+Utiliza como referencia directa la página deseada adjunta:
+
+Imagen protagonista.
+
+Contenido anclado en la parte inferior.
+
+Composición limpia, moderna y editorial.
+
+6. Consideraciones técnicas
+
+No utilizar alturas fijas que limiten el carrusel.
+
+Mantener el componente reutilizable y escalable.
+
+Verificar comportamiento responsive en:
+
+Desktop
+
+Tablet
+
+Mobile
