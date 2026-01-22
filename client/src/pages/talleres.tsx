@@ -67,14 +67,14 @@ function WorkshopCarousel({ images, title, subtitle, description, iconUrl, iconA
       
       <button
         onClick={scrollPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
+        className="absolute left-4 top-1/3 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
         aria-label="Anterior"
       >
         <ChevronLeft className="w-6 h-6 text-white" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
+        className="absolute right-4 top-1/3 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
         aria-label="Siguiente"
       >
         <ChevronRight className="w-6 h-6 text-white" />
@@ -120,7 +120,7 @@ function WorkshopCarousel({ images, title, subtitle, description, iconUrl, iconA
 
       <div className="absolute top-6 right-6 z-20">
         <div 
-          className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center animate-spin-slow"
+          className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center"
           style={{ 
             backgroundColor: '#BCCE16',
             animation: 'spin 8s linear infinite'
@@ -183,10 +183,44 @@ export default function Talleres() {
               images={talleresVivencialesImages}
               title="Talleres Vivenciales"
               subtitle="¡Visita los parques más emblemáticos de la ciudad!"
-              description="¡Conoce Tijuana y aprende al mismo tiempo! En los talleres vivenciales conocerás atractivos turísticos y proyectos ciudadanos relacionados con el espacio público; habrá expertos en el tema y colaboradores de la ciudad anfitriona que compartirán durante 4 horas sus experiencias."
+              description="¡Conoce Tijuana y aprende al mismo tiempo! En los talleres vivenciales conocerás atractivos turísticos y proyectos ciudadanos relacionados con el espacio público; habrá expertos en el tema y colaboradores de la ciudad anfitriona que compartirán durante 4 horas sus experiencias en la administración de estos espacios, los retos que han enfrentado y las actividades que han implementado."
               iconUrl={talleresVivencialesIconUrl}
               iconAlt="Icono Talleres Vivenciales"
             />
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#6847F6' }}>
+                  <span className="text-5xl">🌳</span>
+                </div>
+                <div className="p-6">
+                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Parques Urbanos de Tijuana</h4>
+                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Recorrido por los espacios verdes más emblemáticos de la ciudad fronteriza.</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#BCCE16' }}>
+                  <span className="text-5xl">🏛️</span>
+                </div>
+                <div className="p-6">
+                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Espacios Públicos Culturales</h4>
+                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Visita a plazas y centros culturales que definen la identidad de la ciudad.</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#35219B' }}>
+                  <span className="text-5xl">🌊</span>
+                </div>
+                <div className="p-6">
+                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Malecón y Zonas Costeras</h4>
+                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Experiencia única en los espacios públicos junto al Océano Pacífico.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -200,6 +234,40 @@ export default function Talleres() {
               iconUrl={masterClassesIconUrl}
               iconAlt="Icono Master Classes"
             />
+          </div>
+        </section>
+
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#35219B' }}>
+                  <span className="text-5xl">🎨</span>
+                </div>
+                <div className="p-6">
+                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Diseño de Espacios Verdes</h4>
+                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Técnicas avanzadas de diseño paisajístico y planificación urbana.</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#6847F6' }}>
+                  <span className="text-5xl">📊</span>
+                </div>
+                <div className="p-6">
+                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Gestión y Administración</h4>
+                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Estrategias para la administración eficiente de parques urbanos.</p>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#BCCE16' }}>
+                  <span className="text-5xl">🌱</span>
+                </div>
+                <div className="p-6">
+                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Sustentabilidad Urbana</h4>
+                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Prácticas sostenibles para el desarrollo de espacios públicos.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
