@@ -37,6 +37,9 @@ import congresoParques1 from "@assets/Congreso Parques 1_1761672357092.jpg";
 import congresoParques2 from "@assets/Congreso Parques 2_1761672357092.jpg";
 import congresoParques3 from "@assets/Congreso Parques 3_1761672357092.jpg";
 import congresoParques4 from "@assets/Congreso Parques 4_1761672357092.jpg";
+import logoANPRNew from "@assets/ANPR_1769104901762.png";
+import logoCDTNew from "@assets/CDT_1769104901763.png";
+import logoFIDEMNew from "@assets/FIDEM_1769104901763.png";
 
 // Componente de carrusel con indicadores de navegación
 interface ImageCarouselProps {
@@ -381,22 +384,14 @@ export default function Congreso() {
                 {/* Columna izquierda: Texto */}
                 <div>
                   <h2
-                    className="text-2xl md:text-3xl uppercase mb-8"
-                    style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontWeight: 900,
-                      color: '#0e0477'
-                    }}
+                    className="text-2xl md:text-3xl uppercase mb-8 section-title"
+                    style={{ color: '#0e0477' }}
                   >
                     ¿Por qué asistir?
                   </h2>
                   <p
-                    className="text-base md:text-lg leading-relaxed"
-                    style={{
-                      fontFamily: 'Montserrat, sans-serif',
-                      fontWeight: 400,
-                      color: '#374151'
-                    }}
+                    className="text-base md:text-lg leading-relaxed text-light-bg"
+                    style={{ color: '#374151' }}
                   >
                     Un evento internacional de capacitación, intercambio y experiencias
                     inmersivas, dirigido a quienes gestionan, diseñan y promueven los
@@ -471,12 +466,12 @@ export default function Congreso() {
         </section>
 
         {/* Nuestro Legado - Interactive Timeline */}
-        <section className="py-16 bg-[#0e0477]">
+        <section className="py-16" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-white mb-4 text-center uppercase section-title">
               Nuestro Legado
             </h2>
-            <p className="text-white/70 text-center mb-12 max-w-2xl mx-auto">
+            <p className="text-center mb-12 max-w-2xl mx-auto text-dark-bg" style={{ color: 'rgba(255,255,255,0.7)' }}>
               Una trayectoria de impacto en la transformación de espacios públicos en América Latina
             </p>
             
@@ -681,6 +676,25 @@ export default function Congreso() {
           </div>
         </section>
 
+        {/* Sección divisoria - Diseña tu experiencia */}
+        <section className="py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2
+                className="text-2xl md:text-3xl lg:text-4xl uppercase mb-4 section-title"
+                style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}
+              >
+                Diseña tu experiencia
+              </h2>
+              <p
+                className="text-base md:text-lg lg:text-xl leading-relaxed"
+                style={{ color: '#374151', fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}
+              >
+                Descubre todo lo que el Congreso tiene para ti: aprendizaje, práctica y encuentros que puedes sumar a tu recorrido.
+              </p>
+            </div>
+          </div>
+        </section>
 
         {/* Secciones detalladas de experiencias */}
         {experienciasDetalle.map((exp, index) => (
@@ -689,20 +703,20 @@ export default function Congreso() {
             className="relative min-h-[450px] md:min-h-[500px] bg-cover bg-center flex items-center overflow-hidden"
             style={{ backgroundImage: `url(${exp.imagen})` }}
           >
-            {/* Duotone overlay similar to Hero - inverted gradient for better text contrast */}
-            <div 
+            {/* Purple overlay #6847f6 - uniform across all sections */}
+            <div
               className="absolute inset-0"
               style={{
-                background: exp.posicionImagen === 'left' 
-                  ? 'linear-gradient(to right, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.88) 50%, rgba(14, 4, 119, 0.95) 100%)'
-                  : 'linear-gradient(to left, rgba(104, 71, 246, 0.15) 0%, rgba(14, 4, 119, 0.88) 50%, rgba(14, 4, 119, 0.95) 100%)'
+                background: exp.posicionImagen === 'left'
+                  ? 'linear-gradient(to right, rgba(104, 71, 246, 0.20) 0%, rgba(104, 71, 246, 0.85) 45%, rgba(104, 71, 246, 0.95) 100%)'
+                  : 'linear-gradient(to left, rgba(104, 71, 246, 0.20) 0%, rgba(104, 71, 246, 0.85) 45%, rgba(104, 71, 246, 0.95) 100%)'
               }}
             />
-            {/* Additional cyan/magenta duotone effect */}
-            <div 
-              className="absolute inset-0 mix-blend-overlay opacity-30"
+            {/* Subtle accent overlay for depth */}
+            <div
+              className="absolute inset-0 mix-blend-overlay opacity-25"
               style={{
-                background: 'linear-gradient(135deg, rgba(30, 222, 222, 0.3) 0%, rgba(104, 71, 246, 0.4) 50%, rgba(188, 206, 22, 0.2) 100%)'
+                background: 'linear-gradient(135deg, rgba(30, 222, 222, 0.2) 0%, rgba(104, 71, 246, 0.3) 50%, rgba(188, 206, 22, 0.15) 100%)'
               }}
             />
             
@@ -728,10 +742,10 @@ export default function Congreso() {
                 
                 {/* Button - Active only for Expo Espacio Público */}
                 {exp.isActive ? (
-                  <Link 
+                  <Link
                     href={exp.link}
-                    className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white hover:text-[#0e0477] transition-all duration-300 text-sm uppercase tracking-wider"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-10 py-4 rounded-full hover:bg-white hover:text-[#0e0477] transition-all duration-300 uppercase tracking-wider"
+                    style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
                   >
                     Ver más
                   </Link>
@@ -739,8 +753,8 @@ export default function Congreso() {
                   <button
                     disabled
                     aria-disabled="true"
-                    className="inline-flex items-center gap-2 bg-transparent border-2 border-white/40 text-white/40 font-bold px-8 py-3 rounded-full cursor-not-allowed opacity-60 text-sm uppercase tracking-wider"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    className="inline-flex items-center gap-2 bg-transparent border-2 border-white/40 text-white/40 px-10 py-4 rounded-full cursor-not-allowed opacity-60 uppercase tracking-wider"
+                    style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
                   >
                     Ver más
                   </button>
@@ -749,6 +763,180 @@ export default function Congreso() {
             </div>
           </div>
         ))}
+
+        {/* Aliados Estratégicos Section */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 
+              className="text-3xl md:text-4xl lg:text-5xl font-black text-center mb-12 md:mb-16 text-[#012787] uppercase"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              Aliados Estratégicos
+            </h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+              {/* Partner Cards Column */}
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Card 1 - Organiza (ANPR) */}
+                <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
+                  {/* Initial State */}
+                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                    <h3 
+                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Organiza
+                    </h3>
+                    <img 
+                      src={logoANPRNew} 
+                      alt="ANPR México" 
+                      className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                    />
+                  </div>
+                  
+                  {/* Hover State */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-white">
+                    <div>
+                      <h3 
+                        className="text-lg md:text-xl font-black text-[#012787] mb-3 uppercase"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Organiza
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        El Congreso Parques es organizado por la Asociación Nacional de Parques y Recreación de México (ANPR México), una organización no gubernamental dedicada a la profesionalización del sector de parques y espacios públicos en México y América Latina, a través de contenidos, certificaciones y eventos que convierten el conocimiento en herramientas prácticas.
+                      </p>
+                    </div>
+                    <a 
+                      href="https://www.anpr.org.mx" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[#6847f6] font-semibold hover:text-[#012787] transition-colors mt-4"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Conoce más →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Card 2 - Apoya (FIDEM & CDT) */}
+                <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
+                  {/* Initial State */}
+                  <div className="flex flex-col items-center justify-center flex-1 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                    <h3 
+                      className="text-xl md:text-2xl font-black text-[#012787] mb-6 uppercase"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Apoya
+                    </h3>
+                    <div className="flex items-center gap-6">
+                      <img 
+                        src={logoFIDEMNew} 
+                        alt="FIDEM" 
+                        className="h-16 md:h-20 object-contain"
+                      />
+                      <img 
+                        src={logoCDTNew} 
+                        alt="CDT" 
+                        className="h-12 md:h-16 object-contain"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Hover State */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-white">
+                    <div>
+                      <h3 
+                        className="text-lg md:text-xl font-black text-[#012787] mb-3 uppercase"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Apoya
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        El Congreso Parques se realiza de la mano y gracias al Fideicomiso Empresarial del Estado de Baja California (FIDEM) y del Consejo de Desarrollo de Tijuana (CDT), una institución que marca la pauta en la planeación estratégica y el impulso de proyectos de largo plazo para la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad civil, el CDT articula voluntades, facilita alianzas y potencia iniciativas que elevan la competitividad y calidad de vida.
+                      </p>
+                    </div>
+                    <a 
+                      href="https://www.cdt.org.mx" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[#6847f6] font-semibold hover:text-[#012787] transition-colors mt-4"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Conoce más →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Block Column */}
+              <div className="lg:col-span-1">
+                <div className="bg-[#35219b] rounded-2xl p-8 md:p-10 h-full">
+                  <h3 
+                    className="text-2xl md:text-3xl font-black text-white mb-8 uppercase"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  >
+                    Contáctanos
+                  </h3>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Contenido y Programas:
+                      </p>
+                      <a 
+                        href="mailto:contenido@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        contenido@anpr.org.mx
+                      </a>
+                    </div>
+                    
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Comercial y Ventas:
+                      </p>
+                      <a 
+                        href="mailto:vinculacion@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        vinculacion@anpr.org.mx
+                      </a>
+                    </div>
+                    
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Comunicación y Prensa:
+                      </p>
+                      <a 
+                        href="mailto:comunicacion@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        comunicacion@anpr.org.mx
+                      </a>
+                    </div>
+                    
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Información General y Boletos:
+                      </p>
+                      <a 
+                        href="mailto:hola@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        hola@anpr.org.mx
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

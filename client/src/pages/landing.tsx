@@ -567,9 +567,10 @@ export default function Landing() {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate px-4">
-              <button 
-                onClick={() => scrollToSection('convocatorias')} 
-                className="hero-cta-button px-6 py-3 sm:px-7 md:px-8 sm:py-3.5 md:py-4 text-sm sm:text-base md:text-lg font-semibold transform hover:scale-105 transition-all text-white rounded-lg border-0 hero-cta-responsive"
+              <button
+                onClick={() => scrollToSection('convocatorias')}
+                className="hero-cta-button px-7 py-3.5 sm:px-8 md:px-10 sm:py-4 md:py-4.5 text-base sm:text-lg md:text-xl font-bold transform hover:scale-105 transition-all text-white rounded-lg border-0 hero-cta-responsive uppercase tracking-wide"
+                style={{ fontFamily: 'Antonio, sans-serif', lineHeight: '1.2' }}
                 data-testid="hero-cta"
               >
                 Conoce nuestras Convocatorias
@@ -591,7 +592,7 @@ export default function Landing() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {/* Section Title */}
-            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="info-subtitle">¿POR QUÉ ASISTIR?</h2>
+            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase section-title" style={{ color: '#0e0477' }} data-testid="info-subtitle">¿POR QUÉ ASISTIR?</h2>
 
             {/* Icons - Full Width */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-4 stagger-children" data-testid="info-value-proposition">
@@ -607,29 +608,29 @@ export default function Landing() {
                 <div className="icon-container-gradient mb-6">
                   <Users className="w-8 h-8" />
                 </div>
-                <div className="keyword-text">Conecta</div>
-                <div className="description-text">Con líderes y profesionales del sector</div>
+                <div className="keyword-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>Conecta</div>
+                <div className="description-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}>Con líderes y profesionales del sector</div>
               </div>
               <div className="text-center">
                 <div className="icon-container-gradient mb-6">
                   <Target className="w-8 h-8" />
                 </div>
-                <div className="keyword-text">Descubre</div>
-                <div className="description-text">Tendencias globales y soluciones innovadoras</div>
+                <div className="keyword-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>Descubre</div>
+                <div className="description-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}>Tendencias globales y soluciones innovadoras</div>
               </div>
               <div className="text-center">
                 <div className="icon-container-gradient mb-6">
                   <BookOpen className="w-8 h-8" />
                 </div>
-                <div className="keyword-text">Aprende</div>
-                <div className="description-text">De expertos nacionales e internacionales</div>
+                <div className="keyword-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>Aprende</div>
+                <div className="description-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}>De expertos nacionales e internacionales</div>
               </div>
               <div className="text-center">
                 <div className="icon-container-gradient mb-6">
                   <PartyPopper className="w-8 h-8" />
                 </div>
-                <div className="keyword-text">Vive</div>
-                <div className="description-text">Una experiencia única de capacitación, inspiración y networking</div>
+                <div className="keyword-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>Vive</div>
+                <div className="description-text" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}>Una experiencia única de capacitación, inspiración y networking</div>
               </div>
             </div>
           </div>
@@ -880,10 +881,10 @@ export default function Landing() {
       </section>
 
       {/* Convocatorias Section */}
-      <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219b' }}>
+      <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219B' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="calls-title">Convocatorias 2026</h2>
+            <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase section-title" data-testid="calls-title">Convocatorias 2026</h2>
 
             {/* Grid de convocatorias */}
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
@@ -906,12 +907,12 @@ export default function Landing() {
                   </div>
 
                   {/* Título */}
-                  <h4 className="text-lg font-bold text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h4 className="text-lg text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                     SESIONES EDUCATIVAS
                   </h4>
 
                   {/* Descripción */}
-                  <p className="text-gray-600 text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>
                     Invitamos a profesionales, académicos y expertos a proponer sesiones educativas que compartan conocimientos innovadores y casos de estudio exitosos en el ámbito de parques y espacios públicos.
                   </p>
 
@@ -931,10 +932,10 @@ export default function Landing() {
                   <div className="text-center mt-auto">
                     <button
                       onClick={() => window.open('https://congresoparques.com/registro_sesiones.php', '_blank')}
-                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300 text-sm"
+                      className="convocatoria-btn px-9 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 text-base tracking-wide"
                       style={{
                         backgroundColor: '#35219b',
-                        fontFamily: 'Montserrat, sans-serif'
+                        fontFamily: 'Antonio, sans-serif'
                       }}
                       data-testid="cta-educational"
                     >
@@ -963,12 +964,12 @@ export default function Landing() {
                   </div>
 
                   {/* Título */}
-                  <h4 className="text-lg font-bold text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h4 className="text-lg text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                     POSTER CIENTÍFICO
                   </h4>
 
                   {/* Descripción */}
-                  <p className="text-gray-600 text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>
                     Presenta tu investigación, proyecto o innovación a través de un póster científico que contribuya al conocimiento del sector de espacios públicos y sostenibilidad urbana.
                   </p>
 
@@ -988,10 +989,10 @@ export default function Landing() {
                   <div className="text-center mt-auto">
                     <button
                       onClick={() => window.open('https://congresoparques.com/registro_posters.php', '_blank')}
-                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300 text-sm"
+                      className="convocatoria-btn px-9 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 text-base tracking-wide"
                       style={{
                         backgroundColor: '#35219b',
-                        fontFamily: 'Montserrat, sans-serif'
+                        fontFamily: 'Antonio, sans-serif'
                       }}
                       data-testid="cta-poster"
                     >
@@ -1020,12 +1021,12 @@ export default function Landing() {
                   </div>
 
                   {/* Título */}
-                  <h4 className="text-lg font-bold text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h4 className="text-lg text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                     VOLUNTARIOS
                   </h4>
 
                   {/* Descripción */}
-                  <p className="text-gray-600 text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <p className="text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>
                     Sé parte del equipo que hace posible el Congreso Parques: apoya en actividades clave, accede a beneficios exclusivos y genera conexiones profesionales.
                   </p>
 
@@ -1045,10 +1046,10 @@ export default function Landing() {
                   <div className="text-center mt-auto">
                     <button
                       onClick={() => window.open('https://congresoparques.com/registro_voluntarios.php', '_blank')}
-                      className="convocatoria-btn px-8 py-3 rounded-lg font-bold text-white uppercase transition-all duration-300 text-sm"
+                      className="convocatoria-btn px-9 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 text-base tracking-wide"
                       style={{
                         backgroundColor: '#35219b',
-                        fontFamily: 'Montserrat, sans-serif'
+                        fontFamily: 'Antonio, sans-serif'
                       }}
                       data-testid="cta-volunteers"
                     >
@@ -1063,11 +1064,11 @@ export default function Landing() {
       </section>
 
       {/* Legacy Section */}
-      <section id="legado" className="py-16 section-animate animate-scaleIn" style={{ backgroundColor: '#6847f6' }}>
+      <section id="legado" className="py-16 section-animate animate-scaleIn" style={{ backgroundColor: '#6847F6' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl text-center mb-4 uppercase text-white" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="legacy-title">NUESTRO LEGADO</h2>
-            <p className="text-center text-white mb-12 text-lg md:text-xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+            <h2 className="text-3xl md:text-4xl text-center mb-4 uppercase text-white section-title" data-testid="legacy-title">NUESTRO LEGADO</h2>
+            <p className="text-center text-white mb-12 text-lg md:text-xl text-dark-bg">
               Una trayectoria de impacto en la transformación de espacios públicos en América Latina
             </p>
             
@@ -1150,8 +1151,8 @@ export default function Landing() {
                 <div className="flex justify-center mt-8">
                   <button
                     onClick={() => setShowAllVideos(!showAllVideos)}
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-[#6847f6] font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                    style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    className="flex items-center gap-2.5 px-7 py-4 bg-white text-[#6847f6] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 uppercase tracking-wide text-base"
+                    style={{ fontFamily: 'Antonio, sans-serif', lineHeight: '1.2' }}
                   >
                     {showAllVideos ? 'Ver menos' : 'Eventos anteriores'}
                     <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${showAllVideos ? 'rotate-180' : ''}`} />
@@ -1167,7 +1168,7 @@ export default function Landing() {
       <section id="aliados" className="py-16 bg-white section-animate animate-fadeInUp">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="partners-title">ALIADOS ESTRATÉGICOS Y PATROCINADORES</h2>
+            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase section-title" style={{ color: '#0e0477' }} data-testid="partners-title">ALIADOS ESTRATÉGICOS Y PATROCINADORES</h2>
             
             <div className="max-w-4xl mx-auto">
               <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
@@ -1230,7 +1231,7 @@ export default function Landing() {
       <section id="marcas" className="py-16 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="brands-title">
+            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase section-title" style={{ color: '#0e0477' }} data-testid="brands-title">
               Las Mejores Marcas Presentes
             </h2>
           </div>
@@ -1368,12 +1369,12 @@ export default function Landing() {
                   href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20Público%202026"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-cta-button inline-flex items-center gap-3 text-white font-bold px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                  className="hero-cta-button inline-flex items-center gap-3 text-white font-bold px-7 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 uppercase tracking-wide"
+                  style={{ fontFamily: 'Antonio, sans-serif', lineHeight: '1.2' }}
                   data-testid="whatsapp-contact-button"
                 >
-                  <FaWhatsapp className="text-xl" />
-                  <span className="text-sm sm:text-base lg:text-lg">SOLICITAR INFORMES</span>
+                  <FaWhatsapp className="text-2xl" />
+                  <span className="text-base sm:text-lg lg:text-xl">SOLICITAR INFORMES</span>
                 </a>
               </div>
             </div>
@@ -1385,7 +1386,7 @@ export default function Landing() {
       <section id="ubicacion" className="py-16" style={{ backgroundColor: '#f8f9fa' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }} data-testid="location-title">Ubicación del Evento</h2>
+            <h2 className="text-3xl md:text-4xl text-center mb-12 uppercase section-title" style={{ color: '#0e0477' }} data-testid="location-title">Ubicación del Evento</h2>
             
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="space-y-6">
@@ -1421,12 +1422,12 @@ export default function Landing() {
                       </div>
                       
                       <div className="pt-4">
-                        <a 
-                          href="https://maps.app.goo.gl/kkYY5pVgpbwgrik49" 
-                          target="_blank" 
+                        <a
+                          href="https://maps.app.goo.gl/kkYY5pVgpbwgrik49"
+                          target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-semibold transition-all hover:opacity-90 w-full justify-center"
-                          style={{ backgroundColor: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}
+                          className="inline-flex items-center gap-2.5 px-7 py-4 rounded-lg text-white font-bold transition-all hover:opacity-90 w-full justify-center uppercase tracking-wide text-base"
+                          style={{ backgroundColor: '#6847f6', fontFamily: 'Antonio, sans-serif', lineHeight: '1.2' }}
                           data-testid="button-view-map"
                         >
                           <MapPin className="w-5 h-5" />

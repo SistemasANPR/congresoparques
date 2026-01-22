@@ -54,9 +54,9 @@ export default function Conectividad() {
 
       <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
+        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
               Conectividad
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
@@ -64,10 +64,10 @@ export default function Conectividad() {
         </section>
 
         {/* Intro */}
-        <section className="bg-gradient-to-r from-[#0e0477] to-[#6847f6] py-12">
+        <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4 text-center">
-            <h3 className="text-[#BCCE16] text-2xl font-bold mb-4">¿Cómo llegar a Tijuana?</h3>
-            <p className="text-white text-lg max-w-4xl mx-auto">
+            <h3 className="text-[#BCCE16] text-2xl mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>¿Cómo llegar a Tijuana?</h3>
+            <p className="text-lg max-w-4xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
               Gracias a su ubicación estratégica en la frontera norte de México, llegar a Tijuana es sencillo y accesible. La ciudad cuenta con múltiples opciones de conexión tanto por aire como por tierra, lo que facilita el arribo de visitantes nacionales e internacionales.
             </p>
           </div>
@@ -78,12 +78,12 @@ export default function Conectividad() {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
                   Conectividad Aérea
                 </h2>
                 <Plane className="w-8 h-8 text-[#6847f6]" />
               </div>
-              <p className="text-gray-700 mb-8 max-w-4xl">
+              <p className="mb-8 max-w-4xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#374151' }}>
                 El Aeropuerto Internacional de Tijuana (TIJ) es un importante aeropuerto fronterizo en el norte de México, y su ubicación estratégica lo convierte en una puerta de enlace clave tanto para vuelos nacionales como internacionales.
               </p>
 
@@ -139,12 +139,12 @@ export default function Conectividad() {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center gap-3 mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
                   Conectividad Terrestre
                 </h2>
                 <Bus className="w-8 h-8 text-[#6847f6]" />
               </div>
-              <p className="text-gray-700 mb-8 max-w-4xl">
+              <p className="mb-8 max-w-4xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#374151' }}>
                 Tijuana cuenta con una ubicación estratégica en la frontera norte de México, que le permite conectarse rápidamente con importantes corredores carreteros del país, así como con Estados Unidos y Canadá. Además, forma parte de la red federal que une Baja California con Sonora y otros estados del norte.
               </p>
 

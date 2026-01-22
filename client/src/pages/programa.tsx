@@ -22,19 +22,19 @@ export default function Programa() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Page Title */}
-            <h1 
-              className="text-3xl md:text-4xl lg:text-5xl font-black text-center mb-8 uppercase"
-              style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+            <h1
+              className="text-3xl md:text-4xl lg:text-5xl text-center mb-8 uppercase section-title"
+              style={{ color: '#0e0477' }}
               data-testid="page-title"
             >
               Programa
             </h1>
-            
+
             {/* Actividades Section */}
             <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-10" data-testid="content-container">
               <h2
-                className="text-2xl md:text-3xl font-bold text-center mb-8 text-[#0e0477]"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
+                className="text-2xl md:text-3xl text-center mb-8 uppercase"
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}
               >
                 Actividades
               </h2>

@@ -952,6 +952,79 @@ img {
 }
 
 /* ========================================
+   TYPOGRAPHY SYSTEM - Design Guidelines
+   ======================================== */
+
+/* Base Typography - Montserrat Regular for light backgrounds */
+.text-light-bg {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+/* Text on dark backgrounds - Montserrat Medium */
+.text-dark-bg {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+/* Section titles - Montserrat Black */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* Antonio Bold - for specific accents and badges */
+.text-antonio {
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+}
+
+/* Button styles with Antonio Bold */
+.btn-antonio {
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  padding: 0.875rem 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-antonio-sm {
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  padding: 0.625rem 1.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-antonio-lg {
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   COLOR SYSTEM - Purple Backgrounds
+   ======================================== */
+
+/* Primary purple - solid color */
+.bg-purple-primary {
+  background-color: #35219B;
+}
+
+/* Secondary purple - solid color */
+.bg-purple-secondary {
+  background-color: #6847F6;
+}
+
+/* Footer color */
+.bg-footer {
+  background-color: #0E0477;
+}
+
+/* ========================================
    DEVICE-SPECIFIC RESPONSIVE ADJUSTMENTS
    ======================================== */
 

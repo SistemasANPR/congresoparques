@@ -74,18 +74,18 @@ export default function ExpoEspacioPublico() {
 
       <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 overflow-hidden">
+        <section className="relative py-16 md:py-24 overflow-hidden" style={{ backgroundColor: '#6847F6' }}>
           <div className="absolute inset-0 opacity-20">
             <img src={expoHeroUrl} alt="" className="w-full h-full object-cover" />
           </div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="flex flex-col items-center text-center">
               <img src={expoLogoUrl} alt="Expo Espacio Público 2026" className="w-64 md:w-80 mb-8" data-testid="expo-logo" />
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4 text-white" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
                 Expo Espacio Público 2026
               </h1>
               <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-              <p className="text-xl md:text-2xl text-white/90 max-w-4xl">
+              <p className="text-xl md:text-2xl max-w-4xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                 La exhibición especializada integrada al Congreso Parques 2026
               </p>
             </div>
@@ -96,10 +96,10 @@ export default function ExpoEspacioPublico() {
         <section className="py-12 md:py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+              <p className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#374151' }}>
                 <strong className="text-[#0e0477]">Expo Espacio Público 2026</strong> es la exhibición especializada integrada al Congreso Parques 2026, donde convergen los principales proveedores del sector. Aquí se presentan soluciones para el <strong>diseño, planeación, construcción, operación y mantenimiento</strong> de áreas verdes y espacios de convivencia en desarrollos residenciales, parques, plazas, ciclovías, andadores y otros entornos urbanos.
               </p>
-              <p className="text-lg text-[#6847f6] font-semibold mt-6">
+              <p className="text-lg mt-6" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600, color: '#6847f6' }}>
                 El objetivo es promover espacios públicos mejor diseñados y gestionados, capaces de elevar la calidad de vida en nuestras ciudades.
               </p>
             </div>
@@ -147,17 +147,18 @@ export default function ExpoEspacioPublico() {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {/* Expositor */}
-              <div className="bg-gradient-to-br from-[#0e0477] to-[#6847f6] rounded-2xl p-8 text-white">
+              <div className="rounded-2xl p-8 text-white" style={{ backgroundColor: '#35219B' }}>
                 <div className="flex items-center gap-3 mb-6">
                   <Building2 className="w-12 h-12 text-[#BCCE16]" />
-                  <h3 className="text-2xl md:text-3xl font-black uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>Expositor</h3>
+                  <h3 className="text-2xl md:text-3xl uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>Expositor</h3>
                 </div>
-                <p className="text-white/90 mb-6 leading-relaxed">
+                <p className="mb-6 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                   Únete como expositor a la <strong>única feria especializada en el sector de parques y espacios públicos en América Latina</strong>. Presenta tus productos, promueve tus servicios y conecta con cientos de compradores interesados en nuevas soluciones.
                 </p>
-                <button 
+                <button
                   disabled
-                  className="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg font-bold cursor-not-allowed opacity-70"
+                  className="inline-block bg-gray-400 text-white px-8 py-4 rounded-lg cursor-not-allowed opacity-70 uppercase tracking-wide"
+                  style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
                   data-testid="btn-registro-expositor"
                 >
                   Registro próximamente
@@ -169,14 +170,15 @@ export default function ExpoEspacioPublico() {
               <div className="bg-gray-100 rounded-2xl p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <Eye className="w-12 h-12 text-[#6847f6]" />
-                  <h3 className="text-2xl md:text-3xl font-black uppercase text-[#0e0477]" style={{ fontFamily: 'Montserrat, sans-serif' }}>Visitante</h3>
+                  <h3 className="text-2xl md:text-3xl uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>Visitante</h3>
                 </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">
+                <p className="mb-6 leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#374151' }}>
                   Asiste como visitante a la <strong>única exposición especializada en parques y espacios públicos en América Latina</strong>. Descubre tendencias, equipamientos, materiales y mobiliario urbano para tus proyectos. Es el espacio ideal para arquitectos paisajistas, urbanistas, desarrolladores inmobiliarios, áreas de obra pública y desarrollo urbano, direcciones de planeación y profesionales de la construcción.
                 </p>
-                <button 
+                <button
                   disabled
-                  className="inline-block bg-gray-400 text-white px-6 py-3 rounded-lg font-bold cursor-not-allowed opacity-70"
+                  className="inline-block bg-gray-400 text-white px-8 py-4 rounded-lg cursor-not-allowed opacity-70 uppercase tracking-wide"
+                  style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
                   data-testid="btn-entrada-visitante"
                 >
                   Comprar Entrada próximamente
@@ -188,9 +190,9 @@ export default function ExpoEspacioPublico() {
         </section>
 
         {/* Descargables */}
-        <section className="py-12 bg-[#0e0477]">
+        <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-black text-center text-white mb-8 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-center text-white mb-8 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
               Descargables
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
@@ -246,14 +248,14 @@ export default function ExpoEspacioPublico() {
         </section>
 
         {/* Registro Expositor */}
-        <section className="py-12 md:py-16 bg-gradient-to-r from-[#6847f6] to-[#0e0477]">
+        <section className="py-12 md:py-16" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-black mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <h2 className="text-3xl md:text-4xl mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                 ¡Participa como Expositor!
               </h2>
-              <p className="text-xl mb-4">Aparta tu lugar con un <strong className="text-[#BCCE16]">30% de anticipo</strong></p>
-              <p className="text-white/80 mb-8">*Precios en Pesos Mexicanos más IVA (Tasa de IVA 16%)</p>
+              <p className="text-xl mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>Aparta tu lugar con un <strong className="text-[#BCCE16]">30% de anticipo</strong></p>
+              <p className="mb-8" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.8)' }}>*Precios en Pesos Mexicanos más IVA (Tasa de IVA 16%)</p>
               
               <div className="bg-white/10 backdrop-blur rounded-xl p-6 md:p-8 mb-8">
                 <p className="text-white/90 leading-relaxed">
@@ -261,9 +263,10 @@ export default function ExpoEspacioPublico() {
                 </p>
               </div>
 
-              <button 
+              <button
                 disabled
-                className="inline-block bg-gray-400 text-white px-8 py-4 rounded-lg font-bold text-lg cursor-not-allowed opacity-70"
+                className="inline-block bg-gray-400 text-white px-10 py-5 rounded-lg text-lg cursor-not-allowed opacity-70 uppercase tracking-wide"
+                style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
                 data-testid="btn-registro-expositor-main"
               >
                 Registro próximamente
@@ -302,9 +305,10 @@ export default function ExpoEspacioPublico() {
                 <br /><br />
                 Entonces <strong className="text-[#6847f6]">no puedes faltar a la Expo Espacio Público</strong>, el evento que te acerca a las últimas tendencias y soluciones innovadoras que están moldeando el futuro urbano.
               </p>
-              <button 
+              <button
                 disabled
-                className="inline-block bg-gray-400 text-white px-8 py-4 rounded-lg font-bold text-lg cursor-not-allowed opacity-70"
+                className="inline-block bg-gray-400 text-white px-10 py-5 rounded-lg text-lg cursor-not-allowed opacity-70 uppercase tracking-wide"
+                style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
                 data-testid="btn-comprar-entrada"
               >
                 Comprar Entrada próximamente
@@ -315,9 +319,9 @@ export default function ExpoEspacioPublico() {
         </section>
 
         {/* Contacto */}
-        <section className="py-12 md:py-16 bg-[#0e0477]">
+        <section className="py-12 md:py-16" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-black text-center text-white mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-center text-white mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
               Contacto
             </h2>
             <div className="max-w-2xl mx-auto">

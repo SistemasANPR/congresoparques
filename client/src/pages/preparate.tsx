@@ -19,9 +19,9 @@ export default function Preparate() {
 
       <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
+        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
               Prepárate Para<br />El Congreso
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
@@ -33,7 +33,7 @@ export default function Preparate() {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
                   1. Conoce acerca del congreso
                 </h2>
                 <ul className="space-y-4 text-gray-700">
@@ -79,14 +79,14 @@ export default function Preparate() {
         </section>
 
         {/* Sección 2: Organiza tu agenda */}
-        <section className="py-16 bg-[#0e0477]">
+        <section className="py-16" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl text-white mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                   2. Organiza tu agenda de conferencias
                 </h2>
-                <ul className="space-y-4 text-white/90">
+                <ul className="space-y-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
                     <span>Alinea tus objetivos laborales y los de tu organización con los temas de las conferencias y talleres que te gustaría tomar. La mejor forma de justificar tu asistencia es demostrar que lo que aprenderás contribuye directamente a tu trabajo.</span>
@@ -111,7 +111,7 @@ export default function Preparate() {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
                   3. Conoce la lista de razones
                 </h2>
                 <ul className="space-y-3 text-gray-700">
@@ -159,25 +159,25 @@ export default function Preparate() {
         </section>
 
         {/* Sección 4: Carta para justificar */}
-        <section className="py-16 bg-[#0e0477]">
+        <section className="py-16" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl text-white mb-6 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                   4. Carta para justificar tu asistencia
                 </h2>
-                <ul className="space-y-4 text-white/90 mb-8">
+                <ul className="space-y-4 mb-8" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                   <li className="flex items-start gap-2">
                     <span className="text-[#BCCE16] mt-1">•</span>
                     <span>Descarga las cartas para presentar a tu jefe o institución.</span>
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href="https://docs.google.com/document/d/1yrYyA94zhhCIbENY-JctGt3lpOSw6vC0/edit?usp=sharing&ouid=102768518971014749797&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors">
+                  <a href="https://docs.google.com/document/d/1yrYyA94zhhCIbENY-JctGt3lpOSw6vC0/edit?usp=sharing&ouid=102768518971014749797&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] px-8 py-4 rounded-lg hover:bg-[#d4e620] transition-colors uppercase tracking-wide" style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}>
                     <Download className="w-5 h-5" />
                     Descargar Carta Invitación
                   </a>
-                  <a href="https://docs.google.com/document/d/1G19wuAHa9j7VzFc8Ba9uAAqX3daxYcKTlbqP1srapg0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors">
+                  <a href="https://docs.google.com/document/d/1G19wuAHa9j7VzFc8Ba9uAAqX3daxYcKTlbqP1srapg0/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#BCCE16] text-[#0e0477] px-8 py-4 rounded-lg hover:bg-[#d4e620] transition-colors uppercase tracking-wide" style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}>
                     <Download className="w-5 h-5" />
                     Descargar Carta Molde
                   </a>

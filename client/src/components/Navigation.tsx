@@ -273,8 +273,8 @@ export function Navigation() {
             {/* Desktop CTA Button - Disabled */}
             <button
               disabled
-              className="hidden md:flex items-center gap-2 bg-white/20 text-white/50 px-4 xl:px-5 py-2 xl:py-2.5 rounded-full text-[13px] xl:text-sm font-semibold cursor-not-allowed opacity-60 border border-white/20"
-              style={{fontFamily: 'Montserrat, sans-serif'}}
+              className="hidden md:flex items-center gap-2 bg-white/20 text-white/50 px-6 xl:px-7 py-3 xl:py-3.5 rounded-full text-sm xl:text-base cursor-not-allowed opacity-60 border border-white/20 uppercase tracking-wide"
+              style={{fontFamily: 'Antonio, sans-serif', fontWeight: 700}}
               data-testid="btn-adquirir-entradas"
               title="Próximamente disponible"
             >
@@ -518,8 +518,8 @@ export function Navigation() {
               <div className="pt-3 mt-2 border-t border-white/20">
                 <button
                   disabled
-                  className="flex items-center justify-center gap-2 w-full bg-white/20 text-white/50 px-4 py-2.5 rounded-full text-sm font-semibold cursor-not-allowed opacity-60 border border-white/20"
-                  style={{fontFamily: 'Montserrat, sans-serif'}}
+                  className="flex items-center justify-center gap-2 w-full bg-white/20 text-white/50 px-6 py-3.5 rounded-full text-sm cursor-not-allowed opacity-60 border border-white/20 uppercase tracking-wide"
+                  style={{fontFamily: 'Antonio, sans-serif', fontWeight: 700}}
                   data-testid="mobile-btn-adquirir-entradas"
                 >
                   <Ticket className="w-4 h-4" />

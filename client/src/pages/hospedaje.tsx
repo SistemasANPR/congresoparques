@@ -19,20 +19,20 @@ export default function Hospedaje() {
 
       <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
+        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
               Alojamiento
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <p className="text-white/90 text-xl">¡Elige tu hospedaje!</p>
+            <p className="text-xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>¡Elige tu hospedaje!</p>
           </div>
         </section>
 
         {/* Intro */}
-        <section className="bg-gradient-to-r from-[#0e0477] to-[#6847f6] py-12">
+        <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4 text-center">
-            <p className="text-white text-lg max-w-4xl mx-auto mb-6">
+            <p className="text-lg max-w-4xl mx-auto mb-6" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
               Tijuana ofrece una variada y sólida infraestructura hotelera. En esta sección podrás consultar opciones de alojamiento en la ciudad sede.
             </p>
           </div>
@@ -46,10 +46,10 @@ export default function Hospedaje() {
                 <div className="w-24 h-24 bg-[#6847f6]/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Hotel className="w-12 h-12 text-[#6847f6]" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl mb-4 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
                   Próximamente
                 </h2>
-                <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+                <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>
                   Estamos trabajando para ofrecerte las mejores opciones de hospedaje para el Congreso Parques Tijuana 2026.
                 </p>
                 
@@ -58,9 +58,10 @@ export default function Hospedaje() {
                   <p className="text-white/90 mb-4">
                     Si tu hotel está interesado en integrarse como opción oficial para los participantes, contáctanos:
                   </p>
-                  <a 
-                    href="mailto:info@congresoparques.com" 
-                    className="inline-flex items-center gap-2 bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-3 rounded-lg hover:bg-[#d4e620] transition-colors"
+                  <a
+                    href="mailto:info@congresoparques.com"
+                    className="inline-flex items-center gap-2 bg-[#BCCE16] text-[#0e0477] px-8 py-4 rounded-lg hover:bg-[#d4e620] transition-colors uppercase tracking-wide"
+                    style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
                   >
                     <Mail className="w-5 h-5" />
                     info@congresoparques.com

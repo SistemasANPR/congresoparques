@@ -19,9 +19,9 @@ export default function Sede() {
 
       <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
+        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
               Tijuana, Baja California
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
@@ -29,9 +29,9 @@ export default function Sede() {
         </section>
 
         {/* Bienvenida */}
-        <section className="bg-gradient-to-r from-[#0e0477] to-[#6847f6] py-12">
+        <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4 text-center">
-            <p className="text-white text-lg md:text-xl max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl max-w-4xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
               Tijuana, una de las ciudades más vibrantes de México, te invita a explorar su esencia fronteriza, creativa y multicultural. Reconocida como <strong className="text-[#BCCE16]">la frontera más visitada del mundo</strong>, combina modernidad, arte urbano y una destacada oferta gastronómica, convirtiéndose en un destino dinámico y lleno de energía para todos sus visitantes.
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function Sede() {
                 ></iframe>
               </div>
               <div>
-                <p className="text-gray-700 mb-4 text-lg">
+                <p className="text-lg mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#374151' }}>
                   Tijuana es un destino que te sorprenderá con su energía, diversidad y creatividad.
                 </p>
                 <p className="text-[#0e0477] font-semibold mb-4">Anímate a descubrir esta ciudad única en la frontera norte de México.</p>
@@ -87,13 +87,13 @@ export default function Sede() {
         </section>
 
         {/* Baja California Center */}
-        <section className="py-16 bg-[#0e0477]">
+        <section className="py-16" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-white text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
               Baja California Center <span className="text-[#BCCE16]">BCC</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">
-              <div className="text-white/90 text-justify space-y-4">
+              <div className="text-justify space-y-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                 <p>
                   Lugar sede de nuestro Congreso Internacional de Parques Urbanos "Congreso Parques". Este moderno centro de convenciones, considerado <strong className="text-[#BCCE16]">uno de los recintos más importantes del noroeste de México</strong>, está ubicado en la zona costa entre Tijuana y Rosarito, a pocos minutos de la franja hotelera y con accesos directos desde ambos destinos. Aquí disfrutarás de una experiencia cómoda, profesional y perfectamente equipada para un evento internacional, además cuenta con la capacidad de recibir hasta <strong className="text-[#BCCE16]">10,000 visitantes</strong>.
                 </p>
@@ -116,7 +116,7 @@ export default function Sede() {
         {/* Descubre Tijuana */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] text-center mb-10" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
               Descubre Tijuana, Baja California: Imperdibles que no puedes dejar pasar
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -176,9 +176,9 @@ export default function Sede() {
         </section>
 
         {/* Bares y Restaurantes */}
-        <section className="py-16 bg-[#0e0477]">
+        <section className="py-16" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-white text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
               Bares y Restaurantes en Tijuana: <span className="text-[#BCCE16]">Una Noche para Recordar</span>
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -209,8 +209,8 @@ export default function Sede() {
         {/* Sitios y Experiencias Cercanas */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0e0477] text-center mb-10" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Sitios y Experiencias Cercanas: <span className="text-[#6847f6]">A un Paso de Tijuana</span>
+            <h2 className="text-2xl md:text-3xl text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
+              Sitios y Experiencias Cercanas: <span style={{ color: '#6847f6' }}>A un Paso de Tijuana</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-[#BCCE16]">
@@ -234,9 +234,9 @@ export default function Sede() {
         </section>
 
         {/* Conectividad Aérea */}
-        <section className="py-16 bg-gradient-to-r from-[#0e0477] to-[#6847f6]">
+        <section className="py-16" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl text-white text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
               Conectividad Aérea
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">

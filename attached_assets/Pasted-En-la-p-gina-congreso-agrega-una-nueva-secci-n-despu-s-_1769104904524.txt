@@ -1,0 +1,110 @@
+En la página /congreso, agrega una nueva sección después de la sección “Eventos Sociales” con el título:
+
+ALIADOS ESTRATÉGICOS
+
+Usa Montserrat Black para el título de la sección y mantén la jerarquía visual consistente con otras secciones principales del sitio. Fondo blanco.
+
+Estructura general
+
+Layout en grid de 2 columnas en desktop y 1 columna en mobile.
+
+Columna izquierda: tarjetas de aliados.
+
+Columna derecha: bloque de contacto.
+
+Mantén márgenes y paddings consistentes con las secciones previas de /congreso.
+
+Tarjetas de aliados (columna izquierda)
+
+Crea 2 tarjetas interactivas, del mismo tamaño, con comportamiento hover:
+
+Comportamiento
+
+Estado inicial: mostrar título + logos centrados.
+
+Hover:
+
+Mostrar descripción completa.
+
+Mostrar botón secundario “Conoce más”.
+
+Animación sutil (fade + translate o scale suave).
+
+Las tarjetas deben sentirse clickeables, pero sin romper la sobriedad del sitio.
+
+Tarjeta 1
+
+Título: Organiza
+Logo: ANPR
+
+Texto (hover):
+El Congreso Parques es organizado por la Asociación Nacional de Parques y Recreación de México (ANPR México), una organización no gubernamental dedicada a la profesionalización del sector de parques y espacios públicos en México y América Latina, a través de contenidos, certificaciones y eventos que convierten el conocimiento en herramientas prácticas.
+
+Botón:
+Conoce más →
+Link: https://www.anpr.org.mx
+
+Tarjeta 2
+
+Título: Apoya
+Logos: FIDEM y CDT
+
+Texto (hover):
+El Congreso Parques se realiza de la mano y gracias al Fideicomiso Empresarial del Estado de Baja California (FIDEM) y del Consejo de Desarrollo de Tijuana (CDT), una institución que marca la pauta en la planeación estratégica y el impulso de proyectos de largo plazo para la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad civil, el CDT articula voluntades, facilita alianzas y potencia iniciativas que elevan la competitividad y la calidad de vida. Su participación es clave para hacer realidad esta edición del Congreso.
+
+Botón:
+Conoce más →
+Link: https://www.cdt.org.mx
+
+Sección de contacto (columna derecha)
+
+A un lado de las tarjetas, agrega una sección diferenciada visualmente que funcione como área de contacto oficial del organizador, con estas características:
+
+Diseño
+
+Fondo contrastante respecto a las tarjetas (puede ser morado sólido #35219b o #6847f6).
+
+Texto en blanco o color de alto contraste.
+
+Bordes redondeados y padding generoso.
+
+No debe parecer una tarjeta más, sino un bloque institucional de contacto.
+
+Título:
+Contáctanos (Montserrat Black)
+
+Contenido (Montserrat Regular / Medium según fondo):
+
+Contenido y Programas:
+contenido@anpr.org.mx
+
+Comercial y Ventas:
+vinculacion@anpr.org.mx
+
+Comunicación y Prensa:
+comunicacion@anpr.org.mx
+
+Información General y Boletos:
+hola@anpr.org.mx
+
+Los correos deben ser clickeables (mailto:).
+
+Mantener buena separación visual entre cada categoría.
+
+Consideraciones finales
+
+Mantener consistencia tipográfica con el resto del sitio.
+
+Asegurar contraste AA/AAA en textos.
+
+Responsive correcto en mobile (tarjetas primero, contacto debajo).
+
+Preparar la sección para que en el futuro puedan agregarse más aliados sin romper el layout.
+
+Si quieres, en el siguiente paso puedo:
+
+Simplificar el prompt aún más para desarrollador frontend
+
+O adaptarlo a React + Tailwind con indicaciones técnicas directas
+
+O pulir microcopy y jerarquías visuales como diseñador senior 🎨

@@ -20,35 +20,35 @@ export default function EventosSociales() {
 
       <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
+        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
               Eventos Sociales
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto mb-6"></div>
-            <p className="text-white/90 text-lg">¡Llegó la hora de convivir, relajarte y hacer nuevos contactos!</p>
+            <p className="text-lg" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>¡Llegó la hora de convivir, relajarte y hacer nuevos contactos!</p>
           </div>
         </section>
 
         {/* Intro Section */}
-        <section className="bg-gradient-to-r from-[#0e0477] to-[#6847f6] py-12">
+        <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4 text-center">
-            <p className="text-white text-lg md:text-xl max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl max-w-4xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
               Únete a los tres eventos sociales del Congreso Parques —<strong className="text-[#BCCE16]">Cena de Consejo, Beer and Mix Party y Evento de Clausura</strong>—, un evento especial por día, cuidadosamente organizado para brindarte un espacio único donde podrás ampliar tu red en un ambiente casual, relajado y divertido.
             </p>
           </div>
         </section>
 
         {/* Almuerzo */}
-        <section className="relative min-h-[500px] flex items-center bg-gray-900">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#6847f6]/90 via-[#0e0477]/80 to-[#0e0477]/60"></div>
+        <section className="relative min-h-[500px] flex items-center" style={{ backgroundColor: '#6847F6' }}>
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(104, 71, 246, 0.9)' }}></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <div className="p-8 md:p-10 rounded-lg backdrop-blur-sm" style={{ backgroundColor: 'rgba(53, 33, 155, 0.9)' }}>
+                <h2 className="text-2xl md:text-3xl text-white mb-2 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                   Almuerzo (jueves y viernes)
                 </h2>
-                <p className="text-white/90 mb-6">
+                <p className="mb-6" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                   Disfruta del almuerzo incluido en tu boleto, una experiencia integrada al programa del Congreso Parques para que recargues energía sin salir del recinto, conozcas a más participantes y continúes el networking en un ambiente cómodo y ágil. Servido en la Expo Espacio Público ambos días, solo presenta tu gafete.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -83,11 +83,11 @@ export default function EventosSociales() {
           </div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <div className="p-8 md:p-10 rounded-lg backdrop-blur-sm" style={{ backgroundColor: 'rgba(53, 33, 155, 0.9)' }}>
+                <h2 className="text-2xl md:text-3xl text-white mb-2 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                   Cena de Consejo
                 </h2>
-                <p className="text-white/90 mb-6">
+                <p className="mb-6" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                   Participa y conecta en la exclusiva Cena de Consejo, donde podrás conocer de cerca a los ponentes magistrales y a los miembros del Consejo de la ANPR tras el primer gran día del congreso. ¡El ambiente perfecto para relajarte, descubrir al panel y generar nuevas conexiones!
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -109,16 +109,16 @@ export default function EventosSociales() {
         </section>
 
         {/* Beer and Mix Party */}
-        <section className="relative min-h-[500px] flex items-center bg-gray-900">
-          <div className="absolute inset-0 bg-gradient-to-l from-[#0e0477]/95 via-[#0e0477]/80 to-[#6847f6]/60"></div>
+        <section className="relative min-h-[500px] flex items-center" style={{ backgroundColor: '#35219B' }}>
+          <div className="absolute inset-0" style={{ backgroundColor: 'rgba(53, 33, 155, 0.9)' }}></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-8">
               <div></div>
-              <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <div className="p-8 md:p-10 rounded-lg backdrop-blur-sm" style={{ backgroundColor: 'rgba(104, 71, 246, 0.9)' }}>
+                <h2 className="text-2xl md:text-3xl text-white mb-2 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                   Beer and Mix Party
                 </h2>
-                <p className="text-white/90 mb-6">
+                <p className="mb-6" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                   Asiste a la Beer and Mix Party, un evento integrado al programa del Congreso Parques y creado para ofrecerte una experiencia auténtica: disfrutar de la cerveza artesanal de Tijuana mientras conoces a los expositores y fortaleces tu red de contactos en un ambiente social y agradable.
                 </p>
                 <div className="grid grid-cols-3 gap-4">
@@ -159,11 +159,11 @@ export default function EventosSociales() {
           </div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-[#0e0477]/80 p-8 md:p-10 rounded-lg backdrop-blur-sm">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <div className="p-8 md:p-10 rounded-lg backdrop-blur-sm" style={{ backgroundColor: 'rgba(53, 33, 155, 0.9)' }}>
+                <h2 className="text-2xl md:text-3xl text-white mb-2 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                   Evento de Clausura
                 </h2>
-                <p className="text-white/90 mb-6">
+                <p className="mb-6" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                   Tras días de aprendizaje y nuevas experiencias, el Evento de Clausura se convierte en el momento ideal para celebrar lo vivido, seguir conectando y compartir contactos. Todo esto en un ambiente especial que hará de este cierre una experiencia memorable.
                 </p>
                 <div className="grid grid-cols-3 gap-4">

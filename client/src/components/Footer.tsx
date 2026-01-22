@@ -4,7 +4,7 @@ import logoANPRWhiteUrl from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png"
 
 export function Footer() {
   return (
-    <footer id="footer" className="py-12" style={{ backgroundColor: '#0e0477', color: 'white' }}>
+    <footer id="footer" className="py-12" style={{ backgroundColor: '#0E0477', color: 'white', fontFamily: 'Montserrat, sans-serif' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
@@ -20,15 +20,15 @@ export function Footer() {
                   />
                 </a>
               </div>
-              <p className="text-white/80 mb-4">
+              <p className="text-white/80 mb-4" style={{ fontWeight: 500 }}>
                 Asociación Nacional de Parques y Recreación de México - Transformando espacios públicos para un futuro sostenible.
               </p>
-              <div className="text-2xl font-bold" style={{ color: '#BCCE16' }} data-testid="footer-hashtag">#CongresoParques2026</div>
+              <div className="text-2xl" style={{ color: '#BCCE16', fontFamily: 'Antonio, sans-serif', fontWeight: 700 }} data-testid="footer-hashtag">#CongresoParques2026</div>
             </div>
 
             {/* Links */}
             <div>
-              <h4 className="font-semibold mb-4">Enlaces</h4>
+              <h4 className="mb-4" style={{ fontWeight: 600 }}>Enlaces</h4>
               <ul className="space-y-2 text-white/80">
                 <li><a href="https://anpr.org.mx/privacidad" className="hover:opacity-80 transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
                 <li><a href="https://anpr.org.mx/terminos" className="hover:opacity-80 transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
@@ -38,7 +38,7 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <h4 className="font-semibold mb-4">Contacto</h4>
+              <h4 className="mb-4" style={{ fontWeight: 600 }}>Contacto</h4>
               <ul className="space-y-2 text-white/80">
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />

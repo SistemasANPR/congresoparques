@@ -26,9 +26,9 @@ export default function Organizadores() {
 
       <main className="pt-28 md:pt-36 lg:pt-40">
         {/* Hero Header */}
-        <section className="bg-gradient-to-b from-[#0e0477] to-[#6847f6] py-16 md:py-24 text-center text-white">
+        <section className="py-16 md:py-24 text-center text-white" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }} data-testid="page-title">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl uppercase mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }} data-testid="page-title">
               Organizador
             </h1>
             <div className="w-32 h-1 bg-[#BCCE16] mx-auto"></div>
@@ -101,11 +101,11 @@ export default function Organizadores() {
                   onMouseLeave={(e) => e.currentTarget.style.transform = 'rotateY(0deg)'}
                 >
                   {/* Front */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-br from-[#0e0477] to-[#6847f6] rounded-xl flex items-center justify-center shadow-lg"
-                    style={{ backfaceVisibility: 'hidden' }}
+                  <div
+                    className="absolute inset-0 rounded-xl flex items-center justify-center shadow-lg"
+                    style={{ backfaceVisibility: 'hidden', backgroundColor: '#35219B' }}
                   >
-                    <h3 className="text-5xl md:text-6xl font-black text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h3 className="text-5xl md:text-6xl text-white uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                       APOYA
                     </h3>
                   </div>
