@@ -1,5 +1,5 @@
 import { type LucideIcon } from "lucide-react";
-import decorativeLeavesUrl from "@assets/FONDO-HOJAS-WEB_1769116986727.png";
+import decorativeLeavesUrl from "@assets/FONDO-HOJAS-WEB_1769119400379.png";
 
 interface PageHeaderProps {
   title: string;
