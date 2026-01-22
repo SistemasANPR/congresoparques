@@ -48,10 +48,10 @@ export function PageHeader({ title, subtitle, icon, lucideIcon: LucideIconCompon
                 {icon && (
                   <image 
                     href={icon} 
-                    x="12" 
-                    y="15" 
-                    width="76" 
-                    height="70" 
+                    x="20" 
+                    y="22" 
+                    width="60" 
+                    height="56" 
                     clipPath="url(#hexImageClip)"
                     preserveAspectRatio="xMidYMid meet"
                   />
