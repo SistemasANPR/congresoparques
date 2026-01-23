@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import eventosIconUrl from "@assets/Eventos_Sociales_1769038571198.png";
-import almuerzoImg from "@assets/Eventos_sociales-Almuerzo_1769205643424.jpg";
+import almuerzoImg from "@assets/Eventos_sociales-Almuerzo_1769206192057.png";
 import beerMixImg from "@assets/Eventos_sociales-Beer_and_Mix_Party_1769205643427.jpg";
 import cenaConsejoImg from "@assets/Eventos_sociales-Cena_de_Consejo_1769205643429.jpg";
 import clausuraImg from "@assets/Eventos_sociales-Evento_de_Clausura_1769205643430.jpg";
