@@ -19,6 +19,9 @@ import masterClass4 from "@assets/Master_class_4_1769123164370.jpg";
 import parquesUrbanosImg from "@assets/Parques_Urbanos_de_Tijuana_1769196136967.jpg";
 import espaciosCulturalesImg from "@assets/Espacios_Públicos_Culturales_1769196136966.jpg";
 import maleconImg from "@assets/Malecón_y_Zonas_Costeras_1769196136966.jpg";
+import disenoEspaciosVerdesImg from "@assets/Diseño_de_Espacios_Verdes_1769198019300.jpg";
+import gestionAdminImg from "@assets/Gestión_y_Administración_1769198019301.jpg";
+import sustentabilidadImg from "@assets/Sustentabilidad_Urbana_1769198019301.jpg";
 
 interface WorkshopCarouselProps {
   images: string[];
@@ -252,8 +255,12 @@ export default function Talleres() {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#35219B' }}>
-                  <span className="text-5xl">🎨</span>
+                <div className="h-48 relative">
+                  <img 
+                    src={disenoEspaciosVerdesImg} 
+                    alt="Diseño de Espacios Verdes" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Diseño de Espacios Verdes</h4>
@@ -261,8 +268,12 @@ export default function Talleres() {
                 </div>
               </div>
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#6847F6' }}>
-                  <span className="text-5xl">📊</span>
+                <div className="h-48 relative">
+                  <img 
+                    src={gestionAdminImg} 
+                    alt="Gestión y Administración" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Gestión y Administración</h4>
@@ -270,8 +281,12 @@ export default function Talleres() {
                 </div>
               </div>
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#BCCE16' }}>
-                  <span className="text-5xl">🌱</span>
+                <div className="h-48 relative">
+                  <img 
+                    src={sustentabilidadImg} 
+                    alt="Sustentabilidad Urbana" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Sustentabilidad Urbana</h4>
