@@ -283,28 +283,32 @@ export default function Landing() {
       title: "Conferencias Magistrales",
       description: "Voces inspiradoras que marcan el rumbo de los parques y las ciudades.",
       fecha: "14 y 15 de mayo",
-      image: conferenciaMagistralUrl
+      image: conferenciaMagistralUrl,
+      link: "/ponentes"
     },
     {
       iconUrl: sesionesIconUrl,
       title: "Sesiones Educativas",
       description: "+30 espacios formativos con especialistas de todo el mundo.",
       fecha: "14 y 15 de mayo",
-      image: sesionEducativaUrl
+      image: sesionEducativaUrl,
+      link: "/ponentes"
     },
     {
       iconUrl: talleresIconUrl,
       title: "Talleres Vivenciales",
       description: "Aprende con dinámicas prácticas sobre diseño, gestión y activación comunitaria.",
       fecha: "13 de mayo",
-      image: tallerVivencialUrl
+      image: tallerVivencialUrl,
+      link: "/talleres"
     },
     {
       iconUrl: masterClassesIconUrl,
       title: "Master Classes",
       description: "Formación intensiva en temas especializados con expertos reconocidos.",
       fecha: "13 de mayo",
-      image: masterClassesUrl
+      image: masterClassesUrl,
+      link: "/talleres"
     },
     {
       iconUrl: expoIconUrl,
@@ -319,7 +323,8 @@ export default function Landing() {
       title: "Eventos Sociales",
       description: "Beer and Mix Party y fiesta de clausura: la mejor oportunidad para ampliar tu red en un ambiente relajado y divertido.",
       fecha: "14 y 15 de mayo",
-      image: eventosSocialesUrl
+      image: eventosSocialesUrl,
+      link: "/eventos-sociales"
     }
   ];
 
