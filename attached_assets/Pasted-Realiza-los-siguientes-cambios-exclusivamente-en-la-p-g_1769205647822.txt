@@ -1,0 +1,73 @@
+Realiza los siguientes cambios exclusivamente en la página /eventos-sociales, en las secciones de eventos sociales que se listan a continuación:
+
+Secciones a modificar
+
+Almuerzo (jueves y viernes)
+
+Cena de Consejo
+
+Beer and Mix Party
+
+Evento de Clausura
+
+Fondos de sección
+
+Reemplaza los fondos actuales de cada una de estas secciones por las imágenes correspondientes que comparto, respetando cada evento con su imagen asignada.
+
+Elimina por completo cualquier filtro, overlay o duotono aplicado a las imágenes de fondo.
+
+El contraste ya debe lograrse únicamente mediante el fondo de las tarjetas de información.
+
+Tarjetas / contenedores de información
+
+Todas las tarjetas o fondos donde se muestra la información del evento deben:
+
+Usar el color sólido #35219b como fondo principal.
+
+Mantener buena legibilidad del texto sobre este color.
+
+Información inferior (fecha, hora y lugar)
+
+La franja o área donde se muestra la información de:
+
+Fecha
+
+Hora
+
+Lugar
+
+Debe estar claramente separada visualmente del resto de la tarjeta.
+
+Utiliza como color de fondo #6847f6 para esta sección inferior.
+
+La separación debe sentirse intencional (bloque o banda diferenciada), no solo un cambio sutil de tono.
+
+Intercalado de layout
+
+En la sección Almuerzo (jueves y viernes):
+
+Mueve la tarjeta o bloque de información hacia el lado derecho.
+
+El objetivo es que todas las secciones queden intercaladas visualmente (izquierda / derecha / izquierda / derecha), manteniendo ritmo y dinamismo en el diseño.
+
+Consistencia y responsive
+
+Asegura que:
+
+El intercalado se mantenga claro en desktop.
+
+En mobile, las secciones se apilen correctamente sin perder legibilidad ni jerarquía.
+
+No modificar textos, títulos ni contenido existente.
+
+No afectar otras páginas del sitio.
+
+Resultado esperado
+
+Cada evento social cuenta con su imagen de fondo correspondiente, sin filtros.
+
+Las tarjetas de información destacan claramente sobre el fondo con color #35219b.
+
+La información de fecha, hora y lugar se distingue visualmente con el color #6847f6.
+
+El layout intercalado aporta dinamismo y coherencia visual a toda la página.
