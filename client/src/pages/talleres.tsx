@@ -1,5 +1,6 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Wrench } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
@@ -15,6 +16,9 @@ import masterClass1 from "@assets/Master_class_1_1769123164371.jpg";
 import masterClass2 from "@assets/Master_class_2_1769123164370.jpg";
 import masterClass3 from "@assets/Master_class_3_1769123164370.jpg";
 import masterClass4 from "@assets/Master_class_4_1769123164370.jpg";
+import parquesUrbanosImg from "@assets/Parques_Urbanos_de_Tijuana_1769196136967.jpg";
+import espaciosCulturalesImg from "@assets/Espacios_Públicos_Culturales_1769196136966.jpg";
+import maleconImg from "@assets/Malecón_y_Zonas_Costeras_1769196136966.jpg";
 
 interface WorkshopCarouselProps {
   images: string[];
@@ -29,6 +33,10 @@ function WorkshopCarousel({ images, title, subtitle, description, iconUrl, iconA
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
 
   useEffect(() => {
     if (!api) return;
@@ -49,11 +57,16 @@ function WorkshopCarousel({ images, title, subtitle, description, iconUrl, iconA
 
   return (
     <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto">
-      <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
+      <Carousel
+        setApi={setApi}
+        className="w-full"
+        opts={{ loop: true }}
+        plugins={[autoplayPlugin.current]}
+      >
         <CarouselContent>
           {images.map((img, index) => (
             <CarouselItem key={index}>
-              <div className="relative aspect-[16/9] md:aspect-[16/8]">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9]">
                 <img
                   src={img}
                   alt={`${title} ${index + 1}`}
@@ -64,47 +77,47 @@ function WorkshopCarousel({ images, title, subtitle, description, iconUrl, iconA
           ))}
         </CarouselContent>
       </Carousel>
-      
+
       <button
         onClick={scrollPrev}
-        className="absolute left-4 top-1/3 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
+        className="absolute left-3 top-[30%] -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
         aria-label="Anterior"
       >
-        <ChevronLeft className="w-6 h-6 text-white" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-4 top-1/3 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
+        className="absolute right-3 top-[30%] -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors"
         aria-label="Siguiente"
       >
-        <ChevronRight className="w-6 h-6 text-white" />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
       </button>
 
-      <div className="absolute bottom-0 left-0 right-0 bg-[#6847F6] p-6 md:p-8">
-        <div className="flex items-start gap-4 md:gap-6">
+      <div className="relative bg-[#6847F6] p-4 sm:p-6 md:p-8">
+        <div className="flex items-center gap-4 md:gap-6">
           <img
             src={iconUrl}
             alt={iconAlt}
-            className="w-12 h-12 md:w-16 md:h-16 object-contain flex-shrink-0"
+            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-contain flex-shrink-0"
           />
-          <div className="flex-1">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-2">
-              <h3 className="text-xl md:text-2xl font-bold text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-1 md:mb-2">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {title}
               </h3>
               {subtitle && (
-                <span className="text-[#BCCE16] text-sm md:text-base font-medium">
+                <span className="text-[#BCCE16] text-xs sm:text-sm md:text-base font-medium">
                   {subtitle}
                 </span>
               )}
             </div>
-            <p className="text-white/90 text-sm md:text-base leading-relaxed">
+            <p className="text-white/90 text-xs sm:text-sm md:text-base leading-relaxed">
               {description}
             </p>
           </div>
         </div>
-        
-        <div className="flex justify-center gap-2 mt-4">
+
+        <div className="flex justify-center gap-2 mt-3 md:mt-4">
           {Array.from({ length: count }).map((_, index) => (
             <button
               key={index}
@@ -115,20 +128,6 @@ function WorkshopCarousel({ images, title, subtitle, description, iconUrl, iconA
               aria-label={`Ir a imagen ${index + 1}`}
             />
           ))}
-        </div>
-      </div>
-
-      <div className="absolute top-6 right-6 z-20">
-        <div 
-          className="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center"
-          style={{ 
-            backgroundColor: '#BCCE16',
-            animation: 'spin 8s linear infinite'
-          }}
-        >
-          <svg className="w-5 h-5 md:w-6 md:h-6 text-[#0e0477]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
         </div>
       </div>
     </div>
@@ -194,8 +193,12 @@ export default function Talleres() {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#6847F6' }}>
-                  <span className="text-5xl">🌳</span>
+                <div className="h-48 relative">
+                  <img 
+                    src={parquesUrbanosImg} 
+                    alt="Parques Urbanos de Tijuana" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Parques Urbanos de Tijuana</h4>
@@ -203,8 +206,12 @@ export default function Talleres() {
                 </div>
               </div>
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#BCCE16' }}>
-                  <span className="text-5xl">🏛️</span>
+                <div className="h-48 relative">
+                  <img 
+                    src={espaciosCulturalesImg} 
+                    alt="Espacios Públicos Culturales" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Espacios Públicos Culturales</h4>
@@ -212,8 +219,12 @@ export default function Talleres() {
                 </div>
               </div>
               <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 flex items-center justify-center" style={{ backgroundColor: '#35219B' }}>
-                  <span className="text-5xl">🌊</span>
+                <div className="h-48 relative">
+                  <img 
+                    src={maleconImg} 
+                    alt="Malecón y Zonas Costeras" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6">
                   <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Malecón y Zonas Costeras</h4>
@@ -274,12 +285,6 @@ export default function Talleres() {
 
       <Footer />
 
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 }

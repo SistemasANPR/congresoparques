@@ -283,9 +283,9 @@ export default function Congreso() {
       descripcion: "Líderes en parques y espacios públicos ofrecerán charlas inspiradoras basadas en su trayectoria y en los desafíos urbanos actuales.",
       imagen: fondoMagistrales,
       icono: iconoMagistrales,
-      link: "",
+      link: "/ponentes",
       posicionImagen: "left",
-      isActive: false
+      isActive: true
     },
     {
       titulo: "Sesiones Educativas",
@@ -293,9 +293,9 @@ export default function Congreso() {
       descripcion: "Más de 30 sesiones educativas impartidas por conferencistas nacionales e internacionales ofrecerán un espacio dedicado al aprendizaje y la capacitación.",
       imagen: fondoSesiones,
       icono: iconoSesiones,
-      link: "",
+      link: "/ponentes",
       posicionImagen: "right",
-      isActive: false
+      isActive: true
     },
     {
       titulo: "Talleres Vivenciales",
@@ -303,9 +303,9 @@ export default function Congreso() {
       descripcion: "Explora parques urbanos, proyectos ciudadanos, centros recreativos y técnicas especializadas en temas clave del espacio público. Una oportunidad ideal para ampliar tus conocimientos.",
       imagen: fondoTalleres,
       icono: iconoTalleres,
-      link: "",
+      link: "/talleres",
       posicionImagen: "left",
-      isActive: false
+      isActive: true
     },
     {
       titulo: "Master Classes",
@@ -313,9 +313,9 @@ export default function Congreso() {
       descripcion: "Aprende de especialistas que te brindarán herramientas y técnicas avanzadas para profundizar en temas esenciales del espacio público.",
       imagen: fondoMasterClass,
       icono: iconoMasterClass,
-      link: "",
+      link: "/talleres",
       posicionImagen: "right",
-      isActive: false
+      isActive: true
     },
     {
       titulo: "Expo Espacio Público",
@@ -333,9 +333,9 @@ export default function Congreso() {
       descripcion: "Disfruta tres experiencias pensadas para conectar y celebrar: la cena de consejo, la fiesta de la cerveza y la clausura del Congreso. Un ambiente ideal para convivir y crear nuevas relaciones profesionales.",
       imagen: fondoEventosSociales,
       icono: iconoEventos,
-      link: "",
+      link: "/eventos-sociales",
       posicionImagen: "right",
-      isActive: false
+      isActive: true
     }
   ];
 
