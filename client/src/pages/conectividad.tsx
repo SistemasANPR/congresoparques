@@ -3,6 +3,10 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
+import volarisLogo from "@assets/VOLARIS_1769210259352.jpg";
+import vivaAerobusLogo from "@assets/VIVA_AEROBUS_1769210259350.jpg";
+import aeromexicoLogo from "@assets/Aeromexico_1769210259346.jpg";
+import americanAirlinesLogo from "@assets/America_Airlines_1769210259348.jpg";
 
 export default function Conectividad() {
   const vuelosNacionales = [
@@ -84,9 +88,9 @@ export default function Conectividad() {
                 El Aeropuerto Internacional de Tijuana (TIJ) es un importante aeropuerto fronterizo en el norte de México, y su ubicación estratégica lo convierte en una puerta de enlace clave tanto para vuelos nacionales como internacionales.
               </p>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <div>
-                  <h3 className="text-xl font-bold text-[#0e0477] mb-4">Vuelos directos internacionales:</h3>
+              <div className="grid md:grid-cols-2 gap-8 mb-12 items-stretch">
+                <div className="bg-[#f5f3ff] border border-[#e0dbf5] rounded-xl p-6 md:p-8 flex flex-col">
+                  <h3 className="text-xl font-bold text-[#0e0477] mb-4">Vuelos directos internacionales</h3>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <span className="text-[#BCCE16] mt-1">•</span>
@@ -97,8 +101,8 @@ export default function Conectividad() {
                     Además, la conexión a través de CBX permite a pasajeros de Estados Unidos volar hacia Tijuana utilizando rutas que despegan desde San Diego (SAN), ampliando significativamente las alternativas de llegada al destino.
                   </p>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#0e0477] mb-4">Vuelos directos nacionales desde:</h3>
+                <div className="bg-[#f5f3ff] border border-[#e0dbf5] rounded-xl p-6 md:p-8 flex flex-col">
+                  <h3 className="text-xl font-bold text-[#0e0477] mb-4">Vuelos directos nacionales desde</h3>
                   <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-700">
                     {vuelosNacionales.map((ciudad, index) => (
                       <li key={index} className="flex items-start gap-2">
@@ -113,17 +117,17 @@ export default function Conectividad() {
               <div className="border-t border-gray-200 pt-8">
                 <h3 className="text-xl font-bold text-[#0e0477] mb-6">Aerolíneas</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">Volaris</span>
+                  <div className="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm border border-gray-100">
+                    <img src={volarisLogo} alt="Volaris" className="max-h-14 max-w-full object-contain" />
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">Viva Aerobus</span>
+                  <div className="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm border border-gray-100">
+                    <img src={vivaAerobusLogo} alt="Viva Aerobus" className="max-h-14 max-w-full object-contain" />
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">Aeroméxico</span>
+                  <div className="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm border border-gray-100">
+                    <img src={aeromexicoLogo} alt="Aeroméxico" className="max-h-14 max-w-full object-contain" />
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center h-20">
-                    <span className="text-gray-600 font-semibold text-sm">American Airlines</span>
+                  <div className="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm border border-gray-100">
+                    <img src={americanAirlinesLogo} alt="American Airlines" className="max-h-14 max-w-full object-contain" />
                   </div>
                 </div>
               </div>

@@ -84,7 +84,29 @@ export default function EventosSociales() {
           ></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="rounded-lg overflow-hidden shadow-xl">
+              <div className="rounded-lg overflow-hidden shadow-xl relative">
+                <div
+                  className="absolute top-0 right-0 z-20 overflow-hidden"
+                  style={{ width: '120px', height: '120px', pointerEvents: 'none' }}
+                >
+                  <div
+                    className="text-center font-bold text-xs tracking-wider"
+                    style={{
+                      position: 'absolute',
+                      top: '22px',
+                      right: '-30px',
+                      width: '170px',
+                      transform: 'rotate(45deg)',
+                      backgroundColor: '#d0dd15',
+                      color: '#1a1a1a',
+                      padding: '6px 0',
+                      fontFamily: 'Montserrat, sans-serif',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                    }}
+                  >
+                    EXCLUSIVO
+                  </div>
+                </div>
                 <div className="p-8 md:p-10" style={{ backgroundColor: '#35219b' }}>
                   <h2 className="text-2xl md:text-3xl text-white mb-2 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
                     Cena de Consejo
@@ -94,18 +116,11 @@ export default function EventosSociales() {
                   </p>
                 </div>
                 <div className="p-6" style={{ backgroundColor: '#6847f6' }}>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
-                        <Calendar className="w-4 h-4" />
-                        <span className="font-semibold">Fecha:</span>
-                      </div>
-                      <p className="text-white/90">13 de mayo</p>
-                    </div>
-                    <div>
-                      <p className="text-[#BCCE16] font-semibold">Evento Exclusivo</p>
-                    </div>
+                  <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
+                    <Calendar className="w-4 h-4" />
+                    <span className="font-semibold">Fecha:</span>
                   </div>
+                  <p className="text-white/90">13 de mayo</p>
                 </div>
               </div>
               <div className="hidden md:block"></div>
