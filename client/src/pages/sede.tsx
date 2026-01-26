@@ -18,6 +18,8 @@ import trompoImg from "@assets/Museo_del_Trompo_1769469682698.jpg";
 import tacoImg from "@assets/Museo_del_Taco_1769469682698.jpg";
 import luchaLibreImg from "@assets/Museo_de_la_Lucha_Libre_Mexican_1769469682698.jpg";
 import coleccionistaImg from "@assets/Museo_del_Coleccionista_de_Tijuana_1769469682697.jpg";
+import aeropuertoTijuanaImg from "@assets/Aeropuerto_Internacional_de_Tijuana_1769471161925.jpg";
+import crossBorderXpressImg from "@assets/Cross_Border_Xpress_1769471161925.jpg";
 
 const attractionsData = [
   {
@@ -127,9 +129,12 @@ function TijuanaCarousel() {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
-          Descubre Tijuana, Baja California: Imperdibles que no puedes dejar pasar
+        <h2 className="text-2xl md:text-3xl text-center mb-2 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
+          Descubre Tijuana, Baja California
         </h2>
+        <p className="text-lg md:text-xl text-center mb-10" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: '#6847f6' }}>
+          Imperdibles que no puedes dejar pasar
+        </p>
 
         <div className="max-w-5xl mx-auto">
           <div 
@@ -524,25 +529,49 @@ export default function Sede() {
               Conectividad Aérea
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm text-center">
-                <div className="text-5xl mb-4">✈️</div>
-                <h3 className="text-[#BCCE16] font-bold text-xl mb-4">Aeropuerto Internacional de Tijuana</h3>
-                <p className="text-white/90 mb-4">
-                  Con <strong className="text-[#BCCE16]">36 vuelos nacionales</strong>, es el segundo aeropuerto con mejor conectividad a nivel nacional, además cuenta con <strong className="text-[#BCCE16]">2 vuelos internacionales</strong> a Estados Unidos y China.
-                </p>
-                <p className="text-white/80 text-sm">
-                  La ciudad registró de enero a noviembre 2025 un flujo de <strong className="text-[#BCCE16]">11,543,800 pasajeros</strong>.
-                </p>
+              <div className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div className="aspect-[16/9] overflow-hidden">
+                  <img 
+                    src={aeropuertoTijuanaImg} 
+                    alt="Aeropuerto Internacional de Tijuana" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#35219b' }}>
+                    Aeropuerto Internacional de Tijuana
+                  </h3>
+                  <p className="text-gray-700 mb-6 flex-grow" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                    Con <strong style={{ color: '#6847f6' }}>36 vuelos nacionales</strong>, es el segundo aeropuerto con mejor conectividad a nivel nacional, además cuenta con <strong style={{ color: '#6847f6' }}>2 vuelos internacionales</strong> a Estados Unidos y China.
+                  </p>
+                  <div className="rounded-lg p-4" style={{ backgroundColor: '#35219b' }}>
+                    <p className="text-white text-sm text-center" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}>
+                      La ciudad registró de enero a noviembre 2025 un flujo de <span className="text-[#BCCE16] font-bold">11,543,800 pasajeros</span>
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm text-center">
-                <div className="text-5xl mb-4">🌉</div>
-                <h3 className="text-[#BCCE16] font-bold text-xl mb-4">Cross Border Xpress (CBX)</h3>
-                <p className="text-white/90 mb-4">
-                  Disfruta del puente binacional que une a dos países y que ha demostrado ser un referente en materia de conectividad y facilitación fronteriza para los viajeros.
-                </p>
-                <p className="text-white/80 text-sm">
-                  El puente acumuló <strong className="text-[#BCCE16]">3,635,100 usuarios</strong> durante enero a noviembre 2025.
-                </p>
+              <div className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div className="aspect-[16/9] overflow-hidden">
+                  <img 
+                    src={crossBorderXpressImg} 
+                    alt="Cross Border Xpress (CBX)" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#35219b' }}>
+                    Cross Border Xpress (CBX)
+                  </h3>
+                  <p className="text-gray-700 mb-6 flex-grow" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                    Disfruta del puente binacional que une a dos países y que ha demostrado ser un referente en materia de conectividad y facilitación fronteriza para los viajeros.
+                  </p>
+                  <div className="rounded-lg p-4" style={{ backgroundColor: '#35219b' }}>
+                    <p className="text-white text-sm text-center" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}>
+                      El puente acumuló <span className="text-[#BCCE16] font-bold">3,635,100 usuarios</span> durante enero a noviembre 2025
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
