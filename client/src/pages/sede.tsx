@@ -1,9 +1,214 @@
-import { ExternalLink, MapPin, Palette, Sun, Compass, UtensilsCrossed, Building2, Award, Users, LayoutGrid, Zap, Hotel, Route, Waves, Utensils } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { ExternalLink, MapPin, Palette, Sun, Compass, UtensilsCrossed, Building2, Award, Users, LayoutGrid, Zap, Hotel, Route, Waves, Utensils, ChevronLeft, ChevronRight } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import bccImage from "@assets/BCC_1769466700758.jpg";
+import avenidaRevolucionImg from "@assets/avenida_revolucion_1769469682700.jpg";
+import cecutImg from "@assets/CECUT_Centro_Cultural_Tijuana_1769469682700.jpg";
+import plazaPeninsulaImg from "@assets/Plaza_Peninsula_1769469682699.jpg";
+import cerveceraImg from "@assets/_escena_cervecera_artesanal_1769469682699.jpg";
+import gastronomiaImg from "@assets/maxresdefault-8_1769469682699.jpg";
+import deportivaImg from "@assets/Xoloitzcuintles_Toros_y_Zonkeys_de_Tijuana_1769469682699.jpg";
+import playasImg from "@assets/Playas_de_Tijuana_1769469682699.jpg";
+import muroImg from "@assets/Muro_fronterizo_1769469682698.jpg";
+import arteUrbanoImg from "@assets/Arte_urbano_y_distritos_creativos_1769469682698.jpg";
+import trompoImg from "@assets/Museo_del_Trompo_1769469682698.jpg";
+import tacoImg from "@assets/Museo_del_Taco_1769469682698.jpg";
+import luchaLibreImg from "@assets/Museo_de_la_Lucha_Libre_Mexican_1769469682698.jpg";
+import coleccionistaImg from "@assets/Museo_del_Coleccionista_de_Tijuana_1769469682697.jpg";
+
+const attractionsData = [
+  {
+    id: 1,
+    title: "Avenida Revolución",
+    description: "El corazón histórico y cultural de la ciudad, con arte urbano, tiendas locales, bares, cafés y ambiente fronterizo.",
+    image: avenidaRevolucionImg
+  },
+  {
+    id: 2,
+    title: "Centro Cultural Tijuana (CECUT)",
+    description: "Uno de los recintos culturales más importantes del norte del país, con museos, galerías y su icónica esfera.",
+    image: cecutImg
+  },
+  {
+    id: 3,
+    title: "Plaza Península",
+    description: "Destino de compras, gastronomía y estilo de vida al aire libre.",
+    image: plazaPeninsulaImg
+  },
+  {
+    id: 4,
+    title: "Cervecería Artesanal",
+    description: "Oasis de la cerveza artesanal con más de 30 cervecerías y rutas reconocidas internacionalmente.",
+    image: cerveceraImg
+  },
+  {
+    id: 5,
+    title: "Gastronomía Única",
+    description: "Tacos estilo Tijuana, cocina Baja Med y escena culinaria internacional.",
+    image: gastronomiaImg
+  },
+  {
+    id: 6,
+    title: "Escena Deportiva",
+    description: "Xolos, Toros y Zonkeys: la única ciudad fronteriza con 3 equipos profesionales.",
+    image: deportivaImg
+  },
+  {
+    id: 7,
+    title: "Playas de Tijuana",
+    description: "Malecón, océano Pacífico y atardeceres costeros.",
+    image: playasImg
+  },
+  {
+    id: 8,
+    title: "Muro Fronterizo",
+    description: "Murales, identidad cultural y expresión artística fronteriza.",
+    image: muroImg
+  },
+  {
+    id: 9,
+    title: "Arte Urbano y Distritos Creativos",
+    description: "Galerías, murales y comunidad artística vibrante.",
+    image: arteUrbanoImg
+  },
+  {
+    id: 10,
+    title: "Museo El Trompo",
+    description: "Espacio interactivo de ciencia y tecnología para todas las edades.",
+    image: trompoImg
+  },
+  {
+    id: 11,
+    title: "Museo del Taco",
+    description: "Experiencia inmersiva desde la tortilla hasta la cultura del taco.",
+    image: tacoImg
+  },
+  {
+    id: 12,
+    title: "Museo de la Lucha Libre Mexicana",
+    description: "Colección de máscaras, campeonatos, historia y cultura luchística.",
+    image: luchaLibreImg
+  },
+  {
+    id: 13,
+    title: "Museo del Coleccionista de Tijuana",
+    description: "Colecciones de objetos históricos y culturales que evocan la memoria colectiva.",
+    image: coleccionistaImg
+  }
+];
+
+function TijuanaCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const goToSlide = useCallback((index: number) => {
+    setCurrentIndex(index);
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % attractionsData.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + attractionsData.length) % attractionsData.length);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused, nextSlide]);
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
+          Descubre Tijuana, Baja California: Imperdibles que no puedes dejar pasar
+        </h2>
+
+        <div className="max-w-5xl mx-auto">
+          <div 
+            className="relative rounded-xl overflow-hidden shadow-2xl"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="relative aspect-[16/9]">
+              <img
+                src={attractionsData[currentIndex].image}
+                alt={attractionsData[currentIndex].title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                <h3 className="text-2xl md:text-3xl text-white mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
+                  {attractionsData[currentIndex].title}
+                </h3>
+                <p className="text-white/90 text-base md:text-lg max-w-2xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                  {attractionsData[currentIndex].description}
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors"
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="w-6 h-6 text-white" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors"
+              aria-label="Siguiente"
+            >
+              <ChevronRight className="w-6 h-6 text-white" />
+            </button>
+
+            <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white text-sm px-3 py-1 rounded-full">
+              {currentIndex + 1} / {attractionsData.length}
+            </div>
+          </div>
+
+          <div className="mt-6 overflow-x-auto pb-2">
+            <div className="flex gap-3 justify-start md:justify-center min-w-max md:min-w-0">
+              {attractionsData.map((attraction, index) => (
+                <button
+                  key={attraction.id}
+                  onClick={() => goToSlide(index)}
+                  className={`relative flex-shrink-0 w-20 h-14 md:w-24 md:h-16 rounded-lg overflow-hidden transition-all ${
+                    index === currentIndex 
+                      ? 'ring-3 ring-[#BCCE16] scale-105' 
+                      : 'opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <img
+                    src={attraction.image}
+                    alt={attraction.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  {index === currentIndex && (
+                    <div className="absolute inset-0 border-2 border-[#BCCE16] rounded-lg"></div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-center text-gray-500 text-sm mt-6">
+            *Recomendamos verificar horarios de cada lugar para planear su visita.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Sede() {
   return (
@@ -251,67 +456,8 @@ export default function Sede() {
           </div>
         </section>
 
-        {/* Descubre Tijuana */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
-              Descubre Tijuana, Baja California: Imperdibles que no puedes dejar pasar
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Recorre la Avenida Revolución:</strong> El corazón histórico y cultural de la ciudad. Aquí encontrarás arte urbano, tiendas locales, bares, cafés y una muestra del ambiente fronterizo que caracteriza a Tijuana.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Explora el CECUT – Centro Cultural Tijuana:</strong> Visita uno de los recintos culturales más importantes del norte del país. Su icónico edificio Esfera, museos, galerías y funciones de cine lo convierten en una parada obligada.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Visita Plaza Península:</strong> Date la oportunidad de conocer el destino favorito de compras, gastronomía y estilo de vida en Tijuana. Explora una selección única de tiendas, restaurantes y entretenimiento en un ambiente familiar, al aire libre lleno de estilo y energía.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Vive la escena cervecera artesanal:</strong> Tijuana denominada como el Oasis de la Cerveza Artesanal, es uno de los epicentros de este movimiento en México, la ciudad cuenta con aproximadamente 30 cervecerías artesanales. Descubre tap rooms, cervecerías locales y rutas cerveceras reconocidas internacionalmente.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Disfruta su gastronomía única:</strong> La ciudad es famosa por los tacos estilo Tijuana contando con más de 200 taquerías, la mezcla culinaria fronteriza, la cocina de autor y el movimiento culinario Baja Med, que combina ingredientes frescos del mar y la región.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Vive la escena deportiva:</strong> Atrévete a vivir la experiencia deportiva en la única ciudad fronteriza con 3 equipos deportivos a nivel profesional, Xoloitzcuintles, Toros y Zonkeys de Tijuana. <strong className="text-[#0e0477]">Playas de Tijuana:</strong> A solo minutos de la zona urbana, camina por su malecón y contempla un atardecer frente al océano Pacífico.</span>
-                </li>
-              </ul>
-              <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Muro fronterizo:</strong> Admira los murales en el muro fronterizo de Playas de Tijuana y sé testigo del talento local y lo que representa el movimiento cultural y migratorio en la ciudad.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Arte urbano y distritos creativos:</strong> Descubre galerías independientes, murales, centros culturales alternativos y una vibrante comunidad artística que le da carácter a la ciudad.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Museo del Trompo:</strong> Inaugurado en 2008, es un espacio interactivo perfecto para familias y visitantes interesados en ciencia y tecnología. <strong className="text-[#0e0477]">Museo del Taco:</strong> Aquí se celebra al taco, la carne y la tortilla. Vive la aventura que va desde el carbón y la creación de tu propia tortilla hasta el final épico en la alberca de pelotas.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Museo de la Lucha Libre Mexicana:</strong> Atrévete y conoce la más grande colección de máscaras, cabelleras, campeonatos, revistas, juguetes, equipos, arte y todo de Lucha Libre.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#BCCE16] mt-1">•</span>
-                  <span><strong className="text-[#0e0477]">Museo del Coleccionista de Tijuana:</strong> Admira colecciones de Tarjetas telefónicas, cerillos, boletos de lucha libre, billetes, tazos, juguetes, revistas, entre muchos otros artículos que harán salir los recuerdos de tu memoria.</span>
-                </li>
-              </ul>
-            </div>
-            <p className="text-center text-gray-500 text-sm mt-8">
-              *Recomendamos verificar horarios de cada lugar para planear su visita.
-            </p>
-          </div>
-        </section>
+        {/* Descubre Tijuana - Carrusel Interactivo */}
+        <TijuanaCarousel />
 
         {/* Bares y Restaurantes */}
         <section className="py-16" style={{ backgroundColor: '#35219B' }}>

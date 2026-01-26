@@ -1,0 +1,143 @@
+Página /sede
+Sección Descubre Tijuana, Baja California: Imperdibles que no puedes dejar pasar
+
+Reemplaza todo el contenido textual actual de esta sección por un slider / carrusel de imágenes interactivo que muestre los atractivos turísticos de la ciudad de Tijuana, utilizando las imágenes adjuntas.
+
+Estructura del slider
+Comportamiento general
+
+Slider responsive (desktop, tablet, mobile)
+
+Mostrar 1 imagen por slide
+
+El carrusel debe:
+
+Avanzar automáticamente con un tiempo de lectura adecuado (5–7 segundos)
+
+Permitir navegación manual
+
+Pausar autoplay al interactuar (hover / swipe)
+
+Ser escalable para agregar más slides en el futuro sin romper el layout
+
+Navegación visual (UX)
+
+Implementar un sistema de navegación con:
+
+Miniaturas (thumbnails)
+
+Miniaturas de las imágenes debajo del slider principal
+
+Cada miniatura permite navegar directamente al slide correspondiente
+
+Las miniaturas deben:
+
+Ser visibles
+
+Tener estado activo claro
+
+Ser responsive
+
+Scroll horizontal en mobile si no caben todas
+
+Esto debe funcionar como navegación visual + guía de exploración, no solo como decoración.
+
+Overlay de contenido
+
+Sobre cada imagen:
+
+Agregar un overlay con filtro (degradado u opacidad)
+
+El overlay debe mostrar:
+
+Título
+
+Descripción
+
+Posición del contenido: preferentemente en la parte inferior del slide
+
+Tipografía:
+
+Título: Montserrat Black
+
+Descripción: Montserrat Regular / Medium
+
+Alto contraste para legibilidad
+
+El overlay no debe ocultar la imagen principal
+
+Slides / Contenido
+Atractivos turísticos (1 slide por elemento)
+
+Avenida Revolución
+El corazón histórico y cultural de la ciudad, con arte urbano, tiendas locales, bares, cafés y ambiente fronterizo.
+
+Centro Cultural Tijuana (CECUT)
+Uno de los recintos culturales más importantes del norte del país, con museos, galerías y su icónica esfera.
+
+Plaza Península
+Destino de compras, gastronomía y estilo de vida al aire libre.
+
+Cervecería artesanal
+Oasis de la cerveza artesanal con más de 30 cervecerías y rutas reconocidas internacionalmente.
+
+Gastronomía única
+Tacos estilo Tijuana, cocina Baja Med y escena culinaria internacional.
+
+Escena deportiva
+Xolos, Toros y Zonkeys: la única ciudad fronteriza con 3 equipos profesionales.
+
+Playas de Tijuana
+Malecón, océano Pacífico y atardeceres costeros.
+
+Muro fronterizo
+Murales, identidad cultural y expresión artística fronteriza.
+
+Arte urbano y distritos creativos
+Galerías, murales y comunidad artística vibrante.
+
+Museos (slides independientes)
+
+Museo El Trompo
+Espacio interactivo de ciencia y tecnología para todas las edades.
+
+Museo del Taco
+Experiencia inmersiva desde la tortilla hasta la cultura del taco.
+
+Museo de la Lucha Libre Mexicana
+Colección de máscaras, campeonatos, historia y cultura luchística.
+
+Museo del Coleccionista de Tijuana
+Colecciones de objetos históricos y culturales que evocan la memoria colectiva.
+
+👉 Cada museo debe tener su propio slide independiente, no agrupados.
+
+Lineamientos técnicos
+
+Optimización de imágenes
+
+Lazy loading
+
+No usar overlays pesados
+
+No duplicar contenido textual fuera del slider
+
+Mantener coherencia con el diseño del sitio
+
+Componente reutilizable
+
+Preparado para expansión futura
+
+Objetivo UX/UI
+
+Crear una experiencia inmersiva, visual y navegable, donde:
+
+La imagen sea protagonista
+
+El texto acompañe
+
+La navegación sea clara
+
+La exploración sea intuitiva
+
+La sección funcione como un explorador turístico interactivo de Tijuana

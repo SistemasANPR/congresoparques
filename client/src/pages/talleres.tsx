@@ -17,10 +17,10 @@ import masterClass2 from "@assets/Master_class_2_1769123164370.jpg";
 import masterClass3 from "@assets/Master_class_3_1769123164370.jpg";
 import masterClass4 from "@assets/Master_class_4_1769123164370.jpg";
 import parquesUrbanosImg from "@assets/Parques_Urbanos_de_Tijuana_1769196136967.jpg";
-import espaciosCulturalesImg from "@assets/Espacios_Públicos_Culturales_1769196136966.jpg";
-import maleconImg from "@assets/Malecón_y_Zonas_Costeras_1769196136966.jpg";
-import disenoEspaciosVerdesImg from "@assets/Diseño_de_Espacios_Verdes_1769198019300.jpg";
-import gestionAdminImg from "@assets/Gestión_y_Administración_1769198019301.jpg";
+import espaciosCulturalesImg from "@assets/Espacios_Publicos_Culturales_1769196136966.jpg";
+import maleconImg from "@assets/Malecon_y_Zonas_Costeras_1769196136966.jpg";
+import disenoEspaciosVerdesImg from "@assets/Diseno_de_Espacios_Verdes_1769198019300.jpg";
+import gestionAdminImg from "@assets/Gestion_y_Administracion_1769198019301.jpg";
 import sustentabilidadImg from "@assets/Sustentabilidad_Urbana_1769198019301.jpg";
 
 interface WorkshopCarouselProps {
