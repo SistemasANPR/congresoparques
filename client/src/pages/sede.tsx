@@ -1,8 +1,9 @@
-import { ExternalLink, MapPin } from "lucide-react";
+import { ExternalLink, MapPin, Palette, Sun, Compass, UtensilsCrossed, Building2, Award, Users, LayoutGrid, Zap, Hotel, Route, Waves, Utensils } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
+import bccImage from "@assets/BCC_1769466700758.jpg";
 
 export default function Sede() {
   return (
@@ -25,19 +26,16 @@ export default function Sede() {
           lucideIcon={MapPin}
         />
 
-        {/* Bienvenida */}
+        {/* Tijuana, ciudad vibrante */}
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-lg md:text-xl max-w-4xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
-              Tijuana, una de las ciudades más vibrantes de México, te invita a explorar su esencia fronteriza, creativa y multicultural. Reconocida como <strong className="text-[#BCCE16]">la frontera más visitada del mundo</strong>, combina modernidad, arte urbano y una destacada oferta gastronómica, convirtiéndose en un destino dinámico y lleno de energía para todos sus visitantes.
-            </p>
-          </div>
-        </section>
-
-        {/* Video y descripción */}
-        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">
+            <div className="max-w-4xl mx-auto text-center">
+              <h3 className="text-[#BCCE16] text-2xl md:text-3xl mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
+                Tijuana, ciudad vibrante
+              </h3>
+              <p className="text-lg md:text-xl mb-8" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
+                Una ciudad fronteriza, creativa y multicultural que combina modernidad, arte urbano y una destacada oferta gastronómica, convirtiéndose en un destino dinámico y lleno de energía.
+              </p>
               <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
                 <iframe
                   width="100%"
@@ -51,33 +49,67 @@ export default function Sede() {
                   className="w-full h-full"
                 ></iframe>
               </div>
-              <div>
-                <p className="text-lg mb-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#374151' }}>
-                  Tijuana es un destino que te sorprenderá con su energía, diversidad y creatividad.
-                </p>
-                <p className="text-[#0e0477] font-semibold mb-4">Anímate a descubrir esta ciudad única en la frontera norte de México.</p>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#BCCE16] mt-1">•</span>
-                    <span><strong className="text-[#0e0477]">Explora su esencia multicultural:</strong> Arte urbano, historia fronteriza y una vibrante vida cultural.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#BCCE16] mt-1">•</span>
-                    <span><strong className="text-[#0e0477]">Disfruta su clima templado:</strong> Ideal para recorrer la ciudad y sus alrededores durante gran parte del año.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#BCCE16] mt-1">•</span>
-                    <span><strong className="text-[#0e0477]">Vive experiencias únicas:</strong> Avenida Revolución, el icónico CECUT, cervecerías artesanales y escapadas a la costa.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#BCCE16] mt-1">•</span>
-                    <span><strong className="text-[#0e0477]">Degusta su gastronomía:</strong> Desde los famosos tacos estilo Tijuana hasta propuestas culinarias innovadoras.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[#BCCE16] mt-1">•</span>
-                    <span><strong className="text-[#0e0477]">Descansa y disfruta:</strong> Una ciudad moderna, dinámica y con una oferta turística preparada para recibirte.</span>
-                  </li>
-                </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Descubre Tijuana - highlights */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl md:text-3xl text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
+                Anímate a descubrir esta ciudad única
+              </h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-8">
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Palette className="w-6 h-6 text-[#6847f6]" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-[#0e0477] mb-1">Esencia multicultural</h4>
+                      <p className="text-gray-700">Arte urbano, historia fronteriza y una vibrante vida cultural que refleja la identidad única de la ciudad.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Sun className="w-6 h-6 text-[#6847f6]" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-[#0e0477] mb-1">Clima templado</h4>
+                      <p className="text-gray-700">Ideal para recorrer la ciudad y sus alrededores durante gran parte del año.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Compass className="w-6 h-6 text-[#6847f6]" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-[#0e0477] mb-1">Experiencias únicas</h4>
+                      <p className="text-gray-700">Avenida Revolución, el icónico CECUT, cervecerías artesanales y escapadas a la costa del Pacífico.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-8">
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <UtensilsCrossed className="w-6 h-6 text-[#6847f6]" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-[#0e0477] mb-1">Gastronomía de primer nivel</h4>
+                      <p className="text-gray-700">Desde los famosos tacos estilo Tijuana hasta propuestas culinarias innovadoras del movimiento Baja Med.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Building2 className="w-6 h-6 text-[#6847f6]" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-[#0e0477] mb-1">Ciudad moderna y dinámica</h4>
+                      <p className="text-gray-700">Una oferta turística preparada para recibirte con comodidad, entretenimiento y hospitalidad.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -86,26 +118,135 @@ export default function Sede() {
         {/* Baja California Center */}
         <section className="py-16" style={{ backgroundColor: '#6847F6' }}>
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl text-white text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
+            <h2 className="text-2xl md:text-3xl text-white text-center mb-2 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
               Baja California Center <span className="text-[#BCCE16]">BCC</span>
             </h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">
-              <div className="text-justify space-y-4" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
-                <p>
-                  Lugar sede de nuestro Congreso Internacional de Parques Urbanos "Congreso Parques". Este moderno centro de convenciones, considerado <strong className="text-[#BCCE16]">uno de los recintos más importantes del noroeste de México</strong>, está ubicado en la zona costa entre Tijuana y Rosarito, a pocos minutos de la franja hotelera y con accesos directos desde ambos destinos. Aquí disfrutarás de una experiencia cómoda, profesional y perfectamente equipada para un evento internacional, además cuenta con la capacidad de recibir hasta <strong className="text-[#BCCE16]">10,000 visitantes</strong>.
-                </p>
-                <p>
-                  El Baja California Center cuenta con amplios salones, áreas modulares y espacios versátiles diseñados para congresos, exposiciones y encuentros de gran escala. Su arquitectura contemporánea, tecnología de vanguardia y servicios especializados lo convierten en el escenario ideal para reunir a expertos y profesionales del sector de parques y recreación.
-                </p>
-                <p>
-                  Además, su ubicación estratégica ofrece vistas al océano Pacífico, fácil conectividad terrestre y proximidad a hoteles, gastronomía y atractivos turísticos, garantizando una estancia agradable y accesible para todos los asistentes.
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-full h-64 bg-white/10 rounded-lg flex items-center justify-center">
-                  <span className="text-6xl">🏛️</span>
+            <p className="text-lg md:text-xl text-white/90 text-center mb-10" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+              Centro de convenciones moderno y de clase internacional, ubicado en la zona costa entre Tijuana y Rosarito.
+            </p>
+            {/* Bloque: ¿Por qué aquí? */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 md:p-8 text-center">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <Award className="w-8 h-8 text-[#BCCE16]" />
+                  <h3 className="text-xl md:text-2xl text-[#BCCE16] uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800 }}>
+                    ¿Por qué aquí?
+                  </h3>
                 </div>
+                <p className="text-lg md:text-xl text-white" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}>
+                  Uno de los recintos más importantes del noroeste de México
+                </p>
               </div>
+            </div>
+
+            {/* Imagen del BCC */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <img 
+                src={bccImage} 
+                alt="Baja California Center" 
+                className="w-full h-auto rounded-xl shadow-lg object-cover"
+              />
+            </div>
+
+            {/* Grid de características y ubicación */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {/* Características del recinto */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-[#BCCE16] rounded-full flex items-center justify-center">
+                    <Building2 className="w-6 h-6 text-[#6847F6]" />
+                  </div>
+                  <h4 className="text-lg md:text-xl text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>
+                    Características del recinto
+                  </h4>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Users className="w-5 h-5 text-[#BCCE16]" />
+                    </div>
+                    <span className="text-white/90 pt-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                      Capacidad para hasta <strong className="text-[#BCCE16]">10,000 asistentes</strong>
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <LayoutGrid className="w-5 h-5 text-[#BCCE16]" />
+                    </div>
+                    <span className="text-white/90 pt-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                      Salones amplios, áreas modulares y espacios versátiles
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Zap className="w-5 h-5 text-[#BCCE16]" />
+                    </div>
+                    <span className="text-white/90 pt-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                      Tecnología de vanguardia y servicios especializados
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Ubicación estratégica */}
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-[#BCCE16] rounded-full flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-[#6847F6]" />
+                  </div>
+                  <h4 className="text-lg md:text-xl text-white uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700 }}>
+                    Ubicación estratégica
+                  </h4>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Hotel className="w-5 h-5 text-[#BCCE16]" />
+                    </div>
+                    <span className="text-white/90 pt-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                      A minutos de la franja hotelera
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Route className="w-5 h-5 text-[#BCCE16]" />
+                    </div>
+                    <span className="text-white/90 pt-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                      Accesos directos desde Tijuana y Rosarito
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Waves className="w-5 h-5 text-[#BCCE16]" />
+                    </div>
+                    <span className="text-white/90 pt-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                      Vistas al océano Pacífico
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Utensils className="w-5 h-5 text-[#BCCE16]" />
+                    </div>
+                    <span className="text-white/90 pt-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                      Cercano a hoteles, gastronomía y atractivos turísticos
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Botón Ver en Google Maps */}
+            <div className="text-center mt-10">
+              <a
+                href="https://maps.app.goo.gl/kkYY5pVgpbwgrik49"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/30 text-white rounded-lg transition-colors"
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}
+              >
+                <MapPin className="w-5 h-5" />
+                Ver en Google Maps
+              </a>
             </div>
           </div>
         </section>
