@@ -1,7 +1,6 @@
 import { Clock, MapPin, Calendar } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import eventosIconUrl from "@assets/Eventos_Sociales_1769038571198.png";
 import almuerzoImg from "@assets/Eventos_sociales-Almuerzo_1769206192057.png";
@@ -12,13 +11,6 @@ import clausuraImg from "@assets/Eventos_sociales-Evento_de_Clausura_17692056434
 export default function EventosSociales() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <AnnouncementBanner
-        messages={[
-          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
-          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
-        ]}
-        speed="normal"
-      />
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">

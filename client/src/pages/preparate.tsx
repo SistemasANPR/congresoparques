@@ -1,21 +1,11 @@
 import { Download, FileText, CreditCard, Link2, BookOpen, Lightbulb } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 
 export default function Preparate() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Announcement Banner */}
-      <AnnouncementBanner
-        messages={[
-          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
-          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
-        ]}
-        speed="normal"
-      />
-      {/* Header Navigation */}
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">

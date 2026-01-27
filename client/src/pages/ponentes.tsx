@@ -1,21 +1,12 @@
 import { Mic } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import gearsImageUrl from "@assets/generated_images/gears_illustration_teamwork_concept.png";
 
 export default function Ponentes() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Announcement Banner */}
-      <AnnouncementBanner
-        messages={[
-          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
-          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
-        ]}
-        speed="normal"
-      />
       {/* Header Navigation */}
       <Navigation />
 

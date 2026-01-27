@@ -35,7 +35,6 @@ import {
   FlaskConical,
   HeartHandshake
 } from "lucide-react";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Link } from "wouter";
@@ -436,21 +435,6 @@ export default function Landing() {
 
   return (
     <div className="bg-background text-foreground">
-      {/* Announcement Banner */}
-      <AnnouncementBanner
-        messages={[
-          {
-            id: "convocatorias",
-            text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO",
-          },
-          {
-            id: "boletos",
-            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
-          },
-        ]}
-        speed="normal"
-      />
-      {/* Header Navigation */}
       <Navigation />
 
       {/* Hero Section */}

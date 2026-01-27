@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { ExternalLink, MapPin, Palette, Sun, Compass, UtensilsCrossed, Building2, Award, Users, LayoutGrid, Zap, Hotel, Route, Waves, Utensils, ChevronLeft, ChevronRight } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import bccImage from "@assets/BCC_1769466700758.jpg";
 import avenidaRevolucionImg from "@assets/avenida_revolucion_1769469682700.jpg";
@@ -223,15 +222,6 @@ function TijuanaCarousel() {
 export default function Sede() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Announcement Banner */}
-      <AnnouncementBanner
-        messages={[
-          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
-          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
-        ]}
-        speed="normal"
-      />
-      {/* Header Navigation */}
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">

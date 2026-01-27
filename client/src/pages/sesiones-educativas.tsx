@@ -2,7 +2,6 @@ import { Link } from "wouter";
 import { Users, Calendar, FileText, Award, ClipboardList, Send, Clock, CheckCircle, Target, BookOpen, GraduationCap } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import sesionesIconUrl from "@assets/Sesiones_Educativas_1769038571198.png";
 import conferenciaImg from "@assets/Conferencias Magistrales_1758578569495.png";
@@ -15,15 +14,6 @@ import eventosImg from "@assets/Eventos Sociales_1758578569496.png";
 export default function SesionesEducativas() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Announcement Banner */}
-      <AnnouncementBanner
-        messages={[
-          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
-          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
-        ]}
-        speed="normal"
-      />
-      {/* Header Navigation */}
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">

@@ -1,7 +1,6 @@
 import { Calendar, MapPin, LayoutGrid, Store, Phone, Mail, Clock, Users, Eye, Building2, CheckCircle, Download, MessageCircle } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import expoLogoUrl from "@assets/logo-expo-espacio-publico-2026.png";
 import expoIconUrl from "@assets/Expo_Espacio_Publico_1769038571197.png";
@@ -63,15 +62,6 @@ export default function ExpoEspacioPublico() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Announcement Banner */}
-      <AnnouncementBanner
-        messages={[
-          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
-          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
-        ]}
-        speed="normal"
-      />
-      {/* Header Navigation */}
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">

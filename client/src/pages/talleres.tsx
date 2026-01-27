@@ -3,7 +3,6 @@ import { ChevronLeft, ChevronRight, Wrench } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { PageHeader } from "@/components/PageHeader";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import talleresVivencialesIconUrl from "@assets/Talleres_Vivenciales_1769038571197.png";
@@ -154,13 +153,6 @@ export default function Talleres() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <AnnouncementBanner
-        messages={[
-          { id: "convocatorias", text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO" },
-          { id: "boletos", text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO" },
-        ]}
-        speed="normal"
-      />
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
