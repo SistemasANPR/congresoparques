@@ -56,15 +56,18 @@ export function AnnouncementBanner({
 
   if (messages.length === 0) return null;
 
-  // Build the ticker content with separators
-  const tickerContent = messages.map((msg, index) => (
-    <span key={msg.id} className="inline-flex items-center">
-      <span style={{ color: highlightColor }}>★</span>
-      <span className="mx-2">{msg.text}</span>
-      <span style={{ color: highlightColor }}>★</span>
-      {index < messages.length - 1 && <span className="mx-4">|</span>}
-    </span>
-  ));
+  // Build the ticker content with separators - repeat multiple times to fill screen
+  const repeatCount = Math.max(6, Math.ceil(10 / messages.length));
+  const tickerContent = Array.from({ length: repeatCount }).flatMap((_, repeatIndex) =>
+    messages.map((msg, index) => (
+      <span key={`${msg.id}-${repeatIndex}-${index}`} className="inline-flex items-center">
+        <span style={{ color: highlightColor }}>★</span>
+        <span className="mx-2">{msg.text}</span>
+        <span style={{ color: highlightColor }}>★</span>
+        <span className="mx-4">|</span>
+      </span>
+    ))
+  );
 
   // For reduced motion: show static text that cycles
   if (prefersReducedMotion) {
