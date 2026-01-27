@@ -20,6 +20,7 @@ import luchaLibreImg from "@assets/Museo_de_la_Lucha_Libre_Mexican_1769469682698
 import coleccionistaImg from "@assets/Museo_del_Coleccionista_de_Tijuana_1769469682697.jpg";
 import aeropuertoTijuanaImg from "@assets/Aeropuerto_Internacional_de_Tijuana_1769471161925.jpg";
 import crossBorderXpressImg from "@assets/Cross_Border_Xpress_1769471161925.jpg";
+import fondoRestaurantesImg from "@assets/Fondo_restaurantes_tijuana_1769527606636.jpg";
 
 const attractionsData = [
   {
@@ -465,8 +466,20 @@ export default function Sede() {
         <TijuanaCarousel />
 
         {/* Bares y Restaurantes */}
-        <section className="py-16" style={{ backgroundColor: '#35219B' }}>
-          <div className="container mx-auto px-4">
+        <section className="py-16 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center md:bg-fixed"
+            style={{ 
+              backgroundImage: `url(${fondoRestaurantesImg})`,
+              backgroundAttachment: 'scroll'
+            }}
+          >
+            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(53, 33, 155, 0.85)' }}></div>
+          </div>
+          <style>
+            {`@media (min-width: 768px) { .parallax-bg { background-attachment: fixed !important; } }`}
+          </style>
+          <div className="container mx-auto px-4 relative z-10">
             <h2 className="text-2xl md:text-3xl text-white text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
               Bares y Restaurantes en Tijuana: <span className="text-[#BCCE16]">Una Noche para Recordar</span>
             </h2>
