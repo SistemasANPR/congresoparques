@@ -439,10 +439,6 @@ export default function Landing() {
       <AnnouncementBanner
         messages={[
           {
-            id: "convocatorias",
-            text: "REGISTRO A CONVOCATORIAS ABIERTO HASTA EL 25 DE ENERO",
-          },
-          {
             id: "boletos",
             text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
           },
