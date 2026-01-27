@@ -920,8 +920,8 @@ export default function Landing() {
                   {/* Botón */}
                   <div className="text-center mt-auto">
                     <button
-                      onClick={() => window.open('https://congresoparques.com/registro_sesiones.php', '_blank')}
-                      className="convocatoria-btn px-9 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 text-base tracking-wide"
+                      disabled
+                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-50"
                       style={{
                         backgroundColor: '#35219b',
                         fontFamily: 'Antonio, sans-serif'
@@ -977,8 +977,8 @@ export default function Landing() {
                   {/* Botón */}
                   <div className="text-center mt-auto">
                     <button
-                      onClick={() => window.open('https://congresoparques.com/registro_posters.php', '_blank')}
-                      className="convocatoria-btn px-9 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 text-base tracking-wide"
+                      disabled
+                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-50"
                       style={{
                         backgroundColor: '#35219b',
                         fontFamily: 'Antonio, sans-serif'
