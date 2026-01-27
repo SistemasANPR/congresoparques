@@ -2,10 +2,7 @@ import { Calendar, MapPin, LayoutGrid, Store, Phone, Mail, Clock, Users, Eye, Bu
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { PageHeader } from "@/components/PageHeader";
-import expoLogoUrl from "@assets/logo-expo-espacio-publico-2026.png";
-import expoIconUrl from "@assets/Expo_Espacio_Publico_1769038571197.png";
-import expoHeroUrl from "@assets/expo-espacio-publico-2026.jpg";
+import expoOfficialLogoUrl from "@assets/Recurso_17_1769556427973.png";
 
 export default function ExpoEspacioPublico() {
   const beneficios = [
@@ -74,13 +71,93 @@ export default function ExpoEspacioPublico() {
       />
       <Navigation />
 
-      <main className="pt-28 md:pt-36 lg:pt-40">
-        <PageHeader 
-          title="Expo Espacio Público 2026"
-          subtitle="La exhibición especializada integrada al Congreso Parques 2026"
-          icon={expoIconUrl}
-          iconAlt="Icono Expo Espacio Público"
-        />
+      <main className="pt-24 md:pt-28">
+        {/* Hero Section - Expo Espacio Público */}
+        <section 
+          id="hero-expo"
+          className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center py-16 md:py-24 lg:py-32"
+          style={{ backgroundColor: '#0e0477' }}
+        >
+          {/* Background gradient overlay */}
+          <div 
+            className="absolute inset-0 opacity-30"
+            style={{ 
+              background: 'radial-gradient(ellipse at center, #6847f6 0%, transparent 70%)'
+            }}
+          />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              {/* Logo oficial de Expo Espacio Público */}
+              <div className="mb-8 md:mb-10">
+                <img 
+                  src={expoOfficialLogoUrl}
+                  alt="Logo Expo Espacio Público 2026"
+                  className="w-48 h-auto md:w-64 lg:w-80 mx-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+              
+              {/* Título */}
+              <h1 
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white mb-4 md:mb-6 uppercase tracking-wide"
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}
+              >
+                Expo Espacio Público 2026
+              </h1>
+              
+              {/* Subtítulo */}
+              <p 
+                className="text-lg md:text-xl lg:text-2xl mb-4 md:mb-6 max-w-3xl mx-auto"
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600, color: '#BCCE16' }}
+              >
+                La exhibición especializada del Congreso Parques 2026 para el sector de parques y espacios públicos en América Latina.
+              </p>
+              
+              {/* Texto descriptivo */}
+              <p 
+                className="text-base md:text-lg lg:text-xl text-white/80 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed"
+                style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}
+              >
+                Soluciones innovadoras para el diseño, construcción y gestión de espacios públicos que elevan la calidad de vida urbana.
+              </p>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+                <a
+                  href="#seccion-visitante"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('seccion-visitante')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#0e0477] px-8 py-4 rounded-lg uppercase tracking-wide transition-all duration-300"
+                  style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700, fontSize: '1.1rem' }}
+                >
+                  <Eye className="w-5 h-5" />
+                  Participa como visitante
+                </a>
+                <a
+                  href="#seccion-expositor"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('seccion-expositor')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-[#BCCE16] text-[#BCCE16] hover:bg-[#BCCE16] hover:text-[#0e0477] px-8 py-4 rounded-lg uppercase tracking-wide transition-all duration-300"
+                  style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700, fontSize: '1.1rem' }}
+                >
+                  <Building2 className="w-5 h-5" />
+                  Participa como expositor
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          {/* Decorative bottom wave */}
+          <div className="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+              <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="white"/>
+            </svg>
+          </div>
+        </section>
 
         {/* Intro */}
         <section className="py-12 md:py-16 bg-white">
@@ -137,7 +214,7 @@ export default function ExpoEspacioPublico() {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {/* Expositor */}
-              <div className="rounded-2xl p-8 text-white" style={{ backgroundColor: '#35219B' }}>
+              <div id="seccion-expositor" className="rounded-2xl p-8 text-white scroll-mt-32" style={{ backgroundColor: '#35219B' }}>
                 <div className="flex items-center gap-3 mb-6">
                   <Building2 className="w-12 h-12 text-[#BCCE16]" />
                   <h3 className="text-2xl md:text-3xl uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>Expositor</h3>
@@ -157,7 +234,7 @@ export default function ExpoEspacioPublico() {
               </div>
 
               {/* Visitante */}
-              <div className="bg-gray-100 rounded-2xl p-8">
+              <div id="seccion-visitante" className="bg-gray-100 rounded-2xl p-8 scroll-mt-32">
                 <div className="flex items-center gap-3 mb-6">
                   <Eye className="w-12 h-12 text-[#6847f6]" />
                   <h3 className="text-2xl md:text-3xl uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>Visitante</h3>
