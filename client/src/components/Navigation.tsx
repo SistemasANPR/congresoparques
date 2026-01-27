@@ -39,9 +39,9 @@ export function Navigation() {
           {/* Center: Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center flex-1 mx-4 xl:mx-8">
             <div className="flex items-center gap-0.5 xl:gap-1">
-              {/* Acerca de Dropdown */}
+              {/* Acerca de Dropdown - HIDDEN */}
               <div
-                className="relative"
+                className="relative hidden"
                 onMouseEnter={() => setAboutDropdownOpen(true)}
                 onMouseLeave={() => setAboutDropdownOpen(false)}
               >
@@ -105,9 +105,9 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* Actividades Dropdown */}
+              {/* Actividades Dropdown - HIDDEN */}
               <div
-                className="relative"
+                className="relative hidden"
                 onMouseEnter={() => setActivitiesDropdownOpen(true)}
                 onMouseLeave={() => setActivitiesDropdownOpen(false)}
               >
@@ -151,9 +151,9 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* Sede Dropdown */}
+              {/* Sede Dropdown - HIDDEN */}
               <div
-                className="relative"
+                className="relative hidden"
                 onMouseEnter={() => setSedeDropdownOpen(true)}
                 onMouseLeave={() => setSedeDropdownOpen(false)}
               >
@@ -256,10 +256,10 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* Expo Espacio Público - Direct Link */}
+              {/* Expo Espacio Público - Direct Link - HIDDEN */}
               <Link
                 href="/expo-espacio-publico"
-                className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md"
+                className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md hidden"
                 style={{fontFamily: 'Montserrat, sans-serif'}}
                 data-testid="nav-expo-espacio-publico"
               >
@@ -304,8 +304,8 @@ export function Navigation() {
         {mobileMenuOpen && (
           <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
-              {/* Mobile Acerca de Accordion */}
-              <div>
+              {/* Mobile Acerca de Accordion - HIDDEN */}
+              <div className="hidden">
                 <button
                   onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
@@ -367,8 +367,8 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* Mobile Actividades Accordion */}
-              <div>
+              {/* Mobile Actividades Accordion - HIDDEN */}
+              <div className="hidden">
                 <button
                   onClick={() => setMobileActivitiesOpen(!mobileActivitiesOpen)}
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
@@ -408,8 +408,8 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* Mobile Sede Accordion */}
-              <div>
+              {/* Mobile Sede Accordion - HIDDEN */}
+              <div className="hidden">
                 <button
                   onClick={() => setMobileSedeOpen(!mobileSedeOpen)}
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
@@ -504,10 +504,10 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* Mobile Expo Espacio Público - Direct Link */}
+              {/* Mobile Expo Espacio Público - Direct Link - HIDDEN */}
               <Link
                 href="/expo-espacio-publico"
-                className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
+                className="hidden text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
                 data-testid="mobile-nav-expo-espacio-publico"
               >
