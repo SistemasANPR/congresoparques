@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
@@ -340,6 +341,15 @@ export default function Congreso() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <AnnouncementBanner
+        messages={[
+          {
+            id: "boletos",
+            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+          },
+        ]}
+        speed="normal"
+      />
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">

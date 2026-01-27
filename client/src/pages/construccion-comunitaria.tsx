@@ -1,9 +1,19 @@
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
 export default function ConstruccionComunitaria() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <AnnouncementBanner
+        messages={[
+          {
+            id: "boletos",
+            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+          },
+        ]}
+        speed="normal"
+      />
       <Navigation />
       <main className="pt-28 md:pt-36 lg:pt-40 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

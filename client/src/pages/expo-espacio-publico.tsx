@@ -1,4 +1,5 @@
 import { Calendar, MapPin, LayoutGrid, Store, Phone, Mail, Clock, Users, Eye, Building2, CheckCircle, Download, MessageCircle } from "lucide-react";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
@@ -62,6 +63,15 @@ export default function ExpoEspacioPublico() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <AnnouncementBanner
+        messages={[
+          {
+            id: "boletos",
+            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+          },
+        ]}
+        speed="normal"
+      />
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">

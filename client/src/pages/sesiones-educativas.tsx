@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Users, Calendar, FileText, Award, ClipboardList, Send, Clock, CheckCircle, Target, BookOpen, GraduationCap } from "lucide-react";
+import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
@@ -14,6 +15,15 @@ import eventosImg from "@assets/Eventos Sociales_1758578569496.png";
 export default function SesionesEducativas() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <AnnouncementBanner
+        messages={[
+          {
+            id: "boletos",
+            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+          },
+        ]}
+        speed="normal"
+      />
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
