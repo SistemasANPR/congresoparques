@@ -21,6 +21,10 @@ import coleccionistaImg from "@assets/Museo_del_Coleccionista_de_Tijuana_1769469
 import aeropuertoTijuanaImg from "@assets/Aeropuerto_Internacional_de_Tijuana_1769471161925.jpg";
 import crossBorderXpressImg from "@assets/Cross_Border_Xpress_1769471161925.jpg";
 import fondoRestaurantesImg from "@assets/Fondo_restaurantes_tijuana_1769527606636.jpg";
+import playasRosaritoImg from "@assets/Playas_de_Rosarito_1769531625160.png";
+import rutaVinoImg from "@assets/Ruta_del_Vino_en_el_Valle_de_Guadalupe_1769531625160.png";
+import tecateImg from "@assets/Tecate_1769531625160.png";
+import corredorCosteroImg from "@assets/Corredor_Costero_Escenico_1769531625160.png";
 
 const attractionsData = [
   {
@@ -509,27 +513,47 @@ export default function Sede() {
         </section>
 
         {/* Sitios y Experiencias Cercanas */}
-        <section className="py-16 bg-white">
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl text-center mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
+            <h2 className="text-2xl md:text-3xl text-center mb-8 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, color: '#0e0477' }}>
               Sitios y Experiencias Cercanas: <span style={{ color: '#6847f6' }}>A un Paso de Tijuana</span>
             </h2>
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-[#BCCE16]">
-                <h3 className="text-[#0e0477] font-bold text-lg mb-3">Playas de Rosarito</h3>
-                <p className="text-gray-700">A menos de 30 minutos, disfruta de su malecón, restaurantes frente al mar y actividades acuáticas y eco turísticas, ideal para una escapada rápida. Disfruta de su excelente cocina y la mundialmente famosa Langosta estilo Puerto Nuevo.</p>
+            <div className="grid md:grid-cols-2 gap-4 max-w-6xl mx-auto">
+              <div className="bg-gray-50 rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+                <div className="w-full md:w-2/5 flex-shrink-0">
+                  <img src={playasRosaritoImg} alt="Playas de Rosarito" className="w-full h-40 md:h-full object-cover" loading="lazy" />
+                </div>
+                <div className="p-4 flex flex-col justify-center border-l-0 md:border-l-4 border-t-4 md:border-t-0 border-[#BCCE16]">
+                  <h3 className="text-[#0e0477] font-bold text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>Playas de Rosarito</h3>
+                  <p className="text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>A menos de 30 minutos, disfruta de su malecón, restaurantes frente al mar y actividades acuáticas. Disfruta de la mundialmente famosa Langosta estilo Puerto Nuevo.</p>
+                </div>
               </div>
-              <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-[#BCCE16]">
-                <h3 className="text-[#0e0477] font-bold text-lg mb-3">Ruta del Vino en el Valle de Guadalupe</h3>
-                <p className="text-gray-700">A una hora de Tijuana, vive una experiencia inolvidable en la denominada Capital del vino mexicano, conformada por siete valles vinícolas, se vuelve en una de las regiones vinícolas más importantes del continente, con viñedos, degustaciones y gastronomía de clase mundial.</p>
+              <div className="bg-gray-50 rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+                <div className="w-full md:w-2/5 flex-shrink-0">
+                  <img src={rutaVinoImg} alt="Ruta del Vino" className="w-full h-40 md:h-full object-cover" loading="lazy" />
+                </div>
+                <div className="p-4 flex flex-col justify-center border-l-0 md:border-l-4 border-t-4 md:border-t-0 border-[#BCCE16]">
+                  <h3 className="text-[#0e0477] font-bold text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>Ruta del Vino en el Valle de Guadalupe</h3>
+                  <p className="text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>A una hora de Tijuana, vive una experiencia inolvidable en la Capital del vino mexicano, con viñedos, degustaciones y gastronomía de clase mundial.</p>
+                </div>
               </div>
-              <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-[#BCCE16]">
-                <h3 className="text-[#0e0477] font-bold text-lg mb-3">Tecate</h3>
-                <p className="text-gray-700">A 30 minutos de Tijuana, se encuentra el pueblo mágico de Tecate, reconocido por ser casa de la Cervecería Tecate, sus paisajes campiranos, pan dulce artesanal y ser la puerta al norte para iniciar el recorrido en la Ruta del Vino de Baja California.</p>
+              <div className="bg-gray-50 rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+                <div className="w-full md:w-2/5 flex-shrink-0">
+                  <img src={tecateImg} alt="Tecate" className="w-full h-40 md:h-full object-cover" loading="lazy" />
+                </div>
+                <div className="p-4 flex flex-col justify-center border-l-0 md:border-l-4 border-t-4 md:border-t-0 border-[#BCCE16]">
+                  <h3 className="text-[#0e0477] font-bold text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>Tecate</h3>
+                  <p className="text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>A 30 minutos de Tijuana, se encuentra el pueblo mágico de Tecate, reconocido por su Cervecería, paisajes campiranos y pan dulce artesanal.</p>
+                </div>
               </div>
-              <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-[#BCCE16]">
-                <h3 className="text-[#0e0477] font-bold text-lg mb-3">Corredor Costero Escénico</h3>
-                <p className="text-gray-700">Con alrededor de 98 km, se convierte en un recorrido imperdible entre Tijuana y Ensenada que ofrece vistas panorámicas del Pacífico.</p>
+              <div className="bg-gray-50 rounded-xl overflow-hidden shadow-sm flex flex-col md:flex-row">
+                <div className="w-full md:w-2/5 flex-shrink-0">
+                  <img src={corredorCosteroImg} alt="Corredor Costero Escénico" className="w-full h-40 md:h-full object-cover" loading="lazy" />
+                </div>
+                <div className="p-4 flex flex-col justify-center border-l-0 md:border-l-4 border-t-4 md:border-t-0 border-[#BCCE16]">
+                  <h3 className="text-[#0e0477] font-bold text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>Corredor Costero Escénico</h3>
+                  <p className="text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>Con alrededor de 98 km, es un recorrido imperdible entre Tijuana y Ensenada que ofrece vistas panorámicas del Pacífico.</p>
+                </div>
               </div>
             </div>
           </div>
