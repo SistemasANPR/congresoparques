@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Calendar, MapPin, Store, Phone, Mail, Clock, Eye, Building2, CheckCircle, MessageCircle, Play, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, MapPin, Store, Phone, Mail, Clock, Eye, Building2, MessageCircle, Play, X, Search, Users, TrendingUp, Scale, Sparkles, Globe, Target, Award, Briefcase, Rocket, Link2, BarChart3, Compass, HeartHandshake, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -7,15 +7,48 @@ import { BrandMarquee } from "@/components/BrandMarquee";
 import expoOfficialLogoUrl from "@assets/Recurso_17_1769556427973.png";
 import decorativeLeavesUrl from "@assets/FONDO-HOJAS-WEB_1769119400379.png";
 import expoVideoThumbnailUrl from "@assets/EXPO-PLAY_1769623548994.jpg";
+import visitante1Url from "@assets/Visitante1_1769625889617.jpg";
+import visitante2Url from "@assets/Visitante2_1769625889619.jpg";
+import visitante3Url from "@assets/Visitante3_1769625889619.jpg";
+import visitante4Url from "@assets/Visitante4_1769625889620.jpg";
+import visitante5Url from "@assets/Visitante5_1769625889620.jpg";
 
 export default function ExpoEspacioPublico() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const beneficios = [
-    "Explora el mercado.",
-    "Conoce a los proveedores.",
-    "Intercambia experiencias.",
-    "Conoce las tendencias y los productos innovadores.",
-    "Compara calidad, precios y prestaciones."
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const carouselImages = [
+    { src: visitante1Url, alt: "Visitante disfrutando de la exposición" },
+    { src: visitante2Url, alt: "Networking entre visitantes" },
+    { src: visitante3Url, alt: "Experiencia del visitante en mobiliario urbano" },
+    { src: visitante4Url, alt: "Visitantes conociendo productos" },
+    { src: visitante5Url, alt: "Innovación en espacios públicos" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [carouselImages.length]);
+  const beneficiosVisitante = [
+    { icon: Search, text: "Explorar el mercado especializado en parques y espacio público." },
+    { icon: Users, text: "Conocer a los principales proveedores y fabricantes del sector." },
+    { icon: TrendingUp, text: "Descubrir tendencias, tecnologías y productos innovadores." },
+    { icon: Scale, text: "Comparar soluciones en calidad, precios y prestaciones." },
+    { icon: Sparkles, text: "Inspirarte con proyectos, materiales y nuevos enfoques de diseño urbano." },
+    { icon: Globe, text: "Intercambiar experiencias con profesionales de toda América Latina." },
+    { icon: Target, text: "Tomar mejores decisiones para tus proyectos actuales y futuros." }
+  ];
+
+  const beneficiosExpositor = [
+    { icon: Award, text: "Posicionar tu marca ante un público altamente especializado." },
+    { icon: Briefcase, text: "Presentar tus productos y soluciones a tomadores de decisión." },
+    { icon: Rocket, text: "Lanzar innovaciones y demostrar tus tecnologías en un entorno profesional." },
+    { icon: Link2, text: "Generar contactos comerciales y alianzas estratégicas." },
+    { icon: BarChart3, text: "Conocer qué está haciendo la competencia y cómo se mueve el mercado." },
+    { icon: Compass, text: "Identificar nuevas oportunidades de negocio en América Latina." },
+    { icon: HeartHandshake, text: "Fortalecer relaciones con clientes actuales y prospectos." }
   ];
 
   const industrias = [
@@ -265,17 +298,78 @@ export default function ExpoEspacioPublico() {
         </section>
 
         {/* Beneficios de Participar */}
-        <section className="py-12 md:py-16 bg-gray-50">
+        <section className="py-10 md:py-12 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-black text-center text-[#0e0477] mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              Beneficios de Participar
-            </h2>
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+              {/* Carrusel de imágenes */}
+              <div className="relative mb-10 rounded-xl overflow-hidden shadow-lg">
+                <div className="relative aspect-[16/7] md:aspect-[16/6]">
+                  {carouselImages.map((image, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                        index === currentSlide ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                        loading={index === 0 ? "eager" : "lazy"}
+                      />
+                    </div>
+                  ))}
+                  
+                  {/* Navigation arrows */}
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition-all"
+                    aria-label="Imagen anterior"
+                  >
+                    <ChevronLeft className="w-6 h-6 text-[#0e0477]" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentSlide((prev) => (prev + 1) % carouselImages.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition-all"
+                    aria-label="Imagen siguiente"
+                  >
+                    <ChevronRight className="w-6 h-6 text-[#0e0477]" />
+                  </button>
+                  
+                  {/* Dots indicator */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {carouselImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-2.5 h-2.5 rounded-full transition-all ${
+                          index === currentSlide 
+                            ? "bg-white w-6" 
+                            : "bg-white/50 hover:bg-white/70"
+                        }`}
+                        aria-label={`Ir a imagen ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-xl md:text-2xl font-bold text-center text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Beneficios de participar
+              </h3>
+              <p
+                className="text-lg md:text-xl font-semibold text-center text-[#6847f6] mb-8"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Como visitante podrás:
+              </p>
               <div className="grid md:grid-cols-2 gap-4">
-                {beneficios.map((beneficio, index) => (
-                  <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm">
-                    <CheckCircle className="w-6 h-6 text-[#BCCE16] flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{beneficio}</span>
+                {beneficiosVisitante.map((beneficio, index) => (
+                  <div key={index} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#6847f6]/10 flex items-center justify-center">
+                      <beneficio.icon className="w-5 h-5 text-[#6847f6]" />
+                    </div>
+                    <span className="text-gray-700 text-sm md:text-base leading-relaxed pt-2">{beneficio.text}</span>
                   </div>
                 ))}
               </div>
@@ -328,6 +422,33 @@ export default function ExpoEspacioPublico() {
                 Registro próximamente
               </button>
               <p className="text-white/70 text-sm mt-4">El registro de expositores estará disponible próximamente</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Beneficios para Expositores */}
+        <section className="py-10 md:py-12 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl md:text-2xl font-bold text-center text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Beneficios de participar
+              </h3>
+              <p
+                className="text-lg md:text-xl font-semibold text-center text-[#6847f6] mb-8"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Como expositor podrás:
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {beneficiosExpositor.map((beneficio, index) => (
+                  <div key={index} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#6847f6]/10 flex items-center justify-center">
+                      <beneficio.icon className="w-5 h-5 text-[#6847f6]" />
+                    </div>
+                    <span className="text-gray-700 text-sm md:text-base leading-relaxed pt-2">{beneficio.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
