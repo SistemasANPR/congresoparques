@@ -39,6 +39,15 @@ import infraestructuraDeportivaUrl from "@assets/Instalaciones_e_infraestructura
 import maquinariaJardineriaUrl from "@assets/Maquinaria_de_jardineria_y_mantenimiento_1769639146451.jpg";
 import tratamientoAguaUrl from "@assets/Sistemas_de_tratamiento_de_agua_1769639146451.jpg";
 import serviciosMantenimientoUrl from "@assets/Servicios_de_mantenimiento_de_areas_verdes_1769639146451.jpg";
+import expoObrasPublicasUrl from "@assets/Expo_Obras_publicas_1769641574017.jpg";
+import expoMuseosUrl from "@assets/Expo_Museos_Centro_cultural_1769641574016.jpg";
+import expoEspaciosRecreativosUrl from "@assets/Expo_Espacios_Recreativos_1769641574016.jpg";
+import expoParquesNacionalesUrl from "@assets/Expo_Parques_nacionales_1769641574017.jpg";
+import expoParquesAventuraUrl from "@assets/Expo_Parques_de_Aventura_1769641574017.jpg";
+import expoParquesUrbanosUrl from "@assets/Expo_Parques_Urbanos_1769641574017.jpg";
+import expoClubesDeportivosUrl from "@assets/Expo_Clubes_Deportivos_1769641574015.jpg";
+import expoGruposInmobiliariosUrl from "@assets/Expo_Grupos_Inmobiliarios_1769641574016.jpg";
+import expoRestaurantesHotelesUrl from "@assets/Expo_Restaurantes_y_Hoteles_1769641574017.jpg";
 
 export default function ExpoEspacioPublico() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -97,15 +106,15 @@ export default function ExpoEspacioPublico() {
   const industrias = [
     { nombre: "Consultores", imagen: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&auto=format" },
     { nombre: "Oficinas de Arquitectura", imagen: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Obras Públicas y Servicios Municipales", imagen: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Museos y Centros Culturales", imagen: "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Espacios Recreativos", imagen: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Parques Nacionales", imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Parques de Aventura", imagen: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Administradores de Parques Urbanos", imagen: "https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Clubes Deportivos", imagen: "https://images.unsplash.com/photo-1461896836934-6c795e2a6ee8?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Grupos Inmobiliarios", imagen: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Restaurantes y Hoteles", imagen: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop&auto=format" }
+    { nombre: "Obras Públicas y Servicios Municipales", imagen: expoObrasPublicasUrl },
+    { nombre: "Museos y Centros Culturales", imagen: expoMuseosUrl },
+    { nombre: "Espacios Recreativos", imagen: expoEspaciosRecreativosUrl },
+    { nombre: "Parques Nacionales", imagen: expoParquesNacionalesUrl },
+    { nombre: "Parques de Aventura", imagen: expoParquesAventuraUrl },
+    { nombre: "Administradores de Parques Urbanos", imagen: expoParquesUrbanosUrl },
+    { nombre: "Clubes Deportivos", imagen: expoClubesDeportivosUrl },
+    { nombre: "Grupos Inmobiliarios", imagen: expoGruposInmobiliariosUrl },
+    { nombre: "Restaurantes y Hoteles", imagen: expoRestaurantesHotelesUrl }
   ];
 
   const tiposExpositores = [
