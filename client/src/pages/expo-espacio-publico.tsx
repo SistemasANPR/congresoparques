@@ -26,6 +26,14 @@ import productosRecreativosUrl from "@assets/Productos_recreativos_1769637944221
 import juegosInfantilesUrl from "@assets/Juegos_infantiles_1769637944221.jpg";
 import juegosAcuaticosUrl from "@assets/Juegos_acuaticos_1769637944222.jpg";
 import equipoDeportivoUrl from "@assets/Equipo_deportivo_1769637944222.jpg";
+import parquesCaninosUrl from "@assets/Mobiliario_para_parques_caninos_1769638433993.jpg";
+import skateParksCicloviasUrl from "@assets/Muebles_para_monopatines_y_bicicletas_1769638433994.jpg";
+import superficiesUrl from "@assets/Superficies_1769638433994.jpg";
+import sombrasVelariasUrl from "@assets/Sombras_y_velarias_1769638433995.jpg";
+import luminariasUrl from "@assets/Luminarias_1769638433995.jpg";
+import pinturasRecubrimientosUrl from "@assets/Pinturas_y_recubrimientos_1769638433995.jpg";
+import senaleticaVialUrl from "@assets/Senaletica_y_equipamiento_vial_1769638433995.jpg";
+import senaleticaInclusivaUrl from "@assets/Senaletica_inclusiva_1769638433996.jpg";
 
 export default function ExpoEspacioPublico() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -104,14 +112,14 @@ export default function ExpoEspacioPublico() {
     { nombre: "Juegos infantiles", imagen: juegosInfantilesUrl },
     { nombre: "Juegos acuáticos", imagen: juegosAcuaticosUrl },
     { nombre: "Equipo deportivo", imagen: equipoDeportivoUrl },
-    { nombre: "Parques caninos", imagen: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Skate parks y ciclovías", imagen: "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Superficies", imagen: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Sombras y velarías", imagen: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Luminarias", imagen: "https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Pinturas y recubrimientos", imagen: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Señalética vial", imagen: "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Señalética inclusiva", imagen: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Parques caninos", imagen: parquesCaninosUrl },
+    { nombre: "Skate parks y ciclovías", imagen: skateParksCicloviasUrl },
+    { nombre: "Superficies", imagen: superficiesUrl },
+    { nombre: "Sombras y velarías", imagen: sombrasVelariasUrl },
+    { nombre: "Luminarias", imagen: luminariasUrl },
+    { nombre: "Pinturas y recubrimientos", imagen: pinturasRecubrimientosUrl },
+    { nombre: "Señalética vial", imagen: senaleticaVialUrl },
+    { nombre: "Señalética inclusiva", imagen: senaleticaInclusivaUrl },
     { nombre: "Accesos automatizados", imagen: "https://images.unsplash.com/photo-1558002038-1055907df827?w=400&h=300&fit=crop&auto=format" },
     { nombre: "Infraestructura deportiva", imagen: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop&auto=format" },
     { nombre: "Maquinaria de jardinería", imagen: "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=400&h=300&fit=crop&auto=format" },
