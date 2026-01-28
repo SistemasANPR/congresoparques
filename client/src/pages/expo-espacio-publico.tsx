@@ -12,10 +12,16 @@ import visitante2Url from "@assets/Visitante2_1769625889619.jpg";
 import visitante3Url from "@assets/Visitante3_1769625889619.jpg";
 import visitante4Url from "@assets/Visitante4_1769625889620.jpg";
 import visitante5Url from "@assets/Visitante5_1769625889620.jpg";
+import expositor1Url from "@assets/Expositor1_1769628577382.jpg";
+import expositor2Url from "@assets/Expositor2_1769628577382.jpg";
+import expositor3Url from "@assets/Expositor3_1769628577382.jpg";
+import expositor4Url from "@assets/Expositor4_1769628577381.jpg";
+import expositor5Url from "@assets/Expositor5_1769628577382.jpg";
 
 export default function ExpoEspacioPublico() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentExpositorSlide, setCurrentExpositorSlide] = useState(0);
 
   const carouselImages = [
     { src: visitante1Url, alt: "Visitante disfrutando de la exposición" },
@@ -25,12 +31,27 @@ export default function ExpoEspacioPublico() {
     { src: visitante5Url, alt: "Innovación en espacios públicos" },
   ];
 
+  const expositorCarouselImages = [
+    { src: expositor1Url, alt: "Vista general de la exposición y stands" },
+    { src: expositor2Url, alt: "Expositor presentando productos a visitantes" },
+    { src: expositor3Url, alt: "Networking entre expositores y clientes" },
+    { src: expositor4Url, alt: "Demostración de productos en stand" },
+    { src: expositor5Url, alt: "Equipo de expositores en su stand" },
+  ];
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
     }, 4000);
     return () => clearInterval(timer);
   }, [carouselImages.length]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentExpositorSlide((prev) => (prev + 1) % expositorCarouselImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [expositorCarouselImages.length]);
   const beneficiosVisitante = [
     { icon: Search, text: "Explorar el mercado especializado en parques y espacio público." },
     { icon: Users, text: "Conocer a los principales proveedores y fabricantes del sector." },
@@ -354,15 +375,12 @@ export default function ExpoEspacioPublico() {
                 </div>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-bold text-center text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Beneficios de participar
-              </h3>
-              <p
-                className="text-lg md:text-xl font-semibold text-center text-[#6847f6] mb-8"
+              <h3
+                className="text-2xl md:text-3xl font-black text-center text-[#0e0477] mb-8 uppercase"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 Como visitante podrás:
-              </p>
+              </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {beneficiosVisitante.map((beneficio, index) => (
                   <div key={index} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
@@ -430,15 +448,65 @@ export default function ExpoEspacioPublico() {
         <section className="py-10 md:py-12 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-xl md:text-2xl font-bold text-center text-[#0e0477] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Beneficios de participar
-              </h3>
-              <p
-                className="text-lg md:text-xl font-semibold text-center text-[#6847f6] mb-8"
+              {/* Carrusel de imágenes para expositores */}
+              <div className="relative mb-10 rounded-xl overflow-hidden shadow-lg">
+                <div className="relative aspect-[16/7] md:aspect-[16/6]">
+                  {expositorCarouselImages.map((image, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                        index === currentExpositorSlide ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                        loading={index === 0 ? "eager" : "lazy"}
+                      />
+                    </div>
+                  ))}
+                  
+                  {/* Navigation arrows */}
+                  <button
+                    onClick={() => setCurrentExpositorSlide((prev) => (prev - 1 + expositorCarouselImages.length) % expositorCarouselImages.length)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition-all"
+                    aria-label="Imagen anterior"
+                  >
+                    <ChevronLeft className="w-6 h-6 text-[#0e0477]" />
+                  </button>
+                  <button
+                    onClick={() => setCurrentExpositorSlide((prev) => (prev + 1) % expositorCarouselImages.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition-all"
+                    aria-label="Imagen siguiente"
+                  >
+                    <ChevronRight className="w-6 h-6 text-[#0e0477]" />
+                  </button>
+                  
+                  {/* Dots indicator */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {expositorCarouselImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentExpositorSlide(index)}
+                        className={`w-2.5 h-2.5 rounded-full transition-all ${
+                          index === currentExpositorSlide 
+                            ? "bg-white w-6" 
+                            : "bg-white/50 hover:bg-white/70"
+                        }`}
+                        aria-label={`Ir a imagen ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <h3
+                className="text-2xl md:text-3xl font-black text-center text-[#0e0477] mb-8 uppercase"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 Como expositor podrás:
-              </p>
+              </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {beneficiosExpositor.map((beneficio, index) => (
                   <div key={index} className="flex items-start gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
