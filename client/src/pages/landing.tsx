@@ -65,21 +65,7 @@ import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
 import logoBCCUrl from "@assets/LOGO BCC color_1761676598707.png";
 import expoEspacioPublico2026Img from "@assets/expo-espacio-publico-2026.jpg";
 import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.png";
-import parquesAlegresLogoUrl from "@assets/Parques_Alegres_1766080172845.png";
-import parquesMexicoLogoUrl from "@assets/Parques_de_Mexico_1766080172846.png";
-import jimumexLogoUrl from "@assets/Jimumex_1766080172847.png";
-import playClubLogoUrl from "@assets/Play_Club_1766080172847.png";
-import deportanLogoUrl from "@assets/Deportan_1766080172847.png";
-import hunterLogoUrl from "@assets/Hunter_1766080172848.png";
-import muscoLogoUrl from "@assets/Musco_1766080172848.png";
-import bodenLogoUrl from "@assets/Boden_1766080172848.png";
-import bugyLogoUrl from "@assets/Bugy_1766080172848.png";
-import rainBirdLogoUrl from "@assets/Rain_Bird_1766080172849.png";
-import dihlaLogoUrl from "@assets/DIHLA_1766080172849.png";
-import cdtLogoUrl from "@assets/CDT_1766080172849.png";
-import jumboLogoUrl from "@assets/Jumbo_1766080172849.png";
-import proludicLogoUrl from "@assets/Proludic_1766080172850.png";
-import parkSysLogoUrl from "@assets/ParkSys_1766080172850.png";
+import { BrandMarquee } from "@/components/BrandMarquee";
 
 
 interface StatCounterProps {
@@ -124,34 +110,6 @@ export default function Landing() {
   
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
-  // Brand logos data - easily extensible for future additions
-  const brands = [
-    { id: 'parksys', logo: parkSysLogoUrl, name: 'ParkSys Smart Management', url: 'https://park-sys.com/' },
-    { id: 'proludic', logo: proludicLogoUrl, name: 'Proludic', url: 'https://www.proludic.com/' },
-    { id: 'jumbo', logo: jumboLogoUrl, name: 'Productos Jumbo', url: 'https://www.productosjumbo.com/' },
-    { id: 'cdt', logo: cdtLogoUrl, name: 'CDT Centro de Desarrollo Turístico', url: 'https://cdt.org.mx/' },
-    { id: 'dihla', logo: dihlaLogoUrl, name: 'DIHLA', url: 'https://dihla.com.mx/' },
-    { id: 'rainbird', logo: rainBirdLogoUrl, name: 'Rain Bird', url: 'https://www.rainbird.com/es' },
-    { id: 'bugy', logo: bugyLogoUrl, name: 'Grupo Bugy Proyectos Recreativos', url: 'https://bugy.mx/' },
-    { id: 'boden', logo: bodenLogoUrl, name: 'Boden Eco Superficie', url: 'https://www.bodeneco.com/' },
-    { id: 'musco', logo: muscoLogoUrl, name: 'Musco Lighting', url: 'https://www.musco.com/' },
-    { id: 'hunter', logo: hunterLogoUrl, name: 'Hunter Industries', url: 'https://www.hunterirrigation.com/es' },
-    { id: 'deportan', logo: deportanLogoUrl, name: 'Deportan Soluciones Deportivas', url: 'https://deportan.com.mx/' },
-    { id: 'playclub', logo: playClubLogoUrl, name: 'Play Club', url: 'https://www.playclub.com.mx/' },
-    { id: 'jimumex', logo: jimumexLogoUrl, name: 'Jimumex Equipamiento Urbano', url: 'https://jimumex.com.mx/' },
-    { id: 'parquesmexico', logo: parquesMexicoLogoUrl, name: 'Parques de México', url: 'https://parquesdemexico.org/' },
-    { id: 'parquesalegres', logo: parquesAlegresLogoUrl, name: 'Parques Alegres', url: 'https://parquesalegres.org/' },
-  ];
-
-  // Shuffle brands on initial render for random order
-  const [shuffledBrands] = useState(() => {
-    const shuffled = [...brands];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  });
 
   // Background image carousel
   useEffect(() => {
@@ -1227,64 +1185,7 @@ export default function Landing() {
       </section>
 
       {/* Las Mejores Marcas Presentes - Infinite Marquee */}
-      <section id="marcas" className="py-16 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl text-center mb-12 uppercase section-title" style={{ color: '#0e0477' }} data-testid="brands-title">
-              Las Mejores Marcas Presentes
-            </h2>
-          </div>
-        </div>
-        
-        {/* Infinite Marquee Container */}
-        <div className="relative w-full">
-          <div 
-            className="flex animate-marquee"
-            style={{ width: 'max-content' }}
-          >
-            {/* First set of shuffled brands */}
-            {shuffledBrands.map((brand, index) => (
-              <a
-                key={`brand-1-${index}`}
-                href={brand.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 mx-3 md:mx-6 group"
-                data-testid={`brand-logo-${brand.id}`}
-              >
-                <div className="bg-white rounded-lg shadow-md p-2 md:p-3 w-36 h-22 md:w-52 md:h-32 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={brand.logo} 
-                    alt={brand.name}
-                    className="max-h-16 md:max-h-24 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
-                    loading="lazy"
-                  />
-                </div>
-              </a>
-            ))}
-            {/* Duplicate set for seamless loop */}
-            {shuffledBrands.map((brand, index) => (
-              <a
-                key={`brand-2-${index}`}
-                href={brand.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 mx-3 md:mx-6 group"
-                aria-hidden="true"
-              >
-                <div className="bg-white rounded-lg shadow-md p-2 md:p-3 w-36 h-22 md:w-52 md:h-32 flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src={brand.logo} 
-                    alt={brand.name}
-                    className="max-h-16 md:max-h-24 max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:opacity-100 opacity-80 transition-all duration-300"
-                    loading="lazy"
-                  />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <BrandMarquee />
 
       {/* Expo Banner - Promotional Banner for Stand Reservation */}
       <section 
