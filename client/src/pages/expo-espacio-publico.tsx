@@ -34,6 +34,11 @@ import luminariasUrl from "@assets/Luminarias_1769638433995.jpg";
 import pinturasRecubrimientosUrl from "@assets/Pinturas_y_recubrimientos_1769638433995.jpg";
 import senaleticaVialUrl from "@assets/Senaletica_y_equipamiento_vial_1769638433995.jpg";
 import senaleticaInclusivaUrl from "@assets/Senaletica_inclusiva_1769638433996.jpg";
+import accesosAutomatizadosUrl from "@assets/Accesos_automatizados_1769639146446.jpg";
+import infraestructuraDeportivaUrl from "@assets/Instalaciones_e_infraestructura_deportiva_1769639146450.jpg";
+import maquinariaJardineriaUrl from "@assets/Maquinaria_de_jardineria_y_mantenimiento_1769639146451.jpg";
+import tratamientoAguaUrl from "@assets/Sistemas_de_tratamiento_de_agua_1769639146451.jpg";
+import serviciosMantenimientoUrl from "@assets/Servicios_de_mantenimiento_de_areas_verdes_1769639146451.jpg";
 
 export default function ExpoEspacioPublico() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -120,11 +125,11 @@ export default function ExpoEspacioPublico() {
     { nombre: "Pinturas y recubrimientos", imagen: pinturasRecubrimientosUrl },
     { nombre: "Señalética vial", imagen: senaleticaVialUrl },
     { nombre: "Señalética inclusiva", imagen: senaleticaInclusivaUrl },
-    { nombre: "Accesos automatizados", imagen: "https://images.unsplash.com/photo-1558002038-1055907df827?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Infraestructura deportiva", imagen: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Maquinaria de jardinería", imagen: "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Tratamiento de agua", imagen: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?w=400&h=300&fit=crop&auto=format" },
-    { nombre: "Mantenimiento de áreas verdes", imagen: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=400&h=300&fit=crop&auto=format" }
+    { nombre: "Accesos automatizados", imagen: accesosAutomatizadosUrl },
+    { nombre: "Infraestructura deportiva", imagen: infraestructuraDeportivaUrl },
+    { nombre: "Maquinaria de jardinería", imagen: maquinariaJardineriaUrl },
+    { nombre: "Tratamiento de agua", imagen: tratamientoAguaUrl },
+    { nombre: "Mantenimiento de áreas verdes", imagen: serviciosMantenimientoUrl }
   ];
 
   return (
