@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Calendar, MapPin, Store, Phone, Mail, Clock, Eye, Building2, MessageCircle, Play, X, Search, Users, TrendingUp, Scale, Sparkles, Globe, Target, Award, Briefcase, Rocket, Link2, BarChart3, Compass, HeartHandshake, ChevronLeft, ChevronRight } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -17,6 +18,14 @@ import expositor2Url from "@assets/Expositor2_1769628577382.jpg";
 import expositor3Url from "@assets/Expositor3_1769628577382.jpg";
 import expositor4Url from "@assets/Expositor4_1769628577381.jpg";
 import expositor5Url from "@assets/Expositor5_1769628577382.jpg";
+import equipoMantenimientoUrl from "@assets/Equipo_de_mantenimiento_1769637944219.jpg";
+import sistemasRiegoUrl from "@assets/equipos_hidraulicos_1769637944220.jpg";
+import viverosJardinesUrl from "@assets/Viveros_y_jardines_1769637944221.jpg";
+import arbolesGrandesUrl from "@assets/Arboles_de_gran_tamano_1769637944221.jpg";
+import productosRecreativosUrl from "@assets/Productos_recreativos_1769637944221.jpg";
+import juegosInfantilesUrl from "@assets/Juegos_infantiles_1769637944221.jpg";
+import juegosAcuaticosUrl from "@assets/Juegos_acuaticos_1769637944222.jpg";
+import equipoDeportivoUrl from "@assets/Equipo_deportivo_1769637944222.jpg";
 
 export default function ExpoEspacioPublico() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -73,41 +82,41 @@ export default function ExpoEspacioPublico() {
   ];
 
   const industrias = [
-    "Consultores",
-    "Oficinas de Arquitectura",
-    "Obras Públicas y Servicios Públicos Municipales",
-    "Museos y Centros Culturales",
-    "Espacios Recreativos",
-    "Parques Nacionales",
-    "Parques de Aventura",
-    "Administradores de Parques Urbanos",
-    "Clubes deportivos",
-    "Grupos inmobiliarios o de construcción",
-    "Restaurantes y Hoteles"
+    { nombre: "Consultores", imagen: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Oficinas de Arquitectura", imagen: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Obras Públicas y Servicios Municipales", imagen: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Museos y Centros Culturales", imagen: "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Espacios Recreativos", imagen: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Parques Nacionales", imagen: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Parques de Aventura", imagen: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Administradores de Parques Urbanos", imagen: "https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Clubes Deportivos", imagen: "https://images.unsplash.com/photo-1461896836934-6c795e2a6ee8?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Grupos Inmobiliarios", imagen: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Restaurantes y Hoteles", imagen: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop&auto=format" }
   ];
 
   const tiposExpositores = [
-    "Equipo de mantenimiento",
-    "Sistemas de riego / equipos hidráulicos",
-    "Viveros y jardines",
-    "Árboles de gran tamaño",
-    "Productos recreativos",
-    "Juegos infantiles",
-    "Juegos acuáticos",
-    "Equipo deportivo",
-    "Mobiliario para parques caninos",
-    "Muebles para monopatines y bicicletas",
-    "Superficies",
-    "Sombras y velarías",
-    "Luminarias",
-    "Pinturas y recubrimientos",
-    "Señalética y equipamiento vial",
-    "Señalética inclusiva",
-    "Accesos automatizados",
-    "Instalaciones e infraestructura deportiva",
-    "Maquinaria de jardinería y mantenimiento",
-    "Sistemas de tratamiento de agua",
-    "Servicios de mantenimiento de áreas verdes"
+    { nombre: "Equipo de mantenimiento", imagen: equipoMantenimientoUrl },
+    { nombre: "Sistemas de riego", imagen: sistemasRiegoUrl },
+    { nombre: "Viveros y jardines", imagen: viverosJardinesUrl },
+    { nombre: "Árboles de gran tamaño", imagen: arbolesGrandesUrl },
+    { nombre: "Productos recreativos", imagen: productosRecreativosUrl },
+    { nombre: "Juegos infantiles", imagen: juegosInfantilesUrl },
+    { nombre: "Juegos acuáticos", imagen: juegosAcuaticosUrl },
+    { nombre: "Equipo deportivo", imagen: equipoDeportivoUrl },
+    { nombre: "Parques caninos", imagen: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Skate parks y ciclovías", imagen: "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Superficies", imagen: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Sombras y velarías", imagen: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Luminarias", imagen: "https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Pinturas y recubrimientos", imagen: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Señalética vial", imagen: "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Señalética inclusiva", imagen: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Accesos automatizados", imagen: "https://images.unsplash.com/photo-1558002038-1055907df827?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Infraestructura deportiva", imagen: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Maquinaria de jardinería", imagen: "https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Tratamiento de agua", imagen: "https://images.unsplash.com/photo-1468421870903-4df1664ac249?w=400&h=300&fit=crop&auto=format" },
+    { nombre: "Mantenimiento de áreas verdes", imagen: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=400&h=300&fit=crop&auto=format" }
   ];
 
   return (
@@ -401,11 +410,36 @@ export default function ExpoEspacioPublico() {
             <h2 className="text-2xl md:text-3xl font-black text-center text-[#0e0477] mb-4 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Encuentra toda la industria de espacio público
             </h2>
-            <p className="text-center text-gray-600 mb-10">Proveedores de:</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-5xl mx-auto">
+            <p className="text-center text-gray-600 mb-10">Conecta con profesionales de:</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
               {industrias.map((industria, index) => (
-                <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-md transition-shadow">
-                  <span className="text-gray-700 text-sm">{industria}</span>
+                <div
+                  key={index}
+                  className="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                >
+                  {/* Imagen de fondo */}
+                  <img
+                    src={industria.imagen}
+                    alt={industria.nombre}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+
+                  {/* Overlay degradado */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#6847f6]/95 via-[#6847f6]/60 to-[#6847f6]/20" />
+
+                  {/* Borde inferior decorativo */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#BCCE16]" />
+
+                  {/* Texto centrado */}
+                  <div className="absolute inset-0 flex items-center justify-center p-3 md:p-4">
+                    <span
+                      className="text-white text-xs md:text-sm font-bold text-center leading-tight drop-shadow-lg"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      {industria.nombre}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -431,15 +465,17 @@ export default function ExpoEspacioPublico() {
                 </p>
               </div>
 
-              <button
-                disabled
-                className="inline-block bg-gray-400 text-white px-10 py-5 rounded-lg text-lg cursor-not-allowed opacity-70 uppercase tracking-wide"
-                style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700 }}
+              <a
+                href="https://wa.me/5219993530691?text=Hola,%20me%20interesa%20reservar%20un%20stand%20en%20la%20Expo%20Espacio%20P%C3%BAblico%202026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-cta-button inline-flex items-center justify-center gap-3 text-white font-bold px-8 py-4 sm:px-10 sm:py-5 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 uppercase tracking-wide"
+                style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700, lineHeight: '1.2' }}
                 data-testid="btn-registro-expositor-main"
               >
-                Registro próximamente
-              </button>
-              <p className="text-white/70 text-sm mt-4">El registro de expositores estará disponible próximamente</p>
+                <FaWhatsapp className="text-2xl" />
+                <span className="text-base sm:text-lg">Quiero ser Expositor</span>
+              </a>
             </div>
           </div>
         </section>
@@ -522,15 +558,40 @@ export default function ExpoEspacioPublico() {
         </section>
 
         {/* Tipo de Expositores */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 bg-gray-100">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-black text-center text-[#0e0477] mb-10 uppercase" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Tipo de Expositores
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-7xl mx-auto">
               {tiposExpositores.map((tipo, index) => (
-                <div key={index} className="flex items-center gap-2 bg-gray-50 border-l-4 border-[#6847f6] p-3 rounded-r-lg">
-                  <span className="text-gray-700 text-sm">{tipo}</span>
+                <div
+                  key={index}
+                  className="group relative aspect-[4/3] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                >
+                  {/* Imagen de fondo */}
+                  <img
+                    src={tipo.imagen}
+                    alt={tipo.nombre}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+
+                  {/* Overlay degradado */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e0477]/90 via-[#0e0477]/50 to-transparent" />
+
+                  {/* Borde superior decorativo */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#BCCE16]" />
+
+                  {/* Texto */}
+                  <div className="absolute inset-0 flex items-end p-3 md:p-4">
+                    <span
+                      className="text-white text-xs md:text-sm font-semibold leading-tight drop-shadow-lg"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      {tipo.nombre}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -553,7 +614,7 @@ export default function ExpoEspacioPublico() {
                   <div className="space-y-2 text-white/90">
                     <p className="flex items-center gap-2">
                       <Clock className="w-5 h-5 text-[#BCCE16]" />
-                      De miércoles a viernes
+                      De lunes a viernes
                     </p>
                     <p className="text-white/70 ml-7">9:00 am - 6:00 pm (GMT-6)</p>
                   </div>
