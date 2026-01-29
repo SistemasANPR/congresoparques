@@ -266,7 +266,7 @@ export default function Talleres() {
                   >
                     <div className="h-48 relative overflow-hidden bg-gray-200">
                       <img
-                        src={taller.foto_url || `https://congresoparques.com/imagenes/talleres/${encodeURIComponent(taller.foto)}`}
+                        src={`/api/image-proxy?url=${encodeURIComponent(taller.foto_url || `https://congresoparques.com/imagenes/talleres/${taller.foto}`)}`}
                         alt={taller.titulo}
                         className="w-full h-full object-cover"
                         onError={(e) => {
