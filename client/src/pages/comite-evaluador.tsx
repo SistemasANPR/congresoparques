@@ -127,46 +127,6 @@ export default function ComiteEvaluador() {
           </div>
         </section>
 
-        {/* Talleres y Sesiones Educativas */}
-        <section className="py-12 bg-gradient-to-r from-[#0e0477] to-[#6847f6]">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {/* Talleres */}
-              <div className="group relative overflow-hidden rounded-xl cursor-pointer">
-                <div className="bg-white/10 p-8 h-full transition-all duration-300 group-hover:bg-black/40">
-                  <h3 className="text-2xl font-bold text-[#BCCE16] mb-4">Talleres</h3>
-                  <p className="text-white/90 mb-6">
-                    Aprende haciendo, colaborando y resolviendo retos reales.
-                  </p>
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-2 rounded-lg">
-                      Conoce talleres
-                    </span>
-                  </div>
-                </div>
-              </div>
-              {/* Sesiones Educativas */}
-              <div className="group relative overflow-hidden rounded-xl cursor-pointer">
-                <div className="bg-white/10 p-8 h-full transition-all duration-300 group-hover:bg-black/40">
-                  <h3 className="text-2xl font-bold text-[#BCCE16] mb-4">Sesiones Educativas</h3>
-                  <p className="text-white/90 mb-6">
-                    Escucha, analiza y profundiza en experiencias de expertos.
-                  </p>
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="inline-block bg-[#BCCE16] text-[#0e0477] font-bold px-6 py-2 rounded-lg">
-                      Conoce sesiones
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Divider */}
-        <div className="container mx-auto px-4">
-          <div className="w-full h-px bg-gray-300"></div>
-        </div>
 
         {/* Members Grid */}
         <section className="py-12 bg-gray-50">

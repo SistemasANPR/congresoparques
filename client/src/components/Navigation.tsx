@@ -1,7 +1,30 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, Ticket } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Ticket,
+  Info,
+  Landmark,
+  Mic2,
+  Award,
+  Calendar,
+  CalendarDays,
+  Wrench,
+  PartyPopper,
+  Compass,
+  MapPin,
+  Plane,
+  Hotel,
+  FileText,
+  Megaphone,
+  GraduationCap,
+  Presentation,
+  Heart,
+  Store
+} from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 
 export function Navigation() {
@@ -46,11 +69,12 @@ export function Navigation() {
                 onMouseLeave={() => setAboutDropdownOpen(false)}
               >
                 <button
-                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${aboutDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1.5 ${aboutDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
                   style={{fontFamily: 'Montserrat, sans-serif'}}
                   data-testid="nav-acerca-de"
                   onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                 >
+                  <Info className="w-3.5 h-3.5 opacity-70" />
                   <span className="relative z-10">Acerca de</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -61,23 +85,26 @@ export function Navigation() {
                     <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
                     <Link
                       href="/congreso"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-congreso"
                     >
+                      <Landmark className="w-4 h-4 opacity-60" />
                       Congreso
                     </Link>
                     <Link
                       href="/ponentes"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-ponentes"
                     >
+                      <Mic2 className="w-4 h-4 opacity-60" />
                       Ponentes
                     </Link>
                     <Link
                       href="/comite-evaluador"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-comite"
                     >
+                      <Award className="w-4 h-4 opacity-60" />
                       Consejo Evaluador
                     </Link>
                     </div>
@@ -92,11 +119,12 @@ export function Navigation() {
                 onMouseLeave={() => setActivitiesDropdownOpen(false)}
               >
                 <button
-                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${activitiesDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1.5 ${activitiesDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
                   style={{fontFamily: 'Montserrat, sans-serif'}}
                   data-testid="nav-actividades"
                   onClick={() => setActivitiesDropdownOpen(!activitiesDropdownOpen)}
                 >
+                  <Calendar className="w-3.5 h-3.5 opacity-70" />
                   <span className="relative z-10">Actividades</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activitiesDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -107,23 +135,26 @@ export function Navigation() {
                     <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
                     <Link
                       href="/programa"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-programa"
                     >
+                      <CalendarDays className="w-4 h-4 opacity-60" />
                       Programa
                     </Link>
                     <Link
                       href="/talleres"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-talleres"
                     >
+                      <Wrench className="w-4 h-4 opacity-60" />
                       Talleres
                     </Link>
                     <Link
                       href="/eventos-sociales"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-eventos-sociales"
                     >
+                      <PartyPopper className="w-4 h-4 opacity-60" />
                       Eventos Sociales
                     </Link>
                     </div>
@@ -138,11 +169,12 @@ export function Navigation() {
                 onMouseLeave={() => setSedeDropdownOpen(false)}
               >
                 <button
-                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${sedeDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1.5 ${sedeDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
                   style={{fontFamily: 'Montserrat, sans-serif'}}
                   data-testid="nav-sede"
                   onClick={() => setSedeDropdownOpen(!sedeDropdownOpen)}
                 >
+                  <Compass className="w-3.5 h-3.5 opacity-70" />
                   <span className="relative z-10">Prepárate</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${sedeDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -153,30 +185,34 @@ export function Navigation() {
                     <div className="w-56 bg-[#6847f6] rounded-lg shadow-xl border border-white/10 py-2">
                     <Link
                       href="/sede"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-sede"
                     >
+                      <MapPin className="w-4 h-4 opacity-60" />
                       Ciudad Sede
                     </Link>
                     <Link
                       href="/conectividad"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-conectividad"
                     >
+                      <Plane className="w-4 h-4 opacity-60" />
                       Conectividad
                     </Link>
                     <Link
                       href="/hospedaje"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-hospedaje"
                     >
+                      <Hotel className="w-4 h-4 opacity-60" />
                       Hospedaje
                     </Link>
                     <Link
                       href="/recursos"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-recursos"
                     >
+                      <FileText className="w-4 h-4 opacity-60" />
                       Recursos
                     </Link>
                     </div>
@@ -191,11 +227,12 @@ export function Navigation() {
                 onMouseLeave={() => setConvocatoriasDropdownOpen(false)}
               >
                 <button
-                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1 ${convocatoriasDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
+                  className={`relative overflow-hidden px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md group flex items-center gap-1.5 ${convocatoriasDropdownOpen ? 'text-[#d0dd15]' : 'text-white hover:text-[#d0dd15]'}`}
                   style={{fontFamily: 'Montserrat, sans-serif'}}
                   data-testid="nav-convocatorias"
                   onClick={() => setConvocatoriasDropdownOpen(!convocatoriasDropdownOpen)}
                 >
+                  <Megaphone className="w-3.5 h-3.5 opacity-70" />
                   <span className="relative z-10">Convocatorias</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${convocatoriasDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -208,27 +245,30 @@ export function Navigation() {
                       href="https://congresoparques.com/registro_sesiones.php"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-sesiones-educativas"
                     >
+                      <GraduationCap className="w-4 h-4 opacity-60" />
                       Sesiones Educativas
                     </a>
                     <a
                       href="https://congresoparques.com/registro_posters.php"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-posters"
                     >
+                      <Presentation className="w-4 h-4 opacity-60" />
                       Pósters Científicos
                     </a>
                     <a
                       href="https://congresoparques.com/registro_voluntarios.php"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-voluntarios"
                     >
+                      <Heart className="w-4 h-4 opacity-60" />
                       Voluntarios
                     </a>
                     </div>
@@ -239,10 +279,11 @@ export function Navigation() {
               {/* Expo Espacio Público - Direct Link */}
               <Link
                 href="/expo-espacio-publico"
-                className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md"
+                className="relative overflow-hidden text-white hover:text-[#d0dd15] px-3 xl:px-4 py-2 text-[13px] xl:text-sm font-semibold tracking-wide transition-colors duration-200 rounded-md flex items-center gap-1.5"
                 style={{fontFamily: 'Montserrat, sans-serif'}}
                 data-testid="nav-expo-espacio-publico"
               >
+                <Store className="w-3.5 h-3.5 opacity-70" />
                 <span className="relative z-10">Expo</span>
               </Link>
             </div>
@@ -292,7 +333,10 @@ export function Navigation() {
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                   data-testid="mobile-nav-acerca-de"
                 >
-                  <span>Acerca de</span>
+                  <span className="flex items-center gap-2.5">
+                    <Info className="w-4 h-4 opacity-70" />
+                    Acerca de
+                  </span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAboutOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -300,26 +344,29 @@ export function Navigation() {
                   <div className="pl-4 space-y-1 mt-1">
                     <Link
                       href="/congreso"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-congreso"
                     >
+                      <Landmark className="w-4 h-4 opacity-60" />
                       Congreso
                     </Link>
                     <Link
                       href="/ponentes"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-ponentes"
                     >
+                      <Mic2 className="w-4 h-4 opacity-60" />
                       Ponentes
                     </Link>
                     <Link
                       href="/comite-evaluador"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-comite"
                     >
+                      <Award className="w-4 h-4 opacity-60" />
                       Consejo Evaluador
                     </Link>
                   </div>
@@ -333,7 +380,10 @@ export function Navigation() {
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                   data-testid="mobile-nav-actividades"
                 >
-                  <span>Actividades</span>
+                  <span className="flex items-center gap-2.5">
+                    <Calendar className="w-4 h-4 opacity-70" />
+                    Actividades
+                  </span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileActivitiesOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -341,26 +391,29 @@ export function Navigation() {
                   <div className="pl-4 space-y-1 mt-1">
                     <Link
                       href="/programa"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-programa"
                     >
+                      <CalendarDays className="w-4 h-4 opacity-60" />
                       Programa
                     </Link>
                     <Link
                       href="/talleres"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-talleres"
                     >
+                      <Wrench className="w-4 h-4 opacity-60" />
                       Talleres
                     </Link>
                     <Link
                       href="/eventos-sociales"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-eventos-sociales"
                     >
+                      <PartyPopper className="w-4 h-4 opacity-60" />
                       Eventos Sociales
                     </Link>
                   </div>
@@ -374,7 +427,10 @@ export function Navigation() {
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                   data-testid="mobile-nav-sede"
                 >
-                  <span>Prepárate</span>
+                  <span className="flex items-center gap-2.5">
+                    <Compass className="w-4 h-4 opacity-70" />
+                    Prepárate
+                  </span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileSedeOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -382,34 +438,38 @@ export function Navigation() {
                   <div className="pl-4 space-y-1 mt-1">
                     <Link
                       href="/sede"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-sede-link"
                     >
+                      <MapPin className="w-4 h-4 opacity-60" />
                       Ciudad Sede
                     </Link>
                     <Link
                       href="/conectividad"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-conectividad"
                     >
+                      <Plane className="w-4 h-4 opacity-60" />
                       Conectividad
                     </Link>
                     <Link
                       href="/hospedaje"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-hospedaje"
                     >
+                      <Hotel className="w-4 h-4 opacity-60" />
                       Hospedaje
                     </Link>
                     <Link
                       href="/recursos"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-recursos"
                     >
+                      <FileText className="w-4 h-4 opacity-60" />
                       Recursos
                     </Link>
                   </div>
@@ -423,7 +483,10 @@ export function Navigation() {
                   className="flex items-center justify-between text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors"
                   data-testid="mobile-nav-convocatorias"
                 >
-                  <span>Convocatorias</span>
+                  <span className="flex items-center gap-2.5">
+                    <Megaphone className="w-4 h-4 opacity-70" />
+                    Convocatorias
+                  </span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileConvocatoriasOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -433,30 +496,33 @@ export function Navigation() {
                       href="https://congresoparques.com/registro_sesiones.php"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-sesiones-educativas"
                     >
+                      <GraduationCap className="w-4 h-4 opacity-60" />
                       Sesiones Educativas
                     </a>
                     <a
                       href="https://congresoparques.com/registro_posters.php"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-posters"
                     >
+                      <Presentation className="w-4 h-4 opacity-60" />
                       Pósters Científicos
                     </a>
                     <a
                       href="https://congresoparques.com/registro_voluntarios.php"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-voluntarios"
                     >
+                      <Heart className="w-4 h-4 opacity-60" />
                       Voluntarios
                     </a>
                   </div>
@@ -466,10 +532,11 @@ export function Navigation() {
               {/* Mobile Expo Espacio Público - Direct Link */}
               <Link
                 href="/expo-espacio-publico"
-                className="block text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
+                className="flex items-center gap-2.5 text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 text-base font-medium rounded-md transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
                 data-testid="mobile-nav-expo-espacio-publico"
               >
+                <Store className="w-4 h-4 opacity-70" />
                 Expo Espacio Público
               </Link>
 

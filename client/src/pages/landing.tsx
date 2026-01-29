@@ -33,7 +33,15 @@ import {
   Ticket,
   GraduationCap,
   FlaskConical,
-  HeartHandshake
+  HeartHandshake,
+  Crown,
+  Medal,
+  Store,
+  Check,
+  Utensils,
+  Wine,
+  Sparkles,
+  CircleDot
 } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -201,7 +209,7 @@ export default function Landing() {
 
     // Observe all main sections except header and footer
     const sections = [
-      'info', 'experiencias', 'ejes', 'convocatorias', 'legado', 'aliados'
+      'info', 'experiencias', 'ejes', 'convocatorias', 'precios', 'legado', 'aliados'
     ];
     
     sections.forEach(sectionId => {
@@ -525,12 +533,12 @@ export default function Landing() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center hero-button-animate px-4">
               <button
-                onClick={() => scrollToSection('convocatorias')}
+                onClick={() => scrollToSection('precios')}
                 className="hero-cta-button px-7 py-3.5 sm:px-8 md:px-10 sm:py-4 md:py-4.5 text-base sm:text-lg md:text-xl font-bold transform hover:scale-105 transition-all text-white rounded-lg border-0 hero-cta-responsive uppercase tracking-wide"
                 style={{ fontFamily: 'Antonio, sans-serif', lineHeight: '1.2' }}
                 data-testid="hero-cta"
               >
-                Conoce nuestras Convocatorias
+                Ver precios de preventa
               </button>
             </div>
           </div>
@@ -1015,6 +1023,342 @@ export default function Landing() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="precios" className="py-16 bg-white section-animate animate-fadeInUp">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            {/* Section Header */}
+            <h2 className="text-3xl md:text-4xl text-center mb-4 uppercase section-title" style={{ color: '#0e0477' }} data-testid="pricing-title">
+              PRECIOS
+            </h2>
+            <p className="text-center text-gray-600 mb-12 text-lg" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Opciones de participación
+            </p>
+
+            {/* Pricing Cards Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+
+              {/* CARD ORO */}
+              <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#6847f6] flex flex-col transform hover:scale-[1.02] transition-all duration-300" data-testid="pricing-oro">
+                {/* Badge Preventa */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-[#d4af37] to-[#f0d875] text-[#0e0477] text-xs font-bold rounded-full uppercase tracking-wide shadow-lg">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Mejor opción
+                  </span>
+                </div>
+
+                {/* Header - Solid purple background */}
+                <div className="bg-[#6847f6] p-6 text-center">
+                  {/* Icon with gold gradient */}
+                  <div className="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #d4af37 0%, #f0d875 50%, #d4af37 100%)' }}>
+                    <Crown className="w-8 h-8 text-[#0e0477]" />
+                  </div>
+                  <h3 className="text-2xl font-black text-white uppercase tracking-wide" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                    ORO
+                  </h3>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Benefits List */}
+                  <div className="space-y-3 flex-grow">
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Hammer className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <strong>1 taller vivencial o masterclass</strong> (cupo limitado)
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Mic className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Conferencias magistrales
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <BookOpen className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Sesiones educativas
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Store className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Acceso a Expo Espacio Público
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Wine className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Beer Party (networking)
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <PartyPopper className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Fiesta de Clausura en Parque Esperanto
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Utensils className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Comida jueves y viernes incluidas
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Pricing & CTA - Fixed at bottom */}
+                  <div className="mt-auto pt-6">
+                    <div className="text-center py-4 border-t border-gray-100">
+                      <p className="text-gray-400 text-sm line-through mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        $3,944.00 MXN
+                      </p>
+                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                        $3,016.00 MXN
+                      </p>
+                      <p className="text-xs text-gray-500 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        IVA incluido
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#6847f6]/10 rounded-full">
+                        <Calendar className="w-3.5 h-3.5 text-[#6847f6]" />
+                        <span className="text-xs font-semibold text-[#6847f6]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                          Válido hasta 15/03/2026
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <a
+                      href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full mt-4 py-4 bg-[#6847f6] text-white font-bold text-center rounded-xl uppercase tracking-wide transition-all duration-300 hover:bg-[#5438d5] hover:shadow-lg hover:scale-[1.02]"
+                      style={{ fontFamily: 'Antonio, sans-serif' }}
+                      data-testid="cta-oro"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <Ticket className="w-5 h-5" />
+                        REGISTRARME
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* CARD PLATA */}
+              <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#6847f6] flex flex-col transform hover:scale-[1.02] transition-all duration-300" data-testid="pricing-plata">
+                {/* Header - Solid purple background */}
+                <div className="bg-[#6847f6] p-6 text-center">
+                  {/* Icon with silver gradient */}
+                  <div className="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #a8a9ad 0%, #d4d5d9 50%, #a8a9ad 100%)' }}>
+                    <Medal className="w-8 h-8 text-[#0e0477]" />
+                  </div>
+                  <h3 className="text-2xl font-black text-white uppercase tracking-wide" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                    PLATA
+                  </h3>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Benefits List */}
+                  <div className="space-y-3 flex-grow">
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Mic className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Conferencias magistrales
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <BookOpen className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Sesiones educativas
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Store className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Acceso a Expo Espacio Público
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Wine className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Beer Party (networking)
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <PartyPopper className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Fiesta de Clausura
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Utensils className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Comida jueves y viernes incluidas
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Pricing & CTA - Fixed at bottom */}
+                  <div className="mt-auto pt-6">
+                    <div className="text-center py-4 border-t border-gray-100">
+                      <p className="text-gray-400 text-sm line-through mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        $3,362.00 MXN
+                      </p>
+                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                        $2,552.00 MXN
+                      </p>
+                      <p className="text-xs text-gray-500 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        IVA incluido
+                      </p>
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#6847f6]/10 rounded-full">
+                        <Calendar className="w-3.5 h-3.5 text-[#6847f6]" />
+                        <span className="text-xs font-semibold text-[#6847f6]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                          Válido hasta 15/03/2026
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <a
+                      href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full mt-4 py-4 bg-[#6847f6] text-white font-bold text-center rounded-xl uppercase tracking-wide transition-all duration-300 hover:bg-[#5438d5] hover:shadow-lg hover:scale-[1.02]"
+                      style={{ fontFamily: 'Antonio, sans-serif' }}
+                      data-testid="cta-plata"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <Ticket className="w-5 h-5" />
+                        REGISTRARME
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* CARD EXPO */}
+              <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#6847f6] flex flex-col transform hover:scale-[1.02] transition-all duration-300 md:col-span-2 lg:col-span-1" data-testid="pricing-expo">
+                {/* Header - Solid purple background */}
+                <div className="bg-[#6847f6] p-6 text-center">
+                  {/* Icon with purple gradient */}
+                  <div className="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #8b6cf8 0%, #a78bfa 50%, #8b6cf8 100%)' }}>
+                    <Store className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-black text-white uppercase tracking-wide" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                    EXPO
+                  </h3>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  {/* Benefits List */}
+                  <div className="space-y-3 flex-grow">
+                    <div className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-[#6847f6]" />
+                      </div>
+                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <strong>Acceso a Expo Espacio Público</strong>
+                      </span>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="py-2">
+                      <p className="text-xs text-gray-400 uppercase tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        No incluye:
+                      </p>
+                    </div>
+
+                    <div className="flex items-start gap-3 opacity-50">
+                      <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <X className="w-3 h-3 text-gray-400" />
+                      </div>
+                      <span className="text-sm text-gray-500 line-through" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Conferencias magistrales
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3 opacity-50">
+                      <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <X className="w-3 h-3 text-gray-400" />
+                      </div>
+                      <span className="text-sm text-gray-500 line-through" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Sesiones educativas
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3 opacity-50">
+                      <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <X className="w-3 h-3 text-gray-400" />
+                      </div>
+                      <span className="text-sm text-gray-500 line-through" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Talleres o master classes
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Pricing & CTA - Fixed at bottom */}
+                  <div className="mt-auto pt-6">
+                    <div className="text-center py-4 border-t border-gray-100">
+                      <p className="text-4xl font-black text-[#6847f6] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                        GRATUITO
+                      </p>
+                      <p className="text-xs text-gray-500 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Registro requerido
+                      </p>
+                      {/* Spacer to align with other cards */}
+                      <div className="h-[26px]"></div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <a
+                      href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full mt-4 py-4 bg-[#6847f6] text-white font-bold text-center rounded-xl uppercase tracking-wide transition-all duration-300 hover:bg-[#5438d5] hover:shadow-lg hover:scale-[1.02]"
+                      style={{ fontFamily: 'Antonio, sans-serif' }}
+                      data-testid="cta-expo"
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <Ticket className="w-5 h-5" />
+                        REGISTRARME
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
