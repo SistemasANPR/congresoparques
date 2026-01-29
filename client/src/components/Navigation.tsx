@@ -67,25 +67,11 @@ export function Navigation() {
                       Congreso
                     </Link>
                     <Link
-                      href="/organizadores"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
-                      data-testid="nav-dropdown-organizadores"
-                    >
-                      Organizadores
-                    </Link>
-                    <Link
                       href="/ponentes"
                       className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
                       data-testid="nav-dropdown-ponentes"
                     >
                       Ponentes
-                    </Link>
-                    <Link
-                      href="/preparate"
-                      className="block px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
-                      data-testid="nav-dropdown-preparate"
-                    >
-                      Prepárate
                     </Link>
                     <Link
                       href="/comite-evaluador"
@@ -94,12 +80,6 @@ export function Navigation() {
                     >
                       Consejo Evaluador
                     </Link>
-                    <span
-                      className="block px-4 py-2.5 text-white/50 cursor-default text-sm"
-                      data-testid="nav-dropdown-galerias"
-                    >
-                      Galerías
-                    </span>
                     </div>
                   </div>
                 )}
@@ -270,17 +250,18 @@ export function Navigation() {
 
           {/* Right Side: CTA Button + Mobile Menu */}
           <div className="flex items-center gap-3 shrink-0">
-            {/* Desktop CTA Button - Disabled */}
-            <button
-              disabled
-              className="hidden md:flex items-center gap-2 bg-white/20 text-white/50 px-6 xl:px-7 py-3 xl:py-3.5 rounded-full text-sm xl:text-base cursor-not-allowed opacity-60 border border-white/20 uppercase tracking-wide"
+            {/* Desktop CTA Button */}
+            <a
+              href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-2 bg-[#d0dd15] text-[#0e0477] px-6 xl:px-7 py-3 xl:py-3.5 rounded-full text-sm xl:text-base uppercase tracking-wide hover:bg-[#e0ed25] hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
               style={{fontFamily: 'Antonio, sans-serif', fontWeight: 700}}
               data-testid="btn-adquirir-entradas"
-              title="Próximamente disponible"
             >
               <Ticket className="w-4 h-4" />
               <span>Adquirir entradas</span>
-            </button>
+            </a>
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
@@ -326,28 +307,12 @@ export function Navigation() {
                       Congreso
                     </Link>
                     <Link
-                      href="/organizadores"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                      data-testid="mobile-nav-organizadores"
-                    >
-                      Organizadores
-                    </Link>
-                    <Link
                       href="/ponentes"
                       className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                       data-testid="mobile-nav-ponentes"
                     >
                       Ponentes
-                    </Link>
-                    <Link
-                      href="/preparate"
-                      className="block text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                      data-testid="mobile-nav-preparate"
-                    >
-                      Prepárate
                     </Link>
                     <Link
                       href="/comite-evaluador"
@@ -357,12 +322,6 @@ export function Navigation() {
                     >
                       Consejo Evaluador
                     </Link>
-                    <span
-                      className="block text-white/40 px-3 py-2 text-sm cursor-default"
-                      data-testid="mobile-nav-galerias"
-                    >
-                      Galerías
-                    </span>
                   </div>
                 )}
               </div>
@@ -514,17 +473,19 @@ export function Navigation() {
                 Expo Espacio Público
               </Link>
 
-              {/* Mobile CTA Button - Disabled */}
+              {/* Mobile CTA Button */}
               <div className="pt-3 mt-2 border-t border-white/20">
-                <button
-                  disabled
-                  className="flex items-center justify-center gap-2 w-full bg-white/20 text-white/50 px-6 py-3.5 rounded-full text-sm cursor-not-allowed opacity-60 border border-white/20 uppercase tracking-wide"
+                <a
+                  href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full bg-[#d0dd15] text-[#0e0477] px-6 py-3.5 rounded-full text-sm uppercase tracking-wide hover:bg-[#e0ed25] transition-all duration-200 shadow-lg"
                   style={{fontFamily: 'Antonio, sans-serif', fontWeight: 700}}
                   data-testid="mobile-btn-adquirir-entradas"
                 >
                   <Ticket className="w-4 h-4" />
                   <span>Adquirir entradas</span>
-                </button>
+                </a>
               </div>
             </div>
           </div>
