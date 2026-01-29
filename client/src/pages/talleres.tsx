@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Wrench } from "lucide-react";
+import { ChevronLeft, ChevronRight, Wrench, Calendar, Clock, Users, Tag, Loader2 } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -137,7 +137,64 @@ function WorkshopCarousel({ images, title, subtitle, description, iconUrl, iconA
   );
 }
 
+interface TallerAPI {
+  id_taller: number;
+  titulo: string;
+  subtitulo: string;
+  descripcion: string;
+  fecha: string;
+  inicio: string;
+  fin: string;
+  capacidad: string;
+  categoria: string;
+  foto: string;
+  disponible: string;
+}
+
+interface TalleresResponse {
+  success: boolean;
+  evento: string;
+  total: number;
+  data: TallerAPI[];
+}
+
 export default function Talleres() {
+  const [talleresAPI, setTalleresAPI] = useState<TallerAPI[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchTalleres = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://congresoparques.com/cpanel/api/talleres.php');
+        if (!response.ok) {
+          throw new Error('Error al cargar los talleres');
+        }
+        const data: TalleresResponse = await response.json();
+        if (data.success && data.data) {
+          setTalleresAPI(data.data.filter(t => t.disponible === "1"));
+        } else {
+          setTalleresAPI([]);
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error desconocido');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTalleres();
+  }, []);
+
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' });
+  };
+
+  const formatTime = (timeStr: string) => {
+    return timeStr.substring(0, 5);
+  };
+
   const talleresVivencialesImages = [
     tallerVivencial1,
     tallerVivencial2,
@@ -172,6 +229,84 @@ export default function Talleres() {
           lucideIcon={Wrench}
           iconAlt="Icono Talleres"
         />
+
+        {/* Talleres desde API */}
+        <section className="py-12 md:py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
+              Talleres Disponibles
+            </h2>
+            
+            {loading && (
+              <div className="flex justify-center items-center py-12">
+                <Loader2 className="w-10 h-10 text-[#6847f6] animate-spin" />
+                <span className="ml-3 text-lg text-gray-600">Cargando talleres...</span>
+              </div>
+            )}
+
+            {error && (
+              <div className="text-center py-12">
+                <p className="text-red-500 text-lg">{error}</p>
+              </div>
+            )}
+
+            {!loading && !error && talleresAPI.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-500 text-lg">No hay talleres disponibles en este momento.</p>
+              </div>
+            )}
+
+            {!loading && !error && talleresAPI.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {talleresAPI.map((taller) => (
+                  <div 
+                    key={taller.id_taller}
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-100"
+                  >
+                    <div className="h-48 relative overflow-hidden">
+                      <img
+                        src={`https://congresoparques.com/cpanel/img_eventos/${taller.foto}`}
+                        alt={taller.titulo}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Imagen+no+disponible';
+                        }}
+                      />
+                      <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                        <Tag className="w-3 h-3" />
+                        {taller.categoria}
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+                        <Calendar className="w-4 h-4 text-[#BCCE16]" />
+                        <span>{formatDate(taller.fecha)}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                        <Clock className="w-4 h-4 text-[#BCCE16]" />
+                        <span>{formatTime(taller.inicio)} - {formatTime(taller.fin)}</span>
+                      </div>
+                      <h3 className="text-lg font-bold mb-1 line-clamp-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
+                        {taller.titulo}
+                      </h3>
+                      {taller.subtitulo && (
+                        <p className="text-sm text-gray-600 mb-3 line-clamp-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                          {taller.subtitulo}
+                        </p>
+                      )}
+                      <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                        <div className="flex items-center gap-1 text-sm text-gray-500">
+                          <Users className="w-4 h-4 text-[#6847f6]" />
+                          <span>Capacidad: {taller.capacidad}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
 
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4 text-center">
