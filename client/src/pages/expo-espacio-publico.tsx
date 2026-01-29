@@ -338,7 +338,9 @@ export default function ExpoEspacioPublico() {
                 Entonces <strong className="text-[#BCCE16]">no puedes faltar a la Expo Espacio Público</strong>, el evento que te acerca a las últimas tendencias y soluciones innovadoras que están moldeando el futuro urbano.
               </p>
               <a
-                href="#"
+                href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-[#BCCE16] hover:bg-[#a8b814] text-[#0e0477] px-8 py-4 sm:px-10 sm:py-5 rounded-lg text-base sm:text-lg font-bold transform hover:scale-105 transition-all uppercase tracking-wide shadow-lg hover:shadow-xl"
                 style={{ fontFamily: 'Antonio, sans-serif' }}
                 data-testid="btn-registro-visitante"
