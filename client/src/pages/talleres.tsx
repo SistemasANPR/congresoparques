@@ -148,6 +148,7 @@ interface TallerAPI {
   capacidad: string;
   categoria: string;
   foto: string;
+  foto_url: string;
   disponible: string;
 }
 
@@ -263,9 +264,9 @@ export default function Talleres() {
                     key={taller.id_taller}
                     className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-100"
                   >
-                    <div className="h-48 relative overflow-hidden">
+                    <div className="h-48 relative overflow-hidden bg-gray-200">
                       <img
-                        src={`https://congresoparques.com/cpanel/img_eventos/${taller.foto}`}
+                        src={taller.foto_url || `https://congresoparques.com/imagenes/talleres/${encodeURIComponent(taller.foto)}`}
                         alt={taller.titulo}
                         className="w-full h-full object-cover"
                         onError={(e) => {
