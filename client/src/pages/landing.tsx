@@ -897,19 +897,19 @@ export default function Landing() {
                   <div className="text-center mt-auto">
                     <button
                       disabled
-                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-50"
+                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-60"
                       style={{
-                        backgroundColor: '#35219b',
+                        backgroundColor: '#6b7280',
                         fontFamily: 'Antonio, sans-serif'
                       }}
                       data-testid="cta-educational"
                     >
-                      REGÍSTRATE
+                      CERRADO
                     </button>
                   </div>
                 </div>
               </div>
-              
+
               {/* Convocatoria Poster Científico */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-poster">
                 {/* Header con "CONVOCATORIA" */}
@@ -954,14 +954,14 @@ export default function Landing() {
                   <div className="text-center mt-auto">
                     <button
                       disabled
-                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-50"
+                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-60"
                       style={{
-                        backgroundColor: '#35219b',
+                        backgroundColor: '#6b7280',
                         fontFamily: 'Antonio, sans-serif'
                       }}
                       data-testid="cta-poster"
                     >
-                      REGÍSTRATE
+                      CERRADO
                     </button>
                   </div>
                 </div>
