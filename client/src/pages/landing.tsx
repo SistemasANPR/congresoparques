@@ -1360,6 +1360,20 @@ export default function Landing() {
               </div>
 
             </div>
+
+            {/* Banner Promocional Miembros ANPR */}
+            <div className="mt-12">
+              <a
+                href="mailto:hola@anpr.org.mx"
+                className="block w-full overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer group"
+              >
+                <img
+                  src="/assets/CONGRESO-PROMO-MIEMBRO_1769816828374.png"
+                  alt="Beneficio Exclusivo - 20% descuento para miembros ANPR"
+                  className="w-full h-auto object-cover transition-all duration-300 group-hover:opacity-95"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </section>

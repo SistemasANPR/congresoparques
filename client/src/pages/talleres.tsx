@@ -16,12 +16,6 @@ import masterClass1 from "@assets/Master_class_1_1769123164371.jpg";
 import masterClass2 from "@assets/Master_class_2_1769123164370.jpg";
 import masterClass3 from "@assets/Master_class_3_1769123164370.jpg";
 import masterClass4 from "@assets/Master_class_4_1769123164370.jpg";
-import parquesUrbanosImg from "@assets/Parques_Urbanos_de_Tijuana_1769196136967.jpg";
-import espaciosCulturalesImg from "@assets/Espacios_Publicos_Culturales_1769196136966.jpg";
-import maleconImg from "@assets/Malecon_y_Zonas_Costeras_1769196136966.jpg";
-import disenoEspaciosVerdesImg from "@assets/Diseno_de_Espacios_Verdes_1769198019300.jpg";
-import gestionAdminImg from "@assets/Gestion_y_Administracion_1769198019301.jpg";
-import sustentabilidadImg from "@assets/Sustentabilidad_Urbana_1769198019301.jpg";
 
 interface WorkshopCarouselProps {
   images: string[];
@@ -159,6 +153,201 @@ interface TalleresResponse {
   data: TallerAPI[];
 }
 
+interface TallerCardProps {
+  taller: TallerAPI;
+  formatDate: (dateStr: string) => string;
+  formatTime: (timeStr: string) => string;
+}
+
+function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Handle click/tap for mobile
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  // Handle mouse events for desktop
+  const handleMouseEnter = () => {
+    // Only trigger hover flip on non-touch devices
+    if (window.matchMedia('(hover: hover)').matches) {
+      setIsFlipped(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (window.matchMedia('(hover: hover)').matches) {
+      setIsFlipped(false);
+    }
+  };
+
+  // Close card when clicking outside on mobile
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
+        setIsFlipped(false);
+      }
+    };
+
+    if (isFlipped) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isFlipped]);
+
+  return (
+    <div
+      ref={cardRef}
+      className="h-[420px] perspective-1000"
+      style={{ perspective: '1000px' }}
+    >
+      <div
+        className={`relative w-full h-full transition-transform duration-500 cursor-pointer`}
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+        }}
+        onClick={handleCardClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Front of card */}
+        <div
+          className="absolute w-full h-full rounded-xl shadow-lg overflow-hidden border border-gray-100 bg-white"
+          style={{ backfaceVisibility: 'hidden' }}
+        >
+          <div className="h-48 relative overflow-hidden bg-gray-200">
+            <img
+              src={`/api/image-proxy?url=${encodeURIComponent(taller.foto_url || `https://congresoparques.com/imagenes/talleres/${taller.foto}`)}`}
+              alt={taller.titulo}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Imagen+no+disponible';
+              }}
+            />
+            <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+              <Tag className="w-3 h-3" />
+              {taller.categoria}
+            </div>
+          </div>
+          <div className="p-5 flex flex-col h-[calc(100%-192px)]">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+                <Calendar className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
+                <span>{formatDate(taller.fecha)}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                <Clock className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
+                <span>{formatTime(taller.inicio)} - {formatTime(taller.fin)}</span>
+              </div>
+              <h3 className="text-lg font-bold mb-1 line-clamp-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
+                {taller.titulo}
+              </h3>
+              {taller.subtitulo && (
+                <p className="text-sm text-gray-600 line-clamp-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  {taller.subtitulo}
+                </p>
+              )}
+            </div>
+            <div className="flex items-center gap-2 pt-3 border-t border-gray-100 mt-auto">
+              <Users className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
+              <span className="text-sm text-gray-500">Capacidad: {taller.capacidad}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Back of card */}
+        <div
+          className="absolute w-full h-full rounded-xl shadow-lg overflow-hidden border border-gray-100"
+          style={{
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+            background: 'linear-gradient(135deg, #6847f6 0%, #35219B 100%)',
+          }}
+        >
+          <div className="p-6 flex flex-col h-full text-white">
+            <div className="flex items-center gap-2 mb-2">
+              <Tag className="w-4 h-4 text-[#BCCE16]" />
+              <span className="text-[#BCCE16] text-sm font-semibold">{taller.categoria}</span>
+            </div>
+            <h3 className="text-lg font-bold mb-2 leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              {taller.titulo}
+            </h3>
+            {taller.subtitulo && (
+              <p className="text-[#BCCE16]/90 text-sm mb-3 font-medium" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                {taller.subtitulo}
+              </p>
+            )}
+            <div className="flex-1 overflow-y-auto pr-1 custom-scrollbar">
+              <p className="text-white/95 text-[15px] leading-relaxed">
+                {taller.descripcion || 'Descripción no disponible.'}
+              </p>
+            </div>
+            <p className="text-white/40 text-xs text-center mt-3 pt-3 border-t border-white/10">
+              Toca para volver
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface TalleresGridProps {
+  talleres: TallerAPI[];
+  loading: boolean;
+  error: string | null;
+  formatDate: (dateStr: string) => string;
+  formatTime: (timeStr: string) => string;
+  emptyMessage: string;
+}
+
+function TalleresGrid({ talleres, loading, error, formatDate, formatTime, emptyMessage }: TalleresGridProps) {
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <Loader2 className="w-10 h-10 text-[#6847f6] animate-spin" />
+        <span className="ml-3 text-lg text-gray-600">Cargando talleres...</span>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-red-500 text-lg">{error}</p>
+      </div>
+    );
+  }
+
+  if (talleres.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-gray-500 text-lg">{emptyMessage}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {talleres.map((taller) => (
+        <TallerCard
+          key={taller.id_taller}
+          taller={taller}
+          formatDate={formatDate}
+          formatTime={formatTime}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function Talleres() {
   const [talleresAPI, setTalleresAPI] = useState<TallerAPI[]>([]);
   const [loading, setLoading] = useState(true);
@@ -210,6 +399,18 @@ export default function Talleres() {
     masterClass4,
   ];
 
+  // Filtrar talleres por categoría
+  const talleresVivenciales = talleresAPI.filter(t =>
+    t.categoria.toLowerCase() === 'vivencial' ||
+    t.categoria.toLowerCase().includes('vivencial')
+  );
+
+  const talleresMasterClass = talleresAPI.filter(t =>
+    t.categoria.toLowerCase() === 'master class' ||
+    t.categoria.toLowerCase().includes('master class') ||
+    t.categoria.toLowerCase() === 'masterclass'
+  );
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <AnnouncementBanner
@@ -230,84 +431,6 @@ export default function Talleres() {
           lucideIcon={Wrench}
           iconAlt="Icono Talleres"
         />
-
-        {/* Talleres desde API */}
-        <section className="py-12 md:py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
-              Talleres Disponibles
-            </h2>
-            
-            {loading && (
-              <div className="flex justify-center items-center py-12">
-                <Loader2 className="w-10 h-10 text-[#6847f6] animate-spin" />
-                <span className="ml-3 text-lg text-gray-600">Cargando talleres...</span>
-              </div>
-            )}
-
-            {error && (
-              <div className="text-center py-12">
-                <p className="text-red-500 text-lg">{error}</p>
-              </div>
-            )}
-
-            {!loading && !error && talleresAPI.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No hay talleres disponibles en este momento.</p>
-              </div>
-            )}
-
-            {!loading && !error && talleresAPI.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {talleresAPI.map((taller) => (
-                  <div 
-                    key={taller.id_taller}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-100"
-                  >
-                    <div className="h-48 relative overflow-hidden bg-gray-200">
-                      <img
-                        src={`/api/image-proxy?url=${encodeURIComponent(taller.foto_url || `https://congresoparques.com/imagenes/talleres/${taller.foto}`)}`}
-                        alt={taller.titulo}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Imagen+no+disponible';
-                        }}
-                      />
-                      <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                        <Tag className="w-3 h-3" />
-                        {taller.categoria}
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                        <Calendar className="w-4 h-4 text-[#BCCE16]" />
-                        <span>{formatDate(taller.fecha)}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                        <Clock className="w-4 h-4 text-[#BCCE16]" />
-                        <span>{formatTime(taller.inicio)} - {formatTime(taller.fin)}</span>
-                      </div>
-                      <h3 className="text-lg font-bold mb-1 line-clamp-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
-                        {taller.titulo}
-                      </h3>
-                      {taller.subtitulo && (
-                        <p className="text-sm text-gray-600 mb-3 line-clamp-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                          {taller.subtitulo}
-                        </p>
-                      )}
-                      <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                        <div className="flex items-center gap-1 text-sm text-gray-500">
-                          <Users className="w-4 h-4 text-[#6847f6]" />
-                          <span>Capacidad: {taller.capacidad}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
 
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4 text-center">
@@ -332,47 +455,14 @@ export default function Talleres() {
 
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 relative">
-                  <img 
-                    src={parquesUrbanosImg} 
-                    alt="Parques Urbanos de Tijuana" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Parques Urbanos de Tijuana</h4>
-                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Recorrido por los espacios verdes más emblemáticos de la ciudad fronteriza.</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 relative">
-                  <img 
-                    src={espaciosCulturalesImg} 
-                    alt="Espacios Públicos Culturales" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Espacios Públicos Culturales</h4>
-                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Visita a plazas y centros culturales que definen la identidad de la ciudad.</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 relative">
-                  <img 
-                    src={maleconImg} 
-                    alt="Malecón y Zonas Costeras" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Malecón y Zonas Costeras</h4>
-                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Experiencia única en los espacios públicos junto al Océano Pacífico.</p>
-                </div>
-              </div>
-            </div>
+            <TalleresGrid
+              talleres={talleresVivenciales}
+              loading={loading}
+              error={error}
+              formatDate={formatDate}
+              formatTime={formatTime}
+              emptyMessage="No hay talleres vivenciales disponibles en este momento."
+            />
           </div>
         </section>
 
@@ -391,47 +481,14 @@ export default function Talleres() {
 
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 relative">
-                  <img 
-                    src={disenoEspaciosVerdesImg} 
-                    alt="Diseño de Espacios Verdes" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Diseño de Espacios Verdes</h4>
-                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Técnicas avanzadas de diseño paisajístico y planificación urbana.</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 relative">
-                  <img 
-                    src={gestionAdminImg} 
-                    alt="Gestión y Administración" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Gestión y Administración</h4>
-                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Estrategias para la administración eficiente de parques urbanos.</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 relative">
-                  <img 
-                    src={sustentabilidadImg} 
-                    alt="Sustentabilidad Urbana" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="mb-2" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 700, color: '#0e0477' }}>Sustentabilidad Urbana</h4>
-                  <p className="text-sm" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>Prácticas sostenibles para el desarrollo de espacios públicos.</p>
-                </div>
-              </div>
-            </div>
+            <TalleresGrid
+              talleres={talleresMasterClass}
+              loading={loading}
+              error={error}
+              formatDate={formatDate}
+              formatTime={formatTime}
+              emptyMessage="No hay master classes disponibles en este momento."
+            />
           </div>
         </section>
       </main>
