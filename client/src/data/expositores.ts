@@ -16,6 +16,9 @@ import cdtLogoUrl from "@assets/CDT_1766080172849.png";
 import jumboLogoUrl from "@assets/Jumbo_1766080172849.png";
 import proludicLogoUrl from "@assets/Proludic_1766080172850.png";
 import parkSysLogoUrl from "@assets/ParkSys_1766080172850.png";
+import tourMateLogoUrl from "@assets/Tour_Mate_1770137791667.png";
+import fundicionGamboaLogoUrl from "@assets/Fundicion_Gamboa_1770137791670.png";
+import benitoLogoUrl from "@assets/Benito_1770137791671.png";
 
 export interface Expositor {
   id: string;
@@ -40,6 +43,9 @@ export const expositores: Expositor[] = [
   { id: 'jimumex', logo: jimumexLogoUrl, name: 'Jimumex Equipamiento Urbano', url: 'https://jimumex.com.mx/' },
   { id: 'parquesmexico', logo: parquesMexicoLogoUrl, name: 'Parques de México', url: 'https://parquesdemexico.org/' },
   { id: 'parquesalegres', logo: parquesAlegresLogoUrl, name: 'Parques Alegres', url: 'https://parquesalegres.org/' },
+  { id: 'tourmate', logo: tourMateLogoUrl, name: 'Tour Mate Systems', url: 'https://www.tourmate.com/' },
+  { id: 'fundiciongamboa', logo: fundicionGamboaLogoUrl, name: 'Fundición Gamboa', url: 'https://www.fundiciongamboa.com/' },
+  { id: 'benito', logo: benitoLogoUrl, name: 'Benito', url: 'https://www.benito.com/' },
 ];
 
 // Utility function to shuffle brands for random display order
