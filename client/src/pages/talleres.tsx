@@ -234,20 +234,24 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
               }}
             />
             <div className="absolute top-3 left-3 flex flex-col gap-2">
-              {taller.turno && (
-                <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${
-                  taller.turno.toLowerCase() === 'matutino' 
-                    ? 'bg-amber-400 text-amber-900' 
-                    : 'bg-indigo-500 text-white'
-                }`}>
-                  {taller.turno.toLowerCase() === 'matutino' ? (
-                    <Sun className="w-3 h-3" />
-                  ) : (
-                    <Moon className="w-3 h-3" />
-                  )}
-                  {taller.turno}
-                </div>
-              )}
+              {(() => {
+                const turno = taller.turno || (parseInt(taller.inicio.split(':')[0]) < 12 ? 'Matutino' : 'Vespertino');
+                const isMatutino = turno.toLowerCase() === 'matutino';
+                return (
+                  <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${
+                    isMatutino 
+                      ? 'bg-amber-400 text-amber-900' 
+                      : 'bg-indigo-500 text-white'
+                  }`}>
+                    {isMatutino ? (
+                      <Sun className="w-3 h-3" />
+                    ) : (
+                      <Moon className="w-3 h-3" />
+                    )}
+                    {turno}
+                  </div>
+                );
+              })()}
             </div>
             <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
               <Tag className="w-3 h-3" />
