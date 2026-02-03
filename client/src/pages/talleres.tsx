@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Wrench, Calendar, Clock, Users, Tag, Loader2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Wrench, Calendar, Clock, Users, Tag, Loader2, MapPin, Sun, Moon } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -144,6 +144,8 @@ interface TallerAPI {
   foto: string;
   foto_url: string;
   disponible: string;
+  turno?: string;
+  ubicacion?: string;
 }
 
 interface TalleresResponse {
@@ -231,6 +233,22 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
                 (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Imagen+no+disponible';
               }}
             />
+            <div className="absolute top-3 left-3 flex flex-col gap-2">
+              {taller.turno && (
+                <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${
+                  taller.turno.toLowerCase() === 'matutino' 
+                    ? 'bg-amber-400 text-amber-900' 
+                    : 'bg-indigo-500 text-white'
+                }`}>
+                  {taller.turno.toLowerCase() === 'matutino' ? (
+                    <Sun className="w-3 h-3" />
+                  ) : (
+                    <Moon className="w-3 h-3" />
+                  )}
+                  {taller.turno}
+                </div>
+              )}
+            </div>
             <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
               <Tag className="w-3 h-3" />
               {taller.categoria}
@@ -242,10 +260,16 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
                 <Calendar className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
                 <span>{formatDate(taller.fecha)}</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
                 <Clock className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
                 <span>{formatTime(taller.inicio)} - {formatTime(taller.fin)}</span>
               </div>
+              {taller.ubicacion && (
+                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                  <MapPin className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
+                  <span className="line-clamp-1">{taller.ubicacion}</span>
+                </div>
+              )}
               <h3 className="text-lg font-bold mb-1 line-clamp-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
                 {taller.titulo}
               </h3>

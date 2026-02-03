@@ -14,7 +14,8 @@
       "Bash(pkill:*)",
       "Bash(npx vite:*)",
       "Bash(npx tsx --watch server/index.ts)",
-      "Bash(lsof:*)"
+      "Bash(lsof:*)",
+      "Bash(grep:*)"
     ]
   }
 }
