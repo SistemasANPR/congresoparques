@@ -1368,7 +1368,7 @@ export default function Landing() {
                 className="block w-full overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer group"
               >
                 <img
-                  src="/assets/CONGRESO-PROMO-MIEMBRO_1769816828374.png"
+                  src="/assets/CONGRESO-PROMO-MIEMBRO_1770130810434.png"
                   alt="Beneficio Exclusivo - 20% descuento para miembros ANPR"
                   className="w-full h-auto object-cover transition-all duration-300 group-hover:opacity-95"
                 />
