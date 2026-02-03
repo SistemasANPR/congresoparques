@@ -1,4 +1,4 @@
-import { FileText, Download, BookOpen, FolderOpen } from "lucide-react";
+import { FileText, Download, BookOpen, FolderOpen, CreditCard } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -65,6 +65,23 @@ export default function Recursos() {
                   <h3 className="text-lg font-bold text-[#0e0477] mb-2">Material Informativo</h3>
                   <p className="text-gray-600 text-sm mb-4">Documentos y presentaciones sobre parques urbanos y espacio publico.</p>
                   <span className="text-[#6847f6] text-sm font-medium">Proximamente disponible</span>
+                </div>
+
+                {/* Tarjeta de Información Bancaria */}
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-[#BCCE16]/20 rounded-full flex items-center justify-center mb-4">
+                    <CreditCard className="w-6 h-6 text-[#6847f6]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0e0477] mb-2">Información Bancaria</h3>
+                  <p className="text-gray-600 text-sm mb-4">Datos bancarios de ANPR para realizar pagos por transferencia.</p>
+                  <a
+                    href="/assets/Cuenta_Bancaria_Congreso_1770154765232.pdf"
+                    download="Informacion_Bancaria_ANPR.pdf"
+                    className="inline-flex items-center gap-2 bg-[#6847f6] text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-[#5438d5] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Descargar PDF
+                  </a>
                 </div>
               </div>
             </div>
