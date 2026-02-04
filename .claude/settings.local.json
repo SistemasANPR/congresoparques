@@ -15,7 +15,13 @@
       "Bash(npx vite:*)",
       "Bash(npx tsx --watch server/index.ts)",
       "Bash(lsof:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(tree:*)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(list\\(d[''''data''''][0].keys\\(\\)\\)\\)\")",
+      "WebFetch(domain:congresoparques.com)",
+      "Bash(find:*)",
+      "Bash(while read file)",
+      "Bash(do sed -i 's/messages={\\\\[.*{.*id:.*\"\"\"\"boletos\"\"\"\".*text:.*\"\"\"\"BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO\"\"\"\".*}.*\\\\]}/messages={[\\\\n          {\\\\n            id: \"\"\"\"miembros\"\"\"\",\\\\n            text: \"\"\"\"PRECIO ESPECIAL PARA MIEMBROS ANPR\"\"\"\",\\\\n          },\\\\n          {\\\\n            id: \"\"\"\"estudiantes\"\"\"\",\\\\n            text: \"\"\"\"PRECIO ESPECIAL PARA ESTUDIANTES\"\"\"\",\\\\n          },\\\\n        ]}/g' \"$file\" done)"
     ]
   }
 }

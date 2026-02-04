@@ -226,8 +226,12 @@ export default function Sede() {
       <AnnouncementBanner
         messages={[
           {
-            id: "boletos",
-            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+            id: "miembros",
+            text: "PRECIO ESPECIAL PARA MIEMBROS ANPR",
+          },
+          {
+            id: "estudiantes",
+            text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },
         ]}
         speed="normal"

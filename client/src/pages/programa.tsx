@@ -1,9 +1,30 @@
 import { useState, useEffect } from "react";
-import { CalendarDays, Clock, Loader2, Tag } from "lucide-react";
+import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+
+interface Ponente {
+  id: string;
+  nombre: string;
+  cargo?: string;
+  empresa?: string;
+  foto_url?: string;
+}
+
+interface ContenidoItem {
+  id: string;
+  titulo: string;
+  subtitulo?: string;
+  descripcion?: string;
+  hora_inicio: string;
+  hora_fin: string;
+  capacidad?: string;
+  disponible?: string;
+  ubicacion?: string;
+  ponentes?: Ponente[];
+}
 
 interface ProgramaItem {
   id: string;
@@ -12,6 +33,7 @@ interface ProgramaItem {
   fin: string;
   titulo: string;
   tipo: string;
+  contenido?: ContenidoItem[];
 }
 
 interface ProgramaResponse {
@@ -40,6 +62,32 @@ export default function Programa() {
   const [fechaSeleccionada, setFechaSeleccionada] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Set<string>>(new Set());
+
+  const toggleExpanded = (id: string) => {
+    setExpandedItems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
+  const toggleDescription = (id: string) => {
+    setExpandedDescriptions(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
 
   useEffect(() => {
     const fetchPrograma = async () => {
@@ -96,8 +144,12 @@ export default function Programa() {
       <AnnouncementBanner
         messages={[
           {
-            id: "boletos",
-            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+            id: "miembros",
+            text: "PRECIO ESPECIAL PARA MIEMBROS ANPR",
+          },
+          {
+            id: "estudiantes",
+            text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },
         ]}
         speed="normal"
@@ -163,17 +215,23 @@ export default function Programa() {
                     <div className="space-y-4">
                       {programaFiltrado.map((item, index) => {
                         const colorConfig = getTipoColor(item.tipo);
+                        const hasContenido = item.contenido && item.contenido.length > 0;
+                        const isExpanded = expandedItems.has(item.id);
+
                         return (
-                          <div 
-                            key={item.id} 
+                          <div
+                            key={item.id}
                             className="relative pl-12 md:pl-20"
                           >
                             {/* Círculo del timeline */}
                             <div className={`absolute left-2 md:left-6 w-5 h-5 rounded-full border-4 border-white shadow-md ${colorConfig.bg}`}></div>
-                            
+
                             {/* Tarjeta del evento */}
                             <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow">
-                              <div className="p-4 md:p-6">
+                              <div
+                                className={`p-4 md:p-6 ${hasContenido ? 'cursor-pointer' : ''}`}
+                                onClick={() => hasContenido && toggleExpanded(item.id)}
+                              >
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
                                   {/* Horario */}
                                   <div className="flex items-center gap-2 text-[#0e0477]">
@@ -182,19 +240,164 @@ export default function Programa() {
                                       {formatTime(item.inicio)} - {formatTime(item.fin)}
                                     </span>
                                   </div>
-                                  
+
                                   {/* Badge del tipo */}
                                   <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold ${colorConfig.bg} ${colorConfig.text}`}>
                                     <Tag className="w-3.5 h-3.5" />
                                     {item.tipo}
                                   </div>
                                 </div>
-                                
-                                {/* Título */}
-                                <h3 className="text-xl md:text-2xl font-bold" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
-                                  {item.titulo}
-                                </h3>
+
+                                {/* Título y botón de expandir */}
+                                <div className="flex items-center justify-between gap-4">
+                                  <h3 className="text-xl md:text-2xl font-bold" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
+                                    {item.titulo}
+                                  </h3>
+                                  {hasContenido && (
+                                    <button
+                                      className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+                                      aria-label={isExpanded ? "Contraer" : "Expandir"}
+                                    >
+                                      {isExpanded ? (
+                                        <ChevronUp className="w-5 h-5 text-[#6847f6]" />
+                                      ) : (
+                                        <ChevronDown className="w-5 h-5 text-[#6847f6]" />
+                                      )}
+                                    </button>
+                                  )}
+                                </div>
+
+                                {hasContenido && !isExpanded && (
+                                  <p className="text-sm text-gray-500 mt-2">
+                                    {item.contenido!.length} {item.contenido!.length === 1 ? 'actividad' : 'actividades'} · Clic para ver detalles
+                                  </p>
+                                )}
                               </div>
+
+                              {/* Contenido desplegable */}
+                              {hasContenido && isExpanded && (
+                                <div className="border-t border-gray-100 bg-gray-50">
+                                  <div className="p-4 md:p-6 space-y-4">
+                                    {item.contenido!.map((contenido, idx) => {
+                                      const isDescExpanded = expandedDescriptions.has(contenido.id);
+                                      const hasDescription = contenido.descripcion && contenido.descripcion.trim().length > 0;
+                                      const hasPonentes = contenido.ponentes && contenido.ponentes.length > 0;
+
+                                      return (
+                                        <div
+                                          key={contenido.id}
+                                          className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden"
+                                        >
+                                          <div className="p-4">
+                                            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
+                                              <div className="flex-1">
+                                                <h4
+                                                  className="text-lg font-bold text-[#0e0477]"
+                                                  style={{ fontFamily: 'Montserrat, sans-serif' }}
+                                                >
+                                                  {contenido.titulo}
+                                                </h4>
+                                                {contenido.subtitulo && (
+                                                  <p className="text-sm text-[#6847f6] font-medium">{contenido.subtitulo}</p>
+                                                )}
+                                              </div>
+                                              <div className="flex items-center gap-1 text-sm text-gray-600 flex-shrink-0">
+                                                <Clock className="w-4 h-4 text-[#BCCE16]" />
+                                                <span>{formatTime(contenido.hora_inicio)} - {formatTime(contenido.hora_fin)}</span>
+                                              </div>
+                                            </div>
+
+                                            {/* Ponentes */}
+                                            {hasPonentes && (
+                                              <div className="flex flex-wrap gap-3 mb-3">
+                                                {contenido.ponentes!.map((ponente) => (
+                                                  <div key={ponente.id} className="flex items-center gap-2 bg-gray-50 rounded-full pl-1 pr-3 py-1">
+                                                    <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                                                      {ponente.foto_url ? (
+                                                        <img
+                                                          src={`/api/image-proxy?url=${encodeURIComponent(ponente.foto_url)}`}
+                                                          alt={ponente.nombre}
+                                                          className="w-full h-full object-cover"
+                                                          onError={(e) => {
+                                                            const target = e.target as HTMLImageElement;
+                                                            target.style.display = 'none';
+                                                          }}
+                                                        />
+                                                      ) : (
+                                                        <div className="w-full h-full flex items-center justify-center bg-[#6847f6]/10">
+                                                          <Users className="w-4 h-4 text-[#6847f6]/40" />
+                                                        </div>
+                                                      )}
+                                                    </div>
+                                                    <div className="text-xs">
+                                                      <p className="font-semibold text-[#0e0477]">{ponente.nombre}</p>
+                                                      {(ponente.cargo || ponente.empresa) && (
+                                                        <p className="text-gray-500">
+                                                          {ponente.cargo}{ponente.cargo && ponente.empresa ? ' · ' : ''}{ponente.empresa}
+                                                        </p>
+                                                      )}
+                                                    </div>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            )}
+
+                                            {/* Info adicional */}
+                                            <div className="flex flex-wrap gap-3 text-xs text-gray-500">
+                                              {contenido.ubicacion && (
+                                                <div className="flex items-center gap-1">
+                                                  <MapPin className="w-3.5 h-3.5 text-[#6847f6]" />
+                                                  <span>{contenido.ubicacion}</span>
+                                                </div>
+                                              )}
+                                              {contenido.capacidad && (
+                                                <div className="flex items-center gap-1">
+                                                  <Users className="w-3.5 h-3.5 text-[#6847f6]" />
+                                                  <span>Capacidad: {contenido.capacidad}</span>
+                                                  {contenido.disponible && (
+                                                    <span className="text-green-600 font-medium">
+                                                      ({contenido.disponible} disponibles)
+                                                    </span>
+                                                  )}
+                                                </div>
+                                              )}
+                                            </div>
+
+                                            {/* Botón para ver descripción */}
+                                            {hasDescription && (
+                                              <button
+                                                onClick={() => toggleDescription(contenido.id)}
+                                                className="mt-3 flex items-center gap-1 text-sm text-[#6847f6] hover:text-[#5538d4] font-medium transition-colors"
+                                              >
+                                                {isDescExpanded ? (
+                                                  <>
+                                                    <ChevronUp className="w-4 h-4" />
+                                                    Ocultar descripción
+                                                  </>
+                                                ) : (
+                                                  <>
+                                                    <ChevronDown className="w-4 h-4" />
+                                                    Ver descripción
+                                                  </>
+                                                )}
+                                              </button>
+                                            )}
+                                          </div>
+
+                                          {/* Descripción desplegable */}
+                                          {hasDescription && isDescExpanded && (
+                                            <div className="px-4 pb-4">
+                                              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-[#6847f6]">
+                                                <p className="text-sm text-gray-600 whitespace-pre-line">{contenido.descripcion}</p>
+                                              </div>
+                                            </div>
+                                          )}
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                         );

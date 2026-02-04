@@ -81,6 +81,23 @@ interface StatCounterProps {
   duration?: number;
 }
 
+interface Conferencista {
+  id: string;
+  nombres: string;
+  apellido_paterno: string;
+  apellido_materno: string;
+  cargo: string;
+  empresa: string;
+  foto_url: string | null;
+  ponencia: string;
+}
+
+interface TemaGroup {
+  id_tema: string;
+  tema: string;
+  ponentes: Conferencista[];
+}
+
 function StatCounter({ target, duration = 2000 }: StatCounterProps) {
   const [current, setCurrent] = useState(0);
 
@@ -115,7 +132,10 @@ export default function Landing() {
   const [animatedSections, setAnimatedSections] = useState<Set<string>>(new Set());
   const [timeRemaining, setTimeRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [currentBgImage, setCurrentBgImage] = useState(0);
-  
+  const [magistrales, setMagistrales] = useState<Conferencista[]>([]);
+  const [magistralesIndex, setMagistralesIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
   const heroBackgroundImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
 
@@ -127,6 +147,44 @@ export default function Landing() {
 
     return () => clearInterval(interval);
   }, [heroBackgroundImages.length]);
+
+  // Fetch magistrales
+  useEffect(() => {
+    const fetchMagistrales = async () => {
+      try {
+        const response = await fetch('https://congresoparques.com/cpanel/api/conferencistas.php');
+        const data = await response.json();
+        if (data.success && data.magistrales) {
+          const allPonentes = data.magistrales.flatMap((tema: TemaGroup) => tema.ponentes);
+          setMagistrales(allPonentes);
+        }
+      } catch (err) {
+        console.error('Error fetching magistrales:', err);
+      }
+    };
+    fetchMagistrales();
+  }, []);
+
+  // Auto-slide magistrales carousel every 5 seconds with infinite loop
+  useEffect(() => {
+    if (magistrales.length === 0) return;
+
+    const interval = setInterval(() => {
+      setMagistralesIndex((prev) => {
+        // When we reach the end of the first set, we're showing the duplicate
+        // so we can reset to 0 and it will look seamless
+        if (prev >= magistrales.length - 1) {
+          // Brief disable transition, reset to 0
+          setIsTransitioning(false);
+          setTimeout(() => setIsTransitioning(true), 50);
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [magistrales.length]);
 
   // Countdown timer
   useEffect(() => {
@@ -405,8 +463,12 @@ export default function Landing() {
       <AnnouncementBanner
         messages={[
           {
-            id: "boletos",
-            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+            id: "miembros",
+            text: "PRECIO ESPECIAL PARA MIEMBROS ANPR",
+          },
+          {
+            id: "estudiantes",
+            text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },
         ]}
         speed="normal"
@@ -663,6 +725,120 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      {/* Ponentes Magistrales Carousel Section */}
+      {magistrales.length > 0 && (
+        <section id="ponentes-magistrales" className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2
+                className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-4"
+                style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+              >
+                Conferencistas Magistrales
+              </h2>
+              <div className="w-24 h-1 bg-[#6847f6] mx-auto"></div>
+            </div>
+
+            <div className="relative max-w-6xl mx-auto">
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => setMagistralesIndex((prev) => (prev - 1 + magistrales.length) % magistrales.length)}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#6847f6] text-white flex items-center justify-center shadow-lg hover:bg-[#5538d4] transition-colors"
+                aria-label="Anterior"
+              >
+                <ChevronUp className="w-5 h-5 md:w-6 md:h-6 -rotate-90" />
+              </button>
+              <button
+                onClick={() => setMagistralesIndex((prev) => (prev + 1) % magistrales.length)}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#6847f6] text-white flex items-center justify-center shadow-lg hover:bg-[#5538d4] transition-colors"
+                aria-label="Siguiente"
+              >
+                <ChevronDown className="w-5 h-5 md:w-6 md:h-6 -rotate-90" />
+              </button>
+
+              {/* Carousel Container - Infinite loop */}
+              <div className="overflow-hidden">
+                <div
+                  className={`flex ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
+                  style={{
+                    transform: `translateX(calc(-${magistralesIndex * 25}% - ${magistralesIndex * 12}px))`,
+                  }}
+                >
+                  {/* Duplicamos los elementos para crear efecto infinito sin espacios */}
+                  {[...magistrales, ...magistrales].map((ponente, idx) => (
+                    <div
+                      key={`${ponente.id}-${idx}`}
+                      className="w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 px-1.5"
+                    >
+                      <div className="bg-white rounded-xl shadow-md p-4 md:p-6 flex flex-col items-center text-center border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                        <div className="w-[100px] h-[100px] md:w-[130px] md:h-[130px] rounded-full overflow-hidden mb-3 bg-gray-100 border-4 border-[#6847f6]/20 flex-shrink-0">
+                          {ponente.foto_url ? (
+                            <img
+                              src={`/api/image-proxy?url=${encodeURIComponent(ponente.foto_url)}`}
+                              alt={`${ponente.nombres} ${ponente.apellido_paterno}`}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                target.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10"><svg class="w-10 h-10 text-[#6847f6]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>';
+                              }}
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10">
+                              <Users className="w-10 h-10 text-[#6847f6]/40" />
+                            </div>
+                          )}
+                        </div>
+                        <h3
+                          className="text-sm md:text-base font-bold mb-1 line-clamp-2"
+                          style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+                        >
+                          {`${ponente.nombres} ${ponente.apellido_paterno}`.trim()}
+                        </h3>
+                        {(ponente.cargo || ponente.empresa) && (
+                          <p className="text-xs text-gray-600 mb-1 line-clamp-2">
+                            {ponente.cargo}{ponente.cargo && ponente.empresa ? ' · ' : ''}{ponente.empresa}
+                          </p>
+                        )}
+                        {ponente.ponencia && (
+                          <p className="text-xs italic text-[#6847f6] mt-auto pt-2 line-clamp-2">{ponente.ponencia}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center mt-6 gap-2">
+                {magistrales.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setMagistralesIndex(idx)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                      magistralesIndex % magistrales.length === idx ? 'bg-[#6847f6]' : 'bg-gray-300'
+                    }`}
+                    aria-label={`Ir a ponente ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Ver todos link */}
+            <div className="text-center mt-8">
+              <Link href="/ponentes">
+                <Button
+                  variant="outline"
+                  className="border-[#6847f6] text-[#6847f6] hover:bg-[#6847f6] hover:text-white transition-colors"
+                >
+                  Ver todos los conferencistas
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Thematic Axes Section */}
       <section id="ejes" className="py-16 bg-white overflow-hidden section-animate animate-fadeInUp">

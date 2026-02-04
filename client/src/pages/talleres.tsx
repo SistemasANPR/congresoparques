@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Wrench, Calendar, Clock, Users, Tag, Loader2, MapPin, Sun, Moon } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Wrench, Calendar, Clock, Users, Tag, Loader2, MapPin, Sun, Moon } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -162,37 +162,23 @@ interface TallerCardProps {
 }
 
 function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const descriptionRef = useRef<HTMLDivElement>(null);
 
-  // Handle click/tap for mobile
-  const handleCardClick = () => {
-    setIsFlipped(!isFlipped);
+  // Handle expand/collapse
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
   };
 
-  // Handle mouse events for desktop
-  const handleMouseEnter = () => {
-    // Only trigger hover flip on non-touch devices
-    if (window.matchMedia('(hover: hover)').matches) {
-      setIsFlipped(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (window.matchMedia('(hover: hover)').matches) {
-      setIsFlipped(false);
-    }
-  };
-
-  // Close card when clicking outside on mobile
+  // Close when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
-        setIsFlipped(false);
+      if (descriptionRef.current && !descriptionRef.current.contains(event.target as Node)) {
+        setIsExpanded(false);
       }
     };
 
-    if (isFlipped) {
+    if (isExpanded) {
       document.addEventListener('mousedown', handleClickOutside);
       document.addEventListener('touchstart', handleClickOutside);
     }
@@ -201,128 +187,144 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, [isFlipped]);
+  }, [isExpanded]);
 
   return (
-    <div
-      ref={cardRef}
-      className="h-[420px] perspective-1000"
-      style={{ perspective: '1000px' }}
-    >
-      <div
-        className={`relative w-full h-full transition-transform duration-500 cursor-pointer`}
-        style={{
-          transformStyle: 'preserve-3d',
-          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-        }}
-        onClick={handleCardClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {/* Front of card */}
-        <div
-          className="absolute w-full h-full rounded-xl shadow-lg overflow-hidden border border-gray-100 bg-white"
-          style={{ backfaceVisibility: 'hidden' }}
-        >
-          <div className="h-48 relative overflow-hidden bg-gray-200">
-            <img
-              src={`/api/image-proxy?url=${encodeURIComponent(taller.foto_url || `https://congresoparques.com/imagenes/talleres/${taller.foto}`)}`}
-              alt={taller.titulo}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Imagen+no+disponible';
-              }}
-            />
-            <div className="absolute top-3 left-3 flex flex-col gap-2">
-              {(() => {
-                const turno = taller.turno || (parseInt(taller.inicio.split(':')[0]) < 12 ? 'Matutino' : 'Vespertino');
-                const isMatutino = turno.toLowerCase() === 'matutino';
-                return (
-                  <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${
-                    isMatutino 
-                      ? 'bg-amber-400 text-amber-900' 
-                      : 'bg-indigo-500 text-white'
-                  }`}>
-                    {isMatutino ? (
-                      <Sun className="w-3 h-3" />
-                    ) : (
-                      <Moon className="w-3 h-3" />
-                    )}
-                    {turno}
-                  </div>
-                );
-              })()}
-            </div>
-            <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-              <Tag className="w-3 h-3" />
-              {taller.categoria}
-            </div>
-          </div>
-          <div className="p-5 flex flex-col h-[calc(100%-192px)]">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                <Calendar className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
-                <span>{formatDate(taller.fecha)}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-                <Clock className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
-                <span>{formatTime(taller.inicio)} - {formatTime(taller.fin)}</span>
-              </div>
-              {taller.ubicacion && (
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <MapPin className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
-                  <span className="line-clamp-1">{taller.ubicacion}</span>
+    <div className="relative">
+      {/* Main Card */}
+      <div className="rounded-xl shadow-lg overflow-hidden border border-gray-100 bg-white">
+        <div className="h-48 relative overflow-hidden bg-gray-200">
+          <img
+            src={`/api/image-proxy?url=${encodeURIComponent(taller.foto_url || `https://congresoparques.com/imagenes/talleres/${taller.foto}`)}`}
+            alt={taller.titulo}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Imagen+no+disponible';
+            }}
+          />
+          <div className="absolute top-3 left-3 flex flex-col gap-2">
+            {(() => {
+              const turno = taller.turno || (parseInt(taller.inicio.split(':')[0]) < 12 ? 'Matutino' : 'Vespertino');
+              const isMatutino = turno.toLowerCase() === 'matutino';
+              return (
+                <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${
+                  isMatutino
+                    ? 'bg-amber-400 text-amber-900'
+                    : 'bg-indigo-500 text-white'
+                }`}>
+                  {isMatutino ? (
+                    <Sun className="w-3 h-3" />
+                  ) : (
+                    <Moon className="w-3 h-3" />
+                  )}
+                  {turno}
                 </div>
-              )}
-              <h3 className="text-lg font-bold mb-1 line-clamp-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
+              );
+            })()}
+          </div>
+          <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+            <Tag className="w-3 h-3" />
+            {taller.categoria}
+          </div>
+        </div>
+        <div className="p-5">
+          <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+            <Calendar className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
+            <span>{formatDate(taller.fecha)}</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
+            <Clock className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
+            <span>{formatTime(taller.inicio)} - {formatTime(taller.fin)}</span>
+          </div>
+          {taller.ubicacion && (
+            <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <MapPin className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
+              <span className="line-clamp-1">{taller.ubicacion}</span>
+            </div>
+          )}
+          <h3 className="text-lg font-bold mb-1 line-clamp-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
+            {taller.titulo}
+          </h3>
+          {taller.subtitulo && (
+            <p className="text-sm text-gray-600 line-clamp-1 mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              {taller.subtitulo}
+            </p>
+          )}
+
+          {/* Description Preview & Toggle */}
+          <div className="mb-3">
+            <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+              {taller.descripcion || 'Descripción no disponible.'}
+            </p>
+            {taller.descripcion && taller.descripcion.length > 100 && (
+              <button
+                onClick={handleToggle}
+                className="text-[#6847f6] text-sm font-semibold mt-2 hover:text-[#35219B] transition-colors flex items-center gap-1"
+              >
+                Ver más
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
+            <Users className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
+            <span className="text-sm text-gray-500">Capacidad: {taller.capacidad}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Expanded Description Modal Overlay */}
+      {isExpanded && taller.descripcion && taller.descripcion.length > 100 && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          onClick={() => setIsExpanded(false)}
+        >
+          <div
+            ref={descriptionRef}
+            className="bg-white rounded-xl max-w-lg w-full max-h-[80vh] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6" style={{ background: 'linear-gradient(135deg, #6847f6 0%, #35219B 100%)' }}>
+              <div className="flex items-center gap-2 mb-2">
+                <Tag className="w-4 h-4 text-[#BCCE16]" />
+                <span className="text-[#BCCE16] text-sm font-semibold">{taller.categoria}</span>
+              </div>
+              <h3 className="text-xl font-bold text-white leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {taller.titulo}
               </h3>
               {taller.subtitulo && (
-                <p className="text-sm text-gray-600 line-clamp-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className="text-[#BCCE16]/90 text-sm mt-1 font-medium" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   {taller.subtitulo}
                 </p>
               )}
             </div>
-            <div className="flex items-center gap-2 pt-3 border-t border-gray-100 mt-auto">
-              <Users className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
-              <span className="text-sm text-gray-500">Capacidad: {taller.capacidad}</span>
+            <div className="p-6 overflow-y-auto max-h-[50vh] custom-scrollbar-light">
+              <p className="text-gray-700 text-base leading-relaxed">
+                {taller.descripcion}
+              </p>
+            </div>
+            <div className="p-4 border-t border-gray-100 flex justify-between items-center bg-gray-50">
+              <div className="flex items-center gap-4 text-sm text-gray-500">
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4 text-[#BCCE16]" />
+                  {formatDate(taller.fecha)}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Clock className="w-4 h-4 text-[#BCCE16]" />
+                  {formatTime(taller.inicio)} - {formatTime(taller.fin)}
+                </span>
+              </div>
+              <button
+                onClick={() => setIsExpanded(false)}
+                className="px-4 py-2 bg-[#6847f6] text-white rounded-lg text-sm font-semibold hover:bg-[#35219B] transition-colors"
+              >
+                Cerrar
+              </button>
             </div>
           </div>
         </div>
-
-        {/* Back of card */}
-        <div
-          className="absolute w-full h-full rounded-xl shadow-lg overflow-hidden border border-gray-100"
-          style={{
-            backfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)',
-            background: 'linear-gradient(135deg, #6847f6 0%, #35219B 100%)',
-          }}
-        >
-          <div className="p-6 flex flex-col h-full text-white">
-            <div className="flex items-center gap-2 mb-2">
-              <Tag className="w-4 h-4 text-[#BCCE16]" />
-              <span className="text-[#BCCE16] text-sm font-semibold">{taller.categoria}</span>
-            </div>
-            <h3 className="text-lg font-bold mb-2 leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              {taller.titulo}
-            </h3>
-            {taller.subtitulo && (
-              <p className="text-[#BCCE16]/90 text-sm mb-3 font-medium" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                {taller.subtitulo}
-              </p>
-            )}
-            <div className="flex-1 overflow-y-auto pr-1 custom-scrollbar">
-              <p className="text-white/95 text-[15px] leading-relaxed">
-                {taller.descripcion || 'Descripción no disponible.'}
-              </p>
-            </div>
-            <p className="text-white/40 text-xs text-center mt-3 pt-3 border-t border-white/10">
-              Toca para volver
-            </p>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -363,7 +365,7 @@ function TalleresGrid({ talleres, loading, error, formatDate, formatTime, emptyM
   }
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto items-start">
       {talleres.map((taller) => (
         <TallerCard
           key={taller.id_taller}
@@ -445,8 +447,12 @@ export default function Talleres() {
       <AnnouncementBanner
         messages={[
           {
-            id: "boletos",
-            text: "BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO",
+            id: "miembros",
+            text: "PRECIO ESPECIAL PARA MIEMBROS ANPR",
+          },
+          {
+            id: "estudiantes",
+            text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },
         ]}
         speed="normal"
@@ -464,7 +470,7 @@ export default function Talleres() {
         <section className="py-12" style={{ backgroundColor: '#35219B' }}>
           <div className="container mx-auto px-4 text-center">
             <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
-              <strong className="text-[#BCCE16]">Los más de 10 talleres</strong> se celebrarán el día miércoles <span className="text-white font-semibold">antes de las sesiones educativas y magistrales</span> y la Expo Espacio Público.
+              <strong className="text-[#BCCE16]">Los Talleres</strong> se celebrarán el día miércoles <span className="text-white font-semibold">antes de las sesiones educativas y magistrales</span> y la Expo Espacio Público.
             </p>
           </div>
         </section>

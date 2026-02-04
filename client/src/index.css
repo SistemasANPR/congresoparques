@@ -1570,3 +1570,38 @@ header {
     transition: none !important;
   }
 }
+
+/* Light background scrollbar for modals */
+.custom-scrollbar-light::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar-light::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar-light::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar-light::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+.custom-scrollbar-light::-webkit-scrollbar-thumb:active {
+  background: #818181;
+}
+
+/* Firefox scrollbar for light backgrounds */
+.custom-scrollbar-light {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+/* Touch-friendly scrolling */
+.custom-scrollbar-light {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
