@@ -345,7 +345,7 @@ export default function Congreso() {
         messages={[
           {
             id: "miembros",
-            text: "PRECIO ESPECIAL PARA MIEMBROS ANPR",
+            text: "30% DE DESCUENTO PARA MIEMBROS ANPR",
           },
           {
             id: "estudiantes",

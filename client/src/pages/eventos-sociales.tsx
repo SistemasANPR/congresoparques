@@ -16,7 +16,7 @@ export default function EventosSociales() {
         messages={[
           {
             id: "miembros",
-            text: "PRECIO ESPECIAL PARA MIEMBROS ANPR",
+            text: "30% DE DESCUENTO PARA MIEMBROS ANPR",
           },
           {
             id: "estudiantes",
