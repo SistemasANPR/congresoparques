@@ -249,6 +249,24 @@ export default function Ponentes() {
   const [errorTall, setErrorTall] = useState<string | null>(null);
   const [modalData, setModalData] = useState<BiografiaModal | null>(null);
 
+  // Función para ordenar temas: "Tecnología e Innovación Urbana" primero, "Ciudad, Movilidad y Gobernanza" último
+  const sortTemas = (temas: TemaGroup[]): TemaGroup[] => {
+    return [...temas].sort((a, b) => {
+      const temaA = a.tema.toLowerCase();
+      const temaB = b.tema.toLowerCase();
+
+      // "Tecnología e Innovación Urbana" va primero
+      if (temaA.includes('tecnología') && temaA.includes('innovación')) return -1;
+      if (temaB.includes('tecnología') && temaB.includes('innovación')) return 1;
+
+      // "Ciudad, Movilidad y Gobernanza" va último
+      if (temaA.includes('ciudad') && temaA.includes('movilidad')) return 1;
+      if (temaB.includes('ciudad') && temaB.includes('movilidad')) return -1;
+
+      return 0;
+    });
+  };
+
   useEffect(() => {
     const fetchConferencistas = async () => {
       try {
@@ -256,8 +274,8 @@ export default function Ponentes() {
         if (!response.ok) throw new Error('Error al cargar los conferencistas');
         const data: ConferencistasResponse = await response.json();
         if (data.success) {
-          setMagistrales(data.magistrales || []);
-          setSesiones(data.sesiones || []);
+          setMagistrales(sortTemas(data.magistrales || []));
+          setSesiones(sortTemas(data.sesiones || []));
         }
       } catch (err) {
         setErrorConf(err instanceof Error ? err.message : 'Error desconocido');
