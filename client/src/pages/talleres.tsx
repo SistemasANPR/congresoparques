@@ -1,5 +1,36 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ChevronDown, Wrench, Calendar, Clock, Users, Tag, Loader2, MapPin, Sun, Moon } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Wrench, Calendar, Clock, Users, Tag, Loader2, MapPin, Sun, Moon, Sparkles } from "lucide-react";
+
+const categoriaColors: Record<string, { bg: string; text: string }> = {
+  "Vivencial": { bg: "bg-[#46ddac]", text: "text-[#0e0477]" },
+  "Master Class": { bg: "bg-[#35219b]", text: "text-white" },
+  "Masterclass": { bg: "bg-[#35219b]", text: "text-white" },
+  "default": { bg: "bg-[#6847f6]", text: "text-white" }
+};
+
+const categoriaIcons: Record<string, typeof Tag> = {
+  "Vivencial": MapPin,
+  "Master Class": Sparkles,
+  "Masterclass": Sparkles,
+  "default": Tag
+};
+
+const getCategoriaColor = (categoria: string) => {
+  // Try exact match first, then partial match
+  if (categoriaColors[categoria]) return categoriaColors[categoria];
+  const lower = categoria.toLowerCase();
+  if (lower.includes('vivencial')) return categoriaColors["Vivencial"];
+  if (lower.includes('master class') || lower.includes('masterclass')) return categoriaColors["Master Class"];
+  return categoriaColors["default"];
+};
+
+const getCategoriaIcon = (categoria: string) => {
+  if (categoriaIcons[categoria]) return categoriaIcons[categoria];
+  const lower = categoria.toLowerCase();
+  if (lower.includes('vivencial')) return categoriaIcons["Vivencial"];
+  if (lower.includes('master class') || lower.includes('masterclass')) return categoriaIcons["Master Class"];
+  return categoriaIcons["default"];
+};
 import Autoplay from "embla-carousel-autoplay";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -190,10 +221,10 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
   }, [isExpanded]);
 
   return (
-    <div className="relative">
+    <div className="relative h-full">
       {/* Main Card */}
-      <div className="rounded-xl shadow-lg overflow-hidden border border-gray-100 bg-white">
-        <div className="h-48 relative overflow-hidden bg-gray-200">
+      <div className="rounded-xl shadow-lg overflow-hidden border border-gray-100 bg-white h-full flex flex-col">
+        <div className="h-48 relative overflow-hidden bg-gray-200 flex-shrink-0">
           <img
             src={`/api/image-proxy?url=${encodeURIComponent(taller.foto_url || `https://congresoparques.com/imagenes/talleres/${taller.foto}`)}`}
             alt={taller.titulo}
@@ -210,7 +241,7 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
                 <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${
                   isMatutino
                     ? 'bg-amber-400 text-amber-900'
-                    : 'bg-indigo-500 text-white'
+                    : 'bg-blue-600 text-white'
                 }`}>
                   {isMatutino ? (
                     <Sun className="w-3 h-3" />
@@ -222,12 +253,18 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
               );
             })()}
           </div>
-          <div className="absolute top-3 right-3 bg-[#6847f6] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-            <Tag className="w-3 h-3" />
-            {taller.categoria}
-          </div>
+          {(() => {
+            const catColor = getCategoriaColor(taller.categoria);
+            const CatIcon = getCategoriaIcon(taller.categoria);
+            return (
+              <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 ${catColor.bg} ${catColor.text}`}>
+                <CatIcon className="w-3 h-3" />
+                {taller.categoria}
+              </div>
+            );
+          })()}
         </div>
-        <div className="p-5">
+        <div className="p-5 flex-1 flex flex-col">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
             <Calendar className="w-4 h-4 text-[#BCCE16] flex-shrink-0" />
             <span>{formatDate(taller.fecha)}</span>
@@ -252,8 +289,8 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
           )}
 
           {/* Description Preview & Toggle */}
-          <div className="mb-3">
-            <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+          <div className="mb-3 flex-1">
+            <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
               {taller.descripcion || 'Descripción no disponible.'}
             </p>
             {taller.descripcion && taller.descripcion.length > 100 && (
@@ -267,7 +304,8 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
             )}
           </div>
 
-          <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
+          {/* Capacidad siempre al fondo */}
+          <div className="flex items-center gap-2 pt-3 border-t border-gray-100 mt-auto">
             <Users className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
             <span className="text-sm text-gray-500">Capacidad: {taller.capacidad}</span>
           </div>
@@ -286,10 +324,15 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6" style={{ background: 'linear-gradient(135deg, #6847f6 0%, #35219B 100%)' }}>
-              <div className="flex items-center gap-2 mb-2">
-                <Tag className="w-4 h-4 text-[#BCCE16]" />
-                <span className="text-[#BCCE16] text-sm font-semibold">{taller.categoria}</span>
-              </div>
+              {(() => {
+                const ModalCatIcon = getCategoriaIcon(taller.categoria);
+                return (
+                  <div className="flex items-center gap-2 mb-2">
+                    <ModalCatIcon className="w-4 h-4 text-[#BCCE16]" />
+                    <span className="text-[#BCCE16] text-sm font-semibold">{taller.categoria}</span>
+                  </div>
+                );
+              })()}
               <h3 className="text-xl font-bold text-white leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {taller.titulo}
               </h3>
@@ -365,7 +408,7 @@ function TalleresGrid({ talleres, loading, error, formatDate, formatTime, emptyM
   }
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto items-start">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {talleres.map((taller) => (
         <TallerCard
           key={taller.id_taller}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users } from "lucide-react";
+import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -45,15 +45,33 @@ interface ProgramaResponse {
 }
 
 const tipoColors: Record<string, { bg: string; text: string }> = {
+  "Registro": { bg: "bg-gray-400", text: "text-white" },
   "Talleres": { bg: "bg-[#BCCE16]", text: "text-[#0e0477]" },
-  "Conferencia Magistral": { bg: "bg-[#6847f6]", text: "text-white" },
-  "Sesión Educativa": { bg: "bg-[#0e0477]", text: "text-white" },
+  "Conferencia Magistral": { bg: "bg-[#46ddac]", text: "text-[#0e0477]" },
+  "Magistral": { bg: "bg-[#46ddac]", text: "text-[#0e0477]" },
+  "Conferencias": { bg: "bg-[#00deff]", text: "text-[#0e0477]" },
+  "Sesión Educativa": { bg: "bg-[#00deff]", text: "text-[#0e0477]" },
   "Master Class": { bg: "bg-[#35219b]", text: "text-white" },
   "Networking": { bg: "bg-teal-500", text: "text-white" },
   "Receso": { bg: "bg-gray-400", text: "text-white" },
-  "Expo": { bg: "bg-orange-500", text: "text-white" },
-  "Evento Social": { bg: "bg-pink-500", text: "text-white" },
+  "Expo": { bg: "bg-[#d0dd15]", text: "text-[#0e0477]" },
+  "Evento Social": { bg: "bg-[#f71cdd]", text: "text-white" },
   "default": { bg: "bg-gray-500", text: "text-white" }
+};
+
+const tipoIcons: Record<string, typeof Tag> = {
+  "Registro": ClipboardCheck,
+  "Talleres": Wrench,
+  "Conferencia Magistral": Award,
+  "Magistral": Award,
+  "Conferencias": GraduationCap,
+  "Sesión Educativa": GraduationCap,
+  "Master Class": Sparkles,
+  "Networking": Users,
+  "Receso": Coffee,
+  "Expo": Store,
+  "Evento Social": PartyPopper,
+  "default": Tag
 };
 
 export default function Programa() {
@@ -133,6 +151,15 @@ export default function Programa() {
 
   const getTipoColor = (tipo: string) => {
     return tipoColors[tipo] || tipoColors["default"];
+  };
+
+  const getTipoIcon = (tipo: string) => {
+    return tipoIcons[tipo] || tipoIcons["default"];
+  };
+
+  // Helper para identificar si es un bloque de Talleres Matutinos
+  const isTalleresMatutinos = (titulo: string) => {
+    return titulo.toLowerCase().includes('talleres matutinos');
   };
 
   const programaFiltrado = programa
@@ -215,6 +242,7 @@ export default function Programa() {
                     <div className="space-y-4">
                       {programaFiltrado.map((item, index) => {
                         const colorConfig = getTipoColor(item.tipo);
+                        const TipoIcon = getTipoIcon(item.tipo);
                         const hasContenido = item.contenido && item.contenido.length > 0;
                         const isExpanded = expandedItems.has(item.id);
 
@@ -243,7 +271,7 @@ export default function Programa() {
 
                                   {/* Badge del tipo */}
                                   <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs md:text-sm font-semibold ${colorConfig.bg} ${colorConfig.text}`}>
-                                    <Tag className="w-3.5 h-3.5" />
+                                    <TipoIcon className="w-3.5 h-3.5" />
                                     {item.tipo}
                                   </div>
                                 </div>
@@ -289,23 +317,30 @@ export default function Programa() {
                                           className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden"
                                         >
                                           <div className="p-4">
-                                            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
+                                            {/* Layout con badge a la derecha para "El Parque como Aula Viva" */}
+                                            <div className={`flex flex-col ${contenido.titulo.toLowerCase().includes('parque como aula viva') ? 'md:flex-row md:gap-4' : ''}`}>
+                                              {/* Contenido principal */}
                                               <div className="flex-1">
-                                                <h4
-                                                  className="text-lg font-bold text-[#0e0477]"
-                                                  style={{ fontFamily: 'Montserrat, sans-serif' }}
-                                                >
-                                                  {contenido.titulo}
-                                                </h4>
-                                                {contenido.subtitulo && (
-                                                  <p className="text-sm text-[#6847f6] font-medium">{contenido.subtitulo}</p>
-                                                )}
-                                              </div>
-                                              <div className="flex items-center gap-1 text-sm text-gray-600 flex-shrink-0">
-                                                <Clock className="w-4 h-4 text-[#BCCE16]" />
-                                                <span>{formatTime(contenido.hora_inicio)} - {formatTime(contenido.hora_fin)}</span>
-                                              </div>
-                                            </div>
+                                                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
+                                                  <div className="flex-1">
+                                                    <h4
+                                                      className="text-lg font-bold text-[#0e0477]"
+                                                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                                                    >
+                                                      {contenido.titulo}
+                                                    </h4>
+                                                    {contenido.subtitulo && (
+                                                      <p className="text-sm text-[#6847f6] font-medium">{contenido.subtitulo}</p>
+                                                    )}
+                                                  </div>
+                                                  {/* Horario individual (oculto en Talleres Matutinos) */}
+                                                  {!isTalleresMatutinos(item.titulo) && (
+                                                    <div className="flex items-center gap-1 text-sm text-gray-600 flex-shrink-0">
+                                                      <Clock className="w-4 h-4 text-[#BCCE16]" />
+                                                      <span>{formatTime(contenido.hora_inicio)} - {formatTime(contenido.hora_fin)}</span>
+                                                    </div>
+                                                  )}
+                                                </div>
 
                                             {/* Ponentes */}
                                             {hasPonentes && (
@@ -354,7 +389,8 @@ export default function Programa() {
                                                 <div className="flex items-center gap-1">
                                                   <Users className="w-3.5 h-3.5 text-[#6847f6]" />
                                                   <span>Capacidad: {contenido.capacidad}</span>
-                                                  {contenido.disponible && (
+                                                  {/* Ocultar disponibles en Talleres Matutinos */}
+                                                  {contenido.disponible && !isTalleresMatutinos(item.titulo) && (
                                                     <span className="text-green-600 font-medium">
                                                       ({contenido.disponible} disponibles)
                                                     </span>
@@ -382,6 +418,17 @@ export default function Programa() {
                                                 )}
                                               </button>
                                             )}
+                                              </div>
+                                              {/* Badge "Inicia 8:00 AM" solo para "El Parque como Aula Viva" */}
+                                              {contenido.titulo.toLowerCase().includes('parque como aula viva') && (
+                                                <div className="flex-shrink-0 mt-3 md:mt-0 md:self-center">
+                                                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#BCCE16]/15 text-[#0e0477] border border-[#BCCE16]/30">
+                                                    <Clock className="w-3.5 h-3.5 text-[#BCCE16]" />
+                                                    Inicia 8:00 AM
+                                                  </span>
+                                                </div>
+                                              )}
+                                            </div>
                                           </div>
 
                                           {/* Descripción desplegable */}

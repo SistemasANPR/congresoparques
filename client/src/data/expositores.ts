@@ -19,6 +19,7 @@ import parkSysLogoUrl from "@assets/ParkSys_1766080172850.png";
 import tourMateLogoUrl from "@assets/Tour_Mate_1770137791667.png";
 import fundicionGamboaLogoUrl from "@assets/Fundicion_Gamboa_1770137791670.png";
 import benitoLogoUrl from "@assets/Benito_1770137791671.png";
+import vermeerLogoUrl from "@assets/Vermeer_1770320575703.png";
 
 export interface Expositor {
   id: string;
@@ -46,6 +47,7 @@ export const expositores: Expositor[] = [
   { id: 'tourmate', logo: tourMateLogoUrl, name: 'Tour Mate Systems', url: 'https://www.tourmate.com/' },
   { id: 'fundiciongamboa', logo: fundicionGamboaLogoUrl, name: 'Fundición Gamboa', url: 'https://www.fundiciongamboa.com/' },
   { id: 'benito', logo: benitoLogoUrl, name: 'Benito', url: 'https://www.benito.com/' },
+  { id: 'vermeer', logo: vermeerLogoUrl, name: 'Vermeer México', url: 'https://vermeermexico.com/' },
 ];
 
 // Utility function to shuffle brands for random display order
