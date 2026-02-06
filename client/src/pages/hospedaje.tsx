@@ -14,6 +14,12 @@ interface Tarifa {
   desayuno?: string;
 }
 
+interface TarifaDual {
+  tipo: string;
+  precioSencilla: string;
+  precioDoble: string;
+}
+
 interface HotelData {
   nombre: string;
   logo?: string;
@@ -21,7 +27,9 @@ interface HotelData {
   codigo: string;
   evento?: string;
   fechasHospedaje?: string;
+  codigoNota?: string;
   tarifas: Tarifa[];
+  tarifasDual?: TarifaDual[];
   showDesayunoColumn?: boolean;
   notasTarifas: string[];
   infoAdicional: string[];
@@ -149,22 +157,50 @@ const hoteles: HotelData[] = [
     },
   },
   {
-    nombre: "Grand Hotel Casino + Resort Tijuana",
+    nombre: "Grand Hotel Tijuana",
     logo: grandHotelLogoUrl,
     logoBg: "#1b4d3e",
-    codigo: "PRÓXIMAMENTE",
-    tarifas: [],
+    codigo: "PARQUES",
+    evento: "Congreso Parques",
+    fechasHospedaje: "13 al 15 de mayo de 2026",
+    codigoNota: "El código se menciona al reservar vía teléfono o correo. Disponible a partir del 30 de enero de 2026.",
     showDesayunoColumn: false,
-    notasTarifas: [],
-    infoAdicional: [
-      "Información de tarifas y reservaciones disponible próximamente",
+    tarifas: [],
+    tarifasDual: [
+      { tipo: "Estándar sin desayuno", precioSencilla: "$2,373.00 MXN", precioDoble: "$2,373.00 MXN" },
+      { tipo: "Estándar con desayuno buffet", precioSencilla: "$2,751.00 MXN", precioDoble: "$3,129.00 MXN" },
+      { tipo: "Grand Club sin desayuno buffet", precioSencilla: "$3,152.70 MXN", precioDoble: "$3,152.70 MXN" },
+      { tipo: "Grand Club con desayuno buffet", precioSencilla: "$3,530.70 MXN", precioDoble: "$3,908.70 MXN" },
     ],
-    contacto: {},
+    notasTarifas: [
+      "Tarifas por habitación, por noche",
+      "Ocupación sencilla (1 persona) o doble (2 personas)",
+      "Tarifas expresadas en pesos mexicanos (MXN)",
+      "Las tarifas incluyen IVA 8% e ISH 5%",
+      "Habitaciones sujetas a disponibilidad",
+      "Se solicita tarjeta de crédito únicamente como garantía de llegada",
+    ],
+    infoAdicional: [
+      "Precio por habitación por noche",
+      "No incluye propinas de camaristas ni bellboys",
+      "Persona extra tiene costo adicional",
+      "Check-in: 3:00 PM",
+      "Check-out: 12:00 PM",
+      "Habitaciones Grand Club incluyen desayuno continental y canapés por la tarde",
+    ],
+    contacto: {
+      telefonos: [
+        { label: "Teléfono", numero: "(664) 681 7000 ext. 4184 o 4170" },
+        { label: "Lada sin costo México", numero: "800 026 60 07" },
+        { label: "Toll free USA", numero: "1 866 472 6385" },
+      ],
+      emails: ["reservaciones@grandhoteltj.com", "reservaciones1@grandhoteltj.com"],
+    },
   },
 ];
 
 function HotelCard({ hotel }: { hotel: HotelData }) {
-  const hasRates = hotel.tarifas.length > 0;
+  const hasRates = hotel.tarifas.length > 0 || (hotel.tarifasDual && hotel.tarifasDual.length > 0);
   const hasContact = hotel.contacto.emails?.length || hotel.contacto.telefonos?.length || hotel.contacto.direccion;
 
   return (
@@ -219,6 +255,11 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
               Hospedaje: {hotel.fechasHospedaje}
             </div>
           )}
+          {hotel.codigoNota && (
+            <p className="mt-2 text-xs text-gray-400 italic" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              {hotel.codigoNota}
+            </p>
+          )}
         </div>
       </div>
 
@@ -253,8 +294,8 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
 
         {hasRates && <hr className="border-gray-100 my-4" />}
 
-        {/* Tabla de tarifas */}
-        {hasRates && (
+        {/* Tabla de tarifas estándar */}
+        {hotel.tarifas.length > 0 && (
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-3">
               <CreditCard className="w-4 h-4 text-[#6847f6]" />
@@ -306,6 +347,59 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                           )}
                         </td>
                       )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Tabla de tarifas dual (Sencilla / Doble) */}
+        {hotel.tarifasDual && hotel.tarifasDual.length > 0 && (
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-3">
+              <CreditCard className="w-4 h-4 text-[#6847f6]" />
+              <h4
+                className="text-xs font-bold text-[#0e0477] uppercase tracking-wider"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                Tarifas
+              </h4>
+            </div>
+            <div className="overflow-x-auto -mx-2 px-2">
+              <table
+                className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden"
+                style={{ fontFamily: "Montserrat, sans-serif", borderCollapse: "separate", borderSpacing: 0 }}
+              >
+                <thead>
+                  <tr className="bg-[#0e0477] text-white">
+                    <th className="text-left py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider">
+                      Tipo de habitación
+                    </th>
+                    <th className="text-center py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider whitespace-nowrap">
+                      Sencilla (1 persona)
+                    </th>
+                    <th className="text-center py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider whitespace-nowrap">
+                      Doble (2 personas)
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {hotel.tarifasDual.map((tarifa, i) => (
+                    <tr
+                      key={i}
+                      className={`border-t border-gray-100 ${i % 2 === 0 ? "bg-gray-50/50" : "bg-white"}`}
+                    >
+                      <td className="py-2.5 px-3 text-gray-700 font-medium text-[13px]">
+                        {tarifa.tipo}
+                      </td>
+                      <td className="py-2.5 px-3 text-center font-bold text-[#0e0477] text-[13px] whitespace-nowrap">
+                        {tarifa.precioSencilla}
+                      </td>
+                      <td className="py-2.5 px-3 text-center font-bold text-[#0e0477] text-[13px] whitespace-nowrap">
+                        {tarifa.precioDoble}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

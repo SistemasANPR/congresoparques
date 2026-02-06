@@ -1,0 +1,115 @@
+🏨 GRAND HOTEL TIJUANA
+
+Actúa como un desarrollador frontend senior y diseñador UX/UI, enfocado en mostrar fichas informativas de hoteles de forma clara, ordenada y consistente, usando el diseño de ficha que ya está aprobado.
+
+Instrucciones generales
+
+Usa exactamente la estructura de ficha existente
+
+Conserva la imagen y logo ya cargados
+
+NO inventes información
+
+NO incluyas datos internos o administrativos
+
+Solo presenta la información siguiente
+
+🏨 GRAND HOTEL TIJUANA
+
+(Nombre correcto del hotel, sin “Casino” ni “Resort”)
+
+Código de reserva
+
+Código: PARQUES
+Evento: Congreso Parques
+Fechas de hospedaje: 13 al 15 de mayo de 2026
+Disponibilidad del código: A partir del 30 de enero de 2026
+
+Nota: El código se menciona al reservar vía teléfono o correo.
+
+Información general
+
+Tarifas por habitación, por noche
+
+Ocupación sencilla (1 persona) o doble (2 personas)
+
+Tarifas expresadas en pesos mexicanos (MXN)
+
+Las tarifas incluyen IVA 8% e ISH 5%
+
+Habitaciones sujetas a disponibilidad
+
+Se solicita tarjeta de crédito únicamente como garantía de llegada
+
+Tarifas
+Tipo de habitación	Sencilla (1 persona)	Doble (2 personas)
+Estándar sin desayuno	$2,373.00 MXN	$2,373.00 MXN
+Estándar con desayuno buffet	$2,751.00 MXN	$3,129.00 MXN
+Grand Club sin desayuno buffet	$3,152.70 MXN	$3,152.70 MXN
+Grand Club con desayuno buffet	$3,530.70 MXN	$3,908.70 MXN
+Notas importantes
+
+Precio por habitación por noche
+
+No incluye propinas de camaristas ni bellboys
+
+Persona extra tiene costo adicional
+
+Check-in: 3:00 PM
+
+Check-out: 12:00 PM
+
+Habitaciones Grand Club incluyen desayuno continental y canapés por la tarde
+
+Contacto y reservas
+
+Teléfono: (664) 681 7000 ext. 4184 o 4170
+
+Lada sin costo México: 800 026 60 07
+
+Toll free USA: 1 866 472 6385
+
+Correo: reservaciones@grandhoteltj.com
+
+Correo alterno: reservaciones1@grandhoteltj.com
+
+Reglas finales de presentación
+
+Mostrar esta información como una ficha independiente
+
+Mantener jerarquía visual:
+
+Nombre del hotel
+
+Código de reserva
+
+Información general
+
+Tarifas
+
+Notas
+
+Contacto
+
+Diseño responsive:
+
+Desktop: ficha completa
+
+Mobile: imagen arriba, contenido debajo
+
+NO mostrar:
+
+Firmas de correos
+
+Nombres de ejecutivos
+
+Avisos de confidencialidad
+
+Textos legales extensos
+
+Mensajes internos
+
+Confirmación importante
+
+Esta información corresponde exclusivamente a GRAND HOTEL TIJUANA
+y no debe mezclarse con Real Inn, Hotel Lucerna o K Tower.
