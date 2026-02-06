@@ -34,6 +34,7 @@ interface HotelData {
   propiedadCompartida?: string;
   tarifas: Tarifa[];
   tarifasDual?: TarifaDual[];
+  tarifasDualHeaders?: { col1: string; col2: string; col3: string };
   showDesayunoColumn?: boolean;
   notasTarifas: string[];
   infoAdicional: string[];
@@ -161,13 +162,13 @@ const hoteles: HotelData[] = [
     logo: ruladLogoUrl,
     logoBg: "#1a2744",
     codigo: "ABIERTO",
-    tarifas: [
-      { tipo: "Sencilla (1 persona) — Sin desayuno", precio: "$2,100 MXN", desayuno: "No" },
-      { tipo: "Sencilla (1 persona) — Con desayuno", precio: "$2,213 MXN", desayuno: "Americano" },
-      { tipo: "Doble (2 personas) — Sin desayuno", precio: "$2,300 MXN", desayuno: "No" },
-      { tipo: "Doble (2 personas) — Con desayuno", precio: "$2,411 MXN", desayuno: "Americano" },
+    tarifas: [],
+    tarifasDual: [
+      { tipo: "Sencilla (1 persona)", precioSencilla: "$2,100 MXN", precioDoble: "$2,213 MXN" },
+      { tipo: "Doble (2 personas)", precioSencilla: "$2,300 MXN", precioDoble: "$2,411 MXN" },
     ],
-    showDesayunoColumn: true,
+    tarifasDualHeaders: { col1: "Tipo de habitación", col2: "Sin desayuno", col3: "Con desayuno" },
+    showDesayunoColumn: false,
     notasTarifas: [
       "Tarifas en MXN · Impuestos incluidos",
     ],
@@ -415,13 +416,13 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                 <thead>
                   <tr className="bg-[#0e0477] text-white">
                     <th className="text-left py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider">
-                      Tipo de habitación
+                      {hotel.tarifasDualHeaders?.col1 || "Tipo de habitación"}
                     </th>
                     <th className="text-center py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider whitespace-nowrap">
-                      Sencilla (1 persona)
+                      {hotel.tarifasDualHeaders?.col2 || "Sencilla (1 persona)"}
                     </th>
                     <th className="text-center py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider whitespace-nowrap">
-                      Doble (2 personas)
+                      {hotel.tarifasDualHeaders?.col3 || "Doble (2 personas)"}
                     </th>
                   </tr>
                 </thead>
