@@ -7,6 +7,8 @@ import volarisLogo from "@assets/VOLARIS_1769210259352.jpg";
 import vivaAerobusLogo from "@assets/VIVA_AEROBUS_1769210259350.jpg";
 import aeromexicoLogo from "@assets/Aeromexico_1769210259346.jpg";
 import americanAirlinesLogo from "@assets/America_Airlines_1769210259348.jpg";
+import volarisBanner from "@assets/volaris_1770420013681.jpeg";
+import aeromexicoBanner from "@assets/aeromexico_1770420013682.jpeg";
 
 export default function Conectividad() {
   const vuelosNacionales = [
@@ -133,6 +135,15 @@ export default function Conectividad() {
                   <div className="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm border border-gray-100">
                     <img src={americanAirlinesLogo} alt="American Airlines" className="max-h-14 max-w-full object-contain" />
                   </div>
+                </div>
+
+                <div className="mt-8 space-y-4">
+                  <a href="https://www.volaris.com" target="_blank" rel="noopener noreferrer" className="block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <img src={volarisBanner} alt="Descuento en Volaris - Código V2G10 - Hasta 10% de descuento" className="w-full h-auto" />
+                  </a>
+                  <a href="https://www.aeromexico.com" target="_blank" rel="noopener noreferrer" className="block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <img src={aeromexicoBanner} alt="Descuento en Aeroméxico - Código IT6MXRC01769C" className="w-full h-auto" />
+                  </a>
                 </div>
               </div>
             </div>
