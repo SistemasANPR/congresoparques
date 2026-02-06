@@ -265,14 +265,6 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                 <Tag className="w-3 h-3" />
                 Código: {hotel.codigo}
               </span>
-              {hotel.evento && (
-                <span
-                  className="inline-flex items-center gap-1.5 bg-[#35219b] text-white text-[11px] font-semibold px-3.5 py-1.5 rounded-full tracking-wide"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
-                >
-                  {hotel.evento}
-                </span>
-              )}
             </div>
 
             {hotel.fechasHospedaje && (
