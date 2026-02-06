@@ -207,6 +207,14 @@ export function Navigation() {
                       <FileText className="w-4 h-4 opacity-60" />
                       Recursos
                     </Link>
+                    <Link
+                      href="/hospedaje"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      data-testid="nav-dropdown-hospedaje"
+                    >
+                      <Hotel className="w-4 h-4 opacity-60" />
+                      Hospedaje
+                    </Link>
                     </div>
                   </div>
                 )}
@@ -454,6 +462,15 @@ export function Navigation() {
                     >
                       <FileText className="w-4 h-4 opacity-60" />
                       Recursos
+                    </Link>
+                    <Link
+                      href="/hospedaje"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                      data-testid="mobile-nav-hospedaje"
+                    >
+                      <Hotel className="w-4 h-4 opacity-60" />
+                      Hospedaje
                     </Link>
                   </div>
                 )}
