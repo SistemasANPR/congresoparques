@@ -1,0 +1,139 @@
+En la sección de Hoteles, ya existen:
+
+Fotografías de cada hotel (deben conservarse)
+
+Logos de los hoteles (ya fueron cargados a Replit)
+
+Necesito rediseñar esta sección para que cada hotel se muestre como una ficha (card) clara, ordenada y visualmente consistente, con toda su información bien estructurada.
+
+Objetivo del diseño
+
+Convertir cada hotel en una ficha informativa profesional
+
+Mantener las imágenes actuales
+
+Integrar el logo del hotel
+
+Presentar la información de forma:
+
+Clara
+
+Escaneable
+
+Fácil de comparar
+
+Diseño responsive (desktop / mobile)
+
+Lineamientos de diseño (importantes)
+
+Cada hotel debe ser una card independiente
+
+Estructura recomendada:
+
+Imagen del hotel (la que ya existe)
+
+Logo del hotel
+
+Nombre del hotel
+
+Código de reserva (destacado visualmente)
+
+Información general
+
+Tabla o lista de tarifas
+
+Datos de contacto
+
+Evitar bloques de texto largos
+
+Usar subtítulos, listas y separadores visuales
+
+Mantener coherencia visual entre todos los hoteles
+
+Información específica – HOTEL REAL INN TIJUANA
+
+Nombre del hotel:
+HOTEL REAL INN TIJUANA
+
+Código de reserva (destacar como badge o etiqueta):
+CÓDIGO ABIERTO: (IND) CONGRESO NACIONAL DE PARQUES
+
+Información general
+
+Tarifas por habitación, por noche, en ocupación sencilla o doble
+
+Tarifas cotizadas en pesos mexicanos
+
+Precios no incluyen impuestos: IVA 8% e ISH 5%
+
+Se requiere tarjeta únicamente como garantía de llegada
+
+Tarifas
+
+Presentar de forma ordenada (lista o tabla):
+
+Habitación de lujo sencilla (1 desayuno buffet): $2,150.00 MXN
+
+Habitación de lujo doble (2 desayunos buffet): $2,397.00 MXN
+
+Habitación de lujo superior sencilla (1 desayuno buffet): $2,440.00 MXN
+
+Habitación de lujo superior doble (2 desayunos buffet): $2,687.00 MXN
+
+Habitación Ejecutiva sencilla (1 desayuno buffet): $3,115.00 MXN
+
+Habitación Ejecutiva doble (2 desayunos buffet): $3,362.00 MXN
+
+Contacto y reservas
+
+Tel: (664) 633 40 00 ext. 4430
+
+Tel nacional: 01 800 732 5466
+
+Correo: reservaciones@caminoreal.com
+
+Correo alterno: valmeida@hotelesrealinn.com
+
+Consideraciones técnicas
+
+Conservar las imágenes existentes
+
+Usar los logos ya cargados en Replit
+
+No hardcodear estilos innecesarios
+
+Usar CSS limpio (flexbox o grid)
+
+Evitar alturas fijas frágiles
+
+El diseño debe adaptarse bien en mobile:
+
+Imagen arriba
+
+Logo y nombre visibles
+
+Información legible sin scroll horizontal
+
+Entrega esperada
+
+Maquetación completa de la ficha del hotel
+
+Código listo para Replit
+
+Breve explicación de:
+
+Estructura del layout
+
+Cómo se reutiliza el diseño para otros hoteles
+
+Nota final
+
+Este diseño debe permitir replicar fácilmente la ficha para otros hoteles, cambiando solo:
+
+Logo
+
+Imagen
+
+Texto
+
+Tarifas
