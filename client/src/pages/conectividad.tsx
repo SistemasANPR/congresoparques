@@ -137,12 +137,12 @@ export default function Conectividad() {
                   </div>
                 </div>
 
-                <div className="mt-8 space-y-4">
-                  <a href="https://www.volaris.com" target="_blank" rel="noopener noreferrer" className="block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <img src={volarisBanner} alt="Descuento en Volaris - Código V2G10 - Hasta 10% de descuento" className="w-full h-auto" />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '32px' }}>
+                  <a href="https://www.volaris.com" target="_blank" rel="noopener noreferrer" style={{ display: 'block', overflow: 'hidden', borderRadius: '12px', minWidth: 0 }} className="shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <img src={volarisBanner} alt="Descuento en Volaris - Código V2G10 - Hasta 10% de descuento" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }} />
                   </a>
-                  <a href="https://www.aeromexico.com" target="_blank" rel="noopener noreferrer" className="block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <img src={aeromexicoBanner} alt="Descuento en Aeroméxico - Código IT6MXRC01769C" className="w-full h-auto" />
+                  <a href="https://www.aeromexico.com" target="_blank" rel="noopener noreferrer" style={{ display: 'block', overflow: 'hidden', borderRadius: '12px', minWidth: 0 }} className="shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <img src={aeromexicoBanner} alt="Descuento en Aeroméxico - Código IT6MXRC01769C" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }} />
                   </a>
                 </div>
               </div>
