@@ -25,9 +25,12 @@ interface HotelData {
   logo?: string;
   logoBg: string;
   codigo: string;
+  codigoNombre?: string;
   evento?: string;
   fechasHospedaje?: string;
+  fechasEvento?: string;
   codigoNota?: string;
+  propiedadCompartida?: string;
   tarifas: Tarifa[];
   tarifasDual?: TarifaDual[];
   showDesayunoColumn?: boolean;
@@ -81,8 +84,11 @@ const hoteles: HotelData[] = [
     logo: lucernaLogoUrl,
     logoBg: "#0047ab",
     codigo: "PARQUE",
+    codigoNombre: "Código Abierto / Congreso Parques",
     evento: "Congreso Parques",
-    fechasHospedaje: "13 al 15 de mayo de 2026",
+    fechasHospedaje: "11 al 17 de mayo de 2026",
+    fechasEvento: "13 al 15 de mayo de 2026",
+    propiedadCompartida: "Hotel Lucerna Tijuana y K Tower Hotel Boutique Tijuana forman parte de la misma propiedad y comparten tarifas y condiciones.",
     showDesayunoColumn: false,
     tarifas: [
       { tipo: "Habitación Deluxe Sencilla o Doble", precio: "$3,000.00 MXN" },
@@ -94,41 +100,57 @@ const hoteles: HotelData[] = [
       "Tarifas por habitación, por noche",
       "Ocupación sencilla o doble",
       "Tarifas cotizadas en pesos mexicanos (MXN)",
-      "Tarifas incluyen IVA 8% e ISH 5%",
-      "Habitaciones sujetas a disponibilidad",
+      "Tarifas sujetas a disponibilidad",
+      "Se solicita tarjeta de crédito únicamente como garantía de llegada",
     ],
     infoAdicional: [
-      "Tarifas sujetas a disponibilidad",
-      "Tarifas válidas para ocupación mayor al 60%",
-      "Precio por habitación por noche",
+      "Código abierto válido del 11 al 17 de mayo de 2026",
+      "Permite llegar antes o extender estancia después del evento",
+      "Fecha límite para reservar (Cut Off): 9 de mayo de 2026",
+      "Check-in: 3:00 p.m. · Check-out: 12:00 p.m.",
+      "Internet incluido",
+      "Habitaciones sujetas a disponibilidad",
     ],
     contacto: {
       telefonos: [
-        { label: "Central de reservas México", numero: "800 026 63 00" },
-        { label: "Central de reservas USA", numero: "800 582 37 62" },
+        { label: "Central de reservaciones", numero: "664 900 9049" },
       ],
     },
   },
   {
-    nombre: "K Tower Tijuana",
+    nombre: "K Tower Hotel Boutique Tijuana",
     logoBg: "#1a1a2e",
     codigo: "PARQUE",
+    codigoNombre: "Código Abierto / Congreso Parques",
     evento: "Congreso Parques",
-    fechasHospedaje: "13 al 15 de mayo de 2026",
+    fechasHospedaje: "11 al 17 de mayo de 2026",
+    fechasEvento: "13 al 15 de mayo de 2026",
+    propiedadCompartida: "K Tower Hotel Boutique Tijuana y Hotel Lucerna Tijuana forman parte de la misma propiedad y comparten tarifas y condiciones.",
     showDesayunoColumn: false,
-    tarifas: [],
+    tarifas: [
+      { tipo: "Habitación Deluxe Sencilla o Doble", precio: "$3,000.00 MXN" },
+      { tipo: "Habitación Select Sencilla o Doble", precio: "$4,000.00 MXN" },
+      { tipo: "Habitación Premium Sencilla o Doble", precio: "$4,400.00 MXN" },
+      { tipo: "Loft", precio: "$8,700.00 MXN" },
+    ],
     notasTarifas: [
       "Tarifas por habitación, por noche",
+      "Ocupación sencilla o doble",
       "Tarifas cotizadas en pesos mexicanos (MXN)",
-      "Habitaciones sujetas a disponibilidad",
-      "Código válido únicamente vía reservaciones directas",
+      "Tarifas sujetas a disponibilidad",
+      "Se solicita tarjeta de crédito únicamente como garantía de llegada",
     ],
     infoAdicional: [
-      "Información de tarifas disponible próximamente",
+      "Código abierto válido del 11 al 17 de mayo de 2026",
+      "Permite llegar antes o extender estancia después del evento",
+      "Fecha límite para reservar (Cut Off): 9 de mayo de 2026",
+      "Check-in: 3:00 p.m. · Check-out: 12:00 p.m.",
+      "Internet incluido",
+      "Habitaciones sujetas a disponibilidad",
     ],
     contacto: {
       telefonos: [
-        { label: "Central de reservas", numero: "664 900 9049" },
+        { label: "Central de reservaciones", numero: "664 900 9049" },
       ],
     },
   },
@@ -256,10 +278,24 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                 <span>Hospedaje: <span className="font-semibold text-gray-600">{hotel.fechasHospedaje}</span></span>
               </div>
             )}
+            {hotel.fechasEvento && (
+              <div className="flex items-center gap-2 mt-1.5 text-[13px] text-gray-500" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                <CalendarDays className="w-4 h-4 text-[#BCCE16]" />
+                <span>Evento: <span className="font-semibold text-gray-600">{hotel.fechasEvento}</span></span>
+              </div>
+            )}
             {hotel.codigoNota && (
               <p className="mt-2 text-[11px] text-gray-400 italic leading-relaxed" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 {hotel.codigoNota}
               </p>
+            )}
+            {hotel.propiedadCompartida && (
+              <div className="mt-3 flex items-start gap-2 bg-[#f0eef9] border border-[#ddd6f7] rounded-lg px-3 py-2">
+                <Bed className="w-4 h-4 text-[#6847f6] mt-0.5 flex-shrink-0" />
+                <p className="text-[11px] text-[#35219b] leading-relaxed font-medium" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                  {hotel.propiedadCompartida}
+                </p>
+              </div>
             )}
           </div>
         </div>

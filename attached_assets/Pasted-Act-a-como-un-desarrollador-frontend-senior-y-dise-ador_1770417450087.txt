@@ -1,0 +1,111 @@
+Actúa como un desarrollador frontend senior y diseñador UX/UI, encargado de maquetar fichas informativas de hoteles para un evento, usando un diseño de cards/fichas ya definido.
+
+Contexto clave (MUY IMPORTANTE)
+
+Hotel Lucerna Tijuana y K Tower Hotel Boutique Tijuana:
+
+Pertenecen a la misma propiedad
+
+Comparten el mismo código de reservación
+
+Comparten las mismas tarifas
+
+Comparten las mismas condiciones de hospedaje
+
+👉 La única diferencia visible entre ambos es:
+
+El nombre
+
+La imagen
+
+El logo
+
+La descripción visual de cada torre
+
+NO deben duplicarse tarifas distintas ni condiciones diferentes.
+
+Instrucciones de presentación
+Estructura general
+
+Mostrar dos fichas separadas:
+
+Hotel Lucerna Tijuana
+
+K Tower Hotel Boutique Tijuana
+
+En ambas fichas:
+
+Mantener su imagen y logo propios
+
+Usar exactamente la misma información de tarifas, código y notas
+
+Información compartida (usar en ambas fichas)
+Código de reservación
+
+Código: PARQUE
+Nombre del código: CÓDIGO ABIERTO / CONGRESO PARQUES
+Fechas para reservar: del 11 al 17 de mayo de 2026
+Evento: Congreso Parques
+Fechas del evento: 13 al 15 de mayo de 2026
+
+Información general
+
+Tarifas por habitación, por noche
+
+Ocupación sencilla o doble
+
+Tarifas cotizadas en pesos mexicanos (MXN)
+
+Tarifas sujetas a disponibilidad
+
+Se solicita tarjeta de crédito únicamente como garantía de llegada
+
+Tarifas
+
+(Estas tarifas aplican IGUAL para Hotel Lucerna y K Tower)
+
+Habitación Deluxe sencilla o doble: $3,000.00 MXN
+
+Habitación Select sencilla o doble: $4,000.00 MXN
+
+Habitación Premium sencilla o doble: $4,400.00 MXN
+
+Loft: $8,700.00 MXN
+
+Notas importantes
+
+Código abierto válido del 11 al 17 de mayo de 2026
+
+Permite llegar antes o extender estancia después del evento
+
+Fecha límite para reservar (Cut Off): 9 de mayo de 2026
+
+Check-in: 3:00 p.m.
+
+Check-out: 12:00 p.m.
+
+Internet incluido
+
+Habitaciones sujetas a disponibilidad
+
+Contacto y reservas
+
+(Mismo contacto para ambas propiedades)
+
+Central de reservaciones: 664 900 9049
+
+Reservación disponible vía llamada telefónica o link exclusivo del Congreso
+
+Reglas finales
+
+NO crear tarifas distintas para K Tower
+
+NO duplicar tablas con valores diferentes
+
+NO mencionar descuentos internos ni beneficios especiales
+
+NO separar condiciones por torre
+
+Aclarar visualmente que:
+
+Hotel Lucerna Tijuana y K Tower Hotel Boutique Tijuana forman parte de la misma propiedad y comparten tarifas y condiciones.
