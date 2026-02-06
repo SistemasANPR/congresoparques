@@ -48,7 +48,7 @@ const hoteles: HotelData[] = [
     logoBg: "#f97316",
     codigo: "PARQUE",
     evento: "Congreso Parques",
-    fechasHospedaje: "13 al 15 de mayo de 2026",
+    fechasHospedaje: "10 al 17 de mayo de 2026",
     showDesayunoColumn: true,
     tarifas: [
       { tipo: "Habitación de Lujo Sencilla", precio: "$2,150.00 MXN", desayuno: "1 desayuno buffet" },
@@ -59,13 +59,14 @@ const hoteles: HotelData[] = [
       { tipo: "Habitación Ejecutiva Doble", precio: "$3,362.00 MXN", desayuno: "2 desayunos buffet" },
     ],
     notasTarifas: [
-      "Tarifas por habitación, por noche, en ocupación sencilla o doble",
-      "Tarifas cotizadas en pesos mexicanos (MXN)",
-      "Precios no incluyen impuestos: IVA 8% e ISH 5%",
-      "Se requiere tarjeta únicamente como garantía de llegada",
+      "Tarifa cotizada en Moneda Nacional (no incluye impuestos)",
+      "Tarifa cotizada única y exclusivamente para las fechas indicadas y de acuerdo al número de habitaciones solicitadas",
+      "Tarifa aplica con un mínimo de 10 habitaciones",
+      "1 habitación por una noche en cortesía después de 30 habitaciones reservadas",
     ],
     infoAdicional: [
-      "Desayuno buffet incluido según tipo de habitación",
+      "Fecha límite (CUT OFF) para reservar: 9 de mayo de 2026, sujeto a disponibilidad",
+      "El servicio de internet está incluido en todas las áreas del hotel",
     ],
     contacto: {
       telefonos: [
