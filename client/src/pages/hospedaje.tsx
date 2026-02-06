@@ -7,6 +7,7 @@ import ruladLogoUrl from "@assets/Rulad_1770394433292.png";
 import realInnLogoUrl from "@assets/Real_Inn_1770394433300.png";
 import grandHotelLogoUrl from "@assets/Grand_Hotel_1770394433295.webp";
 import lucernaLogoUrl from "@assets/logoLucerna_1770394433297.png";
+import kTowerLogoUrl from "@assets/1631370969955_1770417877963.jpg";
 
 interface Tarifa {
   tipo: string;
@@ -119,6 +120,7 @@ const hoteles: HotelData[] = [
   },
   {
     nombre: "K Tower Hotel Boutique Tijuana",
+    logo: kTowerLogoUrl,
     logoBg: "#1a1a2e",
     codigo: "PARQUE",
     codigoNombre: "Código Abierto / Congreso Parques",
