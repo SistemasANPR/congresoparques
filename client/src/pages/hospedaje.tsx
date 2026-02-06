@@ -207,72 +207,73 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
     <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
 
       {/* ── HEADER: Logo + Name + Código + Evento/Fechas ── */}
-      <div className="flex flex-col sm:flex-row">
-        <div
-          className="sm:w-[200px] lg:w-[240px] flex-shrink-0 flex items-center justify-center p-8 sm:p-6"
-          style={{ backgroundColor: hotel.logoBg }}
-        >
-          {hotel.logo ? (
-            <img
-              src={hotel.logo}
-              alt={`Logo ${hotel.nombre}`}
-              className="max-w-[160px] max-h-[100px] w-full h-auto object-contain drop-shadow-lg"
-            />
-          ) : (
-            <div className="w-28 h-28 rounded-2xl bg-white/[0.07] border-2 border-dashed border-white/25 flex items-center justify-center">
-              <Hotel className="w-14 h-14 text-[#BCCE16]" strokeWidth={1.2} />
-            </div>
-          )}
-        </div>
-
-        <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
-          <h3
-            className="text-xl md:text-2xl font-black text-[#0e0477] leading-tight mb-3"
-            style={{ fontFamily: "Montserrat, sans-serif" }}
-          >
-            {hotel.nombre}
-          </h3>
-          <div className="flex flex-wrap gap-2 items-center">
-            <span
-              className="inline-flex items-center gap-1.5 bg-[#BCCE16] text-[#0e0477] text-xs font-bold px-3 py-1.5 rounded-full"
-              style={{ fontFamily: "Montserrat, sans-serif" }}
-            >
-              <Tag className="w-3.5 h-3.5" />
-              Código: {hotel.codigo}
-            </span>
-            {hotel.evento && (
-              <span
-                className="inline-flex items-center gap-1.5 bg-[#0e0477] text-white text-xs font-semibold px-3 py-1.5 rounded-full"
-                style={{ fontFamily: "Montserrat, sans-serif" }}
-              >
-                {hotel.evento}
-              </span>
+      <div className="bg-gradient-to-b from-gray-50 to-white border-b border-gray-100">
+        <div className="flex flex-col sm:flex-row">
+          <div className="sm:w-[200px] lg:w-[240px] flex-shrink-0 flex items-center justify-center p-10 sm:p-8 bg-white border-b sm:border-b-0 sm:border-r border-gray-100">
+            {hotel.logo ? (
+              <img
+                src={hotel.logo}
+                alt={`Logo ${hotel.nombre}`}
+                className="max-w-[160px] max-h-[90px] w-full h-auto object-contain"
+              />
+            ) : (
+              <div className="w-24 h-24 rounded-2xl bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center">
+                <Hotel className="w-12 h-12 text-[#6847f6]" strokeWidth={1.2} />
+              </div>
             )}
           </div>
-          {hotel.fechasHospedaje && (
-            <div className="flex items-center gap-1.5 mt-2 text-sm text-gray-500" style={{ fontFamily: "Montserrat, sans-serif" }}>
-              <CalendarDays className="w-3.5 h-3.5 text-[#6847f6]" />
-              Hospedaje: {hotel.fechasHospedaje}
+
+          <div className="flex-1 p-6 sm:p-7 lg:p-8 flex flex-col justify-center">
+            <h3
+              className="text-2xl md:text-[1.7rem] lg:text-3xl font-black text-[#0e0477] leading-tight tracking-tight"
+              style={{ fontFamily: "Montserrat, sans-serif" }}
+            >
+              {hotel.nombre}
+            </h3>
+
+            <div className="flex flex-wrap gap-2.5 items-center mt-4">
+              <span
+                className="inline-flex items-center gap-1.5 bg-[#BCCE16]/90 text-[#0e0477] text-[11px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wide"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                <Tag className="w-3 h-3" />
+                Código: {hotel.codigo}
+              </span>
+              {hotel.evento && (
+                <span
+                  className="inline-flex items-center gap-1.5 bg-[#35219b] text-white text-[11px] font-semibold px-3.5 py-1.5 rounded-full tracking-wide"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  {hotel.evento}
+                </span>
+              )}
             </div>
-          )}
-          {hotel.codigoNota && (
-            <p className="mt-2 text-xs text-gray-400 italic" style={{ fontFamily: "Montserrat, sans-serif" }}>
-              {hotel.codigoNota}
-            </p>
-          )}
+
+            {hotel.fechasHospedaje && (
+              <div className="flex items-center gap-2 mt-3 text-[13px] text-gray-500" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                <CalendarDays className="w-4 h-4 text-[#6847f6]/60" />
+                <span>Hospedaje: <span className="font-semibold text-gray-600">{hotel.fechasHospedaje}</span></span>
+              </div>
+            )}
+            {hotel.codigoNota && (
+              <p className="mt-2 text-[11px] text-gray-400 italic leading-relaxed" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                {hotel.codigoNota}
+              </p>
+            )}
+          </div>
         </div>
       </div>
 
       {/* ── BODY ── */}
-      <div className="px-5 sm:px-6 pb-6">
+      <div className="px-5 sm:px-7 lg:px-8 py-6">
 
         {/* Información general */}
         {hotel.notasTarifas.length > 0 && (
-          <div className="mt-4 mb-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Info className="w-4 h-4 text-[#6847f6]" />
+          <div className="mb-5">
+            <div className="flex items-center gap-2 mb-2.5">
+              <Info className="w-4 h-4 text-[#6847f6]/70" />
               <h4
-                className="text-xs font-bold text-[#0e0477] uppercase tracking-wider"
+                className="text-[11px] font-bold text-gray-400 uppercase tracking-widest"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Información general
@@ -282,7 +283,7 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
               {hotel.notasTarifas.map((nota, i) => (
                 <li
                   key={i}
-                  className="text-sm text-gray-600 list-disc"
+                  className="text-[13px] text-gray-500 list-disc"
                   style={{ fontFamily: "Montserrat, sans-serif" }}
                 >
                   {nota}
@@ -292,15 +293,15 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
           </div>
         )}
 
-        {hasRates && <hr className="border-gray-100 my-4" />}
+        {hasRates && <hr className="border-gray-100 my-5" />}
 
         {/* Tabla de tarifas estándar */}
         {hotel.tarifas.length > 0 && (
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
-              <CreditCard className="w-4 h-4 text-[#6847f6]" />
+              <CreditCard className="w-4 h-4 text-[#6847f6]/70" />
               <h4
-                className="text-xs font-bold text-[#0e0477] uppercase tracking-wider"
+                className="text-[11px] font-bold text-gray-400 uppercase tracking-widest"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Tarifas
@@ -357,11 +358,11 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
 
         {/* Tabla de tarifas dual (Sencilla / Doble) */}
         {hotel.tarifasDual && hotel.tarifasDual.length > 0 && (
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
-              <CreditCard className="w-4 h-4 text-[#6847f6]" />
+              <CreditCard className="w-4 h-4 text-[#6847f6]/70" />
               <h4
-                className="text-xs font-bold text-[#0e0477] uppercase tracking-wider"
+                className="text-[11px] font-bold text-gray-400 uppercase tracking-widest"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Tarifas
@@ -409,30 +410,30 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
         )}
 
         {(hasContact || hotel.infoAdicional.length > 0) && hasRates && (
-          <hr className="border-gray-100 my-4" />
+          <hr className="border-gray-100 my-5" />
         )}
 
         {/* Info adicional + Contacto en grid */}
         <div className={`grid gap-4 ${hasContact && hotel.infoAdicional.length > 0 ? "md:grid-cols-2" : "grid-cols-1"}`}>
           {hotel.infoAdicional.length > 0 && (
-            <div className="bg-[#f7f5ff] border border-[#e0daf7] rounded-xl px-4 py-3">
-              <div className="flex items-center gap-2 mb-2">
-                <Info className="w-3.5 h-3.5 text-[#6847f6]" />
+            <div className="bg-[#f9f8fd] border border-[#ebe8f5] rounded-xl px-4 py-4">
+              <div className="flex items-center gap-2 mb-2.5">
+                <Info className="w-3.5 h-3.5 text-[#6847f6]/60" />
                 <h4
-                  className="text-[11px] font-bold text-[#0e0477] uppercase tracking-wider"
+                  className="text-[11px] font-bold text-gray-400 uppercase tracking-widest"
                   style={{ fontFamily: "Montserrat, sans-serif" }}
                 >
                   Notas
                 </h4>
               </div>
-              <ul className="space-y-1">
+              <ul className="space-y-1.5">
                 {hotel.infoAdicional.map((nota, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 text-sm text-gray-600"
+                    className="flex items-start gap-2 text-[13px] text-gray-500"
                     style={{ fontFamily: "Montserrat, sans-serif" }}
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6847f6] mt-[7px] flex-shrink-0" />
+                    <span className="w-1 h-1 rounded-full bg-[#6847f6]/40 mt-[7px] flex-shrink-0" />
                     {nota}
                   </li>
                 ))}
@@ -441,11 +442,11 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
           )}
 
           {hasContact && (
-            <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
-              <div className="flex items-center gap-2 mb-2">
-                <Phone className="w-3.5 h-3.5 text-[#6847f6]" />
+            <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-4">
+              <div className="flex items-center gap-2 mb-2.5">
+                <Phone className="w-3.5 h-3.5 text-[#6847f6]/60" />
                 <h4
-                  className="text-[11px] font-bold text-[#0e0477] uppercase tracking-wider"
+                  className="text-[11px] font-bold text-gray-400 uppercase tracking-widest"
                   style={{ fontFamily: "Montserrat, sans-serif" }}
                 >
                   Contacto y Reservas
