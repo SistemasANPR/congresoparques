@@ -1,0 +1,137 @@
+Instrucciones generales
+
+NO inventes información
+
+NO modifiques el diseño existente
+
+Usa exactamente esta estructura de ficha
+
+Conserva las imágenes y logos ya cargados
+
+Solo maqueta y presenta la información siguiente
+
+🏨 HOTEL REAL INN TIJUANA
+Código de reserva
+
+Código: PARQUE
+Evento: Congreso Parques
+Fechas de hospedaje: 13 al 15 de mayo de 2026
+
+Información general
+
+Tarifas por habitación, por noche, en ocupación sencilla o doble
+
+Tarifas cotizadas en pesos mexicanos (MXN)
+
+Precios no incluyen impuestos: IVA 8% e ISH 5%
+
+Se requiere tarjeta únicamente como garantía de llegada
+
+Tarifas
+Tipo de habitación	Precio por noche	Desayuno
+Habitación de Lujo Sencilla	$2,150.00 MXN	1 desayuno buffet
+Habitación de Lujo Doble	$2,397.00 MXN	2 desayunos buffet
+Habitación de Lujo Superior Sencilla	$2,440.00 MXN	1 desayuno buffet
+Habitación de Lujo Superior Doble	$2,687.00 MXN	2 desayunos buffet
+Habitación Ejecutiva Sencilla	$3,115.00 MXN	1 desayuno buffet
+Habitación Ejecutiva Doble	$3,362.00 MXN	2 desayunos buffet
+Notas
+
+Desayuno buffet incluido según tipo de habitación
+
+Contacto y reservas
+
+Tel: (664) 633 40 00 ext. 4430
+
+Lada sin costo: 01 800 732 5466
+
+Correo: reservaciones@caminoreal.com
+
+Correo alterno: valmeida@hotelesrealinn.com
+
+🏨 HOTEL LUCERNA TIJUANA
+Código de reserva
+
+Código: PARQUE
+Evento: Congreso Parques
+Fechas de hospedaje: 13 al 15 de mayo de 2026
+
+Información general
+
+Tarifas por habitación, por noche
+
+Ocupación sencilla o doble
+
+Tarifas cotizadas en pesos mexicanos (MXN)
+
+Tarifas incluyen IVA 8% e ISH 5%
+
+Habitaciones sujetas a disponibilidad
+
+Tarifas
+Tipo de habitación	Precio por noche
+Habitación Deluxe Sencilla o Doble	$3,000.00 MXN
+Habitación Select Sencilla o Doble	$4,000.00 MXN
+Habitación Premium Sencilla o Doble	$4,400.00 MXN
+Loft	$8,700.00 MXN
+Notas
+
+Tarifas sujetas a disponibilidad
+
+Tarifas válidas para ocupación mayor al 60%
+
+Precio por habitación por noche
+
+Contacto y reservas
+
+Central de reservas México: 800 026 63 00
+
+Central de reservas USA: 800 582 37 62
+
+🏨 K TOWER TIJUANA
+
+(Mismo código y fechas que Hotel Lucerna)
+
+Código de reserva
+
+Código: PARQUE
+Evento: Congreso Parques
+Fechas de hospedaje: 13 al 15 de mayo de 2026
+
+Información general
+
+Tarifas por habitación, por noche
+
+Tarifas cotizadas en pesos mexicanos (MXN)
+
+Habitaciones sujetas a disponibilidad
+
+Código válido únicamente vía reservaciones directas
+
+Contacto y reservas
+
+Teléfono central de reservas: 664 900 9049
+
+Reglas finales de maquetación
+
+Cada hotel debe mostrarse como una ficha independiente
+
+Mantener:
+
+Imagen del hotel
+
+Logo del hotel
+
+Jerarquía visual existente
+
+Usar tablas para tarifas
+
+Diseño responsive:
+
+Desktop: ficha completa
+
+Mobile: imagen arriba, info debajo
+
+NO agregar textos legales largos
+
+NO mostrar información interna o administrativa

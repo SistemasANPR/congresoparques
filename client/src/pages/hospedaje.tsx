@@ -1,4 +1,4 @@
-import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard } from "lucide-react";
+import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard, CalendarDays } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -11,21 +11,23 @@ import lucernaLogoUrl from "@assets/logoLucerna_1770394433297.png";
 interface Tarifa {
   tipo: string;
   precio: string;
-  desayuno: string;
+  desayuno?: string;
 }
 
 interface HotelData {
   nombre: string;
-  logo: string;
+  logo?: string;
   logoBg: string;
   codigo: string;
-  codigoDetalle?: string;
+  evento?: string;
+  fechasHospedaje?: string;
   tarifas: Tarifa[];
+  showDesayunoColumn?: boolean;
   notasTarifas: string[];
   infoAdicional: string[];
   contacto: {
     emails?: string[];
-    telefonos?: string[];
+    telefonos?: { label?: string; numero: string }[];
     direccion?: string;
     web?: string;
   };
@@ -36,15 +38,17 @@ const hoteles: HotelData[] = [
     nombre: "Hotel Real Inn Tijuana",
     logo: realInnLogoUrl,
     logoBg: "#f97316",
-    codigo: "(IND) CONGRESO NACIONAL DE PARQUES",
-    codigoDetalle: "Código Abierto",
+    codigo: "PARQUE",
+    evento: "Congreso Parques",
+    fechasHospedaje: "13 al 15 de mayo de 2026",
+    showDesayunoColumn: true,
     tarifas: [
-      { tipo: "Hab. de Lujo Sencilla (1 desayuno buffet)", precio: "$2,150.00 MXN", desayuno: "1 buffet" },
-      { tipo: "Hab. de Lujo Doble (2 desayunos buffet)", precio: "$2,397.00 MXN", desayuno: "2 buffet" },
-      { tipo: "Hab. Lujo Superior Sencilla (1 desayuno buffet)", precio: "$2,440.00 MXN", desayuno: "1 buffet" },
-      { tipo: "Hab. Lujo Superior Doble (2 desayunos buffet)", precio: "$2,687.00 MXN", desayuno: "2 buffet" },
-      { tipo: "Hab. Ejecutiva Sencilla (1 desayuno buffet)", precio: "$3,115.00 MXN", desayuno: "1 buffet" },
-      { tipo: "Hab. Ejecutiva Doble (2 desayunos buffet)", precio: "$3,362.00 MXN", desayuno: "2 buffet" },
+      { tipo: "Habitación de Lujo Sencilla", precio: "$2,150.00 MXN", desayuno: "1 desayuno buffet" },
+      { tipo: "Habitación de Lujo Doble", precio: "$2,397.00 MXN", desayuno: "2 desayunos buffet" },
+      { tipo: "Habitación de Lujo Superior Sencilla", precio: "$2,440.00 MXN", desayuno: "1 desayuno buffet" },
+      { tipo: "Habitación de Lujo Superior Doble", precio: "$2,687.00 MXN", desayuno: "2 desayunos buffet" },
+      { tipo: "Habitación Ejecutiva Sencilla", precio: "$3,115.00 MXN", desayuno: "1 desayuno buffet" },
+      { tipo: "Habitación Ejecutiva Doble", precio: "$3,362.00 MXN", desayuno: "2 desayunos buffet" },
     ],
     notasTarifas: [
       "Tarifas por habitación, por noche, en ocupación sencilla o doble",
@@ -56,8 +60,67 @@ const hoteles: HotelData[] = [
       "Desayuno buffet incluido según tipo de habitación",
     ],
     contacto: {
-      telefonos: ["(664) 633 40 00 ext. 4430", "01 800 732 5466"],
+      telefonos: [
+        { label: "Tel", numero: "(664) 633 40 00 ext. 4430" },
+        { label: "Lada sin costo", numero: "01 800 732 5466" },
+      ],
       emails: ["reservaciones@caminoreal.com", "valmeida@hotelesrealinn.com"],
+    },
+  },
+  {
+    nombre: "Hotel Lucerna Tijuana",
+    logo: lucernaLogoUrl,
+    logoBg: "#0047ab",
+    codigo: "PARQUE",
+    evento: "Congreso Parques",
+    fechasHospedaje: "13 al 15 de mayo de 2026",
+    showDesayunoColumn: false,
+    tarifas: [
+      { tipo: "Habitación Deluxe Sencilla o Doble", precio: "$3,000.00 MXN" },
+      { tipo: "Habitación Select Sencilla o Doble", precio: "$4,000.00 MXN" },
+      { tipo: "Habitación Premium Sencilla o Doble", precio: "$4,400.00 MXN" },
+      { tipo: "Loft", precio: "$8,700.00 MXN" },
+    ],
+    notasTarifas: [
+      "Tarifas por habitación, por noche",
+      "Ocupación sencilla o doble",
+      "Tarifas cotizadas en pesos mexicanos (MXN)",
+      "Tarifas incluyen IVA 8% e ISH 5%",
+      "Habitaciones sujetas a disponibilidad",
+    ],
+    infoAdicional: [
+      "Tarifas sujetas a disponibilidad",
+      "Tarifas válidas para ocupación mayor al 60%",
+      "Precio por habitación por noche",
+    ],
+    contacto: {
+      telefonos: [
+        { label: "Central de reservas México", numero: "800 026 63 00" },
+        { label: "Central de reservas USA", numero: "800 582 37 62" },
+      ],
+    },
+  },
+  {
+    nombre: "K Tower Tijuana",
+    logoBg: "#1a1a2e",
+    codigo: "PARQUE",
+    evento: "Congreso Parques",
+    fechasHospedaje: "13 al 15 de mayo de 2026",
+    showDesayunoColumn: false,
+    tarifas: [],
+    notasTarifas: [
+      "Tarifas por habitación, por noche",
+      "Tarifas cotizadas en pesos mexicanos (MXN)",
+      "Habitaciones sujetas a disponibilidad",
+      "Código válido únicamente vía reservaciones directas",
+    ],
+    infoAdicional: [
+      "Información de tarifas disponible próximamente",
+    ],
+    contacto: {
+      telefonos: [
+        { label: "Central de reservas", numero: "664 900 9049" },
+      ],
     },
   },
   {
@@ -71,6 +134,7 @@ const hoteles: HotelData[] = [
       { tipo: "Doble (2 personas) — Sin desayuno", precio: "$2,300 MXN", desayuno: "No" },
       { tipo: "Doble (2 personas) — Con desayuno", precio: "$2,411 MXN", desayuno: "Americano" },
     ],
+    showDesayunoColumn: true,
     notasTarifas: [
       "Tarifas en MXN · Impuestos incluidos",
     ],
@@ -81,7 +145,7 @@ const hoteles: HotelData[] = [
     ],
     contacto: {
       emails: ["ventas@rulad.mx"],
-      telefonos: ["+52 663 112 4689"],
+      telefonos: [{ numero: "+52 663 112 4689" }],
     },
   },
   {
@@ -90,18 +154,7 @@ const hoteles: HotelData[] = [
     logoBg: "#1b4d3e",
     codigo: "PRÓXIMAMENTE",
     tarifas: [],
-    notasTarifas: [],
-    infoAdicional: [
-      "Información de tarifas y reservaciones disponible próximamente",
-    ],
-    contacto: {},
-  },
-  {
-    nombre: "Hotel Lucerna Tijuana",
-    logo: lucernaLogoUrl,
-    logoBg: "#0047ab",
-    codigo: "PRÓXIMAMENTE",
-    tarifas: [],
+    showDesayunoColumn: false,
     notasTarifas: [],
     infoAdicional: [
       "Información de tarifas y reservaciones disponible próximamente",
@@ -117,17 +170,23 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
 
-      {/* ── HEADER: Logo + Name + Código ── */}
+      {/* ── HEADER: Logo + Name + Código + Evento/Fechas ── */}
       <div className="flex flex-col sm:flex-row">
         <div
           className="sm:w-[200px] lg:w-[240px] flex-shrink-0 flex items-center justify-center p-8 sm:p-6"
           style={{ backgroundColor: hotel.logoBg }}
         >
-          <img
-            src={hotel.logo}
-            alt={`Logo ${hotel.nombre}`}
-            className="max-w-[160px] max-h-[100px] w-full h-auto object-contain drop-shadow-lg"
-          />
+          {hotel.logo ? (
+            <img
+              src={hotel.logo}
+              alt={`Logo ${hotel.nombre}`}
+              className="max-w-[160px] max-h-[100px] w-full h-auto object-contain drop-shadow-lg"
+            />
+          ) : (
+            <div className="w-28 h-28 rounded-2xl bg-white/[0.07] border-2 border-dashed border-white/25 flex items-center justify-center">
+              <Hotel className="w-14 h-14 text-[#BCCE16]" strokeWidth={1.2} />
+            </div>
+          )}
         </div>
 
         <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center">
@@ -137,22 +196,36 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
           >
             {hotel.nombre}
           </h3>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 items-center">
             <span
               className="inline-flex items-center gap-1.5 bg-[#BCCE16] text-[#0e0477] text-xs font-bold px-3 py-1.5 rounded-full"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               <Tag className="w-3.5 h-3.5" />
-              {hotel.codigoDetalle ? `${hotel.codigoDetalle}: ` : "Código: "}{hotel.codigo}
+              Código: {hotel.codigo}
             </span>
+            {hotel.evento && (
+              <span
+                className="inline-flex items-center gap-1.5 bg-[#0e0477] text-white text-xs font-semibold px-3 py-1.5 rounded-full"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                {hotel.evento}
+              </span>
+            )}
           </div>
+          {hotel.fechasHospedaje && (
+            <div className="flex items-center gap-1.5 mt-2 text-sm text-gray-500" style={{ fontFamily: "Montserrat, sans-serif" }}>
+              <CalendarDays className="w-3.5 h-3.5 text-[#6847f6]" />
+              Hospedaje: {hotel.fechasHospedaje}
+            </div>
+          )}
         </div>
       </div>
 
       {/* ── BODY ── */}
       <div className="px-5 sm:px-6 pb-6">
 
-        {/* Notas de tarifas */}
+        {/* Información general */}
         {hotel.notasTarifas.length > 0 && (
           <div className="mt-4 mb-4">
             <div className="flex items-center gap-2 mb-2">
@@ -178,7 +251,6 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
           </div>
         )}
 
-        {/* Separador */}
         {hasRates && <hr className="border-gray-100 my-4" />}
 
         {/* Tabla de tarifas */}
@@ -206,9 +278,11 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                     <th className="text-center py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider whitespace-nowrap">
                       Precio / noche
                     </th>
-                    <th className="text-center py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider">
-                      Desayuno
-                    </th>
+                    {hotel.showDesayunoColumn && (
+                      <th className="text-center py-2.5 px-3 font-semibold text-[11px] uppercase tracking-wider">
+                        Desayuno
+                      </th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
@@ -223,13 +297,15 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                       <td className="py-2.5 px-3 text-center font-bold text-[#0e0477] text-[13px] whitespace-nowrap">
                         {tarifa.precio}
                       </td>
-                      <td className="py-2.5 px-3 text-center text-[12px]">
-                        {tarifa.desayuno === "No" ? (
-                          <span className="text-gray-400">No</span>
-                        ) : (
-                          <span className="font-semibold text-[#0e0477]">{tarifa.desayuno}</span>
-                        )}
-                      </td>
+                      {hotel.showDesayunoColumn && (
+                        <td className="py-2.5 px-3 text-center text-[12px]">
+                          {tarifa.desayuno === "No" ? (
+                            <span className="text-gray-400">No</span>
+                          ) : (
+                            <span className="font-semibold text-[#0e0477]">{tarifa.desayuno}</span>
+                          )}
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
@@ -238,14 +314,12 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
           </div>
         )}
 
-        {/* Separador */}
         {(hasContact || hotel.infoAdicional.length > 0) && hasRates && (
           <hr className="border-gray-100 my-4" />
         )}
 
         {/* Info adicional + Contacto en grid */}
         <div className={`grid gap-4 ${hasContact && hotel.infoAdicional.length > 0 ? "md:grid-cols-2" : "grid-cols-1"}`}>
-          {/* Información adicional */}
           {hotel.infoAdicional.length > 0 && (
             <div className="bg-[#f7f5ff] border border-[#e0daf7] rounded-xl px-4 py-3">
               <div className="flex items-center gap-2 mb-2">
@@ -272,7 +346,6 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
             </div>
           )}
 
-          {/* Contacto */}
           {hasContact && (
             <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
               <div className="flex items-center gap-2 mb-2">
@@ -288,12 +361,12 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                 {hotel.contacto.telefonos?.map((tel, i) => (
                   <a
                     key={i}
-                    href={`tel:${tel.replace(/[\s()]/g, "")}`}
+                    href={`tel:${tel.numero.replace(/[\s()]/g, "")}`}
                     className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#6847f6] transition-colors"
                     style={{ fontFamily: "Montserrat, sans-serif" }}
                   >
                     <Phone className="w-3.5 h-3.5 text-[#6847f6] flex-shrink-0" />
-                    {tel}
+                    {tel.label ? `${tel.label}: ${tel.numero}` : tel.numero}
                   </a>
                 ))}
                 {hotel.contacto.emails?.map((email, i) => (
