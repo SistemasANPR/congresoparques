@@ -3,11 +3,11 @@ import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
-import ruladLogoUrl from "@assets/Rulad_1770394433292.png";
+import ruladLogoUrl from "@assets/Rulad_1770419617112.png";
 import realInnLogoUrl from "@assets/Real_Inn_1770394433300.png";
 import grandHotelLogoUrl from "@assets/Grand_Hotel_1770394433295.webp";
 import lucernaLogoUrl from "@assets/logoLucerna_1770394433297.png";
-import kTowerLogoUrl from "@assets/1631370969955_1770417877963.jpg";
+import kTowerLogoUrl from "@assets/1631370969955_1770419614682.jpg";
 
 interface Tarifa {
   tipo: string;
