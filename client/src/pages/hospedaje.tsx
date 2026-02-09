@@ -544,7 +544,7 @@ export default function Hospedaje() {
         messages={[
           {
             id: "miembros",
-            text: "30% DE DESCUENTO PARA MIEMBROS ANPR",
+            text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
           },
           {
             id: "estudiantes",

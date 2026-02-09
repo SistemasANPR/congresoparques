@@ -27,16 +27,16 @@ interface AnnouncementBannerProps {
 
 // Velocidades más lentas para lectura cómoda
 const speedMap = {
-  slow: "80s",    // Muy lento para mensajes largos
-  normal: "50s",  // Velocidad cómoda de lectura (antes 25s)
-  fast: "35s",    // Moderadamente rápido
+  slow: "140s",
+  normal: "100s",
+  fast: "70s",
 };
 
 // Velocidades aún más lentas para móviles
 const mobileSpeedMap = {
-  slow: "100s",
-  normal: "70s",
-  fast: "50s",
+  slow: "170s",
+  normal: "130s",
+  fast: "100s",
 };
 
 export function AnnouncementBanner({
