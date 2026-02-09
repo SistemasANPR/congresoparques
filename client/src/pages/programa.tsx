@@ -402,8 +402,8 @@ export default function Programa() {
                                             {/* Botón para ver descripción */}
                                             {hasDescription && (
                                               <button
-                                                onClick={() => toggleDescription(contenido.id)}
-                                                className="mt-3 flex items-center gap-1 text-sm text-[#6847f6] hover:text-[#5538d4] font-medium transition-colors"
+                                                onClick={(e) => { e.stopPropagation(); toggleDescription(contenido.id); }}
+                                                className="mt-3 flex items-center gap-1 text-sm text-[#6847f6] hover:text-[#5538d4] font-medium transition-colors cursor-pointer"
                                               >
                                                 {isDescExpanded ? (
                                                   <>
