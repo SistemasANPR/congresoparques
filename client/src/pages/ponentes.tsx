@@ -91,7 +91,7 @@ function SpeakerCard({
   cargo: string;
   empresa: string;
   ubicacion?: string;
-  ponencia: string;
+  ponencia: string | string[];
   fotoUrl: string | null;
   onOpen: () => void;
   delay: number;
@@ -147,7 +147,13 @@ function SpeakerCard({
         <p className="text-xs text-gray-400 mb-2">{ubicacion}</p>
       )}
       {ponencia && (
-        <p className="text-sm italic text-[#6847f6] mt-auto pt-2">{ponencia}</p>
+        <div className="mt-auto pt-2">
+          {Array.isArray(ponencia) ? ponencia.map((p, idx) => (
+            <p key={idx} className="text-sm italic text-[#6847f6]">{p}</p>
+          )) : (
+            <p className="text-sm italic text-[#6847f6]">{ponencia}</p>
+          )}
+        </div>
       )}
     </div>
   );
@@ -314,14 +320,14 @@ export default function Ponentes() {
     });
   };
 
-  const openTalleristaModal = (t: Tallerista) => {
+  const openTalleristaModal = (t: Tallerista, talleres?: string[]) => {
     setModalData({
       nombre: `${t.nombre} ${t.apellidos}`,
       cargo: t.cargo,
       empresa: t.empresa,
       biografia: t.biografia,
       fotoUrl: t.foto_url,
-      ponencia: t.taller,
+      ponencia: talleres && talleres.length > 1 ? talleres.join(' · ') : t.taller,
     });
   };
 
@@ -506,22 +512,28 @@ export default function Ponentes() {
             {!loadingTall && !errorTall && talleristas.length > 0 && (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 {(() => {
-                  const seen = new Set<string>();
-                  return talleristas.filter(t => {
+                  const grouped = new Map<string, { base: Tallerista; talleres: string[] }>();
+                  talleristas.forEach(t => {
                     const name = `${t.nombre} ${t.apellidos}`.trim();
-                    if (seen.has(name)) return false;
-                    seen.add(name);
-                    return true;
+                    if (grouped.has(name)) {
+                      const existing = grouped.get(name)!;
+                      if (t.taller && !existing.talleres.includes(t.taller)) {
+                        existing.talleres.push(t.taller);
+                      }
+                    } else {
+                      grouped.set(name, { base: t, talleres: t.taller ? [t.taller] : [] });
+                    }
                   });
-                })().map((t, i) => (
+                  return Array.from(grouped.values());
+                })().map(({ base: t, talleres }, i) => (
                   <SpeakerCard
                     key={t.id_tallerista}
                     nombre={`${t.nombre} ${t.apellidos}`}
                     cargo={t.cargo}
                     empresa={t.empresa}
-                    ponencia={t.taller}
+                    ponencia={talleres.length > 1 ? talleres : talleres[0] || ''}
                     fotoUrl={t.foto_url}
-                    onOpen={() => openTalleristaModal(t)}
+                    onOpen={() => openTalleristaModal(t, talleres)}
                     delay={i * 100}
                   />
                 ))}
