@@ -375,7 +375,15 @@ export default function Ponentes() {
 
             {!loadingConf && !errorConf && magistrales.length > 0 && (
               <div className="max-w-6xl mx-auto">
-                {magistrales.map((tema) => (
+                {magistrales.map((tema) => {
+                  const seen = new Set<string>();
+                  const uniquePonentes = tema.ponentes.filter(c => {
+                    const name = `${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim();
+                    if (seen.has(name)) return false;
+                    seen.add(name);
+                    return true;
+                  });
+                  return (
                   <div key={tema.id_tema} className="mb-12 last:mb-0">
                     <h3
                       className="text-lg md:text-xl font-semibold text-center mb-6 text-[#6847f6]"
@@ -384,7 +392,7 @@ export default function Ponentes() {
                       {tema.tema}
                     </h3>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {tema.ponentes.map((c, i) => (
+                      {uniquePonentes.map((c, i) => (
                         <SpeakerCard
                           key={c.id}
                           nombre={`${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim()}
@@ -399,7 +407,8 @@ export default function Ponentes() {
                       ))}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
@@ -431,7 +440,15 @@ export default function Ponentes() {
 
             {!loadingConf && !errorConf && sesiones.length > 0 && (
               <div className="max-w-6xl mx-auto">
-                {sesiones.map((tema) => (
+                {sesiones.map((tema) => {
+                  const seen = new Set<string>();
+                  const uniquePonentes = tema.ponentes.filter(c => {
+                    const name = `${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim();
+                    if (seen.has(name)) return false;
+                    seen.add(name);
+                    return true;
+                  });
+                  return (
                   <div key={tema.id_tema} className="mb-12 last:mb-0">
                     <h3
                       className="text-lg md:text-xl font-semibold text-center mb-6 text-[#6847f6]"
@@ -440,7 +457,7 @@ export default function Ponentes() {
                       {tema.tema}
                     </h3>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {tema.ponentes.map((c, i) => (
+                      {uniquePonentes.map((c, i) => (
                         <SpeakerCard
                           key={c.id}
                           nombre={`${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim()}
@@ -455,7 +472,8 @@ export default function Ponentes() {
                       ))}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
@@ -487,7 +505,15 @@ export default function Ponentes() {
 
             {!loadingTall && !errorTall && talleristas.length > 0 && (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {talleristas.map((t, i) => (
+                {(() => {
+                  const seen = new Set<string>();
+                  return talleristas.filter(t => {
+                    const name = `${t.nombre} ${t.apellidos}`.trim();
+                    if (seen.has(name)) return false;
+                    seen.add(name);
+                    return true;
+                  });
+                })().map((t, i) => (
                   <SpeakerCard
                     key={t.id_tallerista}
                     nombre={`${t.nombre} ${t.apellidos}`}
