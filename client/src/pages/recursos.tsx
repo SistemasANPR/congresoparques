@@ -1,4 +1,4 @@
-import { FileText, Download, BookOpen, FolderOpen, CreditCard } from "lucide-react";
+import { FileText, Download, BookOpen, FolderOpen, CreditCard, Mail, FileEdit } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -69,6 +69,38 @@ export default function Recursos() {
                   <h3 className="text-lg font-bold text-[#0e0477] mb-2">Material Informativo</h3>
                   <p className="text-gray-600 text-sm mb-4">Documentos y presentaciones sobre parques urbanos y espacio publico.</p>
                   <span className="text-[#6847f6] text-sm font-medium">Proximamente disponible</span>
+                </div>
+
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center mb-4">
+                    <Mail className="w-6 h-6 text-[#6847f6]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0e0477] mb-2">Carta Invitación</h3>
+                  <p className="text-gray-600 text-sm mb-4">Carta de invitación oficial al Congreso Parques Tijuana 2026 emitida por ANPR México.</p>
+                  <a
+                    href="/assets/Carta_Invitacion_Congreso_Parques_2026.pdf"
+                    download="Carta_Invitacion_Congreso_Parques_2026.pdf"
+                    className="inline-flex items-center gap-2 bg-[#6847f6] text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-[#5438d5] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Descargar PDF
+                  </a>
+                </div>
+
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-[#6847f6]/10 rounded-full flex items-center justify-center mb-4">
+                    <FileEdit className="w-6 h-6 text-[#6847f6]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0e0477] mb-2">Carta Molde</h3>
+                  <p className="text-gray-600 text-sm mb-4">Plantilla de carta para solicitar apoyo de asistencia al Congreso Parques 2026 ante tu organización.</p>
+                  <a
+                    href="/assets/Carta_Molde_Congreso_Parques_2026.pdf"
+                    download="Carta_Molde_Congreso_Parques_2026.pdf"
+                    className="inline-flex items-center gap-2 bg-[#6847f6] text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-[#5438d5] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Descargar PDF
+                  </a>
                 </div>
 
                 {/* Tarjeta de Información Bancaria */}
