@@ -76,7 +76,7 @@ export default function Recursos() {
                     <Mail className="w-6 h-6 text-[#6847f6]" />
                   </div>
                   <h3 className="text-lg font-bold text-[#0e0477] mb-2">Carta Invitación</h3>
-                  <p className="text-gray-600 text-sm mb-4">Carta de invitación oficial al Congreso Parques Tijuana 2026 emitida por ANPR México.</p>
+                  <p className="text-gray-600 text-sm mb-4">Invitación oficial membretada del Congreso Parques 2026.</p>
                   <a
                     href="/assets/Carta_Invitacion_Congreso_Parques_2026.pdf"
                     download="Carta_Invitacion_Congreso_Parques_2026.pdf"
@@ -92,7 +92,7 @@ export default function Recursos() {
                     <FileEdit className="w-6 h-6 text-[#6847f6]" />
                   </div>
                   <h3 className="text-lg font-bold text-[#0e0477] mb-2">Carta Molde</h3>
-                  <p className="text-gray-600 text-sm mb-4">Plantilla de carta para solicitar apoyo de asistencia al Congreso Parques 2026 ante tu organización.</p>
+                  <p className="text-gray-600 text-sm mb-4">Plantilla lista para presentar ante tu institución/organización.</p>
                   <a
                     href="/assets/Carta_Molde_Congreso_Parques_2026.pdf"
                     download="Carta_Molde_Congreso_Parques_2026.pdf"
