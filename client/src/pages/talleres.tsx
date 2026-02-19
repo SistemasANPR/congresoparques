@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, ChevronDown, Wrench, Calendar, Clock, Users, Tag, Loader2, MapPin, Sun, Moon, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, Wrench, Calendar, Clock, Users, Tag, Loader2, MapPin, Sun, Moon, Sparkles, User } from "lucide-react";
 
 const categoriaColors: Record<string, { bg: string; text: string }> = {
   "Vivencial": { bg: "bg-[#46ddac]", text: "text-[#0e0477]" },
@@ -186,13 +186,33 @@ interface TalleresResponse {
   data: TallerAPI[];
 }
 
+interface Tallerista {
+  id_tallerista: number;
+  nombre: string;
+  apellidos: string;
+  cargo: string;
+  empresa: string;
+  fotografia: string;
+  foto_url: string | null;
+  biografia: string;
+  id_taller: number;
+  taller: string;
+}
+
+interface TalleristasResponse {
+  success: boolean;
+  total: number;
+  data: Tallerista[];
+}
+
 interface TallerCardProps {
   taller: TallerAPI;
+  talleristas: Tallerista[];
   formatDate: (dateStr: string) => string;
   formatTime: (timeStr: string) => string;
 }
 
-function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
+function TallerCard({ taller, talleristas, formatDate, formatTime }: TallerCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const descriptionRef = useRef<HTMLDivElement>(null);
 
@@ -304,6 +324,44 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
             )}
           </div>
 
+          {/* Talleristas */}
+          {talleristas.length > 0 && (
+            <div className="mb-3 pt-3 border-t border-gray-100">
+              <p className="text-xs font-semibold text-[#0e0477] uppercase tracking-wide mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                Talleristas
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {talleristas.map((t) => (
+                  <div key={t.id_tallerista} className="flex flex-col items-center" style={{ minWidth: '70px', maxWidth: '90px' }}>
+                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#6847f6]/20 bg-gray-100 flex-shrink-0">
+                      {t.foto_url || t.fotografia ? (
+                        <img
+                          src={`/api/image-proxy?url=${encodeURIComponent(t.foto_url || `https://congresoparques.com/imagenes/talleristas/${t.fotografia}`)}`}
+                          alt={`${t.nombre} ${t.apellidos}`}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = 'none';
+                            (e.target as HTMLImageElement).parentElement!.classList.add('flex', 'items-center', 'justify-center');
+                            const icon = document.createElement('div');
+                            icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6847f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+                            (e.target as HTMLImageElement).parentElement!.appendChild(icon);
+                          }}
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <User className="w-6 h-6 text-[#6847f6]" />
+                        </div>
+                      )}
+                    </div>
+                    <span className="text-xs text-gray-700 text-center mt-1 leading-tight font-medium">
+                      {t.nombre} {t.apellidos}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Capacidad siempre al fondo */}
           <div className="flex items-center gap-2 pt-3 border-t border-gray-100 mt-auto">
             <Users className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
@@ -374,6 +432,7 @@ function TallerCard({ taller, formatDate, formatTime }: TallerCardProps) {
 
 interface TalleresGridProps {
   talleres: TallerAPI[];
+  talleristas: Tallerista[];
   loading: boolean;
   error: string | null;
   formatDate: (dateStr: string) => string;
@@ -381,7 +440,7 @@ interface TalleresGridProps {
   emptyMessage: string;
 }
 
-function TalleresGrid({ talleres, loading, error, formatDate, formatTime, emptyMessage }: TalleresGridProps) {
+function TalleresGrid({ talleres, talleristas, loading, error, formatDate, formatTime, emptyMessage }: TalleresGridProps) {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
@@ -413,6 +472,7 @@ function TalleresGrid({ talleres, loading, error, formatDate, formatTime, emptyM
         <TallerCard
           key={taller.id_taller}
           taller={taller}
+          talleristas={talleristas.filter(t => t.id_taller === taller.id_taller)}
           formatDate={formatDate}
           formatTime={formatTime}
         />
@@ -423,22 +483,32 @@ function TalleresGrid({ talleres, loading, error, formatDate, formatTime, emptyM
 
 export default function Talleres() {
   const [talleresAPI, setTalleresAPI] = useState<TallerAPI[]>([]);
+  const [talleristasAPI, setTalleristasAPI] = useState<Tallerista[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchTalleres = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://congresoparques.com/cpanel/api/talleres.php');
-        if (!response.ok) {
+        const [talleresRes, talleristasRes] = await Promise.all([
+          fetch('https://congresoparques.com/cpanel/api/talleres.php'),
+          fetch('https://congresoparques.com/cpanel/api/talleristas.php'),
+        ]);
+        if (!talleresRes.ok) {
           throw new Error('Error al cargar los talleres');
         }
-        const data: TalleresResponse = await response.json();
-        if (data.success && data.data) {
-          setTalleresAPI(data.data.filter(t => t.disponible === "1"));
+        const talleresData: TalleresResponse = await talleresRes.json();
+        if (talleresData.success && talleresData.data) {
+          setTalleresAPI(talleresData.data.filter(t => t.disponible === "1"));
         } else {
           setTalleresAPI([]);
+        }
+        if (talleristasRes.ok) {
+          const talleristasData: TalleristasResponse = await talleristasRes.json();
+          if (talleristasData.success && talleristasData.data) {
+            setTalleristasAPI(talleristasData.data);
+          }
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Error desconocido');
@@ -446,7 +516,7 @@ export default function Talleres() {
         setLoading(false);
       }
     };
-    fetchTalleres();
+    fetchData();
   }, []);
 
   const formatDate = (dateStr: string) => {
@@ -535,6 +605,7 @@ export default function Talleres() {
           <div className="container mx-auto px-4">
             <TalleresGrid
               talleres={talleresVivenciales}
+              talleristas={talleristasAPI}
               loading={loading}
               error={error}
               formatDate={formatDate}
@@ -561,6 +632,7 @@ export default function Talleres() {
           <div className="container mx-auto px-4">
             <TalleresGrid
               talleres={talleresMasterClass}
+              talleristas={talleristasAPI}
               loading={loading}
               error={error}
               formatDate={formatDate}
