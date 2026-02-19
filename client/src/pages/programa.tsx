@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award, User } from "lucide-react";
+import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -44,18 +44,6 @@ interface ProgramaResponse {
   data: ProgramaItem[];
 }
 
-interface TalleristaAPI {
-  id_tallerista: string;
-  nombre: string;
-  apellidos: string;
-  cargo: string;
-  empresa: string;
-  foto_url: string | null;
-  id_taller: string;
-  taller: string;
-  talleres: { id_taller: string; titulo: string }[];
-}
-
 const tipoColors: Record<string, { bg: string; text: string }> = {
   "Registro": { bg: "bg-gray-400", text: "text-white" },
   "Talleres": { bg: "bg-[#BCCE16]", text: "text-[#0e0477]" },
@@ -94,7 +82,6 @@ export default function Programa() {
   const [error, setError] = useState<string | null>(null);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [expandedDescriptions, setExpandedDescriptions] = useState<Set<string>>(new Set());
-  const [talleristasByTaller, setTalleristasByTaller] = useState<Map<string, TalleristaAPI[]>>(new Map());
 
   const toggleExpanded = (id: string) => {
     setExpandedItems(prev => {
@@ -145,32 +132,7 @@ export default function Programa() {
         setLoading(false);
       }
     };
-    const fetchTalleristas = async () => {
-      try {
-        const response = await fetch('https://congresoparques.com/cpanel/api/talleristas.php');
-        if (!response.ok) return;
-        const data = await response.json();
-        if (data.success && data.data) {
-          const map = new Map<string, TalleristaAPI[]>();
-          const seen = new Map<string, Set<string>>();
-          (data.data as TalleristaAPI[]).forEach(t => {
-            t.talleres.forEach(taller => {
-              const key = taller.id_taller;
-              if (!seen.has(key)) seen.set(key, new Set());
-              const nameKey = `${t.nombre} ${t.apellidos}`.trim();
-              if (seen.get(key)!.has(nameKey)) return;
-              seen.get(key)!.add(nameKey);
-              if (!map.has(key)) map.set(key, []);
-              map.get(key)!.push(t);
-            });
-          });
-          setTalleristasByTaller(map);
-        }
-      } catch {}
-    };
-
     fetchPrograma();
-    fetchTalleristas();
   }, []);
 
   const formatDate = (dateStr: string) => {
@@ -457,44 +419,6 @@ export default function Programa() {
                                               </button>
                                             )}
 
-                                            {/* Talleristas del taller */}
-                                            {item.tipo === 'Talleres' && talleristasByTaller.get(contenido.id)?.length ? (
-                                              <div className="mt-4 pt-3 border-t border-gray-100">
-                                                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Talleristas</p>
-                                                <div className="flex flex-wrap gap-4">
-                                                  {talleristasByTaller.get(contenido.id)!.map((tal) => {
-                                                    const imgSrc = tal.foto_url
-                                                      ? `/api/image-proxy?url=${encodeURIComponent(tal.foto_url)}`
-                                                      : null;
-                                                    return (
-                                                      <div key={tal.id_tallerista} className="flex flex-col items-center text-center w-20">
-                                                        <div className="w-14 h-14 rounded-full overflow-hidden bg-gray-100 border-2 border-[#6847f6]/20 mb-1.5 flex-shrink-0">
-                                                          {imgSrc ? (
-                                                            <img
-                                                              src={imgSrc}
-                                                              alt={`${tal.nombre} ${tal.apellidos}`}
-                                                              className="w-full h-full object-cover"
-                                                              onError={(e) => {
-                                                                (e.target as HTMLImageElement).style.display = 'none';
-                                                                (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                                                              }}
-                                                            />
-                                                          ) : null}
-                                                          {!imgSrc && (
-                                                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10">
-                                                              <User className="w-6 h-6 text-[#6847f6]/40" />
-                                                            </div>
-                                                          )}
-                                                        </div>
-                                                        <p className="text-xs font-semibold text-[#0e0477] leading-tight">
-                                                          {`${tal.nombre} ${tal.apellidos}`.trim()}
-                                                        </p>
-                                                      </div>
-                                                    );
-                                                  })}
-                                                </div>
-                                              </div>
-                                            ) : null}
                                               </div>
                                               {/* Badge "Inicia 8:00 AM" solo para "El Parque como Aula Viva" */}
                                               {contenido.titulo.toLowerCase().includes('parque como aula viva') && (

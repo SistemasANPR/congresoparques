@@ -197,6 +197,7 @@ interface Tallerista {
   biografia: string;
   id_taller: number;
   taller: string;
+  talleres?: { id_taller: string; titulo: string }[];
 }
 
 interface TalleristasResponse {
@@ -324,44 +325,6 @@ function TallerCard({ taller, talleristas, formatDate, formatTime }: TallerCardP
             )}
           </div>
 
-          {/* Talleristas */}
-          {talleristas.length > 0 && (
-            <div className="mb-3 pt-3 border-t border-gray-100">
-              <p className="text-xs font-semibold text-[#0e0477] uppercase tracking-wide mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Talleristas
-              </p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                {talleristas.map((t) => (
-                  <div key={t.id_tallerista} className="flex flex-col items-center" style={{ minWidth: '70px', maxWidth: '90px' }}>
-                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#6847f6]/20 bg-gray-100 flex-shrink-0">
-                      {t.foto_url || t.fotografia ? (
-                        <img
-                          src={`/api/image-proxy?url=${encodeURIComponent(t.foto_url || `https://congresoparques.com/imagenes/talleristas/${t.fotografia}`)}`}
-                          alt={`${t.nombre} ${t.apellidos}`}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = 'none';
-                            (e.target as HTMLImageElement).parentElement!.classList.add('flex', 'items-center', 'justify-center');
-                            const icon = document.createElement('div');
-                            icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6847f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-                            (e.target as HTMLImageElement).parentElement!.appendChild(icon);
-                          }}
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <User className="w-6 h-6 text-[#6847f6]" />
-                        </div>
-                      )}
-                    </div>
-                    <span className="text-xs text-gray-700 text-center mt-1 leading-tight font-medium">
-                      {t.nombre} {t.apellidos}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Capacidad siempre al fondo */}
           <div className="flex items-center gap-2 pt-3 border-t border-gray-100 mt-auto">
             <Users className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
@@ -404,6 +367,37 @@ function TallerCard({ taller, talleristas, formatDate, formatTime }: TallerCardP
               <p className="text-gray-700 text-base leading-relaxed">
                 {taller.descripcion}
               </p>
+
+              {talleristas.length > 0 && (
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Talleristas</p>
+                  <div className="flex flex-wrap gap-5 justify-center">
+                    {talleristas.map((t) => (
+                      <div key={t.id_tallerista} className="flex flex-col items-center text-center" style={{ width: '90px' }}>
+                        <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#6847f6]/20 bg-gray-100 flex-shrink-0 mb-2">
+                          {t.foto_url || t.fotografia ? (
+                            <img
+                              src={`/api/image-proxy?url=${encodeURIComponent(t.foto_url || `https://congresoparques.com/imagenes/talleristas/${t.fotografia}`)}`}
+                              alt={`${t.nombre} ${t.apellidos}`}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = 'none';
+                              }}
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10">
+                              <User className="w-7 h-7 text-[#6847f6]/40" />
+                            </div>
+                          )}
+                        </div>
+                        <span className="text-sm font-semibold text-[#0e0477] leading-tight">
+                          {t.nombre} {t.apellidos}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
             <div className="p-4 border-t border-gray-100 flex justify-between items-center bg-gray-50">
               <div className="flex items-center gap-4 text-sm text-gray-500">
@@ -472,7 +466,19 @@ function TalleresGrid({ talleres, talleristas, loading, error, formatDate, forma
         <TallerCard
           key={taller.id_taller}
           taller={taller}
-          talleristas={talleristas.filter(t => t.id_taller === taller.id_taller)}
+          talleristas={(() => {
+            const matched = talleristas.filter(t => 
+              t.talleres?.some(tw => String(tw.id_taller) === String(taller.id_taller)) || 
+              String(t.id_taller) === String(taller.id_taller)
+            );
+            const seen = new Set<string>();
+            return matched.filter(t => {
+              const key = `${t.nombre} ${t.apellidos}`.trim();
+              if (seen.has(key)) return false;
+              seen.add(key);
+              return true;
+            });
+          })()}
           formatDate={formatDate}
           formatTime={formatTime}
         />
