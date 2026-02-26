@@ -29,53 +29,70 @@ export default function HomePopup() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        animation: "popupFadeIn 0.25s ease",
+        animation: "popupOverlayIn 0.3s ease forwards",
       }}
       onClick={() => setVisible(false)}
     >
       <style>{`
-        @keyframes popupFadeIn {
+        @keyframes popupOverlayIn {
           from { opacity: 0; }
           to   { opacity: 1; }
         }
-        @keyframes popupScaleIn {
-          from { opacity: 0; transform: scale(0.88); }
-          to   { opacity: 1; transform: scale(1); }
+        @keyframes popupBounceIn {
+          0%   { opacity: 0; transform: scale(0.7) translateY(40px); }
+          60%  { opacity: 1; transform: scale(1.04) translateY(-6px); }
+          80%  { transform: scale(0.97) translateY(3px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes popupFloat {
+          0%, 100% { transform: translateY(0px); }
+          50%       { transform: translateY(-6px); }
+        }
+        .popup-modal {
+          animation: popupBounceIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+        }
+        .popup-modal:hover {
+          animation: popupBounceIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards,
+                     popupFloat 3s ease-in-out 0.5s infinite;
+        }
+        .popup-close-btn:hover {
+          background: rgba(0,0,0,0.8) !important;
+          transform: scale(1.1);
         }
       `}</style>
 
       <div
+        className="popup-modal"
         style={{
           position: "relative",
-          width: "min(90vw, 420px)",
-          animation: "popupScaleIn 0.28s ease",
-          borderRadius: "16px",
+          width: "min(90vw, 400px)",
+          borderRadius: "20px",
           overflow: "hidden",
-          boxShadow: "0 24px 60px rgba(0,0,0,0.5)",
+          boxShadow: "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
+          background: "#ffffff",
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <button
+          className="popup-close-btn"
           onClick={() => setVisible(false)}
           style={{
             position: "absolute",
             top: "10px",
             right: "10px",
             zIndex: 10,
-            background: "rgba(0,0,0,0.45)",
-            border: "none",
+            background: "rgba(0,0,0,0.5)",
+            border: "2px solid rgba(255,255,255,0.4)",
             borderRadius: "50%",
-            width: "32px",
-            height: "32px",
+            width: "34px",
+            height: "34px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
             color: "#fff",
-            transition: "background 0.2s",
+            transition: "background 0.2s, transform 0.2s",
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.75)")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0,0,0,0.45)")}
           aria-label="Cerrar"
         >
           <X size={18} />
@@ -84,6 +101,7 @@ export default function HomePopup() {
         <a
           href="https://anpr.org.mx/resultados-de-la-convocatoria-de-sesiones-educativa-congreso-parques-2026/"
           onClick={() => setVisible(false)}
+          style={{ display: "block", background: "#ffffff" }}
         >
           <img
             src="/assets/popup-sesiones-educativas.png"
@@ -92,6 +110,7 @@ export default function HomePopup() {
               display: "block",
               width: "100%",
               height: "auto",
+              background: "#ffffff",
             }}
           />
         </a>
