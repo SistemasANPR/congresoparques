@@ -1073,22 +1073,15 @@ export default function Landing() {
                   <div className="text-center mt-auto">
                     <a
                       href="https://anpr.org.mx/resultados-de-la-convocatoria-de-sesiones-educativa-congreso-parques-2026/"
-                      className="block mb-3 text-sm underline-offset-2 hover:underline transition-colors duration-200"
-                      style={{ color: '#35219B', fontFamily: 'Antonio, sans-serif' }}
-                    >
-                      VER RESULTADOS
-                    </a>
-                    <button
-                      disabled
-                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-60"
+                      className="inline-block px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide transition-opacity duration-200 hover:opacity-90"
                       style={{
-                        backgroundColor: '#6b7280',
+                        backgroundColor: '#35219B',
                         fontFamily: 'Antonio, sans-serif'
                       }}
                       data-testid="cta-educational"
                     >
-                      CERRADO
-                    </button>
+                      VER RESULTADOS
+                    </a>
                   </div>
                 </div>
               </div>

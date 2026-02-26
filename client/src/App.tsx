@@ -24,7 +24,6 @@ import ExpoEspacioPublico from "@/pages/expo-espacio-publico";
 import ConstruccionComunitaria from "@/pages/construccion-comunitaria";
 import Recursos from "@/pages/recursos";
 import NotFound from "@/pages/not-found";
-import HomePopup from "@/components/HomePopup";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -79,7 +78,6 @@ function App() {
         <CustomCursor />
         <Toaster />
         <ScrollToTop />
-        <HomePopup />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>
