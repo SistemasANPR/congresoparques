@@ -1076,7 +1076,7 @@ export default function Landing() {
                       className="block mb-3 text-sm underline-offset-2 hover:underline transition-colors duration-200"
                       style={{ color: '#35219B', fontFamily: 'Antonio, sans-serif' }}
                     >
-                      Consulta los resultados de la convocatoria aquí
+                      VER RESULTADOS
                     </a>
                     <button
                       disabled
