@@ -1,4 +1,4 @@
-import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard, CalendarDays } from "lucide-react";
+import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard, CalendarDays, ExternalLink } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -38,6 +38,7 @@ interface HotelData {
   showDesayunoColumn?: boolean;
   notasTarifas: string[];
   infoAdicional: string[];
+  reservaUrl?: string;
   contacto: {
     emails?: string[];
     telefonos?: { label?: string; numero: string }[];
@@ -181,6 +182,36 @@ const hoteles: HotelData[] = [
       emails: ["ventas@rulad.mx"],
       telefonos: [{ numero: "+52 663 112 4689" }],
     },
+  },
+  {
+    nombre: "Fairfield by Marriott Inn & Suites Tijuana",
+    logo: "/assets/fairfield-marriott-logo.png",
+    logoBg: "#2a6496",
+    codigo: "CONGRESO PARQUES TIJUANA",
+    evento: "Congreso Parques",
+    fechasHospedaje: "13 al 15 de mayo de 2026",
+    codigoNota: "Fecha límite de reserva: 13 de mayo de 2026.",
+    reservaUrl: "https://app.marriott.com/reslink?id=1772644267962&key=GRP&app=resvlink",
+    showDesayunoColumn: false,
+    tarifas: [
+      { tipo: "Room – Sencilla o Doble", precio: "$2,500.00 MXN" },
+    ],
+    notasTarifas: [
+      "Tarifa por habitación por noche, no incluye impuestos estatales ni federales",
+      "IVA 8% ($200.00) + ISH 5% ($125.00) = Total con impuestos: $2,825.00 MXN",
+      "Tarifa especial no comisionable",
+      "1 habitación de cortesía por cada 30 noches reservadas",
+    ],
+    infoAdicional: [
+      "Check-in: 3:00 PM · Check-out: 12:00 PM",
+      "Desayuno Buffet tipo americano incluido para 1 o 2 personas",
+      "WiFi incluido por habitación",
+      "Estacionamiento con costo adicional: $50 MXN por noche",
+      "Early Check-in y Late Check-out sujeto a disponibilidad",
+      "Servicio de lavandería con costo dentro y fuera del hotel",
+      "Acceso a áreas comunes incluido",
+    ],
+    contacto: {},
   },
   {
     nombre: "Grand Hotel Tijuana",
@@ -438,6 +469,21 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                 </tbody>
               </table>
             </div>
+          </div>
+        )}
+
+        {hotel.reservaUrl && (
+          <div className="mt-4 mb-1">
+            <a
+              href={hotel.reservaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white text-sm uppercase tracking-wide transition-opacity duration-200 hover:opacity-90"
+              style={{ backgroundColor: "#35219B", fontFamily: "Montserrat, sans-serif" }}
+            >
+              <ExternalLink className="w-4 h-4" />
+              Reservar ahora
+            </a>
           </div>
         )}
 
