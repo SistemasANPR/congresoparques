@@ -59,7 +59,16 @@ export default function Recursos() {
                   </div>
                   <h3 className="text-lg font-bold text-[#0e0477] mb-2">Guia del Participante</h3>
                   <p className="text-gray-600 text-sm mb-4">Toda la informacion que necesitas para aprovechar al maximo tu experiencia.</p>
-                  <span className="text-[#6847f6] text-sm font-medium">Proximamente disponible</span>
+                  <a
+                    href="https://anpr.org.mx/wp-content/uploads/2026/03/CP-2026-Universidades-2-1.pdf"
+                    download="CP-2026-Universidades.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#6847f6] text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-[#5438d5] transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Descargar PDF
+                  </a>
                 </div>
 
                 <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
