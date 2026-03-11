@@ -148,11 +148,9 @@ function SpeakerCard({
       )}
       {ponencia && (
         <div className="mt-auto pt-2">
-          {Array.isArray(ponencia) ? ponencia.map((p, idx) => (
-            <p key={idx} className="text-sm italic text-[#6847f6]">{p}</p>
-          )) : (
-            <p className="text-sm italic text-[#6847f6]">{ponencia}</p>
-          )}
+          <p className="text-sm italic text-[#6847f6]">
+            {Array.isArray(ponencia) ? ponencia.join(' | ') : ponencia}
+          </p>
         </div>
       )}
     </div>
