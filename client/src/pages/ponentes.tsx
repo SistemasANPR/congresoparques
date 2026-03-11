@@ -46,6 +46,7 @@ interface Tallerista {
   biografia: string;
   id_taller: number;
   taller: string;
+  talleres?: { id_taller: string; titulo: string }[];
 }
 
 interface TalleristasResponse {
@@ -519,7 +520,10 @@ export default function Ponentes() {
                         existing.talleres.push(t.taller);
                       }
                     } else {
-                      grouped.set(name, { base: t, talleres: t.taller ? [t.taller] : [] });
+                      const apiTalleres = t.talleres && t.talleres.length > 0
+                        ? t.talleres.map(tw => tw.titulo).filter(Boolean)
+                        : (t.taller ? [t.taller] : []);
+                      grouped.set(name, { base: t, talleres: apiTalleres });
                     }
                   });
                   return Array.from(grouped.values());
