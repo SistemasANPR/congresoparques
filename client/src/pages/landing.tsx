@@ -42,7 +42,8 @@ import {
   Utensils,
   Wine,
   Sparkles,
-  CircleDot
+  CircleDot,
+  Download
 } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -603,6 +604,24 @@ export default function Landing() {
               >
                 Ver precios de preventa
               </button>
+              <a
+                href="https://anpr.org.mx/wp-content/uploads/2026/03/CP-2026-Universidades-2-1.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 md:px-10 sm:py-4 text-base sm:text-lg md:text-xl font-bold transform hover:scale-105 transition-all rounded-lg uppercase tracking-wide hero-cta-responsive"
+                style={{
+                  fontFamily: 'Antonio, sans-serif',
+                  lineHeight: '1.2',
+                  background: 'rgba(255,255,255,0.15)',
+                  border: '2px solid rgba(255,255,255,0.7)',
+                  color: '#ffffff',
+                  backdropFilter: 'blur(4px)',
+                }}
+                data-testid="hero-download"
+              >
+                <Download className="w-5 h-5 flex-shrink-0" />
+                Descargar información
+              </a>
             </div>
           </div>
         </div>
