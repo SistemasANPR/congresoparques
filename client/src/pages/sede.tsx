@@ -587,7 +587,7 @@ export default function Sede() {
                   </p>
                   <div className="rounded-lg p-4" style={{ backgroundColor: '#35219b' }}>
                     <p className="text-white text-sm text-center" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}>
-                      La ciudad registró de enero a noviembre 2025 un flujo de <span className="text-[#BCCE16] font-bold">11,543,800 pasajeros</span>
+                      La ciudad registró de enero a noviembre 2026 un flujo de <span className="text-[#BCCE16] font-bold">11,543,800 pasajeros</span>
                     </p>
                   </div>
                 </div>
@@ -609,7 +609,7 @@ export default function Sede() {
                   </p>
                   <div className="rounded-lg p-4" style={{ backgroundColor: '#35219b' }}>
                     <p className="text-white text-sm text-center" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600 }}>
-                      El puente acumuló <span className="text-[#BCCE16] font-bold">3,635,100 usuarios</span> durante enero a noviembre 2025
+                      El puente acumuló <span className="text-[#BCCE16] font-bold">3,635,100 usuarios</span> durante enero a noviembre 2026
                     </p>
                   </div>
                 </div>

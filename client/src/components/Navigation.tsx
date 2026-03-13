@@ -23,7 +23,8 @@ import {
   GraduationCap,
   Presentation,
   Heart,
-  Store
+  Store,
+  Camera
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 
@@ -270,6 +271,16 @@ export function Navigation() {
                     >
                       <Heart className="w-4 h-4 opacity-60" />
                       Voluntarios
+                    </a>
+                    <a
+                      href="https://congresoparques.com/registro_galerias.php"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                      data-testid="nav-dropdown-exhibicion-fotografica"
+                    >
+                      <Camera className="w-4 h-4 opacity-60" />
+                      Exhibición Fotográfica
                     </a>
                     </div>
                   </div>
@@ -524,6 +535,17 @@ export function Navigation() {
                     >
                       <Heart className="w-4 h-4 opacity-60" />
                       Voluntarios
+                    </a>
+                    <a
+                      href="https://congresoparques.com/registro_galerias.php"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                      data-testid="mobile-nav-exhibicion-fotografica"
+                    >
+                      <Camera className="w-4 h-4 opacity-60" />
+                      Exhibición Fotográfica
                     </a>
                   </div>
                 )}

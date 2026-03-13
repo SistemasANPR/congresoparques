@@ -169,7 +169,7 @@ export default function PreguntasFrecuentes() {
         },
         {
           pregunta: "¿Cuándo puedo registrarme?",
-          respuesta: "A partir de Diciembre de 2025 podrás inscribirte en el congreso desde nuestro sitio web, simplemente tienes que hacer click en el botón 'Participar' y seguir las instrucciones."
+          respuesta: "A partir de Diciembre de 2026 podrás inscribirte en el congreso desde nuestro sitio web, simplemente tienes que hacer click en el botón 'Participar' y seguir las instrucciones."
         },
         {
           pregunta: "¿Qué incluye mi registro?",

@@ -34,6 +34,7 @@ import {
   GraduationCap,
   FlaskConical,
   HeartHandshake,
+  Camera,
   Crown,
   Medal,
   Store,
@@ -412,7 +413,7 @@ export default function Landing() {
   ];
 
   const timeline = [
-    { icon: <Calendar className="w-6 h-6" />, título: "Apertura", fecha: "26 de septiembre de 2025" },
+    { icon: <Calendar className="w-6 h-6" />, título: "Apertura", fecha: "26 de septiembre de 2026" },
     { icon: <Calendar className="w-6 h-6" />, título: "Cierre", fecha: "15 de enero de 2026" }
   ];
 
@@ -1028,7 +1029,7 @@ export default function Landing() {
             <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase section-title" data-testid="calls-title">Convocatorias 2026</h2>
 
             {/* Grid de convocatorias */}
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
               {/* Convocatoria Sesiones Educativas */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-educational">
                 {/* Header con "CONVOCATORIA" */}
@@ -1061,7 +1062,7 @@ export default function Landing() {
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4 flex-shrink-0" />
-                      <span><strong>Inicio:</strong> 26 de septiembre, 2025</span>
+                      <span><strong>Inicio:</strong> 26 de septiembre, 2026</span>
                     </div>
                     <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4 flex-shrink-0" />
@@ -1118,7 +1119,7 @@ export default function Landing() {
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4 flex-shrink-0" />
-                      <span><strong>Inicio:</strong> 26 de septiembre, 2025</span>
+                      <span><strong>Inicio:</strong> 26 de septiembre, 2026</span>
                     </div>
                     <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       <Calendar className="w-4 h-4 flex-shrink-0" />
@@ -1195,6 +1196,67 @@ export default function Landing() {
                       data-testid="cta-volunteers"
                     >
                       REGÍSTRATE
+                    </button>
+                  </div>
+                </div>
+              </div>
+              {/* Convocatoria Exhibición Fotográfica */}
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-photo-exhibition">
+                {/* Header con "CONVOCATORIA" */}
+                <div className="text-center py-4" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
+                  <h3 className="text-xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                    CONVOCATORIA
+                  </h3>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1">
+                  {/* Ícono */}
+                  <div className="flex justify-center mb-4">
+                    <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#35219b' }}>
+                      <Camera className="w-7 h-7 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Título */}
+                  <h4 className="text-lg text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
+                    EXHIBICIÓN FOTOGRÁFICA
+                  </h4>
+
+                  {/* Subtítulo */}
+                  <p className="text-center text-xs font-semibold uppercase tracking-wide mb-3" style={{ fontFamily: 'Montserrat, sans-serif', color: '#6847f6' }}>
+                    "10 años de Parques en Latinoamérica"
+                  </p>
+
+                  {/* Descripción */}
+                  <p className="text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>
+                    Participa en la exhibición fotográfica que celebra una década de transformación de parques y espacios públicos en Latinoamérica. Comparte tu mejor fotografía.
+                  </p>
+
+                  {/* Fechas */}
+                  <div className="space-y-2 mb-6">
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Inicio:</strong> 13 de marzo, 2026</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      <span><strong>Cierre:</strong> 30 de abril, 2026</span>
+                    </div>
+                  </div>
+
+                  {/* Botón */}
+                  <div className="text-center mt-auto">
+                    <button
+                      onClick={() => window.open('https://congresoparques.com/registro_galerias.php', '_blank')}
+                      className="convocatoria-btn px-9 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 text-base tracking-wide"
+                      style={{
+                        backgroundColor: '#35219b',
+                        fontFamily: 'Antonio, sans-serif'
+                      }}
+                      data-testid="cta-photo-exhibition"
+                    >
+                      PARTICIPA
                     </button>
                   </div>
                 </div>
