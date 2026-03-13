@@ -389,12 +389,6 @@ export default function Programa() {
                                                 <div className="flex items-center gap-1">
                                                   <Users className="w-3.5 h-3.5 text-[#6847f6]" />
                                                   <span>Capacidad: {contenido.capacidad}</span>
-                                                  {/* Ocultar disponibles en Talleres Matutinos */}
-                                                  {contenido.disponible && !isTalleresMatutinos(item.titulo) && (
-                                                    <span className="text-green-600 font-medium">
-                                                      ({contenido.disponible} disponibles)
-                                                    </span>
-                                                  )}
                                                 </div>
                                               )}
                                             </div>
