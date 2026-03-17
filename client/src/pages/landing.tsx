@@ -620,7 +620,7 @@ export default function Landing() {
                 data-testid="hero-download"
               >
                 <Download className="w-5 h-5 flex-shrink-0" />
-                Descargar información
+                Descarga los detalles
               </a>
             </div>
           </div>
