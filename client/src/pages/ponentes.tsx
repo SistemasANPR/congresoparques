@@ -4,6 +4,9 @@ import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import iconoMagistrales from "@assets/Conferencias_Magistrales_1769038571197.png";
+import iconoSesiones from "@assets/Sesiones_Educativas_1769038571198.png";
+import iconoTalleres from "@assets/Talleres_Vivenciales_1769038571197.png";
 
 interface Conferencista {
   id: string;
@@ -64,12 +67,21 @@ interface BiografiaModal {
   ponencia: string;
 }
 
-function SectionTitle({ title }: { title: string }) {
+function SectionTitle({ title, icon }: { title: string; icon?: string }) {
   return (
     <div className="text-center mb-12">
+      {icon && (
+        <div className="flex justify-center mb-4">
+          <img
+            src={icon}
+            alt={`Icono ${title}`}
+            className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-lg"
+          />
+        </div>
+      )}
       <h2
-        className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase"
-        style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+        className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide"
+        style={{ fontFamily: 'Antonio, sans-serif', fontWeight: 700, color: '#0e0477' }}
       >
         {title}
       </h2>
@@ -354,10 +366,10 @@ export default function Ponentes() {
           lucideIcon={Mic}
         />
 
-        {/* Ponentes Magistrales */}
+        {/* Conferencistas Magistrales */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionTitle title="Ponentes Magistrales" />
+            <SectionTitle title="Conferencistas Magistrales" icon={iconoMagistrales} />
 
             {loadingConf && (
               <div className="flex justify-center items-center py-12">
@@ -379,8 +391,8 @@ export default function Ponentes() {
             )}
 
             {!loadingConf && !errorConf && magistrales.length > 0 && (
-              <div className="max-w-6xl mx-auto">
-                {magistrales.map((tema) => {
+              <div className="max-w-6xl mx-auto space-y-16">
+                {magistrales.map((tema, temaIdx) => {
                   const seen = new Set<string>();
                   const uniquePonentes = tema.ponentes.filter(c => {
                     const name = `${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim();
@@ -389,13 +401,18 @@ export default function Ponentes() {
                     return true;
                   });
                   return (
-                  <div key={tema.id_tema} className="mb-12 last:mb-0">
-                    <h3
-                      className="text-lg md:text-xl font-semibold text-center mb-6 text-[#6847f6]"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      {tema.tema}
-                    </h3>
+                  <div key={tema.id_tema} className="relative">
+                    {temaIdx > 0 && (
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-[#6847f6]/30 to-transparent" />
+                    )}
+                    <div className="bg-[#6847f6]/5 rounded-2xl px-4 py-3 md:px-8 md:py-4 mb-8 text-center">
+                      <h3
+                        className="text-lg md:text-xl font-bold text-[#0e0477]"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        {tema.tema}
+                      </h3>
+                    </div>
                     <div className="flex flex-wrap justify-center gap-8">
                       {uniquePonentes.map((c, i) => (
                         <div key={c.id} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]">
@@ -423,7 +440,7 @@ export default function Ponentes() {
         {/* Sesiones Educativas */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionTitle title="Sesiones Educativas" />
+            <SectionTitle title="Sesiones Educativas" icon={iconoSesiones} />
 
             {loadingConf && (
               <div className="flex justify-center items-center py-12">
@@ -445,8 +462,8 @@ export default function Ponentes() {
             )}
 
             {!loadingConf && !errorConf && sesiones.length > 0 && (
-              <div className="max-w-6xl mx-auto">
-                {sesiones.map((tema) => {
+              <div className="max-w-6xl mx-auto space-y-16">
+                {sesiones.map((tema, temaIdx) => {
                   const seen = new Set<string>();
                   const uniquePonentes = tema.ponentes.filter(c => {
                     const name = `${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim();
@@ -455,13 +472,18 @@ export default function Ponentes() {
                     return true;
                   });
                   return (
-                  <div key={tema.id_tema} className="mb-12 last:mb-0">
-                    <h3
-                      className="text-lg md:text-xl font-semibold text-center mb-6 text-[#6847f6]"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      {tema.tema}
-                    </h3>
+                  <div key={tema.id_tema} className="relative">
+                    {temaIdx > 0 && (
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-[#6847f6]/30 to-transparent" />
+                    )}
+                    <div className="bg-[#6847f6]/5 rounded-2xl px-4 py-3 md:px-8 md:py-4 mb-8 text-center">
+                      <h3
+                        className="text-lg md:text-xl font-bold text-[#0e0477]"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        {tema.tema}
+                      </h3>
+                    </div>
                     <div className="flex flex-wrap justify-center gap-8">
                       {uniquePonentes.map((c, i) => (
                         <div key={c.id} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]">
@@ -489,7 +511,7 @@ export default function Ponentes() {
         {/* Talleristas */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionTitle title="Talleristas" />
+            <SectionTitle title="Talleristas" icon={iconoTalleres} />
 
             {loadingTall && (
               <div className="flex justify-center items-center py-12">
