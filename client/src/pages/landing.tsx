@@ -686,7 +686,7 @@ export default function Landing() {
       </section>
 
       {/* Experiences Section */}
-      <section id="experiencias" className="py-16" style={{ backgroundColor: '#35219b' }}>
+      <section id="experiencias" className="py-16" style={{ backgroundColor: '#6847f6' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-center mb-12" data-testid="experiences-title">
@@ -749,30 +749,29 @@ export default function Landing() {
 
       {/* Ponentes Magistrales Carousel Section */}
       {magistrales.length > 0 && (
-        <section id="ponentes-magistrales" className="py-16 bg-white">
+        <section id="ponentes-magistrales" className="py-16" style={{ backgroundColor: '#35219b' }}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2
-                className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase mb-4"
-                style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
-              >
+              <h2 className="text-3xl md:text-4xl text-center mb-4 uppercase text-white section-title">
                 Conferencistas Magistrales
               </h2>
-              <div className="w-24 h-1 bg-[#6847f6] mx-auto"></div>
+              <p className="text-center text-white/80 text-lg md:text-xl" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500 }}>
+                Conoce a los expertos que liderarán las conferencias del congreso
+              </p>
             </div>
 
             <div className="relative max-w-6xl mx-auto">
               {/* Navigation Arrows */}
               <button
                 onClick={() => setMagistralesIndex((prev) => (prev - 1 + magistrales.length) % magistrales.length)}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#6847f6] text-white flex items-center justify-center shadow-lg hover:bg-[#5538d4] transition-colors"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 text-white flex items-center justify-center shadow-lg hover:bg-white/40 transition-colors backdrop-blur-sm"
                 aria-label="Anterior"
               >
                 <ChevronUp className="w-5 h-5 md:w-6 md:h-6 -rotate-90" />
               </button>
               <button
                 onClick={() => setMagistralesIndex((prev) => (prev + 1) % magistrales.length)}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#6847f6] text-white flex items-center justify-center shadow-lg hover:bg-[#5538d4] transition-colors"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 text-white flex items-center justify-center shadow-lg hover:bg-white/40 transition-colors backdrop-blur-sm"
                 aria-label="Siguiente"
               >
                 <ChevronDown className="w-5 h-5 md:w-6 md:h-6 -rotate-90" />
@@ -837,7 +836,7 @@ export default function Landing() {
                     key={idx}
                     onClick={() => setMagistralesIndex(idx)}
                     className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                      magistralesIndex % magistrales.length === idx ? 'bg-[#6847f6]' : 'bg-gray-300'
+                      magistralesIndex % magistrales.length === idx ? 'bg-white' : 'bg-white/30'
                     }`}
                     aria-label={`Ir a ponente ${idx + 1}`}
                   />
@@ -850,7 +849,7 @@ export default function Landing() {
               <Link href="/ponentes">
                 <Button
                   variant="outline"
-                  className="border-[#6847f6] text-[#6847f6] hover:bg-[#6847f6] hover:text-white transition-colors"
+                  className="border-white bg-white text-[#35219b] hover:bg-transparent hover:text-white transition-colors btn-antonio"
                 >
                   Ver todos los conferencistas
                 </Button>
