@@ -111,7 +111,7 @@ function SpeakerCard({
 
   return (
     <div
-      className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100"
+      className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 h-full"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(20px)',
@@ -396,10 +396,10 @@ export default function Ponentes() {
                     >
                       {tema.tema}
                     </h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                       {uniquePonentes.map((c, i) => (
+                        <div key={c.id} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]">
                         <SpeakerCard
-                          key={c.id}
                           nombre={`${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim()}
                           cargo={c.cargo}
                           empresa={c.empresa}
@@ -409,6 +409,7 @@ export default function Ponentes() {
                           onOpen={() => openConferencistaModal(c)}
                           delay={i * 100}
                         />
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -461,10 +462,10 @@ export default function Ponentes() {
                     >
                       {tema.tema}
                     </h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                       {uniquePonentes.map((c, i) => (
+                        <div key={c.id} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]">
                         <SpeakerCard
-                          key={c.id}
                           nombre={`${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim()}
                           cargo={c.cargo}
                           empresa={c.empresa}
@@ -474,6 +475,7 @@ export default function Ponentes() {
                           onOpen={() => openConferencistaModal(c)}
                           delay={i * 100}
                         />
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -509,7 +511,7 @@ export default function Ponentes() {
             )}
 
             {!loadingTall && !errorTall && talleristas.length > 0 && (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
                 {(() => {
                   const grouped = new Map<string, { base: Tallerista; talleres: string[] }>();
                   talleristas.forEach(t => {
@@ -528,8 +530,8 @@ export default function Ponentes() {
                   });
                   return Array.from(grouped.values());
                 })().map(({ base: t, talleres }, i) => (
+                  <div key={t.id_tallerista} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.34rem)]">
                   <SpeakerCard
-                    key={t.id_tallerista}
                     nombre={`${t.nombre} ${t.apellidos}`}
                     cargo={t.cargo}
                     empresa={t.empresa}
@@ -538,6 +540,7 @@ export default function Ponentes() {
                     onOpen={() => openTalleristaModal(t, talleres)}
                     delay={i * 100}
                   />
+                  </div>
                 ))}
               </div>
             )}
