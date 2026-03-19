@@ -76,6 +76,7 @@ import logoBCCUrl from "@assets/LOGO BCC color_1761676598707.png";
 import expoEspacioPublico2026Img from "@assets/expo-espacio-publico-2026.jpg";
 import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.png";
 import { BrandMarquee } from "@/components/BrandMarquee";
+import { HexagonPhoto } from "@/components/HexagonPhoto";
 
 
 interface StatCounterProps {
@@ -791,31 +792,30 @@ export default function Landing() {
                       key={`${ponente.id}-${idx}`}
                       className="w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 px-1.5"
                     >
-                      <div className="bg-white rounded-xl shadow-md p-4 md:p-6 flex flex-col items-center text-center border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
-                        <div className="w-[100px] h-[100px] md:w-[130px] md:h-[130px] rounded-full overflow-hidden mb-3 bg-gray-100 border-4 border-[#6847f6]/20 flex-shrink-0">
-                          {ponente.foto_url ? (
-                            <img
-                              src={`/api/image-proxy?url=${encodeURIComponent(ponente.foto_url)}`}
-                              alt={`${ponente.nombres} ${ponente.apellido_paterno}`}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                target.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10"><svg class="w-10 h-10 text-[#6847f6]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>';
-                              }}
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10">
-                              <Users className="w-10 h-10 text-[#6847f6]/40" />
-                            </div>
-                          )}
+                      <div className="group bg-white rounded-xl shadow-md p-4 md:p-6 flex flex-col items-center text-center border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 h-full">
+                        <div className="mb-3">
+                          <HexagonPhoto
+                            src={ponente.foto_url}
+                            alt={`${ponente.nombres} ${ponente.apellido_paterno}`}
+                            category="magistral"
+                            width={120}
+                            height={135}
+                            showTriangles={true}
+                            hoverTriangles={true}
+                            iconSize="w-10 h-10"
+                          />
                         </div>
-                        <h3
-                          className="text-sm md:text-base font-bold mb-1 line-clamp-2"
-                          style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+                        <div
+                          className="w-full rounded-md px-3 py-1.5 mb-1"
+                          style={{ backgroundColor: '#35219b' }}
                         >
-                          {`${ponente.nombres} ${ponente.apellido_paterno}`.trim()}
-                        </h3>
+                          <h3
+                            className="text-sm md:text-base font-bold line-clamp-2"
+                            style={{ fontFamily: 'Montserrat, sans-serif', color: '#ffffff' }}
+                          >
+                            {`${ponente.nombres} ${ponente.apellido_paterno}`.trim()}
+                          </h3>
+                        </div>
                         {(ponente.cargo || ponente.empresa) && (
                           <p className="text-xs text-gray-600 mb-1 line-clamp-2">
                             {ponente.cargo}{ponente.cargo && ponente.empresa ? ' · ' : ''}{ponente.empresa}
@@ -1272,21 +1272,12 @@ export default function Landing() {
                   {/* Pricing & CTA - Fixed at bottom */}
                   <div className="mt-auto pt-6">
                     <div className="text-center py-4 border-t border-gray-100">
-                      <p className="text-gray-400 text-sm line-through mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
                         $3,944.00 MXN
                       </p>
-                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
-                        $3,016.00 MXN
-                      </p>
-                      <p className="text-xs text-gray-500 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <p className="text-xs text-gray-500 mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         IVA incluido
                       </p>
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#6847f6]/10 rounded-full">
-                        <Calendar className="w-3.5 h-3.5 text-[#6847f6]" />
-                        <span className="text-xs font-semibold text-[#6847f6]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                          Válido hasta 15/03/2026
-                        </span>
-                      </div>
                     </div>
 
                     {/* CTA Button */}
@@ -1377,21 +1368,12 @@ export default function Landing() {
                   {/* Pricing & CTA - Fixed at bottom */}
                   <div className="mt-auto pt-6">
                     <div className="text-center py-4 border-t border-gray-100">
-                      <p className="text-gray-400 text-sm line-through mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
                         $3,362.00 MXN
                       </p>
-                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
-                        $2,552.00 MXN
-                      </p>
-                      <p className="text-xs text-gray-500 mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      <p className="text-xs text-gray-500 mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         IVA incluido
                       </p>
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#6847f6]/10 rounded-full">
-                        <Calendar className="w-3.5 h-3.5 text-[#6847f6]" />
-                        <span className="text-xs font-semibold text-[#6847f6]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                          Válido hasta 15/03/2026
-                        </span>
-                      </div>
                     </div>
 
                     {/* CTA Button */}

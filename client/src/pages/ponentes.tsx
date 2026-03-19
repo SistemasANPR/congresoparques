@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { Mic, Loader2, X, User } from "lucide-react";
+import { Mic, Loader2, X } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import { HexagonPhoto } from "@/components/HexagonPhoto";
+import type { SpeakerCategory } from "@/components/HexagonPhoto";
 import iconoMagistrales from "@assets/Conferencias_Magistrales_1769038571197.png";
 import iconoSesiones from "@assets/Sesiones_Educativas_1769038571198.png";
 import iconoTalleres from "@assets/Talleres_Vivenciales_1769038571197.png";
@@ -65,6 +67,7 @@ interface BiografiaModal {
   biografia: string;
   fotoUrl: string | null;
   ponencia: string;
+  category: SpeakerCategory;
 }
 
 function SectionTitle({ title, icon }: { title: string; icon?: string }) {
@@ -99,6 +102,7 @@ function SpeakerCard({
   fotoUrl,
   onOpen,
   delay,
+  category,
 }: {
   nombre: string;
   cargo: string;
@@ -108,22 +112,18 @@ function SpeakerCard({
   fotoUrl: string | null;
   onOpen: () => void;
   delay: number;
+  category: SpeakerCategory;
 }) {
   const [visible, setVisible] = useState(false);
-  const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), delay);
     return () => clearTimeout(timer);
   }, [delay]);
 
-  const imgSrc = fotoUrl && !imgError
-    ? `/api/image-proxy?url=${encodeURIComponent(fotoUrl)}`
-    : null;
-
   return (
     <div
-      className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-gray-100 h-full"
+      className="group bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center cursor-pointer transition-all duration-300 hover:shadow-xl border border-gray-100 h-full"
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(20px)',
@@ -131,26 +131,21 @@ function SpeakerCard({
       }}
       onClick={onOpen}
     >
-      <div className="w-[150px] h-[150px] rounded-full overflow-hidden mb-4 bg-gray-100 flex-shrink-0 border-4 border-[#6847f6]/20">
-        {imgSrc ? (
-          <img
-            src={imgSrc}
-            alt={nombre}
-            className="w-full h-full object-cover"
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10">
-            <User className="w-16 h-16 text-[#6847f6]/40" />
-          </div>
-        )}
+      <div className="mb-4">
+        <HexagonPhoto src={fotoUrl} alt={nombre} category={category} />
       </div>
-      <h3
-        className="text-lg font-bold mb-1"
-        style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+
+      <div
+        className="w-full rounded-md px-4 py-2 mb-2"
+        style={{ backgroundColor: '#35219b' }}
       >
-        {nombre}
-      </h3>
+        <h3
+          className="text-lg font-bold"
+          style={{ fontFamily: 'Montserrat, sans-serif', color: '#ffffff' }}
+        >
+          {nombre}
+        </h3>
+      </div>
       {(cargo || empresa) && (
         <p className="text-sm text-gray-600 mb-1">
           {cargo}{cargo && empresa ? ' · ' : ''}{empresa}
@@ -171,8 +166,6 @@ function SpeakerCard({
 }
 
 function Modal({ data, onClose }: { data: BiografiaModal; onClose: () => void }) {
-  const [imgError, setImgError] = useState(false);
-
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -184,10 +177,6 @@ function Modal({ data, onClose }: { data: BiografiaModal; onClose: () => void })
       document.body.style.overflow = '';
     };
   }, [onClose]);
-
-  const imgSrc = data.fotoUrl && !imgError
-    ? `/api/image-proxy?url=${encodeURIComponent(data.fotoUrl)}`
-    : null;
 
   return (
     <div
@@ -201,33 +190,38 @@ function Modal({ data, onClose }: { data: BiografiaModal; onClose: () => void })
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+          className="absolute top-1 right-1 z-10 w-14 h-14 flex items-center justify-center group"
           aria-label="Cerrar"
         >
-          <X className="w-4 h-4 text-gray-600" />
+          <span className="w-9 h-9 rounded-full bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center transition-colors">
+            <X className="w-4 h-4 text-gray-600" />
+          </span>
         </button>
         <div className="p-6 md:p-8">
           <div className="flex flex-col items-center text-center mb-6">
-            <div className="w-[120px] h-[120px] rounded-full overflow-hidden mb-4 border-4 border-[#6847f6]/20 bg-gray-100">
-              {imgSrc ? (
-                <img
-                  src={imgSrc}
-                  alt={data.nombre}
-                  className="w-full h-full object-cover"
-                  onError={() => setImgError(true)}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#6847f6]/10 to-[#0e0477]/10">
-                  <User className="w-12 h-12 text-[#6847f6]/40" />
-                </div>
-              )}
+            <div className="mb-4">
+              <HexagonPhoto
+                src={data.fotoUrl}
+                alt={data.nombre}
+                category={data.category}
+                width={130}
+                height={146}
+                showTriangles={true}
+                hoverTriangles={false}
+                iconSize="w-12 h-12"
+              />
             </div>
-            <h3
-              className="text-xl font-bold"
-              style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+            <div
+              className="rounded-md px-5 py-2.5"
+              style={{ backgroundColor: '#35219b' }}
             >
-              {data.nombre}
-            </h3>
+              <h3
+                className="text-xl font-bold"
+                style={{ fontFamily: 'Montserrat, sans-serif', color: '#ffffff' }}
+              >
+                {data.nombre}
+              </h3>
+            </div>
             {(data.cargo || data.empresa) && (
               <p className="text-sm text-gray-600 mt-1">
                 {data.cargo}{data.cargo && data.empresa ? ' · ' : ''}{data.empresa}
@@ -320,7 +314,7 @@ export default function Ponentes() {
     fetchTalleristas();
   }, []);
 
-  const openConferencistaModal = (c: Conferencista) => {
+  const openConferencistaModal = (c: Conferencista, category: SpeakerCategory) => {
     setModalData({
       nombre: `${c.nombres} ${c.apellido_paterno} ${c.apellido_materno}`.trim(),
       cargo: c.cargo,
@@ -328,6 +322,7 @@ export default function Ponentes() {
       biografia: c.biografia,
       fotoUrl: c.foto_url,
       ponencia: c.ponencia,
+      category,
     });
   };
 
@@ -339,6 +334,7 @@ export default function Ponentes() {
       biografia: t.biografia,
       fotoUrl: t.foto_url,
       ponencia: talleres && talleres.length > 1 ? talleres.join(' · ') : t.taller,
+      category: 'taller',
     });
   };
 
@@ -423,8 +419,9 @@ export default function Ponentes() {
                           ubicacion={[c.ciudad, c.pais].filter(Boolean).join(', ')}
                           ponencia={c.ponencia}
                           fotoUrl={c.foto_url}
-                          onOpen={() => openConferencistaModal(c)}
+                          onOpen={() => openConferencistaModal(c, 'magistral')}
                           delay={i * 100}
+                          category="magistral"
                         />
                         </div>
                       ))}
@@ -494,8 +491,9 @@ export default function Ponentes() {
                           ubicacion={[c.ciudad, c.pais].filter(Boolean).join(', ')}
                           ponencia={c.ponencia}
                           fotoUrl={c.foto_url}
-                          onOpen={() => openConferencistaModal(c)}
+                          onOpen={() => openConferencistaModal(c, 'sesion')}
                           delay={i * 100}
+                          category="sesion"
                         />
                         </div>
                       ))}
@@ -561,6 +559,7 @@ export default function Ponentes() {
                     fotoUrl={t.foto_url}
                     onOpen={() => openTalleristaModal(t, talleres)}
                     delay={i * 100}
+                    category="taller"
                   />
                   </div>
                 ))}
