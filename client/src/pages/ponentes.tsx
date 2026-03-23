@@ -136,7 +136,7 @@ function SpeakerCard({
       </div>
 
       <div
-        className="w-full rounded-md px-4 py-2 mb-2"
+        className="w-full rounded-md px-4 py-2 mb-3"
         style={{ backgroundColor: '#35219b' }}
       >
         <h3
@@ -146,9 +146,20 @@ function SpeakerCard({
           {nombre}
         </h3>
       </div>
-      {(cargo || empresa) && (
-        <p className="text-sm text-gray-600 mb-1">
-          {cargo}{cargo && empresa ? ' · ' : ''}{empresa}
+      {cargo && (
+        <p
+          className="text-sm font-semibold text-gray-700 leading-snug mb-0.5"
+          style={{ fontFamily: 'Montserrat, sans-serif' }}
+        >
+          {cargo}
+        </p>
+      )}
+      {empresa && (
+        <p
+          className="text-sm text-[#6847f6] font-medium leading-snug mb-1"
+          style={{ fontFamily: 'Montserrat, sans-serif' }}
+        >
+          {empresa}
         </p>
       )}
       {ubicacion && (
@@ -222,9 +233,14 @@ function Modal({ data, onClose }: { data: BiografiaModal; onClose: () => void })
                 {data.nombre}
               </h3>
             </div>
-            {(data.cargo || data.empresa) && (
-              <p className="text-sm text-gray-600 mt-1">
-                {data.cargo}{data.cargo && data.empresa ? ' · ' : ''}{data.empresa}
+            {data.cargo && (
+              <p className="text-sm font-semibold text-gray-700 mt-2 leading-snug" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                {data.cargo}
+              </p>
+            )}
+            {data.empresa && (
+              <p className="text-sm text-[#6847f6] font-medium leading-snug mt-0.5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                {data.empresa}
               </p>
             )}
             {data.ponencia && (

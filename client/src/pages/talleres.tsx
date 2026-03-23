@@ -594,6 +594,52 @@ export default function Talleres() {
           </div>
         </section>
 
+        {/* Pricing Info Block */}
+        <section className="py-10 md:py-14 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              {/* Header */}
+              <div className="bg-gradient-to-r from-[#6847f6] to-[#35219B] px-6 py-5 md:px-8 md:py-6 text-center">
+                <p className="text-[#BCCE16] text-sm font-semibold uppercase tracking-widest mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  Precio único para los 8 talleres
+                </p>
+                <p className="text-white text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  $986 <span className="text-lg md:text-xl font-medium text-white/80">MXN IVA incluido</span>
+                </p>
+                <p className="text-white/70 text-sm mt-1">Aplica para Talleres Vivenciales y Master Classes</p>
+              </div>
+              {/* Details */}
+              <div className="bg-gray-50 px-6 py-6 md:px-8 md:py-7">
+                <div className="grid sm:grid-cols-3 gap-4 md:gap-6 text-center">
+                  {/* Plata / Expo */}
+                  <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-white shadow-sm border border-gray-100">
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#6847f6]/10">
+                      <Tag className="w-5 h-5 text-[#6847f6]" />
+                    </span>
+                    <p className="text-sm font-bold text-[#0e0477]" style={{ fontFamily: 'Montserrat, sans-serif' }}>Entrada Plata</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">Agrega cualquier taller por $986 MXN</p>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-white shadow-sm border border-gray-100">
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#6847f6]/10">
+                      <Tag className="w-5 h-5 text-[#6847f6]" />
+                    </span>
+                    <p className="text-sm font-bold text-[#0e0477]" style={{ fontFamily: 'Montserrat, sans-serif' }}>Entrada Expo Parques</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">Agrega cualquier taller por $986 MXN</p>
+                  </div>
+                  {/* Oro */}
+                  <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-[#BCCE16]/10 shadow-sm border border-[#BCCE16]/30">
+                    <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#BCCE16]/20">
+                      <Sparkles className="w-5 h-5 text-[#6847f6]" />
+                    </span>
+                    <p className="text-sm font-bold text-[#0e0477]" style={{ fontFamily: 'Montserrat, sans-serif' }}>Entrada Oro</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">Ya incluye 1 taller. ¿Quieres otro? Agrégalo por $986 MXN</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 md:py-20 bg-gray-100">
           <div className="container mx-auto px-4">
             <WorkshopCarousel
