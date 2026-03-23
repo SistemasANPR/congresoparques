@@ -67,6 +67,7 @@ interface BiografiaModal {
   biografia: string;
   fotoUrl: string | null;
   ponencia: string;
+  subtitulo?: string;
   category: SpeakerCategory;
 }
 
@@ -99,6 +100,7 @@ function SpeakerCard({
   empresa,
   ubicacion,
   ponencia,
+  subtitulo,
   fotoUrl,
   onOpen,
   delay,
@@ -109,6 +111,7 @@ function SpeakerCard({
   empresa: string;
   ubicacion?: string;
   ponencia: string | string[];
+  subtitulo?: string;
   fotoUrl: string | null;
   onOpen: () => void;
   delay: number;
@@ -167,9 +170,14 @@ function SpeakerCard({
       )}
       {ponencia && (
         <div className="mt-auto pt-2">
-          <p className="text-sm italic text-[#6847f6]">
+          <p className="text-sm italic text-[#6847f6] font-medium">
             {Array.isArray(ponencia) ? ponencia.join(' | ') : ponencia}
           </p>
+          {subtitulo && (
+            <p className="text-xs text-gray-500 mt-1 italic">
+              {subtitulo}
+            </p>
+          )}
         </div>
       )}
     </div>
@@ -244,7 +252,10 @@ function Modal({ data, onClose }: { data: BiografiaModal; onClose: () => void })
               </p>
             )}
             {data.ponencia && (
-              <p className="text-sm italic text-[#6847f6] mt-2">{data.ponencia}</p>
+              <p className="text-sm italic text-[#6847f6] font-medium mt-2">{data.ponencia}</p>
+            )}
+            {data.subtitulo && (
+              <p className="text-xs text-gray-500 italic mt-1">{data.subtitulo}</p>
             )}
           </div>
           {data.biografia ? (
@@ -275,6 +286,7 @@ export default function Ponentes() {
   const [errorConf, setErrorConf] = useState<string | null>(null);
   const [errorTall, setErrorTall] = useState<string | null>(null);
   const [modalData, setModalData] = useState<BiografiaModal | null>(null);
+  const [subtituloMap, setSubtituloMap] = useState<Map<string, string>>(new Map());
 
   // Función para ordenar temas: "Tecnología e Innovación Urbana" primero, "Ciudad, Movilidad y Gobernanza" último
   const sortTemas = (temas: TemaGroup[]): TemaGroup[] => {
@@ -326,8 +338,33 @@ export default function Ponentes() {
       }
     };
 
+    const fetchSubtitulos = async () => {
+      try {
+        const response = await fetch('https://congresoparques.com/cpanel/api/programa.php');
+        if (!response.ok) return;
+        const data = await response.json();
+        const map = new Map<string, string>();
+        if (data.data && Array.isArray(data.data)) {
+          data.data.forEach((bloque: { contenido?: { subtitulo?: string; ponentes?: { id: string }[] }[] }) => {
+            if (!bloque.contenido) return;
+            bloque.contenido.forEach((item) => {
+              const sub = item.subtitulo?.trim();
+              if (!sub) return;
+              (item.ponentes || []).forEach((p) => {
+                if (p.id) map.set(String(p.id), sub);
+              });
+            });
+          });
+        }
+        setSubtituloMap(map);
+      } catch {
+        // silencioso: subtítulos son opcionales
+      }
+    };
+
     fetchConferencistas();
     fetchTalleristas();
+    fetchSubtitulos();
   }, []);
 
   const openConferencistaModal = (c: Conferencista, category: SpeakerCategory) => {
@@ -338,6 +375,7 @@ export default function Ponentes() {
       biografia: c.biografia,
       fotoUrl: c.foto_url,
       ponencia: c.ponencia,
+      subtitulo: subtituloMap.get(String(c.id)),
       category,
     });
   };
@@ -350,6 +388,7 @@ export default function Ponentes() {
       biografia: t.biografia,
       fotoUrl: t.foto_url,
       ponencia: talleres && talleres.length > 1 ? talleres.join(' · ') : t.taller,
+      subtitulo: subtituloMap.get(String(t.id_tallerista)),
       category: 'taller',
     });
   };
@@ -434,6 +473,7 @@ export default function Ponentes() {
                           empresa={c.empresa}
                           ubicacion={[c.ciudad, c.pais].filter(Boolean).join(', ')}
                           ponencia={c.ponencia}
+                          subtitulo={subtituloMap.get(String(c.id))}
                           fotoUrl={c.foto_url}
                           onOpen={() => openConferencistaModal(c, 'magistral')}
                           delay={i * 100}
@@ -506,6 +546,7 @@ export default function Ponentes() {
                           empresa={c.empresa}
                           ubicacion={[c.ciudad, c.pais].filter(Boolean).join(', ')}
                           ponencia={c.ponencia}
+                          subtitulo={subtituloMap.get(String(c.id))}
                           fotoUrl={c.foto_url}
                           onOpen={() => openConferencistaModal(c, 'sesion')}
                           delay={i * 100}
@@ -572,6 +613,7 @@ export default function Ponentes() {
                     cargo={t.cargo}
                     empresa={t.empresa}
                     ponencia={talleres.length > 1 ? talleres : talleres[0] || ''}
+                    subtitulo={subtituloMap.get(String(t.id_tallerista))}
                     fotoUrl={t.foto_url}
                     onOpen={() => openTalleristaModal(t, talleres)}
                     delay={i * 100}

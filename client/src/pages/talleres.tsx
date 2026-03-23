@@ -601,12 +601,12 @@ export default function Talleres() {
               {/* Header */}
               <div className="bg-gradient-to-r from-[#6847f6] to-[#35219B] px-6 py-5 md:px-8 md:py-6 text-center">
                 <p className="text-[#BCCE16] text-sm font-semibold uppercase tracking-widest mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Precio único para los 8 talleres
+                  Costo por taller
                 </p>
                 <p className="text-white text-3xl md:text-4xl font-bold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   $986 <span className="text-lg md:text-xl font-medium text-white/80">MXN IVA incluido</span>
                 </p>
-                <p className="text-white/70 text-sm mt-1">Aplica para Talleres Vivenciales y Master Classes</p>
+                <p className="text-white/70 text-sm mt-1">Mismo precio por cada Taller Vivencial o Master Class</p>
               </div>
               {/* Details */}
               <div className="bg-gray-50 px-6 py-6 md:px-8 md:py-7">
