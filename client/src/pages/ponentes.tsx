@@ -174,7 +174,7 @@ function SpeakerCard({
             {Array.isArray(ponencia) ? ponencia.join(' | ') : ponencia}
           </p>
           {subtitulo && (
-            <p className="text-xs text-gray-500 mt-1 italic">
+            <p className="text-xs mt-1 italic" style={{ color: '#422c6D' }}>
               {subtitulo}
             </p>
           )}
@@ -255,7 +255,7 @@ function Modal({ data, onClose }: { data: BiografiaModal; onClose: () => void })
               <p className="text-sm italic text-[#6847f6] font-medium mt-2">{data.ponencia}</p>
             )}
             {data.subtitulo && (
-              <p className="text-xs text-gray-500 italic mt-1">{data.subtitulo}</p>
+              <p className="text-xs italic mt-1" style={{ color: '#422c6D' }}>{data.subtitulo}</p>
             )}
           </div>
           {data.biografia ? (
