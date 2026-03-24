@@ -1,4 +1,4 @@
-import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard, CalendarDays, ExternalLink } from "lucide-react";
+import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard, CalendarDays, ExternalLink, Bus } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -39,6 +39,8 @@ interface HotelData {
   notasTarifas: string[];
   infoAdicional: string[];
   reservaUrl?: string;
+  isHotelSede?: boolean;
+  webUrl?: string;
   contacto: {
     emails?: string[];
     telefonos?: { label?: string; numero: string }[];
@@ -52,6 +54,8 @@ const hoteles: HotelData[] = [
     nombre: "Hotel Real Inn Tijuana",
     logo: realInnLogoUrl,
     logoBg: "#f97316",
+    isHotelSede: true,
+    webUrl: "https://www.grupocaminoreal.com/real-inn-tijuana",
     codigo: "PARQUE",
     evento: "Congreso Parques",
     fechasHospedaje: "10 al 17 de mayo de 2026",
@@ -86,6 +90,7 @@ const hoteles: HotelData[] = [
     nombre: "Hotel Lucerna Tijuana",
     logo: lucernaLogoUrl,
     logoBg: "#0047ab",
+    webUrl: "https://hoteleslucerna.com/es/tijuana",
     codigo: "PARQUE",
     codigoNombre: "Código Abierto / Congreso Parques",
     evento: "Congreso Parques",
@@ -124,6 +129,7 @@ const hoteles: HotelData[] = [
     nombre: "K Tower Hotel Boutique Tijuana",
     logo: kTowerLogoUrl,
     logoBg: "#1a1a2e",
+    webUrl: "https://hoteleslucerna.com/es/ktower",
     codigo: "PARQUE",
     codigoNombre: "Código Abierto / Congreso Parques",
     evento: "Congreso Parques",
@@ -162,6 +168,7 @@ const hoteles: HotelData[] = [
     nombre: "RULAD Hotelera",
     logo: ruladLogoUrl,
     logoBg: "#1a2744",
+    webUrl: "https://www.instagram.com/rulad.hotelera/",
     codigo: "ABIERTO",
     tarifas: [],
     tarifasDual: [
@@ -187,6 +194,7 @@ const hoteles: HotelData[] = [
     nombre: "Fairfield by Marriott Inn & Suites Tijuana",
     logo: "/assets/fairfield-marriott-logo.png",
     logoBg: "#2a6496",
+    webUrl: "https://www.marriott.com/hotels/travel/tijfi-fairfield-inn-and-suites-tijuana",
     codigo: "CONGRESO PARQUES TIJUANA",
     evento: "Congreso Parques",
     fechasHospedaje: "13 al 15 de mayo de 2026",
@@ -217,6 +225,7 @@ const hoteles: HotelData[] = [
     nombre: "Grand Hotel Tijuana",
     logo: grandHotelLogoUrl,
     logoBg: "#1b4d3e",
+    webUrl: "https://www.grandhoteltj.com.mx/",
     codigo: "PARQUES",
     evento: "Congreso Parques",
     fechasHospedaje: "13 al 15 de mayo de 2026",
@@ -261,18 +270,40 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
   const hasContact = hotel.contacto.emails?.length || hotel.contacto.telefonos?.length || hotel.contacto.direccion;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <div className={`bg-white rounded-2xl shadow-lg border overflow-hidden hover:shadow-xl transition-shadow duration-300 relative ${hotel.isHotelSede ? 'border-[#BCCE16] border-2 ring-2 ring-[#BCCE16]/20' : 'border-gray-200'}`}>
+
+      {/* ── HOTEL SEDE Badge ── */}
+      {hotel.isHotelSede && (
+        <div className="absolute top-0 right-0 z-10">
+          <div
+            className="bg-[#BCCE16] text-[#0e0477] text-[11px] font-black uppercase tracking-widest px-5 py-1.5 rounded-bl-xl shadow-md"
+            style={{ fontFamily: "Montserrat, sans-serif" }}
+          >
+            Hotel Sede
+          </div>
+        </div>
+      )}
 
       {/* ── HEADER: Logo + Name + Código + Evento/Fechas ── */}
       <div className="bg-gradient-to-b from-gray-50 to-white border-b border-gray-100">
         <div className="flex flex-col sm:flex-row">
           <div className="sm:w-[200px] lg:w-[240px] flex-shrink-0 flex items-center justify-center p-10 sm:p-8 bg-white border-b sm:border-b-0 sm:border-r border-gray-100">
             {hotel.logo ? (
-              <img
-                src={hotel.logo}
-                alt={`Logo ${hotel.nombre}`}
-                className="max-w-[160px] max-h-[90px] w-full h-auto object-contain"
-              />
+              hotel.webUrl ? (
+                <a href={hotel.webUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
+                  <img
+                    src={hotel.logo}
+                    alt={`Logo ${hotel.nombre}`}
+                    className="max-w-[160px] max-h-[90px] w-full h-auto object-contain transition-transform duration-300 ease-in-out hover:scale-105"
+                  />
+                </a>
+              ) : (
+                <img
+                  src={hotel.logo}
+                  alt={`Logo ${hotel.nombre}`}
+                  className="max-w-[160px] max-h-[90px] w-full h-auto object-contain"
+                />
+              )
             ) : (
               <div className="w-24 h-24 rounded-2xl bg-gray-50 border-2 border-dashed border-gray-200 flex items-center justify-center">
                 <Hotel className="w-12 h-12 text-[#6847f6]" strokeWidth={1.2} />
@@ -321,6 +352,17 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                 <p className="text-[11px] text-[#35219b] leading-relaxed font-medium" style={{ fontFamily: "Montserrat, sans-serif" }}>
                   {hotel.propiedadCompartida}
                 </p>
+              </div>
+            )}
+            {hotel.isHotelSede && (
+              <div className="mt-3 flex items-start gap-2.5 bg-[#0e0477]/5 border border-[#0e0477]/15 rounded-lg px-3.5 py-2.5">
+                <Bus className="w-4 h-4 text-[#6847f6] mt-0.5 flex-shrink-0" />
+                <div style={{ fontFamily: "Montserrat, sans-serif" }}>
+                  <p className="text-[12px] font-bold text-[#0e0477] leading-tight">Transporte al Congreso</p>
+                  <p className="text-[11px] text-gray-500 leading-relaxed mt-0.5">
+                    Desde este hotel saldrá el transporte en horarios determinados hacia el <span className="font-semibold text-[#0e0477]">Baja California Center (BCC)</span>, sede de las Conferencias y la Expo del Congreso Parques.
+                  </p>
+                </div>
               </div>
             )}
           </div>

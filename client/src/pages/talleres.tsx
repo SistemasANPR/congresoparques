@@ -506,7 +506,26 @@ export default function Talleres() {
         }
         const talleresData: TalleresResponse = await talleresRes.json();
         if (talleresData.success && talleresData.data) {
-          setTalleresAPI(talleresData.data.filter(t => t.disponible === "1"));
+          const masterClassLocationTitles = [
+            'movilidad con perspectiva de genero',
+            'de la gestión cotidiana a la excelencia internacional',
+            'estrategia + disciplina + personalidad',
+          ];
+          const titleCorrections: Record<string, string> = {
+            'movilidad con perspectiva de genero': 'Movilidad con Perspectiva de Género',
+          };
+          const enriched = talleresData.data.filter(t => t.disponible === "1").map(t => {
+            const lower = t.titulo.toLowerCase().trim();
+            if (masterClassLocationTitles.includes(lower)) {
+              return {
+                ...t,
+                titulo: titleCorrections[lower] || t.titulo,
+                ubicacion: t.ubicacion || 'Hotel Sede – Hotel Real Inn Tijuana',
+              };
+            }
+            return t;
+          });
+          setTalleresAPI(enriched);
         } else {
           setTalleresAPI([]);
         }
