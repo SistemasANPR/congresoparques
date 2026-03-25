@@ -206,8 +206,6 @@ const hoteles: HotelData[] = [
     ],
     notasTarifas: [
       "Tarifa por habitación por noche, no incluye impuestos estatales ni federales",
-      "IVA 8% ($200.00) + ISH 5% ($125.00) = Total con impuestos: $2,825.00 MXN",
-      "Tarifa especial no comisionable",
       "1 habitación de cortesía por cada 30 noches reservadas",
     ],
     infoAdicional: [
