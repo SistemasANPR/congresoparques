@@ -1,0 +1,33 @@
+En la sección Conferencistas Magistrales de la página Home, el carrusel actualmente se ve con un corte visual muy brusco en los extremos, porque el fondo de la sección es oscuro y las tarjetas son blancas. Esto hace que el final del carrusel se sienta duro y poco integrado visualmente, especialmente junto a los botones de anterior y siguiente.
+
+Toma como referencia la imagen adjunta para entender el problema actual.
+
+Cambio solicitado
+Agrega en los extremos izquierdo y derecho del carrusel un difuminado con degradado que ayude a suavizar visualmente la salida de las tarjetas.
+Este degradado debe usar tonos similares al fondo de la sección para que las tarjetas parezcan desvanecerse gradualmente hacia los lados, en lugar de cortarse de forma brusca.
+El efecto debe quedar colocado cerca de las zonas donde están los botones de previo y siguiente, sin estorbar su interacción.
+Objetivo UX/UI
+Suavizar el borde visual del carrusel.
+Hacer que la transición lateral de las tarjetas se vea más limpia, intencional y profesional.
+Integrar mejor el carrusel con el fondo oscuro de la sección.
+Instrucciones específicas
+Aplica un overlay lateral con degradado en ambos lados del carrusel.
+El degradado debe partir de un color similar al fondo de la sección y desvanecerse hacia transparente hacia el centro.
+El efecto debe ser sutil, elegante y suficiente para suavizar el corte visual sin ocultar demasiado las tarjetas.
+Asegúrate de que el degradado no tape ni interfiera con los botones de navegación.
+Mantén visibles y funcionales las flechas de anterior y siguiente.
+El desvanecimiento debe ayudar a que las tarjetas laterales se integren mejor visualmente al fondo.
+Criterios de diseño
+El efecto debe verse natural y coherente con el diseño actual.
+No debe parecer una capa pesada ni oscurecer demasiado las tarjetas.
+La intención es generar una transición suave, no esconder contenido por completo.
+El resultado debe verse bien tanto en desktop como en mobile, si esta sección también aplica ahí.
+Restricciones
+No modificar el contenido de las tarjetas.
+No romper el funcionamiento del carrusel.
+No afectar los botones de navegación ni los indicadores.
+No cambiar el fondo general de la sección.
+No aplicar un efecto exagerado o demasiado opaco.
+Resultado esperado
+
+Los extremos del carrusel deben verse más suaves y mejor integrados con el fondo oscuro, mediante un degradado lateral que simule que las tarjetas se desvanecen gradualmente cerca de los botones de navegación, evitando el corte blanco brusco que se ve actualmente.

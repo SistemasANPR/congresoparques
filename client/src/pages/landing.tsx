@@ -842,6 +842,17 @@ export default function Landing() {
                 <ChevronDown className="w-5 h-5 md:w-6 md:h-6 -rotate-90" />
               </button>
 
+              {/* Gradient fade left */}
+              <div
+                className="absolute left-0 top-0 h-full w-24 md:w-36 z-[5] pointer-events-none"
+                style={{ background: 'linear-gradient(to right, #35219b 0%, transparent 100%)' }}
+              />
+              {/* Gradient fade right */}
+              <div
+                className="absolute right-0 top-0 h-full w-24 md:w-36 z-[5] pointer-events-none"
+                style={{ background: 'linear-gradient(to left, #35219b 0%, transparent 100%)' }}
+              />
+
               {/* Carousel Container - Infinite loop */}
               <div className="overflow-hidden">
                 <div
