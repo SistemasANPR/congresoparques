@@ -31,6 +31,7 @@ interface HotelData {
   fechasHospedaje?: string;
   fechasEvento?: string;
   codigoNota?: string;
+  codigoSubtexto?: string;
   propiedadCompartida?: string;
   tarifas: Tarifa[];
   tarifasDual?: TarifaDual[];
@@ -71,8 +72,6 @@ const hoteles: HotelData[] = [
     notasTarifas: [
       "Tarifa cotizada en Moneda Nacional (no incluye impuestos)",
       "Tarifa cotizada única y exclusivamente para las fechas indicadas y de acuerdo al número de habitaciones solicitadas",
-      "Tarifa aplica con un mínimo de 10 habitaciones",
-      "1 habitación por una noche en cortesía después de 30 habitaciones reservadas",
     ],
     infoAdicional: [
       "Fecha límite (CUT OFF) para reservar: 9 de mayo de 2026, sujeto a disponibilidad",
@@ -170,6 +169,7 @@ const hoteles: HotelData[] = [
     logoBg: "#1a2744",
     webUrl: "https://www.instagram.com/rulad.hotelera/",
     codigo: "ABIERTO",
+    codigoSubtexto: "(WELLINTOWN, WEST PLAZA, GRAND ONE PLAZA, HACIENDA AGUA CALIENTE)",
     tarifas: [],
     tarifasDual: [
       { tipo: "Sencilla (1 persona)", precioSencilla: "$2,100 MXN", precioDoble: "$2,213 MXN" },
@@ -326,6 +326,11 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
                 Código: {hotel.codigo}
               </span>
             </div>
+            {hotel.codigoSubtexto && (
+              <p className="mt-1.5 text-[11px] text-gray-500 italic" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                {hotel.codigoSubtexto}
+              </p>
+            )}
 
             {hotel.fechasHospedaje && (
               <div className="flex items-center gap-2 mt-3 text-[13px] text-gray-500" style={{ fontFamily: "Montserrat, sans-serif" }}>
