@@ -699,12 +699,12 @@ export default function Hospedaje() {
                   Si tu hotel está interesado en integrarse como opción oficial para los participantes, contáctanos:
                 </p>
                 <a
-                  href="mailto:info@congresoparques.com"
+                  href="mailto:info@anpr.org.mx"
                   className="inline-flex items-center gap-2 bg-[#BCCE16] text-[#0e0477] px-8 py-4 rounded-lg hover:bg-[#d4e620] transition-colors uppercase tracking-wide"
                   style={{ fontFamily: "Antonio, sans-serif", fontWeight: 700 }}
                 >
                   <Mail className="w-5 h-5" />
-                  info@congresoparques.com
+                  info@anpr.org.mx
                 </a>
               </div>
             </div>
