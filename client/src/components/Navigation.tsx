@@ -262,16 +262,14 @@ export function Navigation() {
                       <Presentation className="w-4 h-4 opacity-60" />
                       Pósters Científicos
                     </a>
-                    <a
-                      href="https://congresoparques.com/registro_voluntarios.php"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/90 hover:text-white hover:bg-white/20 transition-colors text-sm"
+                    <span
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-white/40 text-sm cursor-not-allowed select-none"
                       data-testid="nav-dropdown-voluntarios"
                     >
-                      <Heart className="w-4 h-4 opacity-60" />
+                      <Heart className="w-4 h-4 opacity-40" />
                       Voluntarios
-                    </a>
+                      <span className="ml-auto text-[10px] bg-white/20 text-white/60 px-1.5 py-0.5 rounded uppercase tracking-wide">Cerrado</span>
+                    </span>
                     <a
                       href="https://congresoparques.com/registro_galerias.php"
                       target="_blank"
@@ -525,17 +523,14 @@ export function Navigation() {
                       <Presentation className="w-4 h-4 opacity-60" />
                       Pósters Científicos
                     </a>
-                    <a
-                      href="https://congresoparques.com/registro_voluntarios.php"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 text-white/80 hover:text-white hover:bg-white/10 px-3 py-2 text-sm rounded-md transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
+                    <span
+                      className="flex items-center gap-2.5 text-white/40 px-3 py-2 text-sm rounded-md cursor-not-allowed select-none"
                       data-testid="mobile-nav-voluntarios"
                     >
-                      <Heart className="w-4 h-4 opacity-60" />
+                      <Heart className="w-4 h-4 opacity-40" />
                       Voluntarios
-                    </a>
+                      <span className="ml-auto text-[10px] bg-white/20 text-white/60 px-1.5 py-0.5 rounded uppercase tracking-wide">Cerrado</span>
+                    </span>
                     <a
                       href="https://congresoparques.com/registro_galerias.php"
                       target="_blank"

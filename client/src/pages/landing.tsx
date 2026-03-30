@@ -1167,15 +1167,15 @@ export default function Landing() {
                   {/* Botón */}
                   <div className="text-center mt-auto">
                     <button
-                      onClick={() => window.open('https://congresoparques.com/registro_voluntarios.php', '_blank')}
-                      className="convocatoria-btn px-9 py-4 rounded-lg font-bold text-white uppercase transition-all duration-300 text-base tracking-wide"
+                      disabled
+                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-60"
                       style={{
-                        backgroundColor: '#35219b',
+                        backgroundColor: '#6b7280',
                         fontFamily: 'Antonio, sans-serif'
                       }}
                       data-testid="cta-volunteers"
                     >
-                      REGÍSTRATE
+                      CERRADO
                     </button>
                   </div>
                 </div>
