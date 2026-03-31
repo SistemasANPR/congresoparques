@@ -32,7 +32,7 @@ export function Footer() {
               <ul className="space-y-2 text-white/80">
                 <li><a href="https://anpr.org.mx/privacidad" className="hover:opacity-80 transition-colors" data-testid="footer-privacy">Políticas de privacidad</a></li>
                 <li><a href="https://anpr.org.mx/terminos" className="hover:opacity-80 transition-colors" data-testid="footer-terms">Términos y condiciones</a></li>
-                <li><a href="https://anpr.org.mx/faq" className="hover:opacity-80 transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
+                <li><a href="/assets/FAQ_Congreso_Parques_2026.pdf" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-colors" data-testid="footer-faq">Preguntas frecuentes</a></li>
               </ul>
             </div>
 

@@ -1,4 +1,4 @@
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle, Download } from "lucide-react";
 import { useState } from "react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -458,6 +458,20 @@ export default function PreguntasFrecuentes() {
           subtitle="Encuentra respuestas a las dudas más comunes sobre el congreso"
           lucideIcon={HelpCircle}
         />
+
+        {/* Download PDF */}
+        <div className="flex justify-center py-6 bg-white">
+          <a
+            href="/assets/FAQ_Congreso_Parques_2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-white uppercase tracking-wide transition-opacity hover:opacity-90"
+            style={{ backgroundColor: '#35219b', fontFamily: 'Antonio, sans-serif' }}
+          >
+            <Download className="w-5 h-5" />
+            Descargar PDF
+          </a>
+        </div>
 
         {/* FAQ Sections */}
         <section className="py-16 bg-white">
