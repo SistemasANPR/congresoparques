@@ -32,32 +32,51 @@ export function NewsletterBar() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 shadow-2xl transition-all duration-300"
-      style={{ backgroundColor: "#35219b" }}
+      className="fixed bottom-0 left-0 right-0 z-50 shadow-2xl"
+      style={{
+        background: "linear-gradient(135deg, #0e0477 0%, #35219b 50%, #6847f6 100%)",
+        borderTop: "3px solid #BCCE16",
+      }}
     >
-      {/* Header bar */}
+      {/* Header / toggle bar */}
       <div
-        className="flex items-center justify-between px-4 py-2 cursor-pointer select-none"
-        style={{ backgroundColor: "#0e0477" }}
+        className="flex items-center justify-between px-5 py-2 cursor-pointer select-none"
         onClick={() => setMinimized(!minimized)}
       >
-        <div className="flex items-center gap-2">
-          <Mail className="w-4 h-4 text-white" />
-          <span
-            className="text-white font-bold text-sm uppercase tracking-wider"
-            style={{ fontFamily: "Antonio, sans-serif" }}
+        {/* Left: icon + label */}
+        <div className="flex items-center gap-3">
+          <div
+            className="flex items-center justify-center w-7 h-7 rounded-full flex-shrink-0"
+            style={{ backgroundColor: "#BCCE16" }}
           >
-            Suscríbete al Boletín del Congreso
-          </span>
+            <Mail className="w-4 h-4" style={{ color: "#0e0477" }} />
+          </div>
+          <div className="flex flex-col leading-tight">
+            <span
+              className="text-white font-bold text-sm uppercase tracking-widest"
+              style={{ fontFamily: "Antonio, sans-serif" }}
+            >
+              Boletín del Congreso
+            </span>
+            <span
+              className="text-xs font-medium hidden sm:block"
+              style={{ color: "#BCCE16", fontFamily: "Montserrat, sans-serif" }}
+            >
+              Mantente informado — suscríbete gratis
+            </span>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
+
+        {/* Right: controls */}
+        <div className="flex items-center gap-1">
           <button
             onClick={(e) => {
               e.stopPropagation();
               setMinimized(!minimized);
             }}
-            className="text-white/70 hover:text-white transition-colors p-1"
-            aria-label={minimized ? "Expandir" : "Minimizar"}
+            className="rounded p-1.5 transition-colors hover:bg-white/10"
+            style={{ color: "rgba(255,255,255,0.7)" }}
+            aria-label={minimized ? "Expandir formulario" : "Minimizar formulario"}
           >
             {minimized ? (
               <ChevronUp className="w-4 h-4" />
@@ -70,20 +89,25 @@ export function NewsletterBar() {
               e.stopPropagation();
               setDismissed(true);
             }}
-            className="text-white/70 hover:text-white transition-colors p-1"
-            aria-label="Cerrar"
+            className="rounded p-1.5 transition-colors hover:bg-white/10"
+            style={{ color: "rgba(255,255,255,0.7)" }}
+            aria-label="Cerrar barra de suscripción"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
       </div>
 
+      {/* Divider */}
+      {!minimized && (
+        <div style={{ height: "1px", backgroundColor: "rgba(255,255,255,0.1)" }} />
+      )}
+
       {/* Form container */}
       {!minimized && (
         <div
           ref={containerRef}
-          className="px-4 py-3 overflow-y-auto max-h-64"
-          style={{ backgroundColor: "#35219b" }}
+          className="px-5 py-3 overflow-y-auto max-h-60"
         >
           <div className="_form_15_" />
         </div>
