@@ -109,6 +109,7 @@ export function NewsletterBar() {
           ref={containerRef}
           className="px-5 py-3 overflow-y-auto max-h-60"
         >
+          <style>{`._form-title { color: #ffffff !important; } ._submit { background-color: #6847f6 !important; text-align: center !important; }`}</style>
           <div className="_form_15_" />
         </div>
       )}
