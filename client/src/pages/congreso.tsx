@@ -395,13 +395,30 @@ export default function Congreso() {
                 {/* Proyecto apoyado */}
                 <div className="flex flex-col items-center gap-1.5 sm:gap-2">
                   <h3 className="text-xs sm:text-sm md:text-base font-bold text-center" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Apoyado con recursos de:</h3>
-                  <div className="flex items-center justify-center">
-                    <img
-                      src="https://anpr.org.mx/wp-content/uploads/2026/04/LOGOS-FIDEM-CINTILLO.png"
-                      alt="FIDEM - Apoyado con recursos de"
-                      className="max-w-full object-contain"
-                      style={{ maxHeight: '120px', imageRendering: 'auto' }}
-                    />
+                  <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 items-center justify-center">
+                    <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-40 sm:h-20 md:w-52 md:h-24 lg:w-60 lg:h-28 flex items-center justify-center">
+                      <img
+                        src={logoFIDEMNew}
+                        alt="FIDEM - Fideicomiso Empresarial Baja California"
+                        className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
+                        style={{ imageRendering: 'auto' }}
+                      />
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-40 sm:h-20 md:w-52 md:h-24 lg:w-60 lg:h-28 flex items-center justify-center">
+                      <a
+                        href="https://cdt.org.mx/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-full h-full"
+                      >
+                        <img
+                          src={logoCDTNew}
+                          alt="CDT - Centro de Desarrollo Tijuana"
+                          className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
+                          style={{ imageRendering: 'auto' }}
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
