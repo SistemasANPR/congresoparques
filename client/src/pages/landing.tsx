@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import SupportSection from "@/components/SupportSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -70,8 +71,6 @@ import sesionesIconUrl from "@assets/Sesiones Educativas_1758578569496.png";
 import eventosIconUrl from "@assets/Eventos Sociales_1758578569496.png";
 import logoANPRUrl from "@assets/LOGO ANPR_1758652591788.png";
 import logoANPRWhiteUrl from "@assets/LOGO ANPR-PERFIL-BLANCO_1758654877619.png";
-import logoFIDEMUrl from "@assets/LOGO FIDEM_1758652591788.png";
-import logoCDTUrl from "@assets/LOGO CDT_1758652591783.png";
 import logoBCCUrl from "@assets/LOGO BCC color_1761676598707.png";
 import expoEspacioPublico2026Img from "@assets/expo-espacio-publico-2026.jpg";
 import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.png";
@@ -635,70 +634,7 @@ export default function Landing() {
         ></div>
       </section>
 
-      {/* Aliados Institucionales - Compact Section */}
-      <section id="aliados" className="py-5 sm:py-6 md:py-8 bg-white section-animate animate-fadeInUp">
-        <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-row items-start justify-center gap-3 sm:gap-6 md:gap-10 lg:gap-14">
-              {/* Organiza */}
-              <div className="flex flex-col items-center gap-1.5 sm:gap-2">
-                <h3 className="text-xs sm:text-sm md:text-base font-bold whitespace-nowrap" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
-                <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-44 sm:h-20 md:w-56 md:h-24 lg:w-64 lg:h-28 flex items-center justify-center">
-                  <a
-                    href="https://anpr.org.mx/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-full h-full"
-                  >
-                    <img
-                      src={logoANPRUrl}
-                      alt="ANPR - Asociación Nacional de Parques y Recreación México - Organizadores Congreso Parques Urbanos 2026"
-                      className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
-                      style={{ imageRendering: 'auto' }}
-                      data-testid="logo-anpr"
-                    />
-                  </a>
-                </div>
-              </div>
-
-              {/* Separador visual */}
-              <div className="hidden sm:block w-px h-20 md:h-24 lg:h-28 bg-gray-200 mt-6"></div>
-
-              {/* Proyecto apoyado */}
-              <div className="flex flex-col items-center gap-1.5 sm:gap-2">
-                <h3 className="text-xs sm:text-sm md:text-base font-bold text-center" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Apoyado con recursos de:</h3>
-                <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 items-center justify-center">
-                  <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-40 sm:h-20 md:w-52 md:h-24 lg:w-60 lg:h-28 flex items-center justify-center">
-                    <img
-                      src={logoFIDEMUrl}
-                      alt="FIDEM - Fideicomiso Empresarial Baja California - Patrocinador Congreso Espacio Público Tijuana"
-                      className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
-                      style={{ imageRendering: 'auto' }}
-                      data-testid="logo-fidem"
-                    />
-                  </div>
-                  <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-40 sm:h-20 md:w-52 md:h-24 lg:w-60 lg:h-28 flex items-center justify-center">
-                    <a
-                      href="https://cdt.org.mx/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center w-full h-full"
-                    >
-                      <img
-                        src={logoCDTUrl}
-                        alt="CDT - Centro de Desarrollo Tijuana - Aliado Congreso Parques Urbanos México 2026"
-                        className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
-                        style={{ imageRendering: 'auto' }}
-                        data-testid="logo-cdt"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SupportSection sectionId="aliados" className="section-animate animate-fadeInUp" />
 
       {/* Information Section */}
       <section id="info" className="py-20 bg-[#f5f5f7] section-animate animate-fadeInUp">

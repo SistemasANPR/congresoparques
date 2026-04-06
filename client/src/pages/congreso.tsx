@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
+import SupportSection from "@/components/SupportSection";
 import { Link } from "wouter";
 import { Clock, Calendar, MapPin, Globe, Users, Mic, GraduationCap, Wrench, Building, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -40,8 +41,6 @@ import congresoParques2 from "@assets/Congreso Parques 2_1761672357092.jpg";
 import congresoParques3 from "@assets/Congreso Parques 3_1761672357092.jpg";
 import congresoParques4 from "@assets/Congreso Parques 4_1761672357092.jpg";
 import logoANPRNew from "@assets/ANPR_1769104901762.png";
-import logoCDTNew from "@assets/CDT_1769104901763.png";
-import logoFIDEMNew from "@assets/FIDEM_1769104901763.png";
 
 // Componente de carrusel con indicadores de navegación
 interface ImageCarouselProps {
@@ -364,67 +363,7 @@ export default function Congreso() {
           iconAlt="Icono Congreso Parques"
         />
 
-        {/* Aliados Institucionales - Compact Section */}
-        <section className="py-5 sm:py-6 md:py-8 bg-white">
-          <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex flex-row items-start justify-center gap-3 sm:gap-6 md:gap-10 lg:gap-14">
-                {/* Organiza */}
-                <div className="flex flex-col items-center gap-1.5 sm:gap-2">
-                  <h3 className="text-xs sm:text-sm md:text-base font-bold whitespace-nowrap" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
-                  <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-44 sm:h-20 md:w-56 md:h-24 lg:w-64 lg:h-28 flex items-center justify-center">
-                    <a
-                      href="https://anpr.org.mx/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center w-full h-full"
-                    >
-                      <img
-                        src={logoANPRNew}
-                        alt="ANPR - Asociación Nacional de Parques y Recreación México"
-                        className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
-                        style={{ imageRendering: 'auto' }}
-                      />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Separador visual */}
-                <div className="hidden sm:block w-px h-20 md:h-24 lg:h-28 bg-gray-200 mt-6"></div>
-
-                {/* Proyecto apoyado */}
-                <div className="flex flex-col items-center gap-1.5 sm:gap-2">
-                  <h3 className="text-xs sm:text-sm md:text-base font-bold text-center" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Apoyado con recursos de:</h3>
-                  <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 items-center justify-center">
-                    <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-40 sm:h-20 md:w-52 md:h-24 lg:w-60 lg:h-28 flex items-center justify-center">
-                      <img
-                        src={logoFIDEMNew}
-                        alt="FIDEM - Fideicomiso Empresarial Baja California"
-                        className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
-                        style={{ imageRendering: 'auto' }}
-                      />
-                    </div>
-                    <div className="bg-white rounded-lg shadow-md p-1.5 sm:p-2 w-28 h-16 sm:w-40 sm:h-20 md:w-52 md:h-24 lg:w-60 lg:h-28 flex items-center justify-center">
-                      <a
-                        href="https://cdt.org.mx/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center w-full h-full"
-                      >
-                        <img
-                          src={logoCDTNew}
-                          alt="CDT - Centro de Desarrollo Tijuana"
-                          className="max-h-full max-w-full object-contain hover:scale-105 transition-transform"
-                          style={{ imageRendering: 'auto' }}
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <SupportSection />
 
         {/* ¿Por qué asistir? */}
         <section className="py-20 md:py-24 bg-[#f5f5f7]">
@@ -895,14 +834,9 @@ export default function Congreso() {
                     <div className="flex-1 flex items-center justify-center">
                       <div className="flex flex-col items-center justify-center gap-5 w-full">
                         <img
-                          src={logoFIDEMNew}
-                          alt="FIDEM"
-                          className="w-full max-w-[220px] h-auto object-contain"
-                        />
-                        <img
-                          src={logoCDTNew}
-                          alt="CDT"
-                          className="w-full max-w-[170px] h-auto object-contain"
+                          src="https://anpr.org.mx/wp-content/uploads/2026/04/LOGOS-FIDEM-CINTILLO.png"
+                          alt="FIDEM - CDT Patrocinadores"
+                          className="w-full max-w-[280px] h-auto object-contain"
                         />
                       </div>
                     </div>
