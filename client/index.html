@@ -198,6 +198,20 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- ActiveCampaign - Boletín Congreso Parques (barra flotante con 2 campos: Nombre y Email) -->
+    <script>
+      try {
+        Object.keys(localStorage).forEach(function(key) {
+          if (key.indexOf('_ac') !== -1 || key.indexOf('form_15') !== -1 || key.indexOf('f_15') !== -1) {
+            localStorage.removeItem(key);
+          }
+        });
+        document.cookie.split(';').forEach(function(c) {
+          if (c.trim().indexOf('_ac') === 0 || c.trim().indexOf('f_15') === 0) {
+            document.cookie = c.trim().split('=')[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+          }
+        });
+      } catch(e) {}
+    </script>
     <script src="https://anpr.activehosted.com/f/embed.php?id=15" charset="utf-8"></script>
   </body>
 </html>
