@@ -32,8 +32,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                   <img
                     src={logoANPR}
                     alt="ANPR - Asociación Nacional de Parques y Recreación México"
-                    className="object-contain w-auto hover:scale-105 transition-transform"
-                    style={{ maxHeight: '64px', maxWidth: '140px' }}
+                    className="object-contain w-auto h-14 md:h-20 max-w-[140px] md:max-w-[180px] hover:scale-105 transition-transform"
                   />
                 </a>
               </div>
@@ -51,12 +50,18 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                 Apoyado con recursos de:
               </h3>
               <div className="w-full flex items-center justify-center py-3 sm:py-4">
-                <img
-                  src={logoFIDEM}
-                  alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
-                  className="object-contain w-auto hover:scale-105 transition-transform"
-                  style={{ maxHeight: '64px', maxWidth: '140px' }}
-                />
+                <a
+                  href="https://www.bcfidem.com.mx/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
+                >
+                  <img
+                    src={logoFIDEM}
+                    alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
+                    className="object-contain w-auto h-14 md:h-20 max-w-[140px] md:max-w-[180px] hover:scale-105 transition-transform"
+                  />
+                </a>
               </div>
             </div>
 
@@ -72,12 +77,18 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                 A través del:
               </h3>
               <div className="w-full flex items-center justify-center py-3 sm:py-4">
-                <img
-                  src={logoCDT}
-                  alt="CDT - Consejo de Desarrollo de Tijuana"
-                  className="object-contain w-auto hover:scale-105 transition-transform"
-                  style={{ maxHeight: '64px', maxWidth: '140px' }}
-                />
+                <a
+                  href="https://cdt.org.mx/nosotros/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
+                >
+                  <img
+                    src={logoCDT}
+                    alt="CDT - Consejo de Desarrollo de Tijuana"
+                    className="object-contain w-auto h-14 md:h-20 max-w-[140px] md:max-w-[180px] hover:scale-105 transition-transform"
+                  />
+                </a>
               </div>
             </div>
 
