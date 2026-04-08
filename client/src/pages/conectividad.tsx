@@ -100,7 +100,7 @@ export default function Conectividad() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-start gap-2">
                       <span className="text-[#BCCE16] mt-1">•</span>
-                      <span>Phoenix, Arizona (PHX) – American Eagle</span>
+                      <span>Phoenix, Arizona (PHX) – American Airlines</span>
                     </li>
                   </ul>
                   <p className="text-gray-600 mt-4 text-sm">
