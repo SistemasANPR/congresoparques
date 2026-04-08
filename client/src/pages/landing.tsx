@@ -780,13 +780,13 @@ export default function Landing() {
 
               {/* Gradient fade left */}
               <div
-                className="absolute left-0 top-0 h-full w-24 md:w-36 z-[5] pointer-events-none"
-                style={{ background: 'linear-gradient(to right, #35219b 0%, transparent 100%)' }}
+                className="absolute left-0 top-0 h-full w-28 md:w-40 z-[5] pointer-events-none"
+                style={{ background: 'linear-gradient(to right, #35219b 0%, #35219b 20%, transparent 100%)' }}
               />
               {/* Gradient fade right */}
               <div
-                className="absolute right-0 top-0 h-full w-24 md:w-36 z-[5] pointer-events-none"
-                style={{ background: 'linear-gradient(to left, #35219b 0%, transparent 100%)' }}
+                className="absolute right-0 top-0 h-full w-28 md:w-40 z-[5] pointer-events-none"
+                style={{ background: 'linear-gradient(to left, #35219b 0%, #35219b 20%, transparent 100%)' }}
               />
 
               {/* Carousel Container - Infinite loop */}
@@ -794,7 +794,7 @@ export default function Landing() {
                 <div
                   className={`flex ${isTransitioning ? 'transition-transform duration-700 ease-in-out' : ''}`}
                   style={{
-                    transform: `translateX(calc(-${magistralesIndex * 25}% - ${magistralesIndex * 12}px))`,
+                    transform: `translateX(calc(-${magistralesIndex * 25}% - ${magistralesIndex * 12}px - 12.5%))`,
                   }}
                 >
                   {/* Duplicamos los elementos para crear efecto infinito sin espacios */}

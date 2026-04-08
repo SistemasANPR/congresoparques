@@ -24,7 +24,9 @@
       "Bash(do sed -i 's/messages={\\\\[.*{.*id:.*\"\"\"\"boletos\"\"\"\".*text:.*\"\"\"\"BOLETOS A LA VENTA A PARTIR DEL 2 DE FEBRERO\"\"\"\".*}.*\\\\]}/messages={[\\\\n          {\\\\n            id: \"\"\"\"miembros\"\"\"\",\\\\n            text: \"\"\"\"PRECIO ESPECIAL PARA MIEMBROS ANPR\"\"\"\",\\\\n          },\\\\n          {\\\\n            id: \"\"\"\"estudiantes\"\"\"\",\\\\n            text: \"\"\"\"PRECIO ESPECIAL PARA ESTUDIANTES\"\"\"\",\\\\n          },\\\\n        ]}/g' \"$file\" done)",
       "Bash(python3 -m json.tool)",
       "Bash(node -e \"process.stdin.resume\\(\\); let d=''''''''; process.stdin.on\\(''''data'''',c=>d+=c\\); process.stdin.on\\(''''end'''',\\(\\)=>{const j=JSON.parse\\(d\\); console.log\\(JSON.stringify\\(j.magistrales[0]?.ponentes[0], null, 2\\);}\\)\")",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(ls /home/runner/workspace/client/tsconfig*)",
+      "Bash(ls /home/runner/workspace/tsconfig*)"
     ]
   }
 }
