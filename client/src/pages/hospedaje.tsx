@@ -1,4 +1,4 @@
-import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard, CalendarDays, ExternalLink, Bus } from "lucide-react";
+import { Hotel, Mail, Bed, Phone, MapPin, Tag, Info, Globe, CreditCard, CalendarDays, ExternalLink, Bus, Clock } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -358,14 +358,20 @@ function HotelCard({ hotel }: { hotel: HotelData }) {
               </div>
             )}
             {hotel.isHotelSede && (
-              <div className="mt-3 flex items-start gap-2.5 bg-[#0e0477]/5 border border-[#0e0477]/15 rounded-lg px-3.5 py-2.5">
-                <Bus className="w-4 h-4 text-[#6847f6] mt-0.5 flex-shrink-0" />
-                <div style={{ fontFamily: "Montserrat, sans-serif" }}>
-                  <p className="text-[12px] font-bold text-[#0e0477] leading-tight">Transporte al Congreso</p>
-                  <p className="text-[11px] text-gray-500 leading-relaxed mt-0.5">
-                    Desde este hotel saldrá el transporte en horarios determinados hacia el <span className="font-semibold text-[#0e0477]">Baja California Center (BCC)</span>, sede de las Conferencias y la Expo del Congreso Parques.
-                  </p>
+              <div className="mt-3 bg-[#0e0477]/5 border border-[#0e0477]/15 rounded-lg px-3.5 py-2.5" style={{ fontFamily: "Montserrat, sans-serif" }}>
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex items-center gap-2">
+                    <Bus className="w-4 h-4 text-[#6847f6] flex-shrink-0" />
+                    <p className="text-[12px] font-bold text-[#0e0477] leading-tight">Transporte al Congreso</p>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-[#6847f6]/10 rounded-full px-2.5 py-1">
+                    <Clock className="w-3.5 h-3.5 text-[#6847f6] flex-shrink-0" />
+                    <p className="text-[11px] font-semibold text-[#0e0477]">Salida: <span className="text-[#6847f6]">7:45 a.m.</span></p>
+                  </div>
                 </div>
+                <p className="text-[11px] text-gray-500 leading-relaxed mt-1.5 ml-6">
+                  Desde este hotel saldrá el transporte hacia el <span className="font-semibold text-[#0e0477]">Baja California Center (BCC)</span>, sede de las Conferencias y la Expo del Congreso Parques.
+                </p>
               </div>
             )}
           </div>
