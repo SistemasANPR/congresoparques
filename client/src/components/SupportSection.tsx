@@ -1,4 +1,6 @@
 import logoANPR from "@assets/LOGO ANPR_1758652591788.png";
+import logoFIDEM from "@assets/LOGO_FIDEM_1775664518580.png";
+import logoCDT from "@assets/LOGO_CDT_1775664518582.png";
 
 interface SupportSectionProps {
   sectionId?: string;
@@ -7,14 +9,20 @@ interface SupportSectionProps {
 
 export default function SupportSection({ sectionId, className = "" }: SupportSectionProps) {
   return (
-    <section id={sectionId} className={`py-5 sm:py-6 md:py-8 bg-white ${className}`}>
+    <section id={sectionId} className={`py-4 sm:py-5 bg-white ${className}`}>
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-row items-start justify-center gap-3 sm:gap-6 md:gap-10 lg:gap-14">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-row items-stretch justify-center gap-0">
+
             {/* Organiza */}
-            <div className="flex flex-col items-center gap-1.5 sm:gap-2">
-              <h3 className="text-xs sm:text-sm md:text-base font-bold whitespace-nowrap" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Organiza:</h3>
-              <div className="bg-white rounded-lg shadow-md w-full max-w-[520px] min-h-[220px] flex items-center justify-center p-8">
+            <div className="flex-1 flex flex-col items-center gap-1.5 px-3 sm:px-5">
+              <h3
+                className="text-[10px] sm:text-xs md:text-sm font-bold whitespace-nowrap text-center"
+                style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Organiza:
+              </h3>
+              <div className="w-full flex items-center justify-center py-3 sm:py-4">
                 <a
                   href="https://anpr.org.mx/"
                   target="_blank"
@@ -24,28 +32,55 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                   <img
                     src={logoANPR}
                     alt="ANPR - Asociación Nacional de Parques y Recreación México"
-                    className="object-contain max-h-[140px] w-auto hover:scale-105 transition-transform"
-                    style={{ imageRendering: 'auto' }}
+                    className="object-contain w-auto hover:scale-105 transition-transform"
+                    style={{ maxHeight: '64px', maxWidth: '140px' }}
                   />
                 </a>
               </div>
             </div>
 
-            {/* Separador visual */}
-            <div className="hidden sm:block w-px min-h-[220px] bg-gray-200 mt-6"></div>
+            {/* Separador */}
+            <div className="w-px bg-gray-200 self-stretch mx-1" />
 
-            {/* Proyecto apoyado */}
-            <div className="flex flex-col items-center gap-1.5 sm:gap-2">
-              <h3 className="text-xs sm:text-sm md:text-base font-bold text-center" style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>Apoyado con recursos de:</h3>
-              <div className="bg-white rounded-lg shadow-md w-full max-w-[520px] min-h-[220px] flex items-center justify-center p-8">
+            {/* Apoyado con recursos de */}
+            <div className="flex-1 flex flex-col items-center gap-1.5 px-3 sm:px-5">
+              <h3
+                className="text-[10px] sm:text-xs md:text-sm font-bold text-center"
+                style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Apoyado con recursos de:
+              </h3>
+              <div className="w-full flex items-center justify-center py-3 sm:py-4">
                 <img
-                  src="https://anpr.org.mx/wp-content/uploads/2026/04/LOGOS-FIDEM-CINTILLO.png"
-                  alt="FIDEM - CDT Patrocinadores"
-                  className="object-contain max-h-[140px] w-auto hover:scale-105 transition-transform"
-                  style={{ imageRendering: 'auto' }}
+                  src={logoFIDEM}
+                  alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
+                  className="object-contain w-auto hover:scale-105 transition-transform"
+                  style={{ maxHeight: '64px', maxWidth: '140px' }}
                 />
               </div>
             </div>
+
+            {/* Separador */}
+            <div className="w-px bg-gray-200 self-stretch mx-1" />
+
+            {/* A través del */}
+            <div className="flex-1 flex flex-col items-center gap-1.5 px-3 sm:px-5">
+              <h3
+                className="text-[10px] sm:text-xs md:text-sm font-bold text-center"
+                style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}
+              >
+                A través del:
+              </h3>
+              <div className="w-full flex items-center justify-center py-3 sm:py-4">
+                <img
+                  src={logoCDT}
+                  alt="CDT - Consejo de Desarrollo de Tijuana"
+                  className="object-contain w-auto hover:scale-105 transition-transform"
+                  style={{ maxHeight: '64px', maxWidth: '140px' }}
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

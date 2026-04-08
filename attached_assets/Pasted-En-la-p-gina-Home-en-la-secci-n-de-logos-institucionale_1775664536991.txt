@@ -1,0 +1,45 @@
+En la página Home, en la sección de logos institucionales debajo del Hero, necesito actualizar la estructura y contenido del bloque de organización y apoyo para integrar nuevos logos y mantener una presentación más compacta.
+
+Cambios solicitados
+1. Actualizar logo en “Apoyado con recursos de:”
+En el bloque “Apoyado con recursos de:”, reemplaza el logo actual por el archivo adjunto “LOGO FIDEM”.
+Asegúrate de que conserve buena proporción, nitidez y alineación dentro de su contenedor.
+2. Agregar una nueva columna
+Añade una tercera columna con el texto:
+“A través del:”
+Debajo de ese texto, agrega el logo CDT adjunto.
+Esta nueva columna debe integrarse visualmente con las otras dos, manteniendo consistencia de jerarquía, espaciado y estilo.
+3. Mostrar los 3 logos en una sola línea
+Los 3 logos institucionales deben verse en una sola línea, tanto en mobile como en desktop.
+Ajusta distribución, proporciones y ancho de contenedores para que entren correctamente sin romper el layout.
+La línea debe verse equilibrada, ordenada y fácil de leer en ambos formatos.
+4. Hacer los contenedores más compactos
+Reduce el alto de las cajas contenedoras de estos logos para que la sección se vea más compacta.
+Aprovecha mejor que los logos son mayormente horizontales.
+Mantén suficiente aire visual, pero evita altura excesiva o espacio vertical desperdiciado.
+Objetivo UX/UI
+Actualizar correctamente la información institucional.
+Mantener la sección visible y compacta debajo del Hero.
+Lograr que los logos se vean claros, alineados y bien presentados en una sola línea.
+Optimizar el uso del espacio vertical, especialmente en mobile.
+Criterios de diseño
+La sección debe verse limpia, institucional y bien jerarquizada.
+Los subtítulos “Organiza”, “Apoyado con recursos de:” y “A través del:” deben mantener consistencia visual.
+Los logos deben verse nítidos, bien proporcionados y sin deformación.
+Los contenedores deben ser más anchos y menos altos, para adaptarse mejor al formato horizontal de los logos.
+Revisa que el resultado funcione correctamente en desktop y mobile.
+Restricciones
+No deformar los logos.
+No romper la alineación ni el responsive de la Home.
+No hacer que los logos se vean demasiado pequeños.
+No saturar la sección ni volverla visualmente pesada.
+Mantener consistencia con el resto del diseño actual del sitio.
+Resultado esperado
+
+La sección institucional de la Home debe mostrar en una sola línea los tres bloques:
+
+Organiza
+Apoyado con recursos de: con el nuevo LOGO FIDEM
+A través del: con el logo CDT
+
+Todo debe verse compacto, alineado, nítido y bien resuelto tanto en móvil como en escritorio.
