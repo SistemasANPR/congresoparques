@@ -71,7 +71,6 @@ const hoteles: HotelData[] = [
     ],
     notasTarifas: [
       "Tarifa cotizada en Moneda Nacional (no incluye impuestos)",
-      "Tarifa cotizada única y exclusivamente para las fechas indicadas y de acuerdo al número de habitaciones solicitadas",
     ],
     infoAdicional: [
       "Fecha límite (CUT OFF) para reservar: 9 de mayo de 2026, sujeto a disponibilidad",
@@ -206,7 +205,6 @@ const hoteles: HotelData[] = [
     ],
     notasTarifas: [
       "Tarifa por habitación por noche, no incluye impuestos estatales ni federales",
-      "1 habitación de cortesía por cada 30 noches reservadas",
     ],
     infoAdicional: [
       "Check-in: 3:00 PM · Check-out: 12:00 PM",
