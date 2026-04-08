@@ -24,7 +24,7 @@ import ExpoEspacioPublico from "@/pages/expo-espacio-publico";
 import ConstruccionComunitaria from "@/pages/construccion-comunitaria";
 import Recursos from "@/pages/recursos";
 import NotFound from "@/pages/not-found";
-import { NewsletterBar } from "@/components/NewsletterBar";
+
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -80,7 +80,6 @@ function App() {
         <Toaster />
         <ScrollToTop />
         <Router />
-        <NewsletterBar />
       </TooltipProvider>
     </QueryClientProvider>
   );

@@ -26,7 +26,8 @@
       "Bash(node -e \"process.stdin.resume\\(\\); let d=''''''''; process.stdin.on\\(''''data'''',c=>d+=c\\); process.stdin.on\\(''''end'''',\\(\\)=>{const j=JSON.parse\\(d\\); console.log\\(JSON.stringify\\(j.magistrales[0]?.ponentes[0], null, 2\\);}\\)\")",
       "Bash(npm run:*)",
       "Bash(ls /home/runner/workspace/client/tsconfig*)",
-      "Bash(ls /home/runner/workspace/tsconfig*)"
+      "Bash(ls /home/runner/workspace/tsconfig*)",
+      "WebFetch(domain:anpr.activehosted.com)"
     ]
   }
 }

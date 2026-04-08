@@ -10,22 +10,30 @@ export function NewsletterBar() {
   useEffect(() => {
     if (dismissed || scriptLoaded.current) return;
 
-    const timer = setTimeout(() => {
+    // Observer: waits for AC to inject the form into the DOM, then moves it into our container
+    const observer = new MutationObserver(() => {
       if (!containerRef.current) return;
+      const acForm = document.querySelector("._form_15_:not([data-moved])") as HTMLElement | null;
+      if (acForm && !containerRef.current.contains(acForm)) {
+        acForm.setAttribute("data-moved", "true");
+        containerRef.current.appendChild(acForm);
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
 
-      const existingScript = document.getElementById("ac-newsletter-script");
-      if (existingScript) existingScript.remove();
+    // Load the AC script
+    const existing = document.getElementById("ac-newsletter-script");
+    if (existing) existing.remove();
 
-      const script = document.createElement("script");
-      script.id = "ac-newsletter-script";
-      script.src = "https://anpr.activehosted.com/f/embed.php?id=15";
-      script.charset = "utf-8";
-      script.async = true;
-      document.body.appendChild(script);
-      scriptLoaded.current = true;
-    }, 800);
+    const script = document.createElement("script");
+    script.id = "ac-newsletter-script";
+    script.src = "https://anpr.activehosted.com/f/embed.php?id=15";
+    script.charset = "utf-8";
+    script.async = true;
+    document.body.appendChild(script);
+    scriptLoaded.current = true;
 
-    return () => clearTimeout(timer);
+    return () => observer.disconnect();
   }, [dismissed]);
 
   if (dismissed) return null;
@@ -43,7 +51,6 @@ export function NewsletterBar() {
         className="flex items-center justify-between px-5 py-2 cursor-pointer select-none"
         onClick={() => setMinimized(!minimized)}
       >
-        {/* Left: icon + label */}
         <div className="flex items-center gap-3">
           <div
             className="flex items-center justify-center w-7 h-7 rounded-full flex-shrink-0"
@@ -67,28 +74,17 @@ export function NewsletterBar() {
           </div>
         </div>
 
-        {/* Right: controls */}
         <div className="flex items-center gap-1">
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setMinimized(!minimized);
-            }}
+            onClick={(e) => { e.stopPropagation(); setMinimized(!minimized); }}
             className="rounded p-1.5 transition-colors hover:bg-white/10"
             style={{ color: "rgba(255,255,255,0.7)" }}
             aria-label={minimized ? "Expandir formulario" : "Minimizar formulario"}
           >
-            {minimized ? (
-              <ChevronUp className="w-4 h-4" />
-            ) : (
-              <ChevronDown className="w-4 h-4" />
-            )}
+            {minimized ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setDismissed(true);
-            }}
+            onClick={(e) => { e.stopPropagation(); setDismissed(true); }}
             className="rounded p-1.5 transition-colors hover:bg-white/10"
             style={{ color: "rgba(255,255,255,0.7)" }}
             aria-label="Cerrar barra de suscripción"
@@ -103,16 +99,19 @@ export function NewsletterBar() {
         <div style={{ height: "1px", backgroundColor: "rgba(255,255,255,0.1)" }} />
       )}
 
-      {/* Form container */}
-      {!minimized && (
-        <div
-          ref={containerRef}
-          className="px-5 py-3 overflow-y-auto max-h-60"
-        >
-          <style>{`._form-title { color: #ffffff !important; } ._submit { background-color: #6847f6 !important; text-align: center !important; }`}</style>
-          <div className="_form_15_" />
-        </div>
-      )}
+      {/* Form container — AC form gets moved here by the MutationObserver */}
+      <div
+        ref={containerRef}
+        className={`overflow-y-auto transition-all duration-300 ${minimized ? "max-h-0 py-0" : "max-h-80 px-5 py-3"}`}
+      >
+        <style>{`
+          ._form-title { color: #ffffff !important; }
+          ._submit { background-color: #6847f6 !important; text-align: center !important; }
+          ._form_15_ { background: transparent !important; box-shadow: none !important; }
+          ._form_15_ ._field-wrapper input { background: rgba(255,255,255,0.1) !important; color: #fff !important; border-color: rgba(255,255,255,0.3) !important; }
+          ._form_15_ ._field-wrapper input::placeholder { color: rgba(255,255,255,0.5) !important; }
+        `}</style>
+      </div>
     </div>
   );
 }
