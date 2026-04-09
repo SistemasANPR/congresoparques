@@ -25,6 +25,7 @@ import playasRosaritoImg from "@assets/Playas_de_Rosarito_1769531625160.png";
 import rutaVinoImg from "@assets/Ruta_del_Vino_en_el_Valle_de_Guadalupe_1769531625160.png";
 import tecateImg from "@assets/Tecate_1769531625160.png";
 import corredorCosteroImg from "@assets/Corredor_Costero_Escenico_1769531625160.png";
+import SupportSection from "@/components/SupportSection";
 
 const attractionsData = [
   {
@@ -239,6 +240,7 @@ export default function Sede() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Tijuana, Baja California"
           subtitle="Ciudad sede del IX Congreso Internacional de Parques Urbanos"

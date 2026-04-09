@@ -9,6 +9,7 @@ import aeromexicoLogo from "@assets/Aeromexico_1769210259346.jpg";
 import americanAirlinesLogo from "@assets/America_Airlines_1769210259348.jpg";
 import volarisBanner from "@assets/volaris_1770420013681.jpeg";
 import aeromexicoBanner from "@assets/aeromexico_1770420013682.jpeg";
+import SupportSection from "@/components/SupportSection";
 
 export default function Conectividad() {
   const vuelosNacionales = [
@@ -64,6 +65,7 @@ export default function Conectividad() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Conectividad"
           subtitle="Descubre cómo llegar a Tijuana desde cualquier parte del mundo"

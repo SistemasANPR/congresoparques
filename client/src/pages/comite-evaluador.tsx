@@ -30,6 +30,7 @@ import gerardoIbarraImg from "@assets/Gerardo-Ibarra.jpeg_1768929344701.jpg";
 import luisRomahnImg from "@assets/Luis_Romahn_1768929344702.jpeg";
 import taniaJaimeImg from "@assets/Tania_Jaime_de_la_Torre_1768929344703.png";
 import victorSantillanImg from "@assets/Victor_Santillan_1768929344704.jpg";
+import SupportSection from "@/components/SupportSection";
 
 interface MemberCardProps {
   name: string;
@@ -113,6 +114,7 @@ export default function ComiteEvaluador() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Consejo Evaluador"
           subtitle="Conoce al equipo de expertos que evaluará las propuestas del congreso"

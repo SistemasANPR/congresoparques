@@ -4,6 +4,7 @@ import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import SupportSection from "@/components/SupportSection";
 
 interface FAQItem {
   pregunta: string;
@@ -453,6 +454,7 @@ export default function PreguntasFrecuentes() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Preguntas Frecuentes"
           subtitle="Encuentra respuestas a las dudas más comunes sobre el congreso"

@@ -9,6 +9,7 @@ import type { SpeakerCategory } from "@/components/HexagonPhoto";
 import iconoMagistrales from "@assets/Conferencias_Magistrales_1769038571197.png";
 import iconoSesiones from "@assets/Sesiones_Educativas_1769038571198.png";
 import iconoTalleres from "@assets/Talleres_Vivenciales_1769038571197.png";
+import SupportSection from "@/components/SupportSection";
 
 interface Conferencista {
   id: string;
@@ -411,6 +412,7 @@ export default function Ponentes() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader
           title="Ponentes"
           subtitle="Conoce a los expertos que construirán el programa más innovador"

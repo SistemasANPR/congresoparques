@@ -8,6 +8,7 @@ import realInnLogoUrl from "@assets/Real_Inn_1770394433300.png";
 import grandHotelLogoUrl from "@assets/Grand_Hotel_1770394433295.webp";
 import lucernaLogoUrl from "@assets/logoLucerna_1770394433297.png";
 import kTowerLogoUrl from "@assets/1631370969955_1770419614682.jpg";
+import SupportSection from "@/components/SupportSection";
 
 interface Tarifa {
   tipo: string;
@@ -651,6 +652,7 @@ export default function Hospedaje() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader
           title="Alojamiento"
           subtitle="¡Elige tu hospedaje!"

@@ -4,6 +4,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import logoANPRUrl from "@assets/ANPR_1769104901762.png";
+import SupportSection from "@/components/SupportSection";
 
 export default function Organizadores() {
   const contactos = [
@@ -31,6 +32,7 @@ export default function Organizadores() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Organizador"
           icon={logoANPRUrl}

@@ -1,6 +1,7 @@
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import SupportSection from "@/components/SupportSection";
 
 export default function ConstruccionComunitaria() {
   return (
@@ -20,6 +21,7 @@ export default function ConstruccionComunitaria() {
       />
       <Navigation />
       <main className="pt-28 md:pt-36 lg:pt-40 pb-16">
+        <SupportSection />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-center mb-8 uppercase" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }} data-testid="page-title">Construcción Comunitaria</h1>

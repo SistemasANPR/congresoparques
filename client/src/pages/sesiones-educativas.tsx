@@ -11,6 +11,7 @@ import sesionesImg from "@assets/Sesiones Educativas_1758578569496.png";
 import expoImg from "@assets/Expo Espacio Publico_1758580313612.png";
 import masterImg from "@assets/Master Classes_1758578569492.png";
 import eventosImg from "@assets/Eventos Sociales_1758578569496.png";
+import SupportSection from "@/components/SupportSection";
 
 export default function SesionesEducativas() {
   return (
@@ -31,6 +32,7 @@ export default function SesionesEducativas() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Convocatoria Sesiones Educativas"
           subtitle="Comparte tus proyectos y experiencias con profesionales de toda Latinoamérica"

@@ -477,8 +477,12 @@ export default function Landing() {
       />
       <Navigation />
 
+      <div className="pt-28 sm:pt-32 md:pt-36 lg:pt-40">
+        <SupportSection />
+      </div>
+
       {/* Hero Section */}
-      <section id="hero" className="relative flex items-center hero-bg-new pt-28 sm:pt-32 md:pt-36 lg:pt-40 xl:pt-44 2xl:pt-48 pb-16 sm:pb-18 md:pb-24 lg:pb-28 xl:pb-32 2xl:pb-36 overflow-hidden">
+      <section id="hero" className="relative flex items-center hero-bg-new pb-16 sm:pb-18 md:pb-24 lg:pb-28 xl:pb-32 2xl:pb-36 overflow-hidden">
         {/* Background Image Carousel with Purple Halftone Filter */}
         <div className="absolute inset-0 hero-bg-carousel">
           {heroBackgroundImages.map((image, index) => (
@@ -634,7 +638,6 @@ export default function Landing() {
         ></div>
       </section>
 
-      <SupportSection sectionId="aliados" className="section-animate animate-fadeInUp" />
 
       {/* Information Section */}
       <section id="info" className="py-20 bg-[#f5f5f7] section-animate animate-fadeInUp">

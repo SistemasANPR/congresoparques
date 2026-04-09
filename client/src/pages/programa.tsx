@@ -4,6 +4,7 @@ import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import SupportSection from "@/components/SupportSection";
 
 interface Ponente {
   id: string;
@@ -184,6 +185,7 @@ export default function Programa() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Programa"
           subtitle="Descubre todas las actividades del congreso"

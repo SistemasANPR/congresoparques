@@ -47,6 +47,7 @@ import masterClass1 from "@assets/Master_class_1_1769123164371.jpg";
 import masterClass2 from "@assets/Master_class_2_1769123164370.jpg";
 import masterClass3 from "@assets/Master_class_3_1769123164370.jpg";
 import masterClass4 from "@assets/Master_class_4_1769123164370.jpg";
+import SupportSection from "@/components/SupportSection";
 
 interface WorkshopCarouselProps {
   images: string[];
@@ -598,6 +599,7 @@ export default function Talleres() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader
           title="Talleres"
           subtitle="Aprende haciendo, colaborando y resolviendo retos reales"

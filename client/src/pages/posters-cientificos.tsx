@@ -4,6 +4,7 @@ import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import SupportSection from "@/components/SupportSection";
 
 export default function PostersCientificos() {
   return (
@@ -24,6 +25,7 @@ export default function PostersCientificos() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Convocatoria Póster Científico"
           subtitle="Difunde tus investigaciones y proyectos relacionados con el espacio público"

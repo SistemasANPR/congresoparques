@@ -356,14 +356,14 @@ export default function Congreso() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
+
         <PageHeader
           title="Congreso Parques 2026"
           subtitle="Un espacio de aprendizaje y formación creado para quienes transforman los parques y espacios públicos en motores de bienestar urbano."
           icon={congresoIconUrl}
           iconAlt="Icono Congreso Parques"
         />
-
-        <SupportSection />
 
         {/* ¿Por qué asistir? */}
         <section className="py-20 md:py-24 bg-[#f5f5f7]">

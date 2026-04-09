@@ -3,6 +3,7 @@ import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
+import SupportSection from "@/components/SupportSection";
 
 export default function Preparate() {
   return (
@@ -23,6 +24,7 @@ export default function Preparate() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Prepárate Para El Congreso"
           subtitle="Todo lo que necesitas saber para aprovechar al máximo tu experiencia"

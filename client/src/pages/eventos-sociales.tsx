@@ -8,6 +8,7 @@ import almuerzoImg from "@assets/Eventos_sociales-Almuerzo_1769206192057.png";
 import beerMixImg from "@assets/Eventos_sociales-Beer_and_Mix_Party_1769205643427.jpg";
 import cenaConsejoImg from "@assets/Eventos_sociales-Cena_de_Consejo_1769205643429.jpg";
 import clausuraImg from "@assets/Eventos_sociales-Evento_de_Clausura_1769205643430.jpg";
+import SupportSection from "@/components/SupportSection";
 
 export default function EventosSociales() {
   return (
@@ -28,6 +29,7 @@ export default function EventosSociales() {
       <Navigation />
 
       <main className="pt-28 md:pt-36 lg:pt-40">
+        <SupportSection />
         <PageHeader 
           title="Eventos Sociales"
           subtitle="¡Llegó la hora de convivir, relajarte y hacer nuevos contactos!"
