@@ -11,6 +11,8 @@ import { PageHeader } from "@/components/PageHeader";
 import congresoIconUrl from "@assets/Recurso_10_1769118595799.png";
 import fondoCongresoUrl from "@assets/fondo-congreso-parques_1766092963263.png";
 import lineaTiempo from "@assets/image_1765236417102.png";
+import logoFIDEMNew from "@assets/Fidem_1775773539832.png";
+import logoCDTNew from "@assets/CDT_1775773539837.png";
 import conferenciaMagistral from "@assets/Conferencia Magistral_1758578349365.jpg";
 import sesionEducativa from "@assets/Sesion educativa_1758578349360.jpg";
 import tallerVivencial from "@assets/Taller vivencial_1758578349360.jpg";
@@ -439,13 +441,18 @@ export default function Congreso() {
                         Apoya
                       </h3>
                     </div>
-                    {/* Logo Area - Vertical layout for both logos */}
+                    {/* Logo Area - Two logos stacked */}
                     <div className="flex-1 flex items-center justify-center">
-                      <div className="flex flex-col items-center justify-center gap-5 w-full">
+                      <div className="flex flex-col items-center justify-center gap-4 w-full">
                         <img
-                          src="https://anpr.org.mx/wp-content/uploads/2026/04/LOGOS-FIDEM-CINTILLO.png"
-                          alt="FIDEM - CDT Patrocinadores"
-                          className="w-full max-w-[280px] h-auto object-contain"
+                          src={logoFIDEMNew}
+                          alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
+                          className="w-full max-w-[220px] h-auto object-contain"
+                        />
+                        <img
+                          src={logoCDTNew}
+                          alt="CDT - Consejo de Desarrollo Económico de Tijuana"
+                          className="w-full max-w-[220px] h-auto object-contain"
                         />
                       </div>
                     </div>

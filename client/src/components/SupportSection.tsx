@@ -1,6 +1,6 @@
 import logoANPR from "@assets/LOGO ANPR_1758652591788.png";
-import logoFIDEM from "@assets/LOGO_FIDEM_1775664518580.png";
-import logoCDT from "@assets/LOGO_CDT_1775664518582.png";
+import logoFIDEM from "@assets/Fidem_1775773539832.png";
+import logoCDT from "@assets/CDT_1775773539837.png";
 
 interface SupportSectionProps {
   sectionId?: string;
