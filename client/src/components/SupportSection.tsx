@@ -32,7 +32,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                   <img
                     src={logoANPR}
                     alt="ANPR - Asociación Nacional de Parques y Recreación México"
-                    className="object-contain w-auto h-14 md:h-20 max-w-[140px] md:max-w-[180px] hover:scale-105 transition-transform"
+                    className="object-contain w-auto h-20 md:h-28 max-w-[180px] md:max-w-[240px] hover:scale-105 transition-transform"
                   />
                 </a>
               </div>
@@ -59,7 +59,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                   <img
                     src={logoFIDEM}
                     alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
-                    className="object-contain w-auto h-14 md:h-20 max-w-[140px] md:max-w-[180px] hover:scale-105 transition-transform"
+                    className="object-contain w-auto h-20 md:h-28 max-w-[180px] md:max-w-[240px] hover:scale-105 transition-transform"
                   />
                 </a>
               </div>
@@ -86,7 +86,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                   <img
                     src={logoCDT}
                     alt="CDT - Consejo de Desarrollo de Tijuana"
-                    className="object-contain w-auto h-14 md:h-20 max-w-[140px] md:max-w-[180px] hover:scale-105 transition-transform"
+                    className="object-contain w-auto h-20 md:h-28 max-w-[180px] md:max-w-[240px] hover:scale-105 transition-transform"
                   />
                 </a>
               </div>
