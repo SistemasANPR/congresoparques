@@ -9,88 +9,95 @@ interface SupportSectionProps {
 
 export default function SupportSection({ sectionId, className = "" }: SupportSectionProps) {
   return (
-    <section id={sectionId} className={`py-4 sm:py-5 bg-white ${className}`}>
-      <div className="container mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+    <section
+      id={sectionId}
+      className={`py-6 sm:py-8 ${className}`}
+      style={{ background: 'linear-gradient(135deg, #0e0477 0%, #35219b 50%, #6847f6 100%)' }}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
           <div className="flex flex-row items-stretch justify-center gap-0">
 
             {/* Organiza */}
-            <div className="flex-1 flex flex-col items-center gap-1.5 px-3 sm:px-5">
-              <h3
-                className="text-[10px] sm:text-xs md:text-sm font-bold whitespace-nowrap text-center"
-                style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}
+            <a
+              href="https://anpr.org.mx/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex flex-col items-center gap-3 px-4 sm:px-8 group"
+            >
+              <span
+                className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center"
+                style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
-                Organiza:
-              </h3>
-              <div className="w-full flex items-center justify-center py-3 sm:py-4">
-                <a
-                  href="https://anpr.org.mx/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center"
-                >
-                  <img
-                    src={logoANPR}
-                    alt="ANPR - Asociación Nacional de Parques y Recreación México"
-                    className="object-contain w-auto h-20 md:h-28 max-w-[180px] md:max-w-[240px] hover:scale-105 transition-transform"
-                  />
-                </a>
+                Organiza
+              </span>
+              <div
+                className="w-full flex items-center justify-center rounded-xl py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
+                style={{ background: 'rgba(255,255,255,0.95)' }}
+              >
+                <img
+                  src={logoANPR}
+                  alt="ANPR - Asociación Nacional de Parques y Recreación México"
+                  className="object-contain h-16 md:h-24 w-auto max-w-[160px] md:max-w-[220px] transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-            </div>
+            </a>
 
             {/* Separador */}
-            <div className="w-px bg-gray-200 self-stretch mx-1" />
+            <div className="w-px self-stretch mx-2 sm:mx-3" style={{ background: 'rgba(255,255,255,0.2)' }} />
 
             {/* Apoyado con recursos de */}
-            <div className="flex-1 flex flex-col items-center gap-1.5 px-3 sm:px-5">
-              <h3
-                className="text-[10px] sm:text-xs md:text-sm font-bold text-center"
-                style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}
+            <a
+              href="https://www.bcfidem.com.mx/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex flex-col items-center gap-3 px-4 sm:px-8 group"
+            >
+              <span
+                className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center"
+                style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
-                Apoyado con recursos de:
-              </h3>
-              <div className="w-full flex items-center justify-center py-3 sm:py-4">
-                <a
-                  href="https://www.bcfidem.com.mx/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center"
-                >
-                  <img
-                    src={logoFIDEM}
-                    alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
-                    className="object-contain w-auto h-20 md:h-28 max-w-[180px] md:max-w-[240px] hover:scale-105 transition-transform"
-                  />
-                </a>
+                Apoyado con recursos de
+              </span>
+              <div
+                className="w-full flex items-center justify-center rounded-xl py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
+                style={{ background: 'rgba(255,255,255,0.95)' }}
+              >
+                <img
+                  src={logoFIDEM}
+                  alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
+                  className="object-contain h-16 md:h-24 w-auto max-w-[160px] md:max-w-[220px] transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-            </div>
+            </a>
 
             {/* Separador */}
-            <div className="w-px bg-gray-200 self-stretch mx-1" />
+            <div className="w-px self-stretch mx-2 sm:mx-3" style={{ background: 'rgba(255,255,255,0.2)' }} />
 
             {/* A través del */}
-            <div className="flex-1 flex flex-col items-center gap-1.5 px-3 sm:px-5">
-              <h3
-                className="text-[10px] sm:text-xs md:text-sm font-bold text-center"
-                style={{ color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}
+            <a
+              href="https://cdt.org.mx/nosotros/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex flex-col items-center gap-3 px-4 sm:px-8 group"
+            >
+              <span
+                className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center"
+                style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
-                A través del:
-              </h3>
-              <div className="w-full flex items-center justify-center py-3 sm:py-4">
-                <a
-                  href="https://cdt.org.mx/nosotros/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center"
-                >
-                  <img
-                    src={logoCDT}
-                    alt="CDT - Consejo de Desarrollo de Tijuana"
-                    className="object-contain w-auto h-20 md:h-28 max-w-[180px] md:max-w-[240px] hover:scale-105 transition-transform"
-                  />
-                </a>
+                A través del
+              </span>
+              <div
+                className="w-full flex items-center justify-center rounded-xl py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
+                style={{ background: 'rgba(255,255,255,0.95)' }}
+              >
+                <img
+                  src={logoCDT}
+                  alt="CDT - Consejo de Desarrollo de Tijuana"
+                  className="object-contain h-16 md:h-24 w-auto max-w-[160px] md:max-w-[220px] transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
-            </div>
+            </a>
 
           </div>
         </div>
