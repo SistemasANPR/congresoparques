@@ -54,7 +54,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
               className="flex-1 flex flex-col items-center gap-3 px-4 sm:px-8 group"
             >
               <span
-                className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center"
+                className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center whitespace-nowrap"
                 style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
                 Apoyado con recursos de
