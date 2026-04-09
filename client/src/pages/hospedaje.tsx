@@ -651,7 +651,7 @@ export default function Hospedaje() {
       />
       <Navigation />
 
-      <main className="pt-28 md:pt-36 lg:pt-40">
+      <main className="pt-[100px] md:pt-[116px] lg:pt-[132px]">
         <SupportSection />
         <PageHeader
           title="Alojamiento"

@@ -20,7 +20,7 @@ export default function ConstruccionComunitaria() {
         speed="normal"
       />
       <Navigation />
-      <main className="pt-28 md:pt-36 lg:pt-40 pb-16">
+      <main className="pt-[100px] md:pt-[116px] lg:pt-[132px] pb-16">
         <SupportSection />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">

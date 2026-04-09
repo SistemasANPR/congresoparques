@@ -158,7 +158,7 @@ export default function ExpoEspacioPublico() {
       />
       <Navigation />
 
-      <main className="pt-24 md:pt-28">
+      <main className="pt-[100px] md:pt-[116px]">
         {/* Hero Section - Expo Espacio Público */}
         <section
           id="hero-expo"
