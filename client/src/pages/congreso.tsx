@@ -365,6 +365,190 @@ export default function Congreso() {
           iconAlt="Icono Congreso Parques"
         />
 
+        {/* Aliados Estratégicos Section */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 
+              className="text-3xl md:text-4xl lg:text-5xl font-black text-center mb-12 md:mb-16 text-[#012787] uppercase"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              Aliados Estratégicos
+            </h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+              {/* Partner Cards Column */}
+              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Card 1 - Organiza (ANPR) */}
+                <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
+                  {/* Initial State */}
+                  <div className="flex flex-col h-full transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                    {/* Title Area - Fixed height container */}
+                    <div className="h-16 flex items-center justify-center">
+                      <h3
+                        className="text-xl md:text-2xl font-black text-[#012787] uppercase text-center"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Organiza
+                      </h3>
+                    </div>
+                    {/* Logo Area - Flexible container */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <img
+                        src={logoANPRNew}
+                        alt="ANPR México"
+                        className="w-32 h-32 md:w-40 md:h-40 object-contain"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Hover State */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-white">
+                    <div>
+                      <h3 
+                        className="text-lg md:text-xl font-black text-[#012787] mb-3 uppercase"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Organiza
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        El Congreso Parques es organizado por la Asociación Nacional de Parques y Recreación de México (ANPR México), una organización no gubernamental dedicada a la profesionalización del sector de parques y espacios públicos en México y América Latina, a través de contenidos, certificaciones y eventos que convierten el conocimiento en herramientas prácticas.
+                      </p>
+                    </div>
+                    <a 
+                      href="https://www.anpr.org.mx" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[#6847f6] font-semibold hover:text-[#012787] transition-colors mt-4"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Conoce más →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Card 2 - Apoya (FIDEM & CDT) */}
+                <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
+                  {/* Initial State */}
+                  <div className="flex flex-col h-full transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
+                    {/* Title Area - Fixed height container (same as Card 1) */}
+                    <div className="h-16 flex items-center justify-center">
+                      <h3
+                        className="text-xl md:text-2xl font-black text-[#012787] uppercase text-center"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Apoya
+                      </h3>
+                    </div>
+                    {/* Logo Area - Vertical layout for both logos */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="flex flex-col items-center justify-center gap-5 w-full">
+                        <img
+                          src="https://anpr.org.mx/wp-content/uploads/2026/04/LOGOS-FIDEM-CINTILLO.png"
+                          alt="FIDEM - CDT Patrocinadores"
+                          className="w-full max-w-[280px] h-auto object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Hover State */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-white">
+                    <div>
+                      <h3 
+                        className="text-lg md:text-xl font-black text-[#012787] mb-3 uppercase"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        Apoya
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        El Congreso Parques se realiza de la mano y gracias al Fideicomiso Empresarial del Estado de Baja California (FIDEM) y del Consejo de Desarrollo de Tijuana (CDT), una institución que marca la pauta en la planeación estratégica y el impulso de proyectos de largo plazo para la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad civil, el CDT articula voluntades, facilita alianzas y potencia iniciativas que elevan la competitividad y calidad de vida.
+                      </p>
+                    </div>
+                    <a 
+                      href="https://www.cdt.org.mx" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-[#6847f6] font-semibold hover:text-[#012787] transition-colors mt-4"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Conoce más →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Block Column */}
+              <div className="lg:col-span-1">
+                <div className="bg-[#35219b] rounded-2xl p-8 md:p-10 h-full">
+                  <div className="flex items-center gap-3 mb-8">
+                    <Mail className="w-7 h-7 md:w-8 md:h-8 text-[#BCCE16]" />
+                    <h3 
+                      className="text-2xl md:text-3xl font-black text-white uppercase"
+                      style={{ fontFamily: 'Montserrat, sans-serif' }}
+                    >
+                      Contáctanos
+                    </h3>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Contenido y Programas:
+                      </p>
+                      <a 
+                        href="mailto:contenido@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        contenido@anpr.org.mx
+                      </a>
+                    </div>
+                    
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Comercial y Ventas:
+                      </p>
+                      <a 
+                        href="mailto:vinculacion@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        vinculacion@anpr.org.mx
+                      </a>
+                    </div>
+                    
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Comunicación y Prensa:
+                      </p>
+                      <a 
+                        href="mailto:comunicacion@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        comunicacion@anpr.org.mx
+                      </a>
+                    </div>
+                    
+                    <div>
+                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Información General y Boletos:
+                      </p>
+                      <a 
+                        href="mailto:hola@anpr.org.mx"
+                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
+                        style={{ fontFamily: 'Montserrat, sans-serif' }}
+                      >
+                        hola@anpr.org.mx
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ¿Por qué asistir? */}
         <section className="py-20 md:py-24 bg-[#f5f5f7]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -756,189 +940,6 @@ export default function Congreso() {
           </div>
         ))}
 
-        {/* Aliados Estratégicos Section */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container mx-auto px-4">
-            <h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-black text-center mb-12 md:mb-16 text-[#012787] uppercase"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Aliados Estratégicos
-            </h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
-              {/* Partner Cards Column */}
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Card 1 - Organiza (ANPR) */}
-                <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
-                  {/* Initial State */}
-                  <div className="flex flex-col h-full transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
-                    {/* Title Area - Fixed height container */}
-                    <div className="h-16 flex items-center justify-center">
-                      <h3
-                        className="text-xl md:text-2xl font-black text-[#012787] uppercase text-center"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        Organiza
-                      </h3>
-                    </div>
-                    {/* Logo Area - Flexible container */}
-                    <div className="flex-1 flex items-center justify-center">
-                      <img
-                        src={logoANPRNew}
-                        alt="ANPR México"
-                        className="w-32 h-32 md:w-40 md:h-40 object-contain"
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* Hover State */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-white">
-                    <div>
-                      <h3 
-                        className="text-lg md:text-xl font-black text-[#012787] mb-3 uppercase"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        Organiza
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        El Congreso Parques es organizado por la Asociación Nacional de Parques y Recreación de México (ANPR México), una organización no gubernamental dedicada a la profesionalización del sector de parques y espacios públicos en México y América Latina, a través de contenidos, certificaciones y eventos que convierten el conocimiento en herramientas prácticas.
-                      </p>
-                    </div>
-                    <a 
-                      href="https://www.anpr.org.mx" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#6847f6] font-semibold hover:text-[#012787] transition-colors mt-4"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      Conoce más →
-                    </a>
-                  </div>
-                </div>
-
-                {/* Card 2 - Apoya (FIDEM & CDT) */}
-                <div className="group relative bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:border-[#6847f6]/30 cursor-pointer overflow-hidden min-h-[320px] flex flex-col">
-                  {/* Initial State */}
-                  <div className="flex flex-col h-full transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-[-10px]">
-                    {/* Title Area - Fixed height container (same as Card 1) */}
-                    <div className="h-16 flex items-center justify-center">
-                      <h3
-                        className="text-xl md:text-2xl font-black text-[#012787] uppercase text-center"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        Apoya
-                      </h3>
-                    </div>
-                    {/* Logo Area - Vertical layout for both logos */}
-                    <div className="flex-1 flex items-center justify-center">
-                      <div className="flex flex-col items-center justify-center gap-5 w-full">
-                        <img
-                          src="https://anpr.org.mx/wp-content/uploads/2026/04/LOGOS-FIDEM-CINTILLO.png"
-                          alt="FIDEM - CDT Patrocinadores"
-                          className="w-full max-w-[280px] h-auto object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Hover State */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-white">
-                    <div>
-                      <h3 
-                        className="text-lg md:text-xl font-black text-[#012787] mb-3 uppercase"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        Apoya
-                      </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        El Congreso Parques se realiza de la mano y gracias al Fideicomiso Empresarial del Estado de Baja California (FIDEM) y del Consejo de Desarrollo de Tijuana (CDT), una institución que marca la pauta en la planeación estratégica y el impulso de proyectos de largo plazo para la región. Con un modelo de colaboración entre gobierno, iniciativa privada, academia y sociedad civil, el CDT articula voluntades, facilita alianzas y potencia iniciativas que elevan la competitividad y calidad de vida.
-                      </p>
-                    </div>
-                    <a 
-                      href="https://www.cdt.org.mx" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[#6847f6] font-semibold hover:text-[#012787] transition-colors mt-4"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      Conoce más →
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Contact Block Column */}
-              <div className="lg:col-span-1">
-                <div className="bg-[#35219b] rounded-2xl p-8 md:p-10 h-full">
-                  <div className="flex items-center gap-3 mb-8">
-                    <Mail className="w-7 h-7 md:w-8 md:h-8 text-[#BCCE16]" />
-                    <h3 
-                      className="text-2xl md:text-3xl font-black text-white uppercase"
-                      style={{ fontFamily: 'Montserrat, sans-serif' }}
-                    >
-                      Contáctanos
-                    </h3>
-                  </div>
-                  
-                  <div className="space-y-6">
-                    <div>
-                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Contenido y Programas:
-                      </p>
-                      <a 
-                        href="mailto:contenido@anpr.org.mx"
-                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        contenido@anpr.org.mx
-                      </a>
-                    </div>
-                    
-                    <div>
-                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Comercial y Ventas:
-                      </p>
-                      <a 
-                        href="mailto:vinculacion@anpr.org.mx"
-                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        vinculacion@anpr.org.mx
-                      </a>
-                    </div>
-                    
-                    <div>
-                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Comunicación y Prensa:
-                      </p>
-                      <a 
-                        href="mailto:comunicacion@anpr.org.mx"
-                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        comunicacion@anpr.org.mx
-                      </a>
-                    </div>
-                    
-                    <div>
-                      <p className="text-white/70 text-sm mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Información General y Boletos:
-                      </p>
-                      <a 
-                        href="mailto:hola@anpr.org.mx"
-                        className="text-white font-medium hover:text-[#BCCE16] transition-colors"
-                        style={{ fontFamily: 'Montserrat, sans-serif' }}
-                      >
-                        hola@anpr.org.mx
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />
