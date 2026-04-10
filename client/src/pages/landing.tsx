@@ -606,7 +606,7 @@ export default function Landing() {
                 style={{ fontFamily: 'Antonio, sans-serif', lineHeight: '1.2' }}
                 data-testid="hero-cta"
               >
-                Ver precios de preventa
+                Ver precios de venta
               </button>
               <a
                 href="https://anpr.org.mx/wp-content/uploads/2026/03/CP-2026-Universidades-2-1.pdf"
