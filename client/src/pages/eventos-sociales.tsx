@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Clock, MapPin, Calendar } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
@@ -10,7 +11,68 @@ import cenaConsejoImg from "@assets/Eventos_sociales-Cena_de_Consejo_17692056434
 import clausuraImg from "@assets/Eventos_sociales-Evento_de_Clausura_1769205643430.jpg";
 import SupportSection from "@/components/SupportSection";
 
+interface ProgramaItem {
+  id: string;
+  fecha: string;
+  inicio: string;
+  fin: string;
+  titulo: string;
+  tipo: string;
+}
+
+interface ProgramaResponse {
+  success: boolean;
+  data: ProgramaItem[];
+}
+
+function formatTime(timeStr: string): string {
+  if (!timeStr) return "";
+  const [hours, minutes] = timeStr.split(":");
+  const h = parseInt(hours, 10);
+  const suffix = h >= 12 ? "pm" : "am";
+  const h12 = h > 12 ? h - 12 : h === 0 ? 12 : h;
+  return `${h12}:${minutes} ${suffix}`;
+}
+
+function useEventosSocialesHorarios() {
+  const [horarios, setHorarios] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    fetch("https://congresoparques.com/cpanel/api/programa.php")
+      .then((r) => r.json())
+      .then((data: ProgramaResponse) => {
+        if (!data.success || !data.data) return;
+        const sociales = data.data.filter((item) => item.tipo === "Evento Social");
+        const map: Record<string, string> = {};
+        sociales.forEach((item) => {
+          const hora = item.inicio && item.fin
+            ? `${formatTime(item.inicio)} – ${formatTime(item.fin)}`
+            : item.inicio
+            ? formatTime(item.inicio)
+            : "";
+          const titulo = item.titulo.toLowerCase();
+          if (titulo.includes("beer") || titulo.includes("mix")) {
+            map["beer"] = hora;
+          } else if (titulo.includes("clausura") || titulo.includes("cierre")) {
+            map["clausura"] = hora;
+          } else if (titulo.includes("cena") || titulo.includes("consejo")) {
+            map["cena"] = hora;
+          }
+        });
+        setHorarios(map);
+      })
+      .catch(() => {});
+  }, []);
+
+  return horarios;
+}
+
 export default function EventosSociales() {
+  const horarios = useEventosSocialesHorarios();
+
+  const horaDisplay = (key: string) =>
+    horarios[key] || "Por confirmar";
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <AnnouncementBanner
@@ -45,6 +107,7 @@ export default function EventosSociales() {
           </div>
         </section>
 
+        {/* Almuerzo */}
         <section className="relative min-h-[500px] flex items-center">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -85,6 +148,7 @@ export default function EventosSociales() {
           </div>
         </section>
 
+        {/* Cena de Consejo */}
         <section className="relative min-h-[500px] flex items-center">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -136,6 +200,7 @@ export default function EventosSociales() {
           </div>
         </section>
 
+        {/* Beer and Mix Party */}
         <section className="relative min-h-[500px] flex items-center">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -167,7 +232,7 @@ export default function EventosSociales() {
                         <Clock className="w-4 h-4" />
                         <span className="font-semibold">Hora:</span>
                       </div>
-                      <p className="text-white/90">(por definir)</p>
+                      <p className="text-white/90">{horaDisplay("beer")}</p>
                     </div>
                     <div>
                       <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
@@ -183,6 +248,7 @@ export default function EventosSociales() {
           </div>
         </section>
 
+        {/* Evento de Clausura */}
         <section className="relative min-h-[500px] flex items-center">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -198,6 +264,20 @@ export default function EventosSociales() {
                   <p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
                     Tras días de aprendizaje y nuevas experiencias, el Evento de Clausura se convierte en el momento ideal para celebrar lo vivido, seguir conectando y compartir contactos. Todo esto en un ambiente especial que hará de este cierre una experiencia memorable.
                   </p>
+
+                  {/* Aviso transporte */}
+                  <div
+                    className="mt-4 flex items-start gap-3 rounded-lg px-4 py-3"
+                    style={{ backgroundColor: 'rgba(188,206,22,0.15)', borderLeft: '4px solid #BCCE16' }}
+                  >
+                    <span className="text-[#BCCE16] text-lg mt-0.5 shrink-0">🚌</span>
+                    <p style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 600, color: '#BCCE16', fontSize: '0.85rem', lineHeight: '1.5' }}>
+                      <span className="uppercase tracking-wide">Nota importante:</span>{" "}
+                      <span style={{ fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
+                        Habrá camión disponible desde el Centro de Convenciones hasta el Parque Esperanto.
+                      </span>
+                    </p>
+                  </div>
                 </div>
                 <div className="p-6" style={{ backgroundColor: '#6847f6' }}>
                   <div className="grid grid-cols-3 gap-4">
@@ -213,7 +293,7 @@ export default function EventosSociales() {
                         <Clock className="w-4 h-4" />
                         <span className="font-semibold">Hora:</span>
                       </div>
-                      <p className="text-white/90">(por definir)</p>
+                      <p className="text-white/90">{horaDisplay("clausura")}</p>
                     </div>
                     <div>
                       <div className="flex items-center gap-2 text-[#BCCE16] mb-1">
