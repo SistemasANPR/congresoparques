@@ -105,6 +105,10 @@ export default function ComiteEvaluador() {
             text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
           },
           {
+            id: "abril",
+            text: "10% DE DESCUENTO DURANTE ABRIL",
+          },
+          {
             id: "estudiantes",
             text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },

@@ -590,6 +590,10 @@ export default function Talleres() {
             text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
           },
           {
+            id: "abril",
+            text: "10% DE DESCUENTO DURANTE ABRIL",
+          },
+          {
             id: "estudiantes",
             text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },
@@ -612,6 +616,14 @@ export default function Talleres() {
             <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 500, color: 'white' }}>
               <strong className="text-[#BCCE16]">Los Talleres</strong> se celebrarán el día miércoles <span className="text-white font-semibold">antes de las sesiones educativas y magistrales</span> y la Expo Espacio Público.
             </p>
+
+            <div className="mt-6 inline-flex items-start gap-3 rounded-xl px-5 py-4 max-w-xl mx-auto" style={{ backgroundColor: 'rgba(188,206,22,0.12)', border: '1px solid rgba(188,206,22,0.4)' }}>
+              <span className="text-[#BCCE16] text-xl mt-0.5 shrink-0">📍</span>
+              <p style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '0.9rem', lineHeight: '1.6', textAlign: 'left' }}>
+                <span className="font-bold uppercase tracking-wide" style={{ color: '#BCCE16' }}>Nota Importante: </span>
+                <span style={{ color: 'rgba(255,255,255,0.9)', fontWeight: 500 }}>Punto de encuentro para los talleres en el Hotel Real Inn.</span>
+              </p>
+            </div>
           </div>
         </section>
 
