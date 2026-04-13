@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award } from "lucide-react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award, Search, X, Mic, BookOpen } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -45,6 +45,15 @@ interface ProgramaResponse {
   data: ProgramaItem[];
 }
 
+interface SearchResult {
+  type: 'session' | 'speaker' | 'company';
+  label: string;
+  sublabel: string;
+  fecha: string;
+  itemId: string;
+  contenidoId?: string;
+}
+
 const tipoColors: Record<string, { bg: string; text: string }> = {
   "Registro": { bg: "bg-gray-400", text: "text-white" },
   "Talleres": { bg: "bg-[#BCCE16]", text: "text-[#0e0477]" },
@@ -83,6 +92,14 @@ export default function Programa() {
   const [error, setError] = useState<string | null>(null);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [expandedDescriptions, setExpandedDescriptions] = useState<Set<string>>(new Set());
+
+  // Search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const toggleExpanded = (id: string) => {
     setExpandedItems(prev => {
@@ -163,6 +180,154 @@ export default function Programa() {
     return titulo.toLowerCase().includes('talleres matutinos');
   };
 
+  // Debounce: actualiza debouncedQuery 300ms después de que el usuario deja de escribir
+  const handleSearchChange = useCallback((value: string) => {
+    setSearchQuery(value);
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(() => setDebouncedQuery(value), 300);
+  }, []);
+
+  // Construir índice de búsqueda a partir de los datos del programa
+  const searchIndex = useMemo((): SearchResult[] => {
+    const results: SearchResult[] = [];
+    const seen = new Set<string>();
+
+    programa.forEach((item) => {
+      // Indexar sesión principal
+      const sessionKey = `session-${item.id}`;
+      if (!seen.has(sessionKey)) {
+        seen.add(sessionKey);
+        results.push({
+          type: 'session',
+          label: item.titulo,
+          sublabel: `${formatDate(item.fecha)} · ${formatTime(item.inicio)}`,
+          fecha: item.fecha,
+          itemId: item.id,
+        });
+      }
+
+      // Indexar contenido (sub-sesiones), ponentes y empresas
+      item.contenido?.forEach((c) => {
+        // Sub-sesión
+        const cKey = `contenido-${c.id}`;
+        if (!seen.has(cKey)) {
+          seen.add(cKey);
+          results.push({
+            type: 'session',
+            label: c.titulo,
+            sublabel: `${item.titulo} · ${formatDate(item.fecha)}`,
+            fecha: item.fecha,
+            itemId: item.id,
+            contenidoId: c.id,
+          });
+        }
+
+        // Ponentes
+        c.ponentes?.forEach((p) => {
+          const speakerKey = `speaker-${p.id}-${item.id}`;
+          if (!seen.has(speakerKey)) {
+            seen.add(speakerKey);
+            results.push({
+              type: 'speaker',
+              label: p.nombre,
+              sublabel: [p.cargo, p.empresa].filter(Boolean).join(' · ') || c.titulo,
+              fecha: item.fecha,
+              itemId: item.id,
+              contenidoId: c.id,
+            });
+          }
+
+          // Empresa
+          if (p.empresa) {
+            const companyKey = `company-${p.empresa.toLowerCase()}-${item.id}-${c.id}`;
+            if (!seen.has(companyKey)) {
+              seen.add(companyKey);
+              results.push({
+                type: 'company',
+                label: p.empresa,
+                sublabel: `${c.titulo} · ${formatDate(item.fecha)}`,
+                fecha: item.fecha,
+                itemId: item.id,
+                contenidoId: c.id,
+              });
+            }
+          }
+        });
+      });
+    });
+
+    return results;
+  }, [programa]);
+
+  // Filtrar resultados según el query con debounce
+  useEffect(() => {
+    const q = debouncedQuery.trim().toLowerCase();
+    if (q.length < 1) {
+      setSearchResults([]);
+      return;
+    }
+    const filtered = searchIndex
+      .filter(r =>
+        r.label.toLowerCase().includes(q) ||
+        r.sublabel.toLowerCase().includes(q)
+      )
+      .slice(0, 8);
+    setSearchResults(filtered);
+  }, [debouncedQuery, searchIndex]);
+
+  // Cerrar dropdown al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setSearchOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Navegar a un resultado: cambiar fecha, expandir item, scroll
+  const navigateToResult = useCallback((result: SearchResult) => {
+    setSearchOpen(false);
+    setSearchQuery("");
+    setDebouncedQuery("");
+    setSearchResults([]);
+
+    // 1. Cambiar a la fecha correcta
+    setFechaSeleccionada(result.fecha);
+
+    // 2. Expandir el bloque principal
+    setExpandedItems(prev => {
+      const next = new Set(prev);
+      next.add(result.itemId);
+      return next;
+    });
+
+    // 3. Scroll al elemento (esperamos un tick para que React renderice)
+    setTimeout(() => {
+      const el = document.getElementById(`programa-item-${result.itemId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Highlight visual temporal
+        el.style.transition = 'box-shadow 0.3s';
+        el.style.boxShadow = '0 0 0 3px #6847f6';
+        setTimeout(() => { el.style.boxShadow = ''; }, 2000);
+      }
+    }, 150);
+  }, []);
+
+  const typeIcon = (type: SearchResult['type']) => {
+    if (type === 'speaker') return <Mic className="w-3.5 h-3.5 text-[#6847f6] flex-shrink-0" />;
+    if (type === 'company') return <Store className="w-3.5 h-3.5 text-[#BCCE16] flex-shrink-0" />;
+    return <BookOpen className="w-3.5 h-3.5 text-[#0e0477] flex-shrink-0" />;
+  };
+
+  const typeLabel = (type: SearchResult['type']) => {
+    if (type === 'speaker') return 'Ponente';
+    if (type === 'company') return 'Empresa';
+    return 'Sesión';
+  };
+
   const programaFiltrado = programa
     .filter(item => item.fecha === fechaSeleccionada)
     .sort((a, b) => a.inicio.localeCompare(b.inicio));
@@ -221,6 +386,78 @@ export default function Programa() {
 
               {!loading && !error && programa.length > 0 && (
                 <>
+                  {/* Buscador dinámico */}
+                  <div ref={searchRef} className="relative mb-8 max-w-2xl mx-auto">
+                    <div className="relative">
+                      <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6847f6]" />
+                      <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={(e) => handleSearchChange(e.target.value)}
+                        onFocus={() => setSearchOpen(true)}
+                        placeholder="Buscar ponente, sesión o empresa..."
+                        className="w-full pl-12 pr-12 py-4 rounded-2xl border-2 border-[#6847f6]/30 focus:border-[#6847f6] focus:outline-none text-base shadow-md transition-all duration-200"
+                        style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}
+                      />
+                      {searchQuery && (
+                        <button
+                          onClick={() => { setSearchQuery(""); setDebouncedQuery(""); setSearchResults([]); setSearchOpen(false); }}
+                          className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
+                        >
+                          <X className="w-3.5 h-3.5 text-gray-600" />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Dropdown de resultados */}
+                    {searchOpen && searchQuery.trim().length > 0 && (
+                      <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50">
+                        {searchResults.length > 0 ? (
+                          <>
+                            <div className="px-4 py-2 bg-gray-50 border-b border-gray-100">
+                              <p className="text-xs text-gray-500 font-semibold uppercase tracking-wider" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                                {searchResults.length} resultado{searchResults.length !== 1 ? 's' : ''}
+                              </p>
+                            </div>
+                            {searchResults.map((result, idx) => (
+                              <button
+                                key={`${result.itemId}-${result.contenidoId ?? ''}-${idx}`}
+                                onClick={() => navigateToResult(result)}
+                                className="w-full flex items-start gap-3 px-4 py-3 hover:bg-[#6847f6]/5 transition-colors text-left border-b border-gray-50 last:border-0"
+                              >
+                                <div className="w-7 h-7 rounded-full bg-[#6847f6]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                  {typeIcon(result.type)}
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-sm font-semibold text-[#0e0477] truncate" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                                    {result.label}
+                                  </p>
+                                  <p className="text-xs text-gray-500 truncate" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                                    {result.sublabel}
+                                  </p>
+                                </div>
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 mt-1" style={{
+                                  backgroundColor: result.type === 'speaker' ? '#6847f6' : result.type === 'company' ? '#BCCE16' : '#0e0477',
+                                  color: result.type === 'company' ? '#0e0477' : 'white',
+                                  fontFamily: 'Montserrat, sans-serif',
+                                }}>
+                                  {typeLabel(result.type)}
+                                </span>
+                              </button>
+                            ))}
+                          </>
+                        ) : (
+                          <div className="px-4 py-8 text-center">
+                            <Search className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+                            <p className="text-sm text-gray-500" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                              No se encontraron resultados para <strong>"{searchQuery}"</strong>
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+
                   {/* Pestañas de fechas */}
                   <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
                     {fechasDisponibles.map((fecha) => (
@@ -255,6 +492,7 @@ export default function Programa() {
                         return (
                           <div
                             key={item.id}
+                            id={`programa-item-${item.id}`}
                             className="relative pl-12 md:pl-20"
                           >
                             {/* Círculo del timeline */}
