@@ -1197,9 +1197,27 @@ export default function Landing() {
             <h2 className="text-3xl md:text-4xl text-center mb-4 uppercase section-title" style={{ color: '#0e0477' }} data-testid="pricing-title">
               PRECIOS
             </h2>
-            <p className="text-center text-gray-600 mb-12 text-lg" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-center text-gray-600 mb-6 text-lg" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Opciones de participación
             </p>
+
+            {/* April Discount Banner */}
+            <div className="mb-10 flex justify-center">
+              <div className="relative inline-flex items-center gap-3 px-6 py-3 rounded-2xl shadow-lg" style={{ background: 'linear-gradient(135deg, #BCCE16 0%, #d4e020 100%)' }}>
+                <span className="text-2xl">🏷️</span>
+                <div>
+                  <p className="text-[#0e0477] font-black text-lg uppercase tracking-wide leading-tight" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                    10% DE DESCUENTO EN ABRIL
+                  </p>
+                  <p className="text-[#0e0477]/80 text-xs font-semibold" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    Válido hasta el 30 de abril de 2026 · Aplica en boletos Oro y Plata
+                  </p>
+                </div>
+                <div className="absolute -top-2 -right-2 bg-[#6847f6] text-white text-xs font-black px-2 py-1 rounded-full shadow" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  -10%
+                </div>
+              </div>
+            </div>
 
             {/* Pricing Cards Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
@@ -1290,11 +1308,23 @@ export default function Landing() {
                   {/* Pricing & CTA - Fixed at bottom */}
                   <div className="mt-auto pt-6">
                     <div className="text-center py-4 border-t border-gray-100">
-                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                      {/* April badge */}
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold mb-2" style={{ backgroundColor: '#BCCE16', color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>
+                        🏷️ Abril · -10%
+                      </span>
+                      {/* Original price crossed out */}
+                      <p className="text-sm text-gray-400 line-through mb-0.5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         $3,944.00 MXN
                       </p>
-                      <p className="text-xs text-gray-500 mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {/* Discounted price */}
+                      <p className="text-3xl font-black text-[#6847f6] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                        $3,549.60 MXN
+                      </p>
+                      <p className="text-xs text-gray-500" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         IVA incluido
+                      </p>
+                      <p className="text-xs font-semibold mt-1" style={{ color: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}>
+                        Válido hasta el 30/04/2026
                       </p>
                     </div>
 
@@ -1386,11 +1416,23 @@ export default function Landing() {
                   {/* Pricing & CTA - Fixed at bottom */}
                   <div className="mt-auto pt-6">
                     <div className="text-center py-4 border-t border-gray-100">
-                      <p className="text-3xl font-black text-[#0e0477] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                      {/* April badge */}
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold mb-2" style={{ backgroundColor: '#BCCE16', color: '#0e0477', fontFamily: 'Montserrat, sans-serif' }}>
+                        🏷️ Abril · -10%
+                      </span>
+                      {/* Original price crossed out */}
+                      <p className="text-sm text-gray-400 line-through mb-0.5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         $3,362.00 MXN
                       </p>
-                      <p className="text-xs text-gray-500 mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {/* Discounted price */}
+                      <p className="text-3xl font-black text-[#6847f6] mb-1" style={{ fontFamily: 'Antonio, sans-serif' }}>
+                        $3,025.80 MXN
+                      </p>
+                      <p className="text-xs text-gray-500" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         IVA incluido
+                      </p>
+                      <p className="text-xs font-semibold mt-1" style={{ color: '#6847f6', fontFamily: 'Montserrat, sans-serif' }}>
+                        Válido hasta el 30/04/2026
                       </p>
                     </div>
 
