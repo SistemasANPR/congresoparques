@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
-import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award, Search, X, Mic, BookOpen } from "lucide-react";
+import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award, Search, X, Mic, BookOpen, Bus } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -66,6 +66,7 @@ const tipoColors: Record<string, { bg: string; text: string }> = {
   "Receso": { bg: "bg-gray-400", text: "text-white" },
   "Expo": { bg: "bg-[#d0dd15]", text: "text-[#0e0477]" },
   "Evento Social": { bg: "bg-[#f71cdd]", text: "text-white" },
+  "Transporte": { bg: "bg-[#6847f6]", text: "text-white" },
   "default": { bg: "bg-gray-500", text: "text-white" }
 };
 
@@ -81,6 +82,7 @@ const tipoIcons: Record<string, typeof Tag> = {
   "Receso": Coffee,
   "Expo": Store,
   "Evento Social": PartyPopper,
+  "Transporte": Bus,
   "default": Tag
 };
 
@@ -168,11 +170,17 @@ export default function Programa() {
   };
 
   const getTipoColor = (tipo: string) => {
-    return tipoColors[tipo] || tipoColors["default"];
+    const t = tipo.trim();
+    if (tipoColors[t]) return tipoColors[t];
+    const key = Object.keys(tipoColors).find(k => k.toLowerCase() === t.toLowerCase());
+    return key ? tipoColors[key] : tipoColors["default"];
   };
 
   const getTipoIcon = (tipo: string) => {
-    return tipoIcons[tipo] || tipoIcons["default"];
+    const t = tipo.trim();
+    if (tipoIcons[t]) return tipoIcons[t];
+    const key = Object.keys(tipoIcons).find(k => k.toLowerCase() === t.toLowerCase());
+    return key ? tipoIcons[key] : tipoIcons["default"];
   };
 
   // Helper para identificar si es un bloque de Talleres Matutinos
