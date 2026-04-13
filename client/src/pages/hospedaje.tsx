@@ -689,35 +689,6 @@ export default function Hospedaje() {
                 <HotelCard key={index} hotel={hotel} />
               ))}
             </div>
-
-            {/* CTA para hoteles interesados */}
-            <div className="max-w-5xl mx-auto mt-16">
-              <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6 md:p-8 text-center">
-                <div className="w-16 h-16 bg-[#6847f6]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Hotel className="w-8 h-8 text-[#6847f6]" />
-                </div>
-                <h3
-                  className="text-xl md:text-2xl mb-3 uppercase"
-                  style={{ fontFamily: "Montserrat, sans-serif", fontWeight: 900, color: "#0e0477" }}
-                >
-                  ¿Tu hotel desea participar?
-                </h3>
-                <p
-                  className="text-gray-600 mb-6 max-w-xl mx-auto"
-                  style={{ fontFamily: "Montserrat, sans-serif", fontWeight: 400 }}
-                >
-                  Si tu hotel está interesado en integrarse como opción oficial para los participantes, contáctanos:
-                </p>
-                <a
-                  href="mailto:info@anpr.org.mx"
-                  className="inline-flex items-center gap-2 bg-[#BCCE16] text-[#0e0477] px-8 py-4 rounded-lg hover:bg-[#d4e620] transition-colors uppercase tracking-wide"
-                  style={{ fontFamily: "Antonio, sans-serif", fontWeight: 700 }}
-                >
-                  <Mail className="w-5 h-5" />
-                  info@anpr.org.mx
-                </a>
-              </div>
-            </div>
           </div>
         </section>
       </main>
