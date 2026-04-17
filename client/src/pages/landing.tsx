@@ -34,7 +34,6 @@ import {
   Ticket,
   GraduationCap,
   FlaskConical,
-  HeartHandshake,
   Camera,
   Crown,
   Medal,
@@ -1066,65 +1065,9 @@ export default function Landing() {
             <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase section-title" data-testid="calls-title">Convocatorias 2026</h2>
 
             {/* Grid de convocatorias */}
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 stagger-children max-w-2xl mx-auto">
-              {/* Convocatoria Voluntarios */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-volunteers">
-                {/* Header con "CONVOCATORIA" */}
-                <div className="text-center py-4" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
-                  <h3 className="text-xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
-                    CONVOCATORIA
-                  </h3>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  {/* Ícono */}
-                  <div className="flex justify-center mb-4">
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: '#35219b' }}>
-                      <HeartHandshake className="w-7 h-7 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Título */}
-                  <h4 className="text-lg text-center uppercase mb-3" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900 }}>
-                    VOLUNTARIOS
-                  </h4>
-
-                  {/* Descripción */}
-                  <p className="text-center text-sm leading-relaxed mb-6 flex-1" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400, color: '#4B5563' }}>
-                    Sé parte del equipo que hace posible el Congreso Parques: apoya en actividades clave, accede a beneficios exclusivos y genera conexiones profesionales.
-                  </p>
-
-                  {/* Fechas */}
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <Calendar className="w-4 h-4 flex-shrink-0" />
-                      <span><strong>Inicio:</strong> 15 de enero, 2026</span>
-                    </div>
-                    <div className="flex items-center justify-center gap-2 text-gray-700 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                      <Calendar className="w-4 h-4 flex-shrink-0" />
-                      <span><strong>Cierre:</strong> 30 de marzo, 2026</span>
-                    </div>
-                  </div>
-
-                  {/* Botón */}
-                  <div className="text-center mt-auto">
-                    <button
-                      disabled
-                      className="px-9 py-4 rounded-lg font-bold text-white uppercase text-base tracking-wide cursor-not-allowed opacity-60"
-                      style={{
-                        backgroundColor: '#6b7280',
-                        fontFamily: 'Antonio, sans-serif'
-                      }}
-                      data-testid="cta-volunteers"
-                    >
-                      CERRADO
-                    </button>
-                  </div>
-                </div>
-              </div>
+            <div className="flex justify-center stagger-children">
               {/* Convocatoria Exhibición Fotográfica */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col" data-testid="call-photo-exhibition">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col w-full max-w-sm" data-testid="call-photo-exhibition">
                 {/* Header con "CONVOCATORIA" */}
                 <div className="text-center py-4" style={{ background: 'linear-gradient(to right, #d0dd15, #f71cdd)' }}>
                   <h3 className="text-xl font-bold text-white uppercase" style={{ fontFamily: 'Antonio, sans-serif' }}>
