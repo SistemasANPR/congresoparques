@@ -568,6 +568,15 @@ export default function Programa() {
                                     {item.contenido!.length} {item.contenido!.length === 1 ? 'actividad' : 'actividades'} · Clic para ver detalles
                                   </p>
                                 )}
+
+                                {/* Nota especial para Expo Lunch */}
+                                {item.titulo.toLowerCase().includes('lunch') && (
+                                  <p className="text-sm text-gray-600 mt-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                                    <span className="text-red-500 font-bold">*</span>
+                                    El lunch está incluido solo para asistentes con gafete que hayan adquirido entrada oro o plata
+                                    <span className="text-red-500 font-bold"> *</span>
+                                  </p>
+                                )}
                               </div>
 
                               {/* Contenido desplegable */}
