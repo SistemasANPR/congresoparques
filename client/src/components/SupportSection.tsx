@@ -11,19 +11,21 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
   return (
     <section
       id={sectionId}
-      className={`py-6 sm:py-8 ${className}`}
+      className={`py-5 sm:py-6 ${className}`}
       style={{ background: 'linear-gradient(135deg, #0e0477 0%, #35219b 50%, #6847f6 100%)' }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-row items-stretch justify-center gap-0">
+
+          {/* Mobile: cuadrícula 3 columnas compactas / Desktop: fila con separadores */}
+          <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4 sm:gap-0">
 
             {/* Organiza */}
             <a
               href="https://anpr.org.mx/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex flex-col items-center gap-3 px-4 sm:px-8 group"
+              className="flex-1 flex flex-col items-center gap-2 sm:gap-3 sm:px-6 lg:px-8 group"
             >
               <span
                 className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center"
@@ -32,54 +34,58 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                 Organiza
               </span>
               <div
-                className="w-full flex items-center justify-center rounded-xl py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
+                className="w-full flex items-center justify-center rounded-xl py-3 sm:py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
                 style={{ background: 'rgba(255,255,255,0.95)' }}
               >
                 <img
                   src={logoANPR}
                   alt="ANPR - Asociación Nacional de Parques y Recreación México"
-                  className="object-contain h-16 md:h-24 w-auto max-w-[160px] md:max-w-[220px] transition-transform duration-300 group-hover:scale-105"
+                  className="object-contain h-12 sm:h-16 md:h-20 lg:h-24 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </a>
 
-            {/* Separador */}
-            <div className="w-px self-stretch mx-2 sm:mx-3" style={{ background: 'rgba(255,255,255,0.2)' }} />
+            {/* Separador vertical — solo en sm+ */}
+            <div className="hidden sm:block w-px self-stretch mx-2 sm:mx-3" style={{ background: 'rgba(255,255,255,0.2)' }} />
+            {/* Separador horizontal — solo en móvil */}
+            <div className="block sm:hidden h-px w-full" style={{ background: 'rgba(255,255,255,0.15)' }} />
 
             {/* Apoyado con recursos de */}
             <a
               href="https://www.bcfidem.com.mx/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex flex-col items-center gap-3 px-4 sm:px-8 group"
+              className="flex-1 flex flex-col items-center gap-2 sm:gap-3 sm:px-6 lg:px-8 group"
             >
               <span
-                className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center whitespace-nowrap"
+                className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight"
                 style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
                 Apoyado con recursos de
               </span>
               <div
-                className="w-full flex items-center justify-center rounded-xl py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
+                className="w-full flex items-center justify-center rounded-xl py-3 sm:py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
                 style={{ background: 'rgba(255,255,255,0.95)' }}
               >
                 <img
                   src={logoFIDEM}
                   alt="FIDEM - Fideicomiso Empresarial del Estado de Baja California"
-                  className="object-contain h-16 md:h-24 w-auto max-w-[160px] md:max-w-[220px] transition-transform duration-300 group-hover:scale-105"
+                  className="object-contain h-12 sm:h-16 md:h-20 lg:h-24 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </a>
 
-            {/* Separador */}
-            <div className="w-px self-stretch mx-2 sm:mx-3" style={{ background: 'rgba(255,255,255,0.2)' }} />
+            {/* Separador vertical — solo en sm+ */}
+            <div className="hidden sm:block w-px self-stretch mx-2 sm:mx-3" style={{ background: 'rgba(255,255,255,0.2)' }} />
+            {/* Separador horizontal — solo en móvil */}
+            <div className="block sm:hidden h-px w-full" style={{ background: 'rgba(255,255,255,0.15)' }} />
 
             {/* A través del */}
             <a
               href="https://cdt.org.mx/nosotros/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex flex-col items-center gap-3 px-4 sm:px-8 group"
+              className="flex-1 flex flex-col items-center gap-2 sm:gap-3 sm:px-6 lg:px-8 group"
             >
               <span
                 className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center"
@@ -88,13 +94,13 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
                 A través del
               </span>
               <div
-                className="w-full flex items-center justify-center rounded-xl py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
+                className="w-full flex items-center justify-center rounded-xl py-3 sm:py-4 px-3 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(188,206,22,0.3)]"
                 style={{ background: 'rgba(255,255,255,0.95)' }}
               >
                 <img
                   src={logoCDT}
                   alt="CDT - Consejo de Desarrollo de Tijuana"
-                  className="object-contain h-16 md:h-24 w-auto max-w-[160px] md:max-w-[220px] transition-transform duration-300 group-hover:scale-105"
+                  className="object-contain h-12 sm:h-16 md:h-20 lg:h-24 w-auto max-w-[120px] sm:max-w-[160px] md:max-w-[200px] transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             </a>
