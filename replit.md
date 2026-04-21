@@ -76,6 +76,11 @@ Preferred communication style: Simple, everyday language.
 - **Build Command**: `npm run build:vercel` - Generates static files in `dist/` folder
 - **Output**: Static SPA with all assets optimized for production
 
+## Pages and Routes
+- `/` — Landing page
+- `/expo-espacio-publico` — Expo Espacio Público 2026 info page; "¡Participa como Visitante!" section has two buttons: register + "Ver Directorio de Expositores"
+- `/directorio-expositores` — Exhibitor directory with 19 companies; cards show logo (via image proxy from Google Drive), description, social links, PDF catalog; searchable by name/description; print-to-PDF button (vector via browser print dialog)
+
 ## SEO Implementation
 - **Google Analytics**: GA4 tracking enabled (G-5JBQPS6SX1)
 - **Meta Tags**: Title, description, keywords optimized for "Congreso Parques Urbanos Tijuana 2026"

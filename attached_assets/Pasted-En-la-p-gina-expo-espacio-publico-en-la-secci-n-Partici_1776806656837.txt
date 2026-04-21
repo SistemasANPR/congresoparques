@@ -1,0 +1,127 @@
+En la página /expo-espacio-publico, en la sección “¡Participa como Visitante!”, necesito agregar una nueva ruta y una nueva funcionalidad relacionada con el Directorio de Expositores.
+
+1. Nuevo botón en la sección “¡Participa como Visitante!”
+
+Agrega un nuevo botón junto al botón actual “Regístrate (entrada sin costo)”.
+
+Nuevo botón
+Texto del botón: Ver Directorio de Expositores
+Debe verse como un botón secundario pero claramente visible y atractivo.
+Mantén consistencia con el estilo visual del sitio.
+Texto breve de apoyo
+
+Agrega una invitación breve para motivar a las personas a conocer a los expositores. Debe ser corta, clara y útil. Puede ser algo como:
+
+Conoce a las marcas, productos y servicios que estarán presentes en Expo Espacio Público 2026.
+o una versión similar, breve y escaneable.
+2. Crear nueva página: Directorio de Expositores
+
+Crea una nueva página para mostrar el contenido del archivo de Excel adjunto en formato de directorio web, no como tabla cruda.
+
+Objetivo de esta página
+
+Convertir la información del Excel en una experiencia tipo directorio:
+
+visualmente atractiva
+fácil de navegar
+optimizada para móvil
+informativa
+alineada al estilo del sitio de Congreso Parques
+3. Estructura del directorio
+
+Usa la información de las columnas del Excel para construir fichas o tarjetas por expositor.
+
+Cada expositor debe poder mostrar, según la información disponible en el Excel:
+
+nombre del expositor
+categoría o giro, si existe
+descripción o información general
+datos de contacto relevantes
+enlaces a redes sociales
+logo del expositor
+publicidad o brochure en PDF
+Importante
+Los logos vienen como enlaces en el Excel: intégralos visualmente dentro de cada ficha.
+Las publicidades/PDF también vienen como enlaces en el Excel: intégralas de forma útil dentro de cada ficha.
+4. Diseño de cada ficha de expositor
+
+Cada expositor debe verse en una ficha o card atractiva, clara y funcional.
+
+Cada ficha debe incluir:
+logo del expositor con buena proporción y nitidez
+nombre del expositor con buena jerarquía visual
+texto informativo breve y fácil de escanear
+botones de redes sociales o contacto con sus respectivos íconos
+un botón o visor para consultar su PDF publicitario
+opción clara para visualizar y también descargar ese PDF individual si aplica
+Criterios UX/UI
+no usar una tabla tipo Excel visible
+priorizar fichas limpias, escaneables y amigables en móvil
+mantener buena jerarquía visual
+hacer que la navegación sea cómoda incluso con muchos expositores
+cuidar que no se vea saturado
+5. Encabezado de la nueva página
+
+La nueva página debe tener un encabezado coherente con el estilo del sitio, pero usando el logo de Expo Espacio Público 2026.
+
+El encabezado debe incluir:
+logo de Expo Espacio Público 2026
+un título claro como:
+Directorio de Expositores
+opcionalmente un subtítulo breve que explique el propósito de la página, por ejemplo:
+Conoce a las marcas, productos y servicios presentes en Expo Espacio Público 2026.
+6. Optimización para móvil
+
+La página debe estar especialmente bien resuelta para mobile.
+
+En móvil:
+las fichas deben apilarse correctamente
+los botones deben ser fáciles de tocar
+los logos deben verse bien proporcionados
+los textos deben ser legibles
+los PDF y enlaces no deben romper el layout
+la navegación debe sentirse ligera y ordenada
+7. Función para descargar todo el directorio en PDF
+
+Agrega una función para que las personas puedan descargar el directorio completo en PDF mediante un botón visible.
+
+Botón
+Texto: Descargar Directorio en PDF
+Requisitos del PDF
+
+El PDF debe:
+
+conservar un estilo visual similar al de la página web creada
+incluir la información de todos los expositores
+ser legible al hacer zoom
+usar texto real vectorial, no una captura o imagen rasterizada
+evitar que el contenido se vea pixelado o distorsionado al abrirlo en un visor PDF
+estar optimizado para consulta offline, para que las personas puedan ahorrar datos después de descargarlo
+Importante
+No generar un PDF a partir de screenshots.
+Debe exportarse como un documento real, con texto seleccionable y nítido.
+Debe incluir logos e información de forma bien organizada.
+8. Funcionalidad adicional recomendada
+
+Si es posible, agrega funciones útiles para mejorar la experiencia del directorio, por ejemplo:
+
+buscador por nombre de expositor
+filtros por categoría o tipo de servicio, si el Excel lo permite
+orden visual claro por bloques o categorías
+carga optimizada para no volver pesada la página
+9. Objetivo UX/UI general
+hacer que el directorio sea útil, atractivo y fácil de consultar
+dar visibilidad a los expositores
+facilitar el contacto con ellos
+ofrecer una buena experiencia tanto en web como en PDF
+mantener coherencia con la identidad visual de Congreso Parques y Expo Espacio Público
+10. Restricciones
+no mostrar el Excel como tabla plana o sin diseño
+no romper el estilo visual del sitio
+no hacer una página pesada o difícil de usar en móvil
+no rasterizar el PDF completo como imagen
+mantener enlaces funcionales y claros
+respetar la información del Excel como fuente principal
+Resultado esperado
+
+En /expo-espacio-publico, la sección “¡Participa como Visitante!” debe incluir un nuevo botón para entrar al Directorio de Expositores. Esa nueva página debe mostrar a los expositores en formato de directorio visual, con logos, datos, redes sociales y PDFs publicitarios, optimizada para móvil y alineada al estilo del sitio. Además, debe incluir un botón para descargar el directorio completo en PDF, generado con texto real y buena calidad de lectura.

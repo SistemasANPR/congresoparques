@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
 import { Calendar, MapPin, Store, Phone, Mail, Clock, Eye, Building2, MessageCircle, Play, X, Search, Users, TrendingUp, Scale, Sparkles, Globe, Target, Award, Briefcase, Rocket, Link2, BarChart3, Compass, HeartHandshake, ChevronLeft, ChevronRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
@@ -345,16 +346,26 @@ export default function ExpoEspacioPublico() {
               <p className="text-base md:text-lg text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto">
                 Entonces <strong className="text-[#BCCE16]">no puedes faltar a la Expo Espacio Público</strong>, el evento que te acerca a las últimas tendencias y soluciones innovadoras que están moldeando el futuro urbano.
               </p>
-              <a
-                href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#BCCE16] hover:bg-[#a8b814] text-[#0e0477] px-8 py-4 sm:px-10 sm:py-5 rounded-lg text-base sm:text-lg font-bold transform hover:scale-105 transition-all uppercase tracking-wide shadow-lg hover:shadow-xl"
-                style={{ fontFamily: 'Antonio, sans-serif' }}
-                data-testid="btn-registro-visitante"
-              >
-                Regístrate (entrada sin costo)
-              </a>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href="https://eventos.podiumeeting.com/es/registro/congreso-parques-2026"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[#BCCE16] hover:bg-[#a8b814] text-[#0e0477] px-8 py-4 sm:px-10 sm:py-5 rounded-lg text-base sm:text-lg font-bold transform hover:scale-105 transition-all uppercase tracking-wide shadow-lg hover:shadow-xl"
+                  style={{ fontFamily: 'Antonio, sans-serif' }}
+                  data-testid="btn-registro-visitante"
+                >
+                  Regístrate (entrada sin costo)
+                </a>
+                <Link
+                  href="/directorio-expositores"
+                  className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#6847f6] px-8 py-4 sm:px-10 sm:py-5 rounded-lg text-base sm:text-lg font-bold transform hover:scale-105 transition-all uppercase tracking-wide"
+                  style={{ fontFamily: 'Antonio, sans-serif' }}
+                >
+                  <Building2 className="w-5 h-5" />
+                  Ver Directorio de Expositores
+                </Link>
+              </div>
             </div>
           </div>
         </section>
