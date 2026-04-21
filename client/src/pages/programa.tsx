@@ -606,7 +606,9 @@ export default function Programa() {
                                                       className="text-lg font-bold text-[#0e0477]"
                                                       style={{ fontFamily: 'Montserrat, sans-serif' }}
                                                     >
-                                                      {contenido.titulo}
+                                                      {contenido.titulo.endsWith('*')
+                                                        ? <>{contenido.titulo.slice(0, -1)}<span className="text-red-500">*</span></>
+                                                        : contenido.titulo}
                                                     </h4>
                                                     {contenido.subtitulo && (
                                                       <p className="text-sm text-[#6847f6] font-medium">{contenido.subtitulo}</p>
