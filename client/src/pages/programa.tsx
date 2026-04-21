@@ -188,6 +188,22 @@ export default function Programa() {
     return titulo.toLowerCase().includes('talleres matutinos');
   };
 
+  // Talleres con horario fijo 9:00 AM – 1:00 PM
+  const TALLERES_HORARIO_FIJO = [
+    'forraje hidropónico',
+    'forraje hidroponico',
+    'movilidad con perspectiva de género',
+    'movilidad con perspectiva de genero',
+    'operación integral del parque esperanto',
+    'operacion integral del parque esperanto',
+  ];
+  const getTallerHorarioFijo = (titulo: string): string | null => {
+    const lower = titulo.toLowerCase().trim();
+    return TALLERES_HORARIO_FIJO.some(t => lower.includes(t) || t.includes(lower))
+      ? '9:00 AM – 1:00 PM'
+      : null;
+  };
+
   // Debounce: actualiza debouncedQuery 300ms después de que el usuario deja de escribir
   const handleSearchChange = useCallback((value: string) => {
     setSearchQuery(value);
@@ -585,11 +601,17 @@ export default function Programa() {
                                                       <p className="text-sm text-[#6847f6] font-medium">{contenido.subtitulo}</p>
                                                     )}
                                                   </div>
-                                                  {/* Horario individual (oculto en Talleres Matutinos) */}
+                                                  {/* Horario individual */}
                                                   {!isTalleresMatutinos(item.titulo) && (
                                                     <div className="flex items-center gap-1 text-sm text-gray-600 flex-shrink-0">
                                                       <Clock className="w-4 h-4 text-[#BCCE16]" />
                                                       <span>{formatTime(contenido.hora_inicio)} - {formatTime(contenido.hora_fin)}</span>
+                                                    </div>
+                                                  )}
+                                                  {isTalleresMatutinos(item.titulo) && getTallerHorarioFijo(contenido.titulo) && (
+                                                    <div className="flex items-center gap-1 text-sm text-gray-600 flex-shrink-0">
+                                                      <Clock className="w-4 h-4 text-[#BCCE16]" />
+                                                      <span>{getTallerHorarioFijo(contenido.titulo)}</span>
                                                     </div>
                                                   )}
                                                 </div>
