@@ -40,7 +40,7 @@ export function NewsletterBar() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 shadow-2xl"
+      className="no-print fixed bottom-0 left-0 right-0 z-50 shadow-2xl"
       style={{
         background: "linear-gradient(135deg, #0e0477 0%, #35219b 50%, #6847f6 100%)",
         borderTop: "3px solid #BCCE16",

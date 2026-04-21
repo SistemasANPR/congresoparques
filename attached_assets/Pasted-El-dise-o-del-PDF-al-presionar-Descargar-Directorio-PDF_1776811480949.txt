@@ -1,0 +1,61 @@
+El diseño del PDF al presionar “Descargar Directorio PDF” ya se ve mucho mejor, pero necesito hacer unos ajustes finales para que el archivo descargable se vea más limpio, funcional y profesional.
+
+Cambios solicitados para el PDF del Directorio
+1. Ocultar elementos que no deben aparecer en el PDF
+
+Quiero que en el PDF no se visualicen estos elementos de la interfaz web, porque no tienen funcionalidad dentro del archivo descargable:
+
+el botón “Efectos ON”
+el bloque o botón de “Suscribirse para recibir novedades por correo”
+
+Estos elementos deben seguir existiendo en la versión web, pero deben excluirse del PDF.
+
+2. Mantener redes sociales como íconos en cada tarjeta
+
+En cada tarjeta del directorio, quiero que las redes sociales y enlaces de contacto sí se vean en el PDF, pero en formato visual limpio:
+
+mostrar web, Facebook e Instagram como íconos
+verificar que cada ícono esté enlazado a su URL correcta según la información de cada expositor
+mantener consistencia visual entre todas las tarjetas
+si alguna tarjeta no tiene cierto enlace, simplemente no mostrar ese ícono
+3. No mostrar URLs o direcciones como texto plano
+
+No quiero que en el PDF se muestren las direcciones web o enlaces como texto visible tipo:
+
+https://...
+www...
+
+En lugar de eso:
+
+los enlaces deben resolverse como botones o íconos interactivos
+cada botón o ícono debe ser clicable dentro del PDF
+esto aplica a redes sociales, sitio web y cualquier enlace equivalente que corresponda mostrar en la tarjeta
+
+La idea es que el PDF se vea como un catálogo diseñado, no como una exportación técnica con URLs visibles.
+
+4. Mantener estilo de catálogo visual
+
+Quiero que el PDF siga conservando el estilo que ya mejoró:
+
+en una sola columna
+una tarjeta debajo de otra
+manteniendo colores, diseño y jerarquía visual
+con apariencia de catálogo gráfico
+con texto nítido y legible al hacer zoom
+sin verse como una impresión automática del navegador
+5. Objetivo UX/UI
+que el PDF se vea más limpio y editorial
+que conserve solo los elementos útiles dentro de un documento descargable
+que los enlaces se presenten de forma visual e intuitiva
+que cada tarjeta mantenga sus botones o íconos interactivos correctamente enlazados
+evitar que el PDF muestre elementos sin función o URLs visibles que ensucien el diseño
+6. Restricciones
+no eliminar estos elementos de la versión web, solo del PDF
+no mostrar URLs como texto plano en el PDF
+sí mantener íconos clicables para web, Facebook e Instagram cuando existan
+verificar que cada ícono tenga su enlace correcto
+no romper el diseño tipo catálogo del PDF
+no dejar huecos o espacios raros al quitar los elementos excluidos
+Resultado esperado
+
+El PDF descargable del Directorio debe verse como un catálogo limpio y profesional, sin mostrar el botón “Efectos ON” ni el bloque de suscripción por correo. En cada tarjeta deben mantenerse las redes sociales y enlaces relevantes en forma de íconos interactivos, con sus respectivos enlaces correctos, y sin mostrar direcciones URL como texto. El resultado final debe conservar una apariencia gráfica, ordenada y funcional.

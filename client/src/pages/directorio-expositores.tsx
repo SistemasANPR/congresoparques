@@ -476,15 +476,31 @@ function PrintCatalog({ items }: { items: Expositor[] }) {
               >
                 {exp.descripcion}
               </p>
-              <div className="flex flex-wrap gap-x-4 gap-y-0.5 text-[10px] text-[#6847f6]" style={{ fontFamily: "Montserrat, sans-serif", WebkitPrintColorAdjust: "exact", printColorAdjust: "exact" }}>
-                {web && <span>🌐 {web.replace("https://", "").replace("http://", "")}</span>}
-                {fb && <span>fb {fb.replace("https://www.facebook.com/", "fb.com/")}</span>}
-                {ig && <span>ig {ig.replace("https://www.instagram.com/", "@").replace("/", "")}</span>}
+              <div className="flex items-center flex-wrap gap-2 mt-auto pt-1">
+                {web && (
+                  <a href={web} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 26, height: 26, borderRadius: "50%", backgroundColor: "#6847f6", color: "#fff", textDecoration: "none" }}>
+                    <Globe style={{ width: 14, height: 14 }} />
+                  </a>
+                )}
+                {fb && (
+                  <a href={fb} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 26, height: 26, borderRadius: "50%", backgroundColor: "#1877f2", color: "#fff", textDecoration: "none" }}>
+                    <Facebook style={{ width: 14, height: 14 }} />
+                  </a>
+                )}
+                {ig && (
+                  <a href={ig} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 26, height: 26, borderRadius: "50%", backgroundColor: "#c13584", color: "#fff", textDecoration: "none" }}>
+                    <Instagram style={{ width: 14, height: 14 }} />
+                  </a>
+                )}
+                {exp.pdfId && (
+                  <a href={pdfViewUrl(exp.pdfId)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 26, height: 26, borderRadius: "50%", backgroundColor: "#BCCE16", color: "#0e0477", textDecoration: "none" }}>
+                    <FileText style={{ width: 14, height: 14 }} />
+                  </a>
+                )}
                 {(exp.telefono || exp.celular) && (
-                  <span>
-                    {exp.telefono && `Tel: ${exp.telefono}`}
-                    {exp.telefono && exp.celular && "  "}
-                    {exp.celular && `Cel: ${exp.celular}`}
+                  <span style={{ fontSize: 10, color: "#555", fontFamily: "Montserrat, sans-serif", marginLeft: 4 }}>
+                    {exp.telefono && <>{exp.telefono}{exp.celular ? " · " : ""}</>}
+                    {exp.celular && exp.celular}
                   </span>
                 )}
               </div>

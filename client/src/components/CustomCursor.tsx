@@ -217,7 +217,7 @@ export function CustomCursor() {
       )}
       <button
         onClick={toggleCursor}
-        className="fixed top-24 right-4 z-[9999] bg-white/90 backdrop-blur-sm text-[#0e0477] px-3 py-2 rounded-full text-xs font-medium shadow-lg border border-[#0e0477]/20 hover:bg-[#0e0477] hover:text-white transition-colors duration-200"
+        className="no-print fixed top-24 right-4 z-[9999] bg-white/90 backdrop-blur-sm text-[#0e0477] px-3 py-2 rounded-full text-xs font-medium shadow-lg border border-[#0e0477]/20 hover:bg-[#0e0477] hover:text-white transition-colors duration-200"
         aria-label={isEnabled ? 'Desactivar efectos del cursor' : 'Activar efectos del cursor'}
         data-testid="toggle-cursor-effects"
       >
