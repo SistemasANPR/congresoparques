@@ -515,16 +515,26 @@ export default function Talleres() {
           const titleCorrections: Record<string, string> = {
             'movilidad con perspectiva de genero': 'Movilidad con Perspectiva de Género',
           };
+          const talleresConHorarioFijo = [
+            'forraje hidropónico',
+            'forraje hidroponico',
+            'movilidad con perspectiva de genero',
+            'movilidad con perspectiva de género',
+            'operación integral del parque esperanto',
+            'operacion integral del parque esperanto',
+          ];
           const enriched = talleresData.data.filter(t => t.disponible === "1").map(t => {
             const lower = t.titulo.toLowerCase().trim();
+            const override: Partial<TallerAPI> = {};
             if (masterClassLocationTitles.includes(lower)) {
-              return {
-                ...t,
-                titulo: titleCorrections[lower] || t.titulo,
-                ubicacion: t.ubicacion || 'Hotel Sede – Hotel Real Inn Tijuana',
-              };
+              override.titulo = titleCorrections[lower] || t.titulo;
+              override.ubicacion = t.ubicacion || 'Hotel Sede – Hotel Real Inn Tijuana';
             }
-            return t;
+            if (talleresConHorarioFijo.some(name => lower.includes(name) || name.includes(lower))) {
+              override.inicio = '09:00:00';
+              override.fin = '13:00:00';
+            }
+            return { ...t, ...override };
           });
           setTalleresAPI(enriched);
         } else {
