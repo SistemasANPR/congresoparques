@@ -11,12 +11,12 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
   return (
     <section
       id={sectionId}
-      className={`py-4 sm:py-6 sm:py-8 ${className}`}
+      className={`py-4 sm:py-6 lg:py-8 ${className}`}
       style={{ background: 'linear-gradient(135deg, #0e0477 0%, #35219b 50%, #6847f6 100%)' }}
     >
       <div className="container mx-auto px-2 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-row items-stretch justify-center gap-0">
+          <div className="flex flex-row items-end justify-center gap-0">
 
             {/* Organiza */}
             <a
@@ -26,7 +26,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
               className="flex-1 flex flex-col items-center gap-1 sm:gap-3 px-1 sm:px-8 group"
             >
               <span
-                className="text-[8px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight"
+                className="flex items-end justify-center h-6 sm:h-8 text-[8px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight"
                 style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
                 Organiza
@@ -54,7 +54,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
               className="flex-1 flex flex-col items-center gap-1 sm:gap-3 px-1 sm:px-8 group"
             >
               <span
-                className="text-[8px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight"
+                className="flex items-end justify-center h-6 sm:h-8 text-[8px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight"
                 style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
                 Apoyado con recursos de
@@ -82,7 +82,7 @@ export default function SupportSection({ sectionId, className = "" }: SupportSec
               className="flex-1 flex flex-col items-center gap-1 sm:gap-3 px-1 sm:px-8 group"
             >
               <span
-                className="text-[8px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight"
+                className="flex items-end justify-center h-6 sm:h-8 text-[8px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight"
                 style={{ color: '#BCCE16', fontFamily: 'Montserrat, sans-serif' }}
               >
                 A través del
