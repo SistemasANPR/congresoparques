@@ -547,9 +547,13 @@ export default function Programa() {
                                 {/* Título y botón de expandir */}
                                 <div className="flex items-center justify-between gap-4">
                                   <h3 className="text-xl md:text-2xl font-bold" style={{ fontFamily: 'Montserrat, sans-serif', color: '#0e0477' }}>
-                                    {item.titulo.endsWith('*')
-                                      ? <>{item.titulo.slice(0, -1)}<span className="text-red-500">*</span></>
-                                      : item.titulo}
+                                    {(() => {
+                                      const hasLunch = item.titulo.toLowerCase().includes('lunch');
+                                      const base = item.titulo.endsWith('*') ? item.titulo.slice(0, -1) : item.titulo;
+                                      return hasLunch || item.titulo.endsWith('*')
+                                        ? <>{base}<span className="text-red-500">*</span></>
+                                        : item.titulo;
+                                    })()}
                                   </h3>
                                   {hasContenido && (
                                     <button
