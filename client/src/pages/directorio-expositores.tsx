@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { Search, X, Globe, Facebook, Instagram, Phone, Smartphone, FileText, ExternalLink, Building2, Printer } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -514,6 +514,21 @@ function PrintCatalog({ items }: { items: Expositor[] }) {
 
 export default function DirectorioExpositores() {
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const styleId = "hide-newsletter-directorio";
+    const style = document.createElement("style");
+    style.id = styleId;
+    style.textContent = `
+      ._form_15_, ._form_15_ *,
+      [class*="_form_15"],
+      .no-print[class*="fixed"][class*="bottom"] { display: none !important; }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.getElementById(styleId)?.remove();
+    };
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
