@@ -1,0 +1,84 @@
+En la página del Directorio de Expositores, necesito hacer varios ajustes visuales y de contenido para mejorar la presentación de las tarjetas y corregir errores en la información.
+
+1. Corregir visualización de imágenes de marcas
+Las imágenes/logos de algunas marcas expositoras no se están visualizando correctamente.
+Estoy adjuntando nuevamente los archivos para que los uses y verifiques su correcta carga.
+Asegúrate de que cada logo se muestre bien dentro de su tarjeta, con buena proporción, nitidez y sin deformación.
+2. Ajustar botones de redes y web
+
+Actualmente, los botones de web, Facebook e Instagram deben simplificarse visualmente.
+
+Cambios solicitados
+Coloca los íconos de web, Facebook e Instagram en una sola línea.
+Elimina los textos visibles de esos botones.
+Deja únicamente el ícono.
+Al pasar el cursor sobre cada ícono, muestra el nombre del botón como ayuda visual, por ejemplo:
+Web
+Facebook
+Instagram
+Cambia el fondo de estos botones a morado sólido.
+Mantén consistencia visual, tamaño uniforme y buena separación entre íconos.
+3. Revisar teléfonos y celulares
+Hay un error en la visualización de los datos de teléfono y celular, porque actualmente solo se muestran en la tarjeta de Productos Jumbo.
+Verifica la información fuente de todas las tarjetas y revisa por qué no aparecen en los demás expositores.
+Si faltan datos en el origen, indícalo claramente.
+Si el dato sí existe pero no se está mostrando, corrige la lógica para que aparezca en la tarjeta correspondiente.
+Importante
+
+Quiero que al final me indiques cuáles expositores:
+
+sí tienen teléfono/celular disponible
+cuáles no tienen ese dato en la fuente
+y si hay algún problema de mapeo o visualización
+4. Ajustar botón de folletos/PDF
+
+Actualmente el botón dice “Ver catálogo”, pero no todos los archivos son catálogos; en muchos casos son solo folletos o materiales promocionales.
+
+Cambios solicitados
+Cambia el botón de “Ver catálogo” a un botón solo con ícono, sin texto.
+El ícono debe representar que se trata de un archivo o folleto PDF.
+Al pasar el cursor, el tooltip puede indicar algo más neutral como:
+Ver PDF
+Ver folleto
+Ver material
+Usa una opción breve y genérica que funcione para todos los casos.
+5. Eliminar botón de descarga individual
+Elimina el botón de descarga individual en todas las tarjetas.
+Esto debe aplicarse a todas, ya que no tienen enlace funcional de descarga.
+Debe quedar únicamente la opción que sí funcione para visualizar el archivo.
+6. Mejorar exportación del Directorio completo en PDF
+
+Actualmente, al presionar “Descargar Directorio PDF”, no quiero que el resultado se vea como una vista de impresión del navegador.
+
+Cambio solicitado
+
+Quiero que el PDF descargado:
+
+conserve una apariencia similar a la vista móvil del directorio
+se muestre en una sola columna, una tarjeta debajo de otra
+no use una exportación tipo print con 3 columnas deformadas
+mantenga el diseño visual, colores, jerarquía y estilo gráfico
+se vea como un catálogo diseñado, no como una impresión técnica de la página
+Requisitos del PDF
+mantener estructura tipo ficha por expositor
+respetar colores, estilos y composición visual
+incluir texto real legible al hacer zoom
+no rasterizar todo como imagen
+verse limpio, ordenado y editorial
+dar sensación de catálogo gráfico más que de documento impreso automático
+7. Objetivo UX/UI
+mejorar la claridad visual de las tarjetas
+unificar los botones e íconos
+corregir la visualización de datos faltantes
+hacer que el PDF descargable se vea profesional y útil
+mantener una experiencia coherente con el estilo de Congreso Parques / Expo Espacio Público
+8. Restricciones
+no deformar logos
+no romper la versión móvil
+no dejar textos innecesarios en botones de íconos
+no usar la exportación simple tipo print como resultado final del PDF
+no mantener botones que no funcionen
+conservar diseño limpio, atractivo y funcional
+Resultado esperado
+
+El directorio debe mostrar correctamente las imágenes de las marcas, tener los íconos de web/Facebook/Instagram en una sola línea con fondo morado sólido y sin texto visible, corregir la visualización de teléfonos y celulares según la información fuente, reemplazar “Ver catálogo” por un ícono más genérico, eliminar los botones de descarga individual y generar un PDF completo con diseño tipo catálogo en una sola columna, similar a la vista móvil, manteniendo el estilo visual del sitio.
