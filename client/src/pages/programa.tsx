@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
-import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award, Search, X, Mic, BookOpen, Bus } from "lucide-react";
+import { CalendarDays, Clock, Loader2, Tag, ChevronDown, ChevronUp, MapPin, Users, ClipboardCheck, Mic2, Store, PartyPopper, Wrench, GraduationCap, Coffee, Sparkles, Award, Search, X, Mic, BookOpen, Bus, Printer } from "lucide-react";
+import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -53,6 +54,29 @@ interface SearchResult {
   itemId: string;
   contenidoId?: string;
 }
+
+const tipoPrintColors: Record<string, { bg: string; color: string }> = {
+  "Registro": { bg: "#9ca3af", color: "#fff" },
+  "Talleres": { bg: "#BCCE16", color: "#0e0477" },
+  "Conferencia Magistral": { bg: "#46ddac", color: "#0e0477" },
+  "Magistral": { bg: "#46ddac", color: "#0e0477" },
+  "Conferencias": { bg: "#00deff", color: "#0e0477" },
+  "Sesión Educativa": { bg: "#00deff", color: "#0e0477" },
+  "Master Class": { bg: "#35219b", color: "#fff" },
+  "Networking": { bg: "#14b8a6", color: "#fff" },
+  "Receso": { bg: "#9ca3af", color: "#fff" },
+  "Expo": { bg: "#d0dd15", color: "#0e0477" },
+  "Evento Social": { bg: "#f71cdd", color: "#fff" },
+  "Transporte": { bg: "#6847f6", color: "#fff" },
+  "default": { bg: "#6b7280", color: "#fff" },
+};
+
+const getTipoPrintColor = (tipo: string) => {
+  const t = tipo.trim();
+  if (tipoPrintColors[t]) return tipoPrintColors[t];
+  const key = Object.keys(tipoPrintColors).find(k => k.toLowerCase() === t.toLowerCase());
+  return key ? tipoPrintColors[key] : tipoPrintColors["default"];
+};
 
 const tipoColors: Record<string, { bg: string; text: string }> = {
   "Registro": { bg: "bg-gray-400", text: "text-white" },
@@ -358,34 +382,57 @@ export default function Programa() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <AnnouncementBanner
-        messages={[
-          {
-            id: "miembros",
-            text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
-          },
-          {
-            id: "abril",
-            text: "10% DE DESCUENTO DURANTE ABRIL",
-          },
-          {
-            id: "estudiantes",
-            text: "PRECIO ESPECIAL PARA ESTUDIANTES",
-          },
-        ]}
-        speed="normal"
-      />
-      <Navigation />
+      <style>{`
+        @media print {
+          .no-print { display: none !important; }
+          * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+          @page { margin: 10mm 8mm; size: A4; }
+        }
+      `}</style>
+      <div className="no-print">
+        <AnnouncementBanner
+          messages={[
+            {
+              id: "miembros",
+              text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
+            },
+            {
+              id: "abril",
+              text: "10% DE DESCUENTO DURANTE ABRIL",
+            },
+            {
+              id: "estudiantes",
+              text: "PRECIO ESPECIAL PARA ESTUDIANTES",
+            },
+          ]}
+          speed="normal"
+        />
+        <Navigation />
+      </div>
 
       <main className="pt-[100px] md:pt-[116px] lg:pt-[132px]">
-        <SupportSection />
-        <PageHeader 
-          title="Programa"
-          subtitle="Descubre todas las actividades del congreso"
-          lucideIcon={CalendarDays}
-        />
+        <div className="no-print"><SupportSection /></div>
+        <div className="no-print">
+          <PageHeader 
+            title="Programa"
+            subtitle="Descubre todas las actividades del congreso"
+            lucideIcon={CalendarDays}
+          />
+        </div>
+
+        {/* Botón descargar PDF */}
+        <div className="no-print bg-white py-4 text-center border-b border-gray-100 shadow-sm">
+          <button
+            onClick={() => window.print()}
+            className="inline-flex items-center gap-2 bg-[#0e0477] hover:bg-[#35219b] text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wide transition-colors shadow-md"
+            style={{ fontFamily: 'Montserrat, sans-serif' }}
+          >
+            <Printer className="w-5 h-5" />
+            Descargar Programa en PDF
+          </button>
+        </div>
         
-        <section className="py-12 md:py-16 bg-white">
+        <section className="no-print py-12 md:py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
               
@@ -750,7 +797,277 @@ export default function Programa() {
         </section>
       </main>
 
-      <Footer />
+      <div className="no-print"><Footer /></div>
+
+      {/* ═══════════════════════════════════════════════════
+          CATÁLOGO PARA IMPRESIÓN — solo visible al imprimir
+          ═══════════════════════════════════════════════════ */}
+      {!loading && programa.length > 0 && (
+        <div
+          className="hidden print:block"
+          style={{ fontFamily: 'Montserrat, sans-serif', background: '#fff', padding: '0 8px' }}
+        >
+          {/* Portada */}
+          <div
+            style={{
+              background: 'linear-gradient(135deg,#0e0477 0%,#35219b 50%,#6847f6 100%)',
+              borderRadius: 14,
+              padding: '32px 28px',
+              marginBottom: 28,
+              textAlign: 'center',
+              pageBreakAfter: 'avoid',
+            }}
+          >
+            <img
+              src={logoUrl}
+              alt="Congreso Parques 2026"
+              style={{ height: 60, margin: '0 auto 14px', display: 'block' }}
+            />
+            <h1 style={{ color: '#fff', fontSize: 26, fontWeight: 900, textTransform: 'uppercase', margin: '0 0 6px', letterSpacing: 1 }}>
+              Programa del Congreso
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, margin: 0 }}>
+              IX Congreso Internacional de Parques Urbanos y Espacio Público · Tijuana 2026
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 14, flexWrap: 'wrap' }}>
+              {[
+                { label: 'Miércoles', day: '13 mayo 2026' },
+                { label: 'Jueves', day: '14 mayo 2026' },
+                { label: 'Viernes', day: '15 mayo 2026' },
+              ].map(d => (
+                <div key={d.day} style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 8, padding: '6px 14px', textAlign: 'center' }}>
+                  <div style={{ color: '#BCCE16', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>{d.label}</div>
+                  <div style={{ color: '#fff', fontSize: 12, fontWeight: 600 }}>{d.day}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Días */}
+          {fechasDisponibles.map((fecha) => {
+            const items = programa
+              .filter(item => item.fecha === fecha)
+              .sort((a, b) => a.inicio.localeCompare(b.inicio));
+            if (items.length === 0) return null;
+            return (
+              <div key={fecha} style={{ marginBottom: 32 }}>
+                {/* Encabezado del día */}
+                <div
+                  style={{
+                    background: 'linear-gradient(90deg,#0e0477,#35219b)',
+                    borderRadius: 10,
+                    padding: '10px 18px',
+                    marginBottom: 14,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    pageBreakBefore: fecha === fechasDisponibles[0] ? 'avoid' : 'always',
+                  }}
+                >
+                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#BCCE16', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <span style={{ fontSize: 14 }}>📅</span>
+                  </div>
+                  <h2 style={{ color: '#fff', fontSize: 17, fontWeight: 900, margin: 0, textTransform: 'capitalize' }}>
+                    {formatDate(fecha)}
+                  </h2>
+                </div>
+
+                {/* Ítems del día */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {items.map((item) => {
+                    const pc = getTipoPrintColor(item.tipo);
+                    const hasContenido = item.contenido && item.contenido.length > 0;
+                    return (
+                      <div
+                        key={item.id}
+                        style={{
+                          border: '1.5px solid #e5e7eb',
+                          borderRadius: 10,
+                          overflow: 'hidden',
+                          pageBreakInside: 'avoid',
+                          background: '#fff',
+                        }}
+                      >
+                        {/* Cabecera del ítem */}
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: 10,
+                            padding: '10px 14px',
+                            borderLeft: `4px solid ${pc.bg}`,
+                          }}
+                        >
+                          <div style={{ flexShrink: 0, paddingTop: 2 }}>
+                            <span
+                              style={{
+                                background: pc.bg,
+                                color: pc.color,
+                                fontSize: 9,
+                                fontWeight: 700,
+                                padding: '2px 8px',
+                                borderRadius: 20,
+                                display: 'inline-block',
+                                textTransform: 'uppercase',
+                                letterSpacing: 0.5,
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {item.tipo}
+                            </span>
+                          </div>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                              <h3 style={{ color: '#0e0477', fontSize: 13, fontWeight: 800, margin: '0 0 2px', lineHeight: 1.3 }}>
+                                {item.titulo}
+                              </h3>
+                              <span style={{ color: '#6847f6', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>
+                                {formatTime(item.inicio)} – {formatTime(item.fin)}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Contenido del ítem */}
+                        {hasContenido && (
+                          <div style={{ background: '#fafafa', padding: '8px 14px 12px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                            {item.contenido!.map((contenido) => {
+                              const isTalleresMat = item.titulo.toLowerCase().includes('talleres matutinos');
+                              const horarioFijo = isTalleresMat ? getTallerHorarioFijo(contenido.titulo) : null;
+                              const hasPonentes = contenido.ponentes && contenido.ponentes.length > 0;
+                              return (
+                                <div
+                                  key={contenido.id}
+                                  style={{
+                                    background: '#fff',
+                                    borderRadius: 8,
+                                    padding: '10px 12px',
+                                    border: '1px solid #e5e7eb',
+                                    pageBreakInside: 'avoid',
+                                  }}
+                                >
+                                  {/* Título de la conferencia */}
+                                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 4 }}>
+                                    <h4
+                                      style={{
+                                        color: '#0e0477',
+                                        fontSize: 12,
+                                        fontWeight: 800,
+                                        margin: 0,
+                                        lineHeight: 1.4,
+                                        flex: 1,
+                                      }}
+                                    >
+                                      {contenido.titulo.endsWith('*')
+                                        ? <>{contenido.titulo.slice(0, -1)}<span style={{ color: '#ef4444' }}>*</span></>
+                                        : contenido.titulo}
+                                    </h4>
+                                    {/* Horario individual */}
+                                    {!isTalleresMat && (
+                                      <span style={{ color: '#6b7280', fontSize: 10, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                                        {formatTime(contenido.hora_inicio)} – {formatTime(contenido.hora_fin)}
+                                      </span>
+                                    )}
+                                    {horarioFijo && (
+                                      <span style={{ color: '#6b7280', fontSize: 10, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                                        {horarioFijo}
+                                      </span>
+                                    )}
+                                  </div>
+
+                                  {/* Subtítulo */}
+                                  {contenido.subtitulo && (
+                                    <p style={{ color: '#6847f6', fontSize: 10, fontWeight: 600, margin: '0 0 6px' }}>
+                                      {contenido.subtitulo}
+                                    </p>
+                                  )}
+
+                                  {/* Ponentes */}
+                                  {hasPonentes && (
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 6 }}>
+                                      {contenido.ponentes!.map((ponente) => (
+                                        <div
+                                          key={ponente.id}
+                                          style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: 6,
+                                            background: '#f3f4f6',
+                                            borderRadius: 20,
+                                            padding: '3px 10px 3px 3px',
+                                          }}
+                                        >
+                                          <div
+                                            style={{
+                                              width: 26,
+                                              height: 26,
+                                              borderRadius: '50%',
+                                              overflow: 'hidden',
+                                              background: '#ddd6fe',
+                                              flexShrink: 0,
+                                            }}
+                                          >
+                                            {ponente.foto_url ? (
+                                              <img
+                                                src={`/api/image-proxy?url=${encodeURIComponent(ponente.foto_url)}`}
+                                                alt={ponente.nombre}
+                                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                                              />
+                                            ) : (
+                                              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#6847f6' }}>?</div>
+                                            )}
+                                          </div>
+                                          <div>
+                                            <p style={{ fontSize: 10, fontWeight: 700, color: '#0e0477', margin: 0 }}>
+                                              {ponente.nombre}
+                                            </p>
+                                            {(ponente.cargo || ponente.empresa) && (
+                                              <p style={{ fontSize: 9, color: '#6b7280', margin: 0 }}>
+                                                {[ponente.cargo, ponente.empresa].filter(Boolean).join(' · ')}
+                                              </p>
+                                            )}
+                                          </div>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+
+                                  {/* Descripción */}
+                                  {contenido.descripcion && (
+                                    <p style={{ fontSize: 10, color: '#4b5563', margin: '4px 0 0', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                                      {contenido.descripcion}
+                                    </p>
+                                  )}
+
+                                  {/* Ubicación / capacidad */}
+                                  {(contenido.ubicacion || contenido.capacidad) && (
+                                    <div style={{ display: 'flex', gap: 12, marginTop: 5, fontSize: 9, color: '#9ca3af' }}>
+                                      {contenido.ubicacion && <span>📍 {contenido.ubicacion}</span>}
+                                      {contenido.capacidad && <span>👥 Capacidad: {contenido.capacidad}</span>}
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* Pie del PDF */}
+          <div style={{ borderTop: '1.5px solid #e5e7eb', paddingTop: 10, marginTop: 8, textAlign: 'center' }}>
+            <p style={{ fontSize: 9, color: '#9ca3af', margin: 0 }}>
+              congresoparques.com · IX Congreso Internacional de Parques Urbanos y Espacio Público · Tijuana 2026
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

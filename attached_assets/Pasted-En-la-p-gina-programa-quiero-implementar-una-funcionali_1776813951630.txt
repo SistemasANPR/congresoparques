@@ -1,0 +1,121 @@
+En la página /programa, quiero implementar una funcionalidad similar a la que ya se trabajó para el Directorio de Expositores: agregar un botón visible para descargar el Programa en PDF.
+
+Importante: no modificar la página web actual
+
+No quiero que cambies, muevas, reorganices ni rediseñes la página /programa en su versión web actual.
+La navegación por días, las tarjetas desplegables, el orden del contenido y la experiencia actual en pantalla deben permanecer exactamente como están.
+
+Este requerimiento es solo para agregar:
+
+un botón visible de descarga de PDF
+la lógica de generación del PDF
+
+La versión web del programa debe seguir funcionando y viéndose igual que ahora.
+
+1. Ubicación del botón
+Agrega un botón con el texto:
+Descargar Programa en PDF
+Quiero que este botón esté en el encabezado de la página, en una posición visible, para que sea fácil de encontrar desde el inicio.
+Debe integrarse bien con el diseño actual de la página y sentirse como una acción importante, pero sin romper la composición.
+2. Estructura actual del programa
+
+La información del programa ya está organizada por días y mediante tarjetas desplegables. Esa estructura no debe alterarse en la web.
+
+Los días son:
+
+Miércoles, 13 de mayo de 2026
+Jueves, 14 de mayo de 2026
+Viernes, 15 de mayo de 2026
+
+Además, actualmente para ver:
+
+nombres de ponentes
+fotos de ponentes
+nombre de cada conferencia
+información adicional
+
+el usuario debe interactuar con la interfaz desplegable.
+Eso debe mantenerse igual en la web.
+
+3. Cómo quiero que se vea en el PDF
+
+Lo que sí quiero es que en el PDF todo el contenido se muestre desplegado y ordenado, sin obligar al usuario a navegar ni abrir tarjetas.
+
+Orden del PDF
+
+El PDF debe organizarse así:
+
+primero todo lo del miércoles, 13 de mayo de 2026
+después todo lo del jueves, 14 de mayo de 2026
+al final todo lo del viernes, 15 de mayo de 2026
+
+Dentro de cada día, debe mostrarse de forma clara y ordenada toda la información correspondiente:
+
+horarios
+nombre de la conferencia o actividad
+nombre de los ponentes
+fotos de los ponentes
+información adicional que normalmente aparece al desplegar cada tarjeta
+enlaces, si existen y son relevantes
+4. Estilo visual del PDF
+
+Quiero que el PDF conserve una estética similar a la página web y al trabajo que ya se hizo con el catálogo/directorio de expositores.
+
+Requisitos visuales
+conservar diseño, colores, iconos y estilo general
+mantener una apariencia gráfica y editorial, no de impresión técnica
+que se vea limpio, ordenado y legible
+que el contenido esté bien jerarquizado por día
+que el resultado final se sienta como un programa descargable bien diseñado
+5. Comportamiento del PDF
+El PDF no debe verse como una captura o impresión automática del navegador.
+Debe generarse como un documento bien maquetado.
+El texto debe mantenerse nítido y legible al hacer zoom.
+No quiero un PDF rasterizado como imagen.
+Debe conservar enlaces clicables cuando tenga sentido incluirlos.
+6. Relación con lo ya hecho
+
+Toma como referencia la lógica usada en el catálogo/directorio de expositores:
+
+botón visible para descargar PDF
+PDF con diseño cuidado
+contenido reorganizado solo dentro del archivo descargable
+conservación de estilo visual e interacción útil
+7. Objetivo UX/UI
+facilitar que las personas descarguen el programa completo para consultarlo offline
+evitar que en el PDF dependan de desplegables o navegación por pestañas/días
+mostrar toda la información de forma más clara y secuencial
+convertir el programa en una pieza útil, legible y visualmente atractiva
+8. Restricciones
+no modificar la estructura actual de la página web /programa
+no mover ni cambiar la navegación por días
+no eliminar ni rediseñar las tarjetas desplegables en la versión online
+no convertir el PDF en una impresión simple del sitio
+no perder fotos, nombres de ponentes ni títulos de conferencias
+mantener coherencia con el estilo visual de Congreso Parques
+Resultado esperado
+
+La página /programa debe tener un botón visible en el encabezado para Descargar Programa en PDF. Ese PDF debe mostrar todo el contenido desplegado, organizado por día en este orden: miércoles 13 de mayo, jueves 14 de mayo y viernes 15 de mayo de 2026. Debe conservar el estilo visual del sitio, incluyendo colores, iconos, diseño y enlaces, y verse como una pieza gráfica bien ordenada, similar a lo que ya se hizo con el catálogo de expositores. La página web del programa debe permanecer igual, sin cambios en su estructura o navegación actual.
+
+Versión compacta
+
+En la página /programa, agrega un botón visible en el encabezado con el texto “Descargar Programa en PDF”.
+
+Importante: no cambies nada de cómo funciona o se ve actualmente la página web del programa. No muevas, rediseñes ni reorganices la navegación por días ni las tarjetas desplegables. La versión online debe quedarse exactamente igual.
+
+Lo que quiero es solo la función de exportación a PDF. En ese PDF sí quiero que todo el contenido aparezca desplegado y ordenado, primero:
+
+Miércoles, 13 de mayo de 2026
+Jueves, 14 de mayo de 2026
+Viernes, 15 de mayo de 2026
+
+Dentro de cada día deben verse:
+
+horarios
+nombre de la conferencia o actividad
+nombres de los ponentes
+fotos de los ponentes
+información adicional que normalmente aparece al desplegar las tarjetas
+enlaces, si aplica
+
+El PDF debe conservar diseño, iconos, colores, estilo visual y enlaces, y verse como una pieza gráfica bien maquetada, no como una impresión automática del navegador. Debe ser similar a lo que ya se hizo con el catálogo de expositores.
