@@ -548,10 +548,38 @@ export default function DirectorioExpositores() {
     <div className="min-h-screen bg-gray-50">
       <style>{`
         @media print {
+          /* Ocultar todos los elementos no destinados al PDF */
           .no-print { display: none !important; }
+
+          /* Preservar colores exactos */
           * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-          @page { margin: 12mm 10mm; size: A4; }
+
+          /* Eliminar padding/margin residual del contenedor principal */
+          main { padding: 0 !important; margin: 0 !important; }
+          .min-h-screen { min-height: 0 !important; }
+          body { margin: 0 !important; padding: 0 !important; }
+
+          /* Ocultar newsletter de ActiveCampaign y cualquier modal/elemento fijo inyectado */
+          ._form_15_, [class*="_form_"], ._modal_, [class*="_modal_"],
+          [id*="newsletter"], [class*="newsletter"],
+          [id*="NewsletterBar"], [class*="NewsletterBar"],
+          .fixed, [style*="position: fixed"], [style*="position:fixed"] {
+            display: none !important;
+            height: 0 !important;
+            overflow: hidden !important;
+          }
         }
+
+        /* Configuración de página: márgenes y tamaño */
+        @page {
+          size: A4;
+          margin: 14mm 10mm 14mm 10mm;
+        }
+
+        /* Ocultar fecha/hora (top-left) y URL (bottom-left), conservar número de página */
+        @page { @top-left { content: ""; } }
+        @page { @top-center { content: ""; } }
+        @page { @bottom-left { content: ""; } }
       `}</style>
 
       {/* Screen-only UI */}

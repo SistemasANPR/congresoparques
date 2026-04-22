@@ -1,0 +1,41 @@
+En la página /directorio-expositores, aplica los mismos ajustes de limpieza y maquetación al archivo que se genera al presionar “Descargar Directorio PDF”, para que el documento final se vea más profesional y limpio.
+
+Cambios solicitados en el PDF
+1. Ocultar fecha y hora actual en la parte superior
+En la parte superior izquierda del PDF aparece la fecha y hora actual de generación o impresión.
+No quiero que ese dato se visualice en el PDF final.
+Elimínalo u ocúltalo.
+2. Ocultar la dirección del sitio web en la parte inferior
+En la parte inferior izquierda del PDF aparece la URL o dirección del sitio web.
+Tampoco quiero que se muestre en el documento descargable.
+Elimínala del PDF.
+3. Conservar numeración de páginas
+La numeración de páginas sí se puede conservar.
+Solo elimina fecha/hora y URL, pero mantén la paginación si ya funciona correctamente.
+4. Corregir espacios en blanco causados por elementos ocultos
+Revisa si el modal o bloque de suscripción al newsletter, o cualquier otro elemento flotante/oculto, está dejando espacios en blanco grandes dentro del PDF.
+Aunque esos elementos no se vean, parece que pueden seguir afectando el flujo del layout al exportar.
+Corrige esto para que no queden huecos vacíos innecesarios entre tarjetas, párrafos o bloques del directorio.
+5. Mantener limpieza del PDF
+Asegúrate de que en el PDF no aparezcan elementos de interfaz web que no tienen utilidad en el documento descargable.
+El PDF debe sentirse como un catálogo limpio y bien maquetado, no como una impresión técnica del navegador.
+Objetivo UX/UI
+Hacer que el PDF del Directorio de Expositores se vea más profesional, limpio y editorial.
+Eliminar elementos automáticos del navegador o del sistema que no aportan valor.
+Evitar espacios blancos extraños causados por elementos ocultos o modales.
+Instrucciones específicas
+Aplica estos ajustes solo en la versión PDF, no en la versión web normal.
+Asegúrate de que al exportar ya no se muestren:
+fecha y hora de impresión/generación
+URL del sitio en pie o margen
+Conserva la numeración de páginas.
+Revisa la composición después de ocultar esos elementos para que no queden huecos, márgenes residuales o saltos raros.
+Si hay elementos ocultos visualmente pero aún presentes en el flujo del layout, exclúyelos también del render para PDF.
+Restricciones
+No afectar la versión web normal de /directorio-expositores.
+No eliminar la numeración de páginas.
+No romper el diseño tipo catálogo del PDF.
+No alterar contenido, colores, tarjetas ni enlaces del directorio más allá de esta limpieza de exportación.
+Resultado esperado
+
+El PDF descargable de /directorio-expositores debe verse más limpio y profesional: sin fecha ni hora en la parte superior, sin la URL del sitio en la parte inferior, conservando la numeración de páginas, y sin espacios en blanco grandes causados por modales, newsletter u otros elementos ocultos.
