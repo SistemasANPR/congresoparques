@@ -1,0 +1,46 @@
+En el PDF descargable de la página /programa, necesito ajustar la paginación y la distribución de los encabezados por día para que el documento tenga una estructura más ordenada y editorial.
+
+Cambios solicitados
+1. Mantener encabezado y fechas en la primera página
+Quiero que el bloque del encabezado del PDF, incluyendo:
+el título
+y las 3 fechas
+quede completo dentro de la primera página.
+Actualmente, las fechas se están yendo a la segunda página y eso rompe la introducción del documento.
+Corrige la maquetación para que ese bloque inicial permanezca unido y visible desde la primera página.
+2. La segunda página debe iniciar con el primer día
+La segunda página debe comenzar directamente con:
+Miércoles, 13 de mayo de 2026
+Ese encabezado debe quedar al inicio de la página, en la parte superior, no desplazado hacia abajo por espacios innecesarios.
+3. Cada nuevo día debe comenzar en la parte superior de una nueva página
+
+Quiero que también estos textos:
+
+Jueves, 14 de mayo de 2026
+Viernes, 15 de mayo de 2026
+
+funcionen como inicio de página, es decir:
+
+cada uno debe arrancar en una nueva página
+y debe estar colocado en la parte superior de esa página
+sin espacios vacíos grandes arriba
+Objetivo UX/UI
+Mejorar la estructura editorial del PDF
+Hacer que cada día del programa comience de forma clara y ordenada
+Evitar que los encabezados queden partidos o mal posicionados
+Lograr una lectura más limpia, secuencial y profesional
+Instrucciones específicas
+Ajusta la paginación del PDF para que el bloque introductorio quede completo en la página 1.
+Haz que Miércoles, 13 de mayo de 2026 comience la página 2.
+Haz que Jueves, 14 de mayo de 2026 y Viernes, 15 de mayo de 2026 también inicien cada uno una nueva página.
+Coloca esos encabezados en la parte superior de su respectiva página.
+Evita dejar espacios en blanco innecesarios antes de esos títulos.
+Mantén el diseño, colores, iconos y estilo visual ya trabajado.
+Restricciones
+Esto aplica solo al PDF descargable, no a la versión web de /programa.
+No modificar contenido ni estructura online.
+No romper la continuidad visual del documento.
+No dejar encabezados separados de su contenido inmediato por huecos grandes.
+Resultado esperado
+
+El PDF de /programa debe tener una estructura más ordenada: la primera página debe contener el bloque del encabezado con título y las 3 fechas; la segunda página debe iniciar con Miércoles, 13 de mayo de 2026; y tanto Jueves, 14 de mayo de 2026 como Viernes, 15 de mayo de 2026 deben comenzar cada uno en una nueva página, alineados en la parte superior y sin espacios en blanco innecesarios.

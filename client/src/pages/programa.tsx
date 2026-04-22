@@ -835,7 +835,7 @@ export default function Programa() {
           className="hidden print:block"
           style={{ fontFamily: 'Montserrat, sans-serif', background: '#fff', padding: '0 8px' }}
         >
-          {/* Portada */}
+          {/* Portada — se mantiene completa en la página 1 y fuerza salto de página al final */}
           <div
             style={{
               background: 'linear-gradient(135deg,#0e0477 0%,#35219b 50%,#6847f6 100%)',
@@ -843,7 +843,8 @@ export default function Programa() {
               padding: '24px 28px',
               marginBottom: 12,
               textAlign: 'center',
-              pageBreakAfter: 'avoid',
+              pageBreakInside: 'avoid',
+              pageBreakAfter: 'always',
             }}
           >
             <img
@@ -872,13 +873,19 @@ export default function Programa() {
           </div>
 
           {/* Días */}
-          {fechasDisponibles.map((fecha) => {
+          {fechasDisponibles.map((fecha, diaIdx) => {
             const items = programa
               .filter(item => item.fecha === fecha)
               .sort((a, b) => a.inicio.localeCompare(b.inicio));
             if (items.length === 0) return null;
             return (
-              <div key={fecha} style={{ marginBottom: 14 }}>
+              <div
+                key={fecha}
+                style={{
+                  marginBottom: 14,
+                  pageBreakBefore: diaIdx > 0 ? 'always' : 'auto',
+                }}
+              >
                 {/* Encabezado del día */}
                 <div
                   style={{
@@ -889,7 +896,6 @@ export default function Programa() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 10,
-                    pageBreakBefore: 'auto',
                     pageBreakAfter: 'avoid',
                   }}
                 >
