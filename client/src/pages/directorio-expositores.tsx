@@ -498,9 +498,19 @@ function PrintCatalog({ items }: { items: Expositor[] }) {
                   </a>
                 )}
                 {(exp.telefono || exp.celular) && (
-                  <span style={{ fontSize: 10, color: "#555", fontFamily: "Montserrat, sans-serif", marginLeft: 4 }}>
-                    {exp.telefono && <>{exp.telefono}{exp.celular ? " · " : ""}</>}
-                    {exp.celular && exp.celular}
+                  <span style={{ display: "inline-flex", alignItems: "center", flexWrap: "wrap", gap: 8, marginLeft: 4 }}>
+                    {exp.telefono && (
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, color: "#374151", fontFamily: "Montserrat, sans-serif", fontWeight: 600 }}>
+                        <Phone style={{ width: 11, height: 11, color: "#6847f6", flexShrink: 0 }} />
+                        {exp.telefono}
+                      </span>
+                    )}
+                    {exp.celular && (
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 10, color: "#374151", fontFamily: "Montserrat, sans-serif", fontWeight: 600 }}>
+                        <Smartphone style={{ width: 11, height: 11, color: "#BCCE16", flexShrink: 0 }} />
+                        {exp.celular}
+                      </span>
+                    )}
                   </span>
                 )}
               </div>
