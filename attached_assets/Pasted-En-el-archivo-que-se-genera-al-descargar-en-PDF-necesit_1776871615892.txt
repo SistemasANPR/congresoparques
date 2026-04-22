@@ -1,0 +1,37 @@
+En el archivo que se genera al descargar en PDF, necesito hacer algunos ajustes de limpieza para que el documento final se vea más profesional y mejor maquetado.
+
+Cambios solicitados en el PDF
+1. Ocultar fecha y hora actual en la parte superior
+En la parte superior izquierda del PDF aparece la fecha y hora actual de generación.
+No quiero que ese dato se visualice.
+Elimínalo u ocúltalo del PDF final.
+2. Ocultar la dirección del sitio web en la parte inferior
+En la parte inferior izquierda del PDF aparece la dirección del sitio web.
+Tampoco quiero que se muestre en el documento descargable.
+Elimínala del PDF.
+3. Conservar numeración de páginas
+La numeración de páginas sí se puede conservar.
+Solo elimina la fecha/hora y la URL, pero deja la paginación si ya está funcionando bien.
+4. Corregir espacios en blanco causados por el modal de newsletter
+Hay un error visual en el PDF que probablemente está siendo causado por el modal o bloque de suscripción al newsletter.
+Aunque ese modal se cierre, al exportar sigue dejando espacios en blanco muy grandes entre párrafos o bloques de contenido.
+Corrige eso para que el PDF no conserve huecos vacíos innecesarios.
+Objetivo UX/UI
+Hacer que el PDF se vea más limpio, editorial y profesional.
+Eliminar elementos automáticos del navegador o del sistema que no aportan valor al documento.
+Evitar huecos grandes o espacios rotos en la composición del contenido.
+Instrucciones específicas
+Asegúrate de que la exportación del PDF no muestre:
+fecha y hora de impresión/generación
+URL del sitio en el pie o margen
+Mantén la numeración si está bien integrada.
+Revisa la maquetación después de ocultar el modal/newsletter para que no queden márgenes o separaciones residuales.
+Si el problema viene de elementos ocultos visualmente pero aún presentes en el flujo del layout, elimínalos también del render para PDF.
+Restricciones
+No afectar la versión web normal.
+Estos cambios deben aplicar solo al PDF.
+No eliminar la numeración de páginas.
+No romper la composición ni el contenido del documento.
+Resultado esperado
+
+El PDF descargable debe verse más limpio y profesional: sin fecha ni hora en la parte superior, sin la URL del sitio en la parte inferior, conservando la numeración de páginas, y sin espacios en blanco grandes causados por el modal de suscripción o elementos ocultos.
