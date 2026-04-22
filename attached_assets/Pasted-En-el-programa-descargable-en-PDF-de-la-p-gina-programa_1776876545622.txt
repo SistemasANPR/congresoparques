@@ -1,0 +1,32 @@
+En el programa descargable en PDF de la página /programa, necesito hacer ajustes de maquetación y consistencia visual para que el documento se vea más limpio y mejor resuelto.
+
+1. Corregir espacios en blanco innecesarios
+Revisa el PDF descargable completo porque actualmente hay demasiado espacio en blanco entre bloques de contenido.
+Por ejemplo, después del texto “Miércoles, 13 de mayo de 2026” queda un espacio en blanco muy grande antes de que comience la información de Talleres.
+Quiero que elimines esos espacios vacíos innecesarios y ajustes la composición para que el contenido fluya de forma más compacta, ordenada y natural.
+Objetivo
+evitar huecos grandes que rompan la continuidad visual
+hacer que el PDF se vea más editorial y mejor maquetado
+aprovechar mejor el espacio sin que el diseño se vea saturado
+2. Ajustar iconos de calendario en el PDF
+Cambia los íconos de calendario que acompañan las fechas dentro del PDF.
+Actualmente se ven diferentes al estilo general de la página y del propio documento.
+Quiero que uses íconos más minimalistas, limpios y coherentes con el lenguaje visual del sitio y del PDF.
+Objetivo
+mantener consistencia visual entre web y PDF
+hacer que los íconos se vean más elegantes y menos ajenos al diseño
+reforzar una estética más limpia y profesional
+3. Criterios de diseño
+Mantén el estilo general, colores, jerarquía e identidad visual del documento.
+Elimina solo los espacios realmente innecesarios; no quiero que el contenido quede apretado.
+Los nuevos íconos deben sentirse integrados al sistema visual ya existente.
+El PDF debe seguir viéndose como una pieza gráfica cuidada, no como una impresión automática del navegador.
+4. Restricciones
+No modificar la estructura de la página web /programa; esto aplica solo al PDF.
+No eliminar contenido.
+No romper la organización por días.
+No alterar enlaces ni información del programa.
+No usar iconos que se sientan pesados o fuera del estilo del sitio.
+Resultado esperado
+
+El PDF descargable de /programa debe verse más limpio y mejor distribuido, sin espacios en blanco excesivos entre títulos y bloques de contenido. Además, los íconos de calendario deben actualizarse a una versión más minimalista y coherente con el diseño general del sitio y del documento.

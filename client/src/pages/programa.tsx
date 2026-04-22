@@ -840,8 +840,8 @@ export default function Programa() {
             style={{
               background: 'linear-gradient(135deg,#0e0477 0%,#35219b 50%,#6847f6 100%)',
               borderRadius: 14,
-              padding: '32px 28px',
-              marginBottom: 28,
+              padding: '24px 28px',
+              marginBottom: 12,
               textAlign: 'center',
               pageBreakAfter: 'avoid',
             }}
@@ -878,30 +878,31 @@ export default function Programa() {
               .sort((a, b) => a.inicio.localeCompare(b.inicio));
             if (items.length === 0) return null;
             return (
-              <div key={fecha} style={{ marginBottom: 32 }}>
+              <div key={fecha} style={{ marginBottom: 14 }}>
                 {/* Encabezado del día */}
                 <div
                   style={{
                     background: 'linear-gradient(90deg,#0e0477,#35219b)',
                     borderRadius: 10,
-                    padding: '10px 18px',
-                    marginBottom: 14,
+                    padding: '9px 16px',
+                    marginBottom: 7,
                     display: 'flex',
                     alignItems: 'center',
                     gap: 10,
-                    pageBreakBefore: fecha === fechasDisponibles[0] ? 'avoid' : 'always',
+                    pageBreakBefore: 'auto',
+                    pageBreakAfter: 'avoid',
                   }}
                 >
-                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#BCCE16', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <span style={{ fontSize: 14 }}>📅</span>
+                  <div style={{ width: 26, height: 26, borderRadius: '50%', background: '#BCCE16', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <CalendarDays style={{ width: 14, height: 14, color: '#0e0477' }} />
                   </div>
-                  <h2 style={{ color: '#fff', fontSize: 17, fontWeight: 900, margin: 0, textTransform: 'capitalize' }}>
+                  <h2 style={{ color: '#fff', fontSize: 16, fontWeight: 900, margin: 0, textTransform: 'capitalize' }}>
                     {formatDate(fecha)}
                   </h2>
                 </div>
 
                 {/* Ítems del día */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   {items.map((item) => {
                     const pc = getTipoPrintColor(item.tipo);
                     const hasContenido = item.contenido && item.contenido.length > 0;
@@ -922,7 +923,7 @@ export default function Programa() {
                             display: 'flex',
                             alignItems: 'flex-start',
                             gap: 10,
-                            padding: '10px 14px',
+                            padding: '8px 12px',
                             borderLeft: `4px solid ${pc.bg}`,
                           }}
                         >
@@ -958,7 +959,7 @@ export default function Programa() {
 
                         {/* Contenido del ítem */}
                         {hasContenido && (
-                          <div style={{ background: '#fafafa', padding: '8px 14px 12px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                          <div style={{ background: '#fafafa', padding: '6px 10px 8px', display: 'flex', flexDirection: 'column', gap: 5 }}>
                             {item.contenido!.map((contenido) => {
                               const isTalleresMat = item.titulo.toLowerCase().includes('talleres matutinos');
                               const horarioFijo = isTalleresMat ? getTallerHorarioFijo(contenido.titulo) : null;
@@ -969,7 +970,7 @@ export default function Programa() {
                                   style={{
                                     background: '#fff',
                                     borderRadius: 8,
-                                    padding: '10px 12px',
+                                    padding: '8px 10px',
                                     border: '1px solid #e5e7eb',
                                     pageBreakInside: 'avoid',
                                   }}
