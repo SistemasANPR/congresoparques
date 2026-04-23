@@ -406,10 +406,10 @@ export default function Programa() {
           }
         }
 
-        /* Configuración de página: márgenes y tamaño */
+        /* Configuración de página: A5 para mejor lectura en móvil */
         @page {
-          size: A4;
-          margin: 14mm 8mm 14mm 8mm;
+          size: 148mm 210mm;
+          margin: 10mm 7mm 12mm 7mm;
         }
 
         /* Ocultar fecha/hora (top-left) y URL (bottom-left), conservar número de página */
@@ -850,23 +850,23 @@ export default function Programa() {
             <img
               src={logoUrl}
               alt="Congreso Parques 2026"
-              style={{ height: 60, margin: '0 auto 14px', display: 'block' }}
+              style={{ height: 50, margin: '0 auto 10px', display: 'block' }}
             />
-            <h1 style={{ color: '#fff', fontSize: 26, fontWeight: 900, textTransform: 'uppercase', margin: '0 0 6px', letterSpacing: 1 }}>
+            <h1 style={{ color: '#fff', fontSize: 21, fontWeight: 900, textTransform: 'uppercase', margin: '0 0 5px', letterSpacing: 1 }}>
               Programa del Congreso
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, margin: 0 }}>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 11, margin: 0 }}>
               IX Congreso Internacional de Parques Urbanos y Espacio Público · Tijuana 2026
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 14, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginTop: 12, flexWrap: 'wrap' }}>
               {[
                 { label: 'Miércoles', day: '13 mayo 2026' },
                 { label: 'Jueves', day: '14 mayo 2026' },
                 { label: 'Viernes', day: '15 mayo 2026' },
               ].map(d => (
-                <div key={d.day} style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 8, padding: '6px 14px', textAlign: 'center' }}>
-                  <div style={{ color: '#BCCE16', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>{d.label}</div>
-                  <div style={{ color: '#fff', fontSize: 12, fontWeight: 600 }}>{d.day}</div>
+                <div key={d.day} style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 8, padding: '5px 12px', textAlign: 'center' }}>
+                  <div style={{ color: '#BCCE16', fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>{d.label}</div>
+                  <div style={{ color: '#fff', fontSize: 11, fontWeight: 600 }}>{d.day}</div>
                 </div>
               ))}
             </div>
@@ -953,10 +953,10 @@ export default function Programa() {
                           </div>
                           <div style={{ flex: 1 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                              <h3 style={{ color: '#0e0477', fontSize: 13, fontWeight: 800, margin: '0 0 2px', lineHeight: 1.3 }}>
+                              <h3 style={{ color: '#0e0477', fontSize: 15, fontWeight: 800, margin: '0 0 2px', lineHeight: 1.3 }}>
                                 {item.titulo}
                               </h3>
-                              <span style={{ color: '#6847f6', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>
+                              <span style={{ color: '#6847f6', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}>
                                 {formatTime(item.inicio)} – {formatTime(item.fin)}
                               </span>
                             </div>
@@ -978,7 +978,7 @@ export default function Programa() {
                                     borderRadius: 8,
                                     padding: '8px 10px',
                                     border: '1px solid #e5e7eb',
-                                    pageBreakInside: 'avoid',
+                                    pageBreakInside: 'auto',
                                   }}
                                 >
                                   {/* Título de la conferencia */}
@@ -986,7 +986,7 @@ export default function Programa() {
                                     <h4
                                       style={{
                                         color: '#0e0477',
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontWeight: 800,
                                         margin: 0,
                                         lineHeight: 1.4,
@@ -999,12 +999,12 @@ export default function Programa() {
                                     </h4>
                                     {/* Horario individual */}
                                     {!isTalleresMat && (
-                                      <span style={{ color: '#6b7280', fontSize: 10, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                                      <span style={{ color: '#6b7280', fontSize: 11, whiteSpace: 'nowrap', flexShrink: 0 }}>
                                         {formatTime(contenido.hora_inicio)} – {formatTime(contenido.hora_fin)}
                                       </span>
                                     )}
                                     {horarioFijo && (
-                                      <span style={{ color: '#6b7280', fontSize: 10, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                                      <span style={{ color: '#6b7280', fontSize: 11, whiteSpace: 'nowrap', flexShrink: 0 }}>
                                         {horarioFijo}
                                       </span>
                                     )}
@@ -1012,7 +1012,7 @@ export default function Programa() {
 
                                   {/* Subtítulo */}
                                   {contenido.subtitulo && (
-                                    <p style={{ color: '#6847f6', fontSize: 10, fontWeight: 600, margin: '0 0 6px' }}>
+                                    <p style={{ color: '#6847f6', fontSize: 11, fontWeight: 600, margin: '0 0 5px' }}>
                                       {contenido.subtitulo}
                                     </p>
                                   )}
@@ -1034,8 +1034,8 @@ export default function Programa() {
                                         >
                                           <div
                                             style={{
-                                              width: 26,
-                                              height: 26,
+                                              width: 22,
+                                              height: 22,
                                               borderRadius: '50%',
                                               overflow: 'hidden',
                                               background: '#ddd6fe',
@@ -1044,21 +1044,21 @@ export default function Programa() {
                                           >
                                             {ponente.foto_url ? (
                                               <img
-                                                src={`/api/image-proxy?url=${encodeURIComponent(ponente.foto_url)}`}
+                                                src={`/api/image-proxy?url=${encodeURIComponent(ponente.foto_url)}&w=44`}
                                                 alt={ponente.nombre}
                                                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                                               />
                                             ) : (
-                                              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#6847f6' }}>?</div>
+                                              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#6847f6' }}>?</div>
                                             )}
                                           </div>
                                           <div>
-                                            <p style={{ fontSize: 10, fontWeight: 700, color: '#0e0477', margin: 0 }}>
+                                            <p style={{ fontSize: 11, fontWeight: 700, color: '#0e0477', margin: 0 }}>
                                               {ponente.nombre}
                                             </p>
                                             {(ponente.cargo || ponente.empresa) && (
-                                              <p style={{ fontSize: 9, color: '#6b7280', margin: 0 }}>
+                                              <p style={{ fontSize: 10, color: '#6b7280', margin: 0 }}>
                                                 {[ponente.cargo, ponente.empresa].filter(Boolean).join(' · ')}
                                               </p>
                                             )}
@@ -1072,7 +1072,7 @@ export default function Programa() {
 
                                   {/* Ubicación / capacidad */}
                                   {(contenido.ubicacion || contenido.capacidad) && (
-                                    <div style={{ display: 'flex', gap: 12, marginTop: 5, fontSize: 9, color: '#9ca3af' }}>
+                                    <div style={{ display: 'flex', gap: 12, marginTop: 5, fontSize: 10, color: '#9ca3af' }}>
                                       {contenido.ubicacion && <span>📍 {contenido.ubicacion}</span>}
                                       {contenido.capacidad && <span>👥 Capacidad: {contenido.capacidad}</span>}
                                     </div>

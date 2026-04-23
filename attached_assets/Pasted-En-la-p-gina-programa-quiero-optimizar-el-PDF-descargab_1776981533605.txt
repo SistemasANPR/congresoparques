@@ -1,0 +1,95 @@
+En la página /programa, quiero optimizar el PDF descargable para lectura en teléfono móvil, sin modificar nada de la versión web actual del programa.
+
+Importante
+
+No cambies nada en la página web /programa.
+No muevas tarjetas, no cambies navegación, no rediseñes la vista online.
+Todos estos ajustes deben aplicarse solo al PDF descargable.
+
+Objetivo principal
+
+Quiero que el PDF sea:
+
+más ligero
+más legible en celular
+con texto más grande
+con menos espacios en blanco innecesarios
+y con una maquetación más adecuada para lectura vertical en móvil
+1. Optimizar el PDF para celular
+
+No quiero que el PDF se genere pensando en tamaño carta tradicional si eso perjudica la lectura en móvil.
+
+Cambio solicitado
+Ajusta la maquetación del PDF para que se sienta más natural en pantalla de teléfono.
+Puede usar un formato de página más vertical y adaptable al contenido, no necesariamente carta fija.
+Prioriza una lectura cómoda en móvil sobre una lógica de impresión tradicional.
+Objetivo
+que el usuario pueda leerlo desde el celular sin tener que hacer demasiado zoom
+que el diseño siga viéndose ordenado y profesional
+que el documento se sienta pensado para consulta digital, no solo para impresión
+2. Hacer los textos más grandes
+
+Actualmente, en celular los textos se ven demasiado pequeños.
+
+Cambio solicitado
+Aumenta el tamaño de los textos en el PDF:
+títulos de día
+horarios
+nombres de conferencias o actividades
+nombres de ponentes
+ubicación y datos secundarios
+Mantén buena jerarquía visual, pero con tamaños más cómodos para pantalla móvil.
+Objetivo
+mejorar legibilidad
+reducir necesidad de zoom
+conservar una lectura clara y rápida
+3. Reducir el peso del archivo PDF
+
+El PDF final está quedando muy pesado, probablemente por el manejo de imágenes.
+
+Cambio solicitado
+Optimiza el peso del PDF sin perder demasiada calidad visual.
+Revisa especialmente:
+fotos de ponentes
+imágenes incrustadas
+resolución de recursos gráficos
+Usa compresión adecuada para pantalla, no calidad excesiva de impresión.
+Mantén buena nitidez, pero prioriza un archivo más ligero y práctico de descargar y abrir en celular.
+Objetivo
+que el PDF abra más rápido
+que consuma menos datos
+que sea más fácil de compartir y consultar desde el teléfono
+4. Evitar espacios en blanco grandes por culpa de bloques rígidos
+
+Actualmente, como el contenido está armado por bloques, cuando un bloque ya no cabe en la página se pasa completo a la siguiente y deja mucho espacio en blanco.
+
+Cambio solicitado
+Haz que la paginación del PDF sea más inteligente y flexible.
+Evita que queden grandes huecos vacíos al final de las páginas.
+Si un bloque puede reorganizarse internamente sin perder claridad, hazlo para aprovechar mejor el espacio.
+La página debe adaptarse mejor al contenido, en lugar de forzar saltos muy rígidos.
+Objetivo
+reducir huecos grandes
+aprovechar mejor cada página
+hacer que el documento fluya de forma más natural
+5. Mantener el estilo visual
+
+Aunque se optimice para móvil, quiero que el PDF conserve:
+
+colores
+iconos
+estilo visual del programa
+coherencia con Congreso Parques
+
+Debe seguir viéndose como una pieza gráfica cuidada, no como una exportación técnica.
+
+6. Restricciones
+no modificar nada en la versión web de /programa
+no cambiar la navegación por días ni las tarjetas desplegables online
+no rasterizar todo el PDF como imagen
+no sacrificar demasiada calidad visual por compresión extrema
+no dejar textos demasiado pequeños
+no dejar páginas con huecos enormes por saltos forzados
+Resultado esperado
+
+Quiero un PDF del programa más ligero, más legible en celular, con texto más grande, mejor distribución del contenido y menos espacios en blanco innecesarios. Debe sentirse como un documento pensado para consulta móvil, manteniendo el estilo visual del sitio, pero sin tocar en absoluto la versión web del programa.
