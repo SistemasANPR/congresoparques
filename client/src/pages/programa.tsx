@@ -406,10 +406,10 @@ export default function Programa() {
           }
         }
 
-        /* Configuración de página: A5 para mejor lectura en móvil */
+        /* Página angosta tipo móvil */
         @page {
-          size: 148mm 210mm;
-          margin: 10mm 7mm 12mm 7mm;
+          size: 105mm 175mm;
+          margin: 7mm 5mm 8mm 5mm;
         }
 
         /* Ocultar fecha/hora (top-left) y URL (bottom-left), conservar número de página */
@@ -833,15 +833,15 @@ export default function Programa() {
       {!loading && programa.length > 0 && (
         <div
           className="hidden print:block"
-          style={{ fontFamily: 'Montserrat, sans-serif', background: '#fff', padding: '0 8px' }}
+          style={{ fontFamily: 'Montserrat, sans-serif', background: '#fff' }}
         >
-          {/* Portada — se mantiene completa y fluye hacia el contenido del primer día */}
+          {/* Portada compacta — fluye hacia el primer día sin salto */}
           <div
             style={{
               background: 'linear-gradient(135deg,#0e0477 0%,#35219b 50%,#6847f6 100%)',
-              borderRadius: 14,
-              padding: '20px 28px',
-              marginBottom: 10,
+              borderRadius: 10,
+              padding: '11px 14px',
+              marginBottom: 8,
               textAlign: 'center',
               pageBreakInside: 'avoid',
               pageBreakAfter: 'avoid',
@@ -850,65 +850,48 @@ export default function Programa() {
             <img
               src={logoUrl}
               alt="Congreso Parques 2026"
-              style={{ height: 50, margin: '0 auto 10px', display: 'block' }}
+              style={{ height: 34, margin: '0 auto 6px', display: 'block' }}
             />
-            <h1 style={{ color: '#fff', fontSize: 21, fontWeight: 900, textTransform: 'uppercase', margin: '0 0 5px', letterSpacing: 1 }}>
+            <h1 style={{ color: '#fff', fontSize: 16, fontWeight: 900, textTransform: 'uppercase', margin: '0 0 3px', letterSpacing: 0.8, lineHeight: 1.2 }}>
               Programa del Congreso
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 11, margin: 0 }}>
-              IX Congreso Internacional de Parques Urbanos y Espacio Público · Tijuana 2026
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 9, margin: '0 0 4px' }}>
+              IX Congreso Internacional de Parques Urbanos y Espacio Público
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginTop: 12, flexWrap: 'wrap' }}>
-              {[
-                { label: 'Miércoles', day: '13 mayo 2026' },
-                { label: 'Jueves', day: '14 mayo 2026' },
-                { label: 'Viernes', day: '15 mayo 2026' },
-              ].map(d => (
-                <div key={d.day} style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 8, padding: '5px 12px', textAlign: 'center' }}>
-                  <div style={{ color: '#BCCE16', fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>{d.label}</div>
-                  <div style={{ color: '#fff', fontSize: 11, fontWeight: 600 }}>{d.day}</div>
-                </div>
-              ))}
-            </div>
+            <p style={{ color: '#BCCE16', fontSize: 10, fontWeight: 700, margin: 0 }}>
+              13 · 14 · 15 Mayo 2026 · Tijuana, México
+            </p>
           </div>
 
-          {/* Días */}
-          {fechasDisponibles.map((fecha, diaIdx) => {
+          {/* Días — flujo continuo sin saltos de página forzados */}
+          {fechasDisponibles.map((fecha) => {
             const items = programa
               .filter(item => item.fecha === fecha)
               .sort((a, b) => a.inicio.localeCompare(b.inicio));
             if (items.length === 0) return null;
             return (
-              <div
-                key={fecha}
-                style={{
-                  marginBottom: 14,
-                  pageBreakBefore: diaIdx > 0 ? 'always' : 'auto',
-                }}
-              >
+              <div key={fecha} style={{ marginBottom: 7 }}>
                 {/* Encabezado del día */}
                 <div
                   style={{
                     background: 'linear-gradient(90deg,#0e0477,#35219b)',
-                    borderRadius: 10,
-                    padding: '9px 16px',
-                    marginBottom: 7,
+                    borderRadius: 6,
+                    padding: '5px 10px',
+                    marginBottom: 4,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 10,
+                    gap: 6,
                     pageBreakAfter: 'avoid',
                   }}
                 >
-                  <div style={{ width: 26, height: 26, borderRadius: '50%', background: '#BCCE16', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <CalendarDays style={{ width: 14, height: 14, color: '#0e0477' }} />
-                  </div>
-                  <h2 style={{ color: '#fff', fontSize: 16, fontWeight: 900, margin: 0, textTransform: 'capitalize' }}>
+                  <CalendarDays style={{ width: 11, height: 11, color: '#BCCE16', flexShrink: 0 }} />
+                  <h2 style={{ color: '#fff', fontSize: 13, fontWeight: 900, margin: 0, textTransform: 'capitalize' }}>
                     {formatDate(fecha)}
                   </h2>
                 </div>
 
                 {/* Ítems del día */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   {items.map((item) => {
                     const pc = getTipoPrintColor(item.tipo);
                     const hasContenido = item.contenido && item.contenido.length > 0;
@@ -916,33 +899,23 @@ export default function Programa() {
                       <div
                         key={item.id}
                         style={{
-                          border: '1.5px solid #e5e7eb',
-                          borderRadius: 10,
-                          overflow: 'hidden',
-                          pageBreakInside: 'avoid',
+                          borderLeft: `3px solid ${pc.bg}`,
+                          borderRadius: '0 5px 5px 0',
                           background: '#fff',
+                          paddingLeft: 7,
                         }}
                       >
                         {/* Cabecera del ítem */}
-                        <div
-                          style={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            gap: 10,
-                            padding: '8px 12px',
-                            borderLeft: `4px solid ${pc.bg}`,
-                          }}
-                        >
-                          <div style={{ flexShrink: 0, paddingTop: 2 }}>
+                        <div style={{ padding: '4px 6px 3px 0', pageBreakAfter: 'avoid' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexWrap: 'wrap', marginBottom: 2 }}>
                             <span
                               style={{
                                 background: pc.bg,
                                 color: pc.color,
-                                fontSize: 9,
+                                fontSize: 8,
                                 fontWeight: 700,
-                                padding: '2px 8px',
-                                borderRadius: 20,
-                                display: 'inline-block',
+                                padding: '1px 6px',
+                                borderRadius: 10,
                                 textTransform: 'uppercase',
                                 letterSpacing: 0.5,
                                 whiteSpace: 'nowrap',
@@ -950,46 +923,41 @@ export default function Programa() {
                             >
                               {item.tipo}
                             </span>
+                            <span style={{ color: '#6847f6', fontSize: 10, fontWeight: 700, whiteSpace: 'nowrap' }}>
+                              {formatTime(item.inicio)} – {formatTime(item.fin)}
+                            </span>
                           </div>
-                          <div style={{ flex: 1 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                              <h3 style={{ color: '#0e0477', fontSize: 15, fontWeight: 800, margin: '0 0 2px', lineHeight: 1.3 }}>
-                                {item.titulo}
-                              </h3>
-                              <span style={{ color: '#6847f6', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}>
-                                {formatTime(item.inicio)} – {formatTime(item.fin)}
-                              </span>
-                            </div>
-                          </div>
+                          <h3 style={{ color: '#0e0477', fontSize: 13, fontWeight: 800, margin: 0, lineHeight: 1.3 }}>
+                            {item.titulo}
+                          </h3>
                         </div>
 
-                        {/* Contenido del ítem */}
+                        {/* Sub-ítems — flujo libre, sin pageBreakInside */}
                         {hasContenido && (
-                          <div style={{ background: '#fafafa', padding: '6px 10px 8px', display: 'flex', flexDirection: 'column', gap: 5 }}>
-                            {item.contenido!.map((contenido) => {
+                          <div style={{ paddingBottom: 5, paddingRight: 6, display: 'flex', flexDirection: 'column', gap: 0 }}>
+                            {item.contenido!.map((contenido, cIdx) => {
                               const isTalleresMat = item.titulo.toLowerCase().includes('talleres matutinos');
                               const horarioFijo = isTalleresMat ? getTallerHorarioFijo(contenido.titulo) : null;
                               const hasPonentes = contenido.ponentes && contenido.ponentes.length > 0;
+                              const isLast = cIdx === item.contenido!.length - 1;
                               return (
                                 <div
                                   key={contenido.id}
                                   style={{
-                                    background: '#fff',
-                                    borderRadius: 8,
-                                    padding: '8px 10px',
-                                    border: '1px solid #e5e7eb',
-                                    pageBreakInside: 'auto',
+                                    paddingTop: 4,
+                                    paddingBottom: 4,
+                                    borderBottom: isLast ? 'none' : '1px solid #f0f0f0',
                                   }}
                                 >
-                                  {/* Título de la conferencia */}
-                                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 4 }}>
+                                  {/* Fila título + horario */}
+                                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 5 }}>
                                     <h4
                                       style={{
-                                        color: '#0e0477',
-                                        fontSize: 13,
-                                        fontWeight: 800,
+                                        color: '#1e1b4b',
+                                        fontSize: 12,
+                                        fontWeight: 700,
                                         margin: 0,
-                                        lineHeight: 1.4,
+                                        lineHeight: 1.35,
                                         flex: 1,
                                       }}
                                     >
@@ -997,14 +965,13 @@ export default function Programa() {
                                         ? <>{contenido.titulo.slice(0, -1)}<span style={{ color: '#ef4444' }}>*</span></>
                                         : contenido.titulo}
                                     </h4>
-                                    {/* Horario individual */}
-                                    {!isTalleresMat && (
-                                      <span style={{ color: '#6b7280', fontSize: 11, whiteSpace: 'nowrap', flexShrink: 0 }}>
-                                        {formatTime(contenido.hora_inicio)} – {formatTime(contenido.hora_fin)}
+                                    {!isTalleresMat && contenido.hora_inicio && (
+                                      <span style={{ color: '#9ca3af', fontSize: 9, whiteSpace: 'nowrap', flexShrink: 0, paddingTop: 1 }}>
+                                        {formatTime(contenido.hora_inicio)}–{formatTime(contenido.hora_fin)}
                                       </span>
                                     )}
                                     {horarioFijo && (
-                                      <span style={{ color: '#6b7280', fontSize: 11, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                                      <span style={{ color: '#9ca3af', fontSize: 9, whiteSpace: 'nowrap', flexShrink: 0, paddingTop: 1 }}>
                                         {horarioFijo}
                                       </span>
                                     )}
@@ -1012,70 +979,33 @@ export default function Programa() {
 
                                   {/* Subtítulo */}
                                   {contenido.subtitulo && (
-                                    <p style={{ color: '#6847f6', fontSize: 11, fontWeight: 600, margin: '0 0 5px' }}>
+                                    <p style={{ color: '#6847f6', fontSize: 10, fontWeight: 600, margin: '1px 0 0', lineHeight: 1.3 }}>
                                       {contenido.subtitulo}
                                     </p>
                                   )}
 
-                                  {/* Ponentes */}
+                                  {/* Ponentes — texto inline, sin fotos (reduce peso del archivo) */}
                                   {hasPonentes && (
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 6 }}>
-                                      {contenido.ponentes!.map((ponente) => (
-                                        <div
-                                          key={ponente.id}
-                                          style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: 6,
-                                            background: '#f3f4f6',
-                                            borderRadius: 20,
-                                            padding: '3px 10px 3px 3px',
-                                          }}
-                                        >
-                                          <div
-                                            style={{
-                                              width: 22,
-                                              height: 22,
-                                              borderRadius: '50%',
-                                              overflow: 'hidden',
-                                              background: '#ddd6fe',
-                                              flexShrink: 0,
-                                            }}
-                                          >
-                                            {ponente.foto_url ? (
-                                              <img
-                                                src={`/api/image-proxy?url=${encodeURIComponent(ponente.foto_url)}&w=44`}
-                                                alt={ponente.nombre}
-                                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                                              />
-                                            ) : (
-                                              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#6847f6' }}>?</div>
-                                            )}
-                                          </div>
-                                          <div>
-                                            <p style={{ fontSize: 11, fontWeight: 700, color: '#0e0477', margin: 0 }}>
-                                              {ponente.nombre}
-                                            </p>
-                                            {(ponente.cargo || ponente.empresa) && (
-                                              <p style={{ fontSize: 10, color: '#6b7280', margin: 0 }}>
-                                                {[ponente.cargo, ponente.empresa].filter(Boolean).join(' · ')}
-                                              </p>
-                                            )}
-                                          </div>
-                                        </div>
+                                    <p style={{ fontSize: 9.5, color: '#4b5563', margin: '2px 0 0', lineHeight: 1.4 }}>
+                                      {contenido.ponentes!.map((p, i) => (
+                                        <span key={p.id}>
+                                          {i > 0 && <span style={{ color: '#d1d5db' }}> · </span>}
+                                          <span style={{ fontWeight: 700, color: '#35219b' }}>{p.nombre}</span>
+                                          {(p.cargo || p.empresa) && (
+                                            <span style={{ color: '#6b7280' }}> ({[p.cargo, p.empresa].filter(Boolean).join(', ')})</span>
+                                          )}
+                                        </span>
                                       ))}
-                                    </div>
+                                    </p>
                                   )}
-
-                                  {/* Descripción — oculta en PDF, visible solo en web */}
 
                                   {/* Ubicación / capacidad */}
                                   {(contenido.ubicacion || contenido.capacidad) && (
-                                    <div style={{ display: 'flex', gap: 12, marginTop: 5, fontSize: 10, color: '#9ca3af' }}>
+                                    <p style={{ fontSize: 9, color: '#9ca3af', margin: '1px 0 0' }}>
                                       {contenido.ubicacion && <span>📍 {contenido.ubicacion}</span>}
-                                      {contenido.capacidad && <span>👥 Capacidad: {contenido.capacidad}</span>}
-                                    </div>
+                                      {contenido.ubicacion && contenido.capacidad && <span> · </span>}
+                                      {contenido.capacidad && <span>👥 {contenido.capacidad}</span>}
+                                    </p>
                                   )}
                                 </div>
                               );
@@ -1091,9 +1021,9 @@ export default function Programa() {
           })}
 
           {/* Pie del PDF */}
-          <div style={{ borderTop: '1.5px solid #e5e7eb', paddingTop: 10, marginTop: 8, textAlign: 'center' }}>
-            <p style={{ fontSize: 9, color: '#9ca3af', margin: 0 }}>
-              congresoparques.com · IX Congreso Internacional de Parques Urbanos y Espacio Público · Tijuana 2026
+          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: 5, marginTop: 4, textAlign: 'center' }}>
+            <p style={{ fontSize: 8, color: '#9ca3af', margin: 0 }}>
+              congresoparques.com · IX Congreso Internacional · Tijuana 2026
             </p>
           </div>
         </div>
