@@ -1,0 +1,41 @@
+En el PDF descargable de la página /programa, necesito hacer un ajuste para que el documento sea más compacto y útil de consultar, sin modificar en absoluto la versión web del programa.
+
+Importante: no modificar la página web
+
+No quiero que cambies nada del programa en la página /programa.
+No muevas, elimines ni alteres contenido en la versión online.
+Este ajuste debe aplicarse únicamente al PDF descargable.
+
+Cambio solicitado en el PDF
+Oculta las descripciones de las actividades, conferencias o sesiones dentro del PDF.
+La intención es que el programa descargable sea menos extenso, más limpio y más fácil de revisar.
+Deben mantenerse visibles los elementos principales, como por ejemplo:
+día
+horario
+nombre de la actividad o conferencia
+nombres de ponentes
+fotos de ponentes, si ya están incluidas
+demás elementos clave del diseño
+Ajuste adicional en la primera página
+Quiero que la primera página del PDF no quede con tanto espacio en blanco como sucede actualmente.
+Reacomoda la maquetación para aprovechar mejor el espacio, manteniendo el diseño limpio y ordenado.
+El resultado debe verse más equilibrado y editorial, no vacío ni desproporcionado.
+Objetivo UX/UI
+Hacer que el PDF del programa sea más breve y práctico.
+Evitar exceso de texto que vuelva pesado el documento.
+Mejorar el aprovechamiento del espacio en la primera página.
+Mantener una apariencia profesional, clara y bien maquetada.
+Instrucciones específicas
+Aplica la ocultación de descripciones solo en el PDF.
+La versión web debe conservar todas las descripciones tal como están actualmente.
+Revisa la composición de la primera página para reducir espacios vacíos innecesarios.
+Mantén la estructura por días, el estilo visual, los colores, iconos y jerarquía general del documento.
+Restricciones
+No modificar nada del programa en la web
+No eliminar contenido de la versión online
+no romper el diseño del PDF
+no quitar información clave como horarios, títulos o nombres de ponentes
+no saturar la maquetación al reducir espacios
+Resultado esperado
+
+El PDF descargable de /programa debe verse más compacto porque las descripciones estarán ocultas solo en el PDF, mientras que la versión web permanecerá intacta. Además, la primera página debe aprovechar mejor el espacio y evitar grandes áreas en blanco, manteniendo un diseño limpio y profesional.

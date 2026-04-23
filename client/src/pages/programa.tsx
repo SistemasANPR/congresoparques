@@ -835,16 +835,16 @@ export default function Programa() {
           className="hidden print:block"
           style={{ fontFamily: 'Montserrat, sans-serif', background: '#fff', padding: '0 8px' }}
         >
-          {/* Portada — se mantiene completa en la página 1 y fuerza salto de página al final */}
+          {/* Portada — se mantiene completa y fluye hacia el contenido del primer día */}
           <div
             style={{
               background: 'linear-gradient(135deg,#0e0477 0%,#35219b 50%,#6847f6 100%)',
               borderRadius: 14,
-              padding: '24px 28px',
-              marginBottom: 12,
+              padding: '20px 28px',
+              marginBottom: 10,
               textAlign: 'center',
               pageBreakInside: 'avoid',
-              pageBreakAfter: 'always',
+              pageBreakAfter: 'avoid',
             }}
           >
             <img
@@ -1068,12 +1068,7 @@ export default function Programa() {
                                     </div>
                                   )}
 
-                                  {/* Descripción */}
-                                  {contenido.descripcion && (
-                                    <p style={{ fontSize: 10, color: '#4b5563', margin: '4px 0 0', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
-                                      {contenido.descripcion}
-                                    </p>
-                                  )}
+                                  {/* Descripción — oculta en PDF, visible solo en web */}
 
                                   {/* Ubicación / capacidad */}
                                   {(contenido.ubicacion || contenido.capacidad) && (
