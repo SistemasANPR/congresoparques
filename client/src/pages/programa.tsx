@@ -863,58 +863,73 @@ export default function Programa() {
             </p>
           </div>
 
-          {/* Días — flujo continuo sin saltos de página forzados */}
-          {fechasDisponibles.map((fecha) => {
+          {/* Días — cada uno inicia en nueva página; contenido interno fluye sin huecos */}
+          {fechasDisponibles.map((fecha, diaIdx) => {
             const items = programa
               .filter(item => item.fecha === fecha)
               .sort((a, b) => a.inicio.localeCompare(b.inicio));
             if (items.length === 0) return null;
             return (
-              <div key={fecha} style={{ marginBottom: 7 }}>
-                {/* Encabezado del día */}
+              <div
+                key={fecha}
+                style={{
+                  marginBottom: 8,
+                  pageBreakBefore: diaIdx > 0 ? 'always' : 'auto',
+                }}
+              >
+                {/* ── Encabezado del día ── */}
                 <div
                   style={{
-                    background: 'linear-gradient(90deg,#0e0477,#35219b)',
-                    borderRadius: 6,
-                    padding: '5px 10px',
-                    marginBottom: 4,
+                    background: 'linear-gradient(90deg,#0e0477 0%,#35219b 100%)',
+                    borderRadius: 7,
+                    padding: '6px 12px',
+                    marginBottom: 5,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 6,
+                    gap: 7,
                     pageBreakAfter: 'avoid',
                   }}
                 >
-                  <CalendarDays style={{ width: 11, height: 11, color: '#BCCE16', flexShrink: 0 }} />
-                  <h2 style={{ color: '#fff', fontSize: 13, fontWeight: 900, margin: 0, textTransform: 'capitalize' }}>
+                  <div style={{ width: 20, height: 20, borderRadius: '50%', background: '#BCCE16', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <CalendarDays style={{ width: 11, height: 11, color: '#0e0477' }} />
+                  </div>
+                  <h2 style={{ color: '#fff', fontSize: 14, fontWeight: 900, margin: 0, textTransform: 'capitalize', letterSpacing: 0.3 }}>
                     {formatDate(fecha)}
                   </h2>
                 </div>
 
-                {/* Ítems del día */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                {/* ── Ítems del día ── */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   {items.map((item) => {
                     const pc = getTipoPrintColor(item.tipo);
                     const hasContenido = item.contenido && item.contenido.length > 0;
                     return (
+                      /* Tarjeta de sesión — Nivel 2 */
                       <div
                         key={item.id}
                         style={{
-                          borderLeft: `3px solid ${pc.bg}`,
-                          borderRadius: '0 5px 5px 0',
+                          border: '1.5px solid #e5e7eb',
+                          borderLeft: `4px solid ${pc.bg}`,
+                          borderRadius: '0 7px 7px 0',
                           background: '#fff',
-                          paddingLeft: 7,
+                          overflow: 'hidden',
                         }}
                       >
-                        {/* Cabecera del ítem */}
-                        <div style={{ padding: '4px 6px 3px 0', pageBreakAfter: 'avoid' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexWrap: 'wrap', marginBottom: 2 }}>
+                        {/* Cabecera de la sesión */}
+                        <div
+                          style={{
+                            padding: '5px 10px 4px',
+                            pageBreakAfter: 'avoid',
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 2, flexWrap: 'wrap' }}>
                             <span
                               style={{
                                 background: pc.bg,
                                 color: pc.color,
                                 fontSize: 8,
                                 fontWeight: 700,
-                                padding: '1px 6px',
+                                padding: '1px 7px',
                                 borderRadius: 10,
                                 textTransform: 'uppercase',
                                 letterSpacing: 0.5,
@@ -932,24 +947,33 @@ export default function Programa() {
                           </h3>
                         </div>
 
-                        {/* Sub-ítems — flujo libre, sin pageBreakInside */}
+                        {/* Zona de sub-ítems — Nivel 3: fondo diferenciado */}
                         {hasContenido && (
-                          <div style={{ paddingBottom: 5, paddingRight: 6, display: 'flex', flexDirection: 'column', gap: 0 }}>
-                            {item.contenido!.map((contenido, cIdx) => {
+                          <div
+                            style={{
+                              background: '#f5f3ff',
+                              padding: '4px 8px 5px',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: 3,
+                            }}
+                          >
+                            {item.contenido!.map((contenido) => {
                               const isTalleresMat = item.titulo.toLowerCase().includes('talleres matutinos');
                               const horarioFijo = isTalleresMat ? getTallerHorarioFijo(contenido.titulo) : null;
                               const hasPonentes = contenido.ponentes && contenido.ponentes.length > 0;
-                              const isLast = cIdx === item.contenido!.length - 1;
                               return (
+                                /* Sub-tarjeta individual — Nivel 3 interno */
                                 <div
                                   key={contenido.id}
                                   style={{
-                                    paddingTop: 4,
-                                    paddingBottom: 4,
-                                    borderBottom: isLast ? 'none' : '1px solid #f0f0f0',
+                                    background: '#fff',
+                                    borderRadius: 5,
+                                    padding: '5px 7px',
+                                    border: '1px solid #ede9fe',
                                   }}
                                 >
-                                  {/* Fila título + horario */}
+                                  {/* Título + horario */}
                                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 5 }}>
                                     <h4
                                       style={{
@@ -984,7 +1008,7 @@ export default function Programa() {
                                     </p>
                                   )}
 
-                                  {/* Ponentes — texto inline, sin fotos (reduce peso del archivo) */}
+                                  {/* Ponentes — texto inline, sin fotos */}
                                   {hasPonentes && (
                                     <p style={{ fontSize: 9.5, color: '#4b5563', margin: '2px 0 0', lineHeight: 1.4 }}>
                                       {contenido.ponentes!.map((p, i) => (

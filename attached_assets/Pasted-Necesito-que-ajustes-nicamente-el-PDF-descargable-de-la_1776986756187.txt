@@ -1,0 +1,136 @@
+Necesito que ajustes únicamente el PDF descargable de la página /programa.
+
+Importante: no modifiques nada de la versión web.
+No cambies la navegación por días, no cambies las tarjetas desplegables, no cambies la estructura online del programa.
+Este trabajo es solo para el PDF.
+
+Contexto del ajuste
+
+Ya se logró:
+
+reducir el peso del PDF
+eliminar fotos de ponentes
+quitar huecos innecesarios entre muchos bloques
+
+Eso fue positivo.
+
+Pero ahora el PDF quedó demasiado plano visualmente.
+Perdió parte de la jerarquía y del estilo más moderno que tenía antes cuando había:
+
+distintos niveles de cajas
+separaciones más claras
+fondos diferenciados entre bloques
+una sensación más visual/editorial
+
+Quiero recuperar esa riqueza visual sin volver a meter las fotos y sin volver a generar huecos innecesarios.
+
+Lo que quiero lograr
+
+Quiero un PDF que:
+
+siga siendo ligero
+siga siendo legible en celular
+siga sin fotos
+siga evitando huecos innecesarios entre bloques normales
+pero recupere una jerarquía visual más moderna y atractiva
+Ajustes solicitados
+1. Recuperar jerarquía visual
+
+Haz que el PDF vuelva a sentirse más diseñado y menos plano.
+
+Quiero recuperar recursos como:
+
+diferencias de fondo entre bloques o niveles de contenido
+cajas o contenedores con jerarquía más evidente
+mejor separación visual entre secciones
+una maquetación más editorial y moderna
+
+No quiero algo recargado, pero sí que se sienta más visual y menos como texto corrido.
+
+2. Mantener ocultas las fotos
+
+Las fotos de ponentes sí deben seguir ocultas en el PDF.
+Eso fue un acierto y ayudó mucho con peso y limpieza.
+
+3. Mantener controlados los huecos
+
+Quiero conservar la mejora de no dejar espacios vacíos innecesarios dentro del contenido normal.
+
+Es decir:
+
+entre bloques del mismo día
+entre conferencias
+entre sesiones
+entre tarjetas o contenedores de contenido
+
+ahí no quiero huecos grandes.
+
+4. Excepción importante: cada día sí debe iniciar en una nueva página
+
+Aquí sí quiero una regla distinta:
+
+Miércoles, 13 de mayo de 2026 debe iniciar al principio de una página
+Jueves, 14 de mayo de 2026 debe iniciar al principio de una nueva página
+Viernes, 15 de mayo de 2026 debe iniciar al principio de una nueva página
+
+En estos casos, sí está bien que quede algo de espacio en blanco al final de la página anterior si eso ayuda a que cada día comience con claridad editorial.
+
+O sea:
+
+sí aceptar hueco antes del inicio de un nuevo día
+no aceptar huecos innecesarios dentro del contenido del mismo día
+5. Mantener optimización móvil
+
+Aunque recupere más diseño, el PDF debe seguir funcionando bien en celular:
+
+texto legible
+jerarquía clara
+bloques fáciles de escanear
+peso razonable
+buena apertura en móvil
+6. Mantener PDF ligero
+
+No quiero perder el avance de optimización de peso.
+Mantén:
+
+compresión adecuada
+imágenes eliminadas si no son necesarias
+recursos gráficos optimizados para pantalla
+un archivo razonable para descargar y consultar desde el teléfono
+7. Mantener coherencia visual con el sitio
+
+Conserva:
+
+colores del programa
+iconografía
+estilo general de Congreso Parques
+una apariencia cuidada y consistente
+
+Pero evita que se vea plano o demasiado básico.
+
+Criterio de diseño
+
+Quiero un punto medio entre:
+
+la versión anterior, que se veía más moderna pero tenía huecos y era más pesada
+y la versión actual, que es más eficiente pero demasiado plana
+
+La meta es conservar la eficiencia de la versión nueva, pero recuperar la riqueza visual de la anterior.
+
+Restricciones
+no modificar la web
+no reactivar fotos de ponentes
+no volver a crear huecos grandes entre bloques normales
+sí permitir salto de página para que cada día empiece arriba
+no hacer el PDF pesado otra vez
+no convertirlo en texto corrido sin jerarquía visual
+Resultado esperado
+
+Quiero una nueva versión del PDF del programa que:
+
+siga siendo ligera
+siga sin fotos
+mantenga el contenido compacto
+evite huecos innecesarios dentro de cada día
+pero recupere fondos, cajas, niveles y separación visual para verse más moderna
+y donde cada día comience claramente al inicio de una nueva página, aunque eso implique dejar algo de espacio en blanco antes del nuevo día
