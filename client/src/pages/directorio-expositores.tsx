@@ -23,7 +23,8 @@ import logoProludic from "@assets/Proludic_1776810194159.png";
 import logoGamboa from "@assets/Fundicion_Gamboa_1776810194158.png";
 import logoRainBird from "@assets/Rain_Bird_1776810194156.png";
 import logoMusco from "@assets/Musco_1776810194159.png";
-import logoDihla from "@assets/DIHLA_1776810194159.png";
+import logoConVidaParque from "@assets/Con_Vida_tu_Parque_1777481331114.png";
+import logoDeacero from "@assets/DEACERO_1777481340896.png";
 
 interface Expositor {
   id: number;
@@ -276,16 +277,29 @@ const expositores: Expositor[] = [
   },
   {
     id: 19,
-    nombre: "DIHLA",
-    contacto: "",
-    telefono: "222 960 7152",
-    celular: "222 330 7320",
-    facebook: "https://facebook.com/DihlaMx",
-    instagram: "https://www.instagram.com/dihlamx",
-    web: "https://dihla.com.mx",
-    descripcion: "DIHLA diseña y fabrica mobiliario urbano pensado para proyectos que buscan destacar por su diseño, calidad y funcionalidad. Soluciones para espacios públicos que transforman y embellecen las ciudades.",
-    logo: logoDihla,
-    pdfId: "",
+    nombre: "Consejo de Desarrollo Económico de Tecate",
+    contacto: "German Ramirez Sanchez",
+    telefono: "6656545910",
+    celular: "6651192945",
+    facebook: "https://www.facebook.com/profile.php?id=61565271878965",
+    instagram: "",
+    web: "",
+    descripcion: "Promover una cultura del disfrute, buen uso y cuidado de los espacios públicos, mediante la participación activa de todos los sectores de la comunidad.",
+    logo: logoConVidaParque,
+    pdfId: "1dLZs9zeAEm3YXNDPwI_I-1KlzztT_UCk",
+  },
+  {
+    id: 20,
+    nombre: "DEACERO",
+    contacto: "Benito Martinez",
+    telefono: "8110508778",
+    celular: "",
+    facebook: "https://www.facebook.com/grupodeacero/",
+    instagram: "https://www.instagram.com/grupodeacero/?hl=es-la",
+    web: "https://www.deacero.com/",
+    descripcion: "Líder mundial en producción de alambres. Líder en México en producción de aceros largos y aceros de refuerzo. Mayor reciclador de México.",
+    logo: logoDeacero,
+    pdfId: "1BwsABC-H6a8TcRftIqnXxqaqGPW2SN_W",
   },
 ];
 

@@ -1,0 +1,89 @@
+En la página /directorio-expositores, necesito actualizar el contenido del directorio haciendo un reemplazo y agregando nuevas tarjetas de expositores.
+
+1. Eliminar tarjeta existente
+Elimina por completo la tarjeta de DIHLA del directorio.
+Asegúrate de que ya no aparezca ni en la vista web ni en el PDF descargable del directorio, si también se genera desde esta misma fuente.
+2. Agregar nueva tarjeta: Consejo de Desarrollo Económico de Tecate
+
+Crea una nueva tarjeta con esta información:
+
+Nombre de empresa: Consejo de Desarrollo Económico de Tecate
+Contacto: German Ramirez Sanchez
+Teléfono: 6656545910
+Celular: 6651192945
+Facebook: https://www.facebook.com/profile.php?id=61565271878965
+Descripción: Promover una cultura del disfrute, buen uso y cuidado de los espacios públicos, mediante la participación activa de todos los sectores de la comunidad.
+Documento / folleto: https://drive.google.com/file/d/1dLZs9zeAEm3YXNDPwI_I-1KlzztT_UCk/view
+Logo: usar el archivo adjunto correspondiente
+Instrucciones para esta tarjeta
+Integra el logo correctamente dentro de la ficha.
+Muestra teléfonos con sus respectivos íconos si el sistema ya lo está manejando así.
+Muestra Facebook como ícono/botón interactivo, consistente con el resto del directorio.
+El documento descargable debe integrarse igual que en las demás tarjetas: como botón o ícono de material/PDF, no como URL visible.
+3. Agregar nueva tarjeta: DEACERO
+
+Crea una nueva tarjeta con esta información:
+
+Nombre de empresa: DEACERO
+Contacto: Benito Martinez
+Teléfono: 8110508778
+Facebook: https://www.facebook.com/grupodeacero/
+Instagram: https://www.instagram.com/grupodeacero/?hl=es-la
+Página web: https://www.deacero.com/
+Descripción: Líder mundial en producción de alambres. Líder en México en producción de aceros largos y aceros de refuerzo. Mayor reciclador de México.
+Documento / folleto: https://drive.google.com/file/d/1BwsABC-H6a8TcRftIqnXxqaqGPW2SN_W/view
+Instrucciones para esta tarjeta
+Si hay logo disponible en los archivos adjuntos o en la fuente cargada, intégralo correctamente.
+Muestra web, Facebook e Instagram como íconos/botones interactivos, consistentes con el estilo actual del directorio.
+El documento debe integrarse como botón o ícono de material/PDF, no como enlace escrito.
+No muestres las URLs como texto plano.
+4. Criterios de diseño y consistencia
+Ambas nuevas tarjetas deben verse completamente integradas al sistema visual actual del Directorio de Expositores.
+Deben respetar:
+estilo de tarjetas
+jerarquía tipográfica
+iconografía
+colores
+alineación
+responsive
+Los datos de contacto deben verse claros y bien organizados.
+No usar URLs visibles como texto.
+Mantener una apariencia limpia, profesional y consistente con Expo Espacio Público / Congreso Parques.
+5. Aplicación en PDF
+Si el PDF descargable del directorio se alimenta de esta misma información, asegúrate de que:
+DIHLA ya no aparezca
+Consejo de Desarrollo Económico de Tecate sí aparezca
+DEACERO sí aparezca
+Mantén también la lógica de íconos y enlaces interactivos en el PDF donde aplique.
+Restricciones
+No romper el diseño del directorio existente.
+No mostrar URLs sin formato.
+No afectar otras tarjetas que ya estén correctas.
+Mantener consistencia entre versión web y PDF descargable, si ambos están conectados a la misma fuente.
+Resultado esperado
+
+La página /directorio-expositores debe eliminar la tarjeta de DIHLA y agregar correctamente las nuevas tarjetas de Consejo de Desarrollo Económico de Tecate y DEACERO, integradas al diseño actual del directorio, con sus datos, redes, documentos y logos correspondientes.
+
+Versión compacta
+
+En la página /directorio-expositores:
+
+elimina la tarjeta de DIHLA
+agrega una nueva tarjeta para Consejo de Desarrollo Económico de Tecate con estos datos:
+Contacto: German Ramirez Sanchez
+Teléfono: 6656545910
+Celular: 6651192945
+Facebook: https://www.facebook.com/profile.php?id=61565271878965
+Descripción: Promover una cultura del disfrute, buen uso y cuidado de los espacios públicos, mediante la participación activa de todos los sectores de la comunidad.
+Documento: https://drive.google.com/file/d/1dLZs9zeAEm3YXNDPwI_I-1KlzztT_UCk/view
+usar el logo adjunto
+agrega una nueva tarjeta para DEACERO con estos datos:
+Contacto: Benito Martinez
+Teléfono: 8110508778
+Facebook: https://www.facebook.com/grupodeacero/
+Instagram: https://www.instagram.com/grupodeacero/?hl=es-la
+Web: https://www.deacero.com/
+Descripción: Líder mundial en producción de alambres. Líder en México en producción de aceros largos y aceros de refuerzo. Mayor reciclador de México.
+Documento: https://drive.google.com/file/d/1BwsABC-H6a8TcRftIqnXxqaqGPW2SN_W/view
+
+Mantén el estilo actual del directorio, usa íconos para redes/contacto/documentos, no muestres URLs como texto y asegúrate de que estos cambios también se reflejen en el PDF descargable si aplica.
