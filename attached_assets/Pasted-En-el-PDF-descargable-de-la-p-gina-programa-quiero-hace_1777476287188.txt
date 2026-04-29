@@ -1,0 +1,35 @@
+En el PDF descargable de la página /programa, quiero hacer dos ajustes adicionales relacionados con el archivo final que se genera.
+
+1. Agregar una portada al inicio del PDF
+Quiero que el PDF descargable del programa incluya una portada al principio.
+Esa portada no se debe diseñar desde cero dentro del sistema, sino que debe provenir de un archivo PDF externo que voy a adjuntar.
+La instrucción es insertar o adjuntar ese PDF externo como primera página del documento final descargable.
+Después de esa portada, debe continuar el contenido actual del programa en PDF.
+Importante
+La portada debe integrarse como parte del archivo final, no como enlace aparte.
+Debe quedar al inicio del PDF, antes de la primera página del programa.
+El resto del contenido del programa debe conservarse tal como ya está funcionando.
+2. Renombrar el archivo descargable
+Quiero que, al descargarse, el archivo tenga este nombre:
+PROGRAMA CONGRESO PARQUES 2026.pdf
+Objetivo UX/UI
+Hacer que el PDF final se vea más completo y profesional al incluir una portada.
+Asegurar que el archivo descargado tenga un nombre claro, limpio e identificable para el usuario.
+Restricciones
+No modificar la estructura ni el diseño actual del contenido del programa dentro del PDF, salvo por agregar la portada al inicio.
+No alterar la versión web de /programa.
+No reemplazar el contenido del programa; solo añadir la portada como primera página.
+El nombre del archivo debe aplicarse al archivo final descargable.
+Resultado esperado
+
+El PDF descargable de /programa debe incluir al inicio una portada proveniente de un PDF externo adjunto, seguida del programa actual, y al descargarse debe guardarse con el nombre:
+
+PROGRAMA CONGRESO PARQUES 2026.pdf
+
+Versión compacta
+
+En el PDF descargable de la página /programa, agrega una portada al inicio usando un archivo PDF externo que adjuntaré. Esa portada debe integrarse como la primera página del PDF final, antes del contenido actual del programa. No modifiques el resto del documento. Además, haz que el archivo se descargue con el nombre:
+
+PROGRAMA CONGRESO PARQUES 2026.pdf
+
+Si quieres, también te hago una versión más técnica para Claude, especificando que debe mergear PDFs y mantener intacta la paginación del contenido posterior.

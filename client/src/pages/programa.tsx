@@ -127,6 +127,70 @@ export default function Programa() {
   const searchRef = useRef<HTMLDivElement>(null);
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // PDF cover state
+  const [coverPageUrl, setCoverPageUrl] = useState<string | null>(null);
+  const [shouldPrint, setShouldPrint] = useState(false);
+  const originalTitleRef = useRef(document.title);
+
+  // Trigger print after cover image is injected into the DOM
+  useEffect(() => {
+    if (shouldPrint && coverPageUrl) {
+      const timer = setTimeout(() => {
+        window.print();
+        setShouldPrint(false);
+        setTimeout(() => {
+          document.title = originalTitleRef.current;
+        }, 1500);
+      }, 120);
+      return () => clearTimeout(timer);
+    }
+  }, [shouldPrint, coverPageUrl]);
+
+  // Render cover PDF via PDF.js and trigger print
+  const handleDownloadPDF = async () => {
+    document.title = 'PROGRAMA CONGRESO PARQUES 2026';
+
+    if (coverPageUrl) {
+      // Already rendered — just print
+      setShouldPrint(true);
+      return;
+    }
+
+    try {
+      // Dynamically load PDF.js from CDN
+      if (!(window as any).pdfjsLib) {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error('PDF.js load failed'));
+          document.head.appendChild(script);
+        });
+        (window as any).pdfjsLib.GlobalWorkerOptions.workerSrc =
+          'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+      }
+
+      const pdfjsLib = (window as any).pdfjsLib;
+      const pdf = await pdfjsLib.getDocument('/portada-programa.pdf').promise;
+      const page = await pdf.getPage(1);
+
+      // Render at 3× scale for crisp quality on mobile
+      const viewport = page.getViewport({ scale: 3 });
+      const canvas = document.createElement('canvas');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const ctx = canvas.getContext('2d')!;
+      await page.render({ canvasContext: ctx, viewport }).promise;
+
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+      setCoverPageUrl(dataUrl);
+      setShouldPrint(true);
+    } catch (err) {
+      console.error('Cover render failed, printing without cover:', err);
+      setShouldPrint(true);
+    }
+  };
+
   const toggleExpanded = (id: string) => {
     setExpandedItems(prev => {
       const newSet = new Set(prev);
@@ -411,6 +475,10 @@ export default function Programa() {
           size: 105mm 175mm;
           margin: 7mm 5mm 8mm 5mm;
         }
+        /* Sin márgenes en la primera página (portada externa) */
+        @page :first {
+          margin: 0;
+        }
 
         /* Ocultar fecha/hora (top-left) y URL (bottom-left), conservar número de página */
         @page { @top-left { content: ""; } }
@@ -451,7 +519,7 @@ export default function Programa() {
         {/* Botón descargar PDF */}
         <div className="no-print bg-white py-4 text-center border-b border-gray-100 shadow-sm">
           <button
-            onClick={() => window.print()}
+            onClick={handleDownloadPDF}
             className="inline-flex items-center gap-2 bg-[#0e0477] hover:bg-[#35219b] text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wide transition-colors shadow-md"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
@@ -835,7 +903,24 @@ export default function Programa() {
           className="hidden print:block"
           style={{ fontFamily: 'Montserrat, sans-serif', background: '#fff' }}
         >
-          {/* Portada compacta — fluye hacia el primer día sin salto */}
+          {/* Portada externa — imagen del PDF adjunto, página completa */}
+          {coverPageUrl && (
+            <div
+              style={{
+                pageBreakAfter: 'always',
+                pageBreakInside: 'avoid',
+                lineHeight: 0,
+              }}
+            >
+              <img
+                src={coverPageUrl}
+                alt="Portada Programa Congreso Parques 2026"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </div>
+          )}
+
+          {/* Portada interna del programa — fluye hacia el primer día sin salto */}
           <div
             style={{
               background: 'linear-gradient(135deg,#0e0477 0%,#35219b 50%,#6847f6 100%)',
