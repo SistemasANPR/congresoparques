@@ -564,8 +564,80 @@ export default function DirectorioExpositores() {
     );
   }, [query]);
 
-  const handlePrint = () => {
-    window.print();
+  // PDF cover + ads state
+  const [coverUrl, setCoverUrl] = useState<string | null>(null);
+  const [adsUrls, setAdsUrls] = useState<string[]>([]);
+  const [shouldPrint, setShouldPrint] = useState(false);
+  const originalTitleRef = useRef(document.title);
+
+  // Trigger print after all pages are injected into DOM
+  useEffect(() => {
+    if (shouldPrint && coverUrl && adsUrls.length > 0) {
+      const timer = setTimeout(() => {
+        window.print();
+        setShouldPrint(false);
+        setTimeout(() => { document.title = originalTitleRef.current; }, 1500);
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [shouldPrint, coverUrl, adsUrls]);
+
+  // Render all pages of a PDF to data URLs using PDF.js
+  const renderPdfPages = async (pdfjsLib: any, url: string, scale = 2.5): Promise<string[]> => {
+    const pdf = await pdfjsLib.getDocument(url).promise;
+    const pages: string[] = [];
+    const renders = Array.from({ length: pdf.numPages }, (_, i) =>
+      pdf.getPage(i + 1).then(async (page: any) => {
+        const viewport = page.getViewport({ scale });
+        const canvas = document.createElement('canvas');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        await page.render({ canvasContext: canvas.getContext('2d')!, viewport }).promise;
+        return { index: i, url: canvas.toDataURL('image/jpeg', 0.90) };
+      })
+    );
+    const results = await Promise.all(renders);
+    results.sort((a, b) => a.index - b.index).forEach(r => pages.push(r.url));
+    return pages;
+  };
+
+  const handleDownloadPDF = async () => {
+    document.title = 'CATÁLOGO EXPO ESPACIO PÚBLICO 2026';
+
+    if (coverUrl && adsUrls.length > 0) {
+      setShouldPrint(true);
+      return;
+    }
+
+    try {
+      if (!(window as any).pdfjsLib) {
+        await new Promise<void>((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error('PDF.js load failed'));
+          document.head.appendChild(script);
+        });
+        (window as any).pdfjsLib.GlobalWorkerOptions.workerSrc =
+          'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+      }
+
+      const pdfjsLib = (window as any).pdfjsLib;
+
+      // Render cover (1 page) and all ads pages in parallel
+      const [coverPages, adsPages] = await Promise.all([
+        renderPdfPages(pdfjsLib, '/portada-catalogo-expo.pdf', 3),
+        renderPdfPages(pdfjsLib, '/publicidades-expo.pdf', 2.5),
+      ]);
+
+      setCoverUrl(coverPages[0] ?? null);
+      setAdsUrls(adsPages);
+      setShouldPrint(true);
+    } catch (err) {
+      console.error('PDF render failed, printing without extras:', err);
+      window.print();
+      setTimeout(() => { document.title = originalTitleRef.current; }, 1500);
+    }
   };
 
   return (
@@ -594,10 +666,14 @@ export default function DirectorioExpositores() {
           }
         }
 
-        /* Configuración de página: márgenes y tamaño */
+        /* Configuración de página */
         @page {
           size: A4;
           margin: 14mm 10mm 14mm 10mm;
+        }
+        /* Sin márgenes en la primera página (portada) */
+        @page :first {
+          margin: 0;
         }
 
         /* Ocultar fecha/hora (top-left) y URL (bottom-left), conservar número de página */
@@ -692,7 +768,7 @@ export default function DirectorioExpositores() {
                 {filtered.length === 1 ? "expositor" : "expositores"}
               </span>
               <button
-                onClick={handlePrint}
+                onClick={handleDownloadPDF}
                 title="Descargar directorio en PDF"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0e0477] text-white text-sm font-bold hover:bg-[#35219b] transition-colors"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
@@ -760,8 +836,46 @@ export default function DirectorioExpositores() {
         <Footer />
       </div>
 
+      {/* ── Portada externa — primera página del PDF ── */}
+      {coverUrl && (
+        <div
+          className="hidden print:block"
+          style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid', lineHeight: 0 }}
+        >
+          <img
+            src={coverUrl}
+            alt="Portada Catálogo Expo Espacio Público 2026"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </div>
+      )}
+
       {/* Print-only catalog — rendered for ALL expositores regardless of search filter */}
       <PrintCatalog items={expositores} />
+
+      {/* ── Publicidades — últimas páginas del PDF ── */}
+      {adsUrls.length > 0 && (
+        <div className="hidden print:block">
+          {adsUrls.map((url, i) => (
+            <div
+              key={i}
+              style={{
+                pageBreakBefore: 'always',
+                pageBreakInside: 'avoid',
+                lineHeight: 0,
+                margin: '-14mm -10mm',
+                width: 'calc(100% + 20mm)',
+              }}
+            >
+              <img
+                src={url}
+                alt={`Publicidad ${i + 1}`}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
