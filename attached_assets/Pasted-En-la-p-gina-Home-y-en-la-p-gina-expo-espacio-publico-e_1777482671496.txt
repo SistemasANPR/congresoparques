@@ -1,0 +1,86 @@
+En la página Home y en la página /expo-espacio-publico existe la sección “Las Mejores Marcas Presentes”, que funciona como un carrusel de logos. Necesito actualizar ese carrusel y también sincronizar algunos logos dentro de la página /directorio-expositores.
+
+1. Eliminar logos del carrusel
+
+En el carrusel de “Las Mejores Marcas Presentes” de ambas páginas:
+
+Home
+/expo-espacio-publico
+
+elimina estos logos:
+
+DIHLA
+BENITO
+2. Actualizar logos existentes en el directorio
+
+En la página /directorio-expositores, actualiza los logos de estas marcas con sus versiones correctas:
+
+Fundición Gamboa
+Play Club
+Productos Jumbo
+Boden
+
+Asegúrate de que:
+
+se visualicen correctamente
+tengan buena proporción y nitidez
+no se deformen
+queden consistentes con el estilo del directorio
+3. Agregar nuevos logos al carrusel
+
+Agrega al carrusel de “Las Mejores Marcas Presentes” en:
+
+Home
+/expo-espacio-publico
+
+los logos de estas marcas:
+
+BKT
+dyce
+Aquakita
+DEACERO
+Con Vida Tu Parque
+4. Revisar si faltan marcas del directorio en el carrusel
+
+Quiero que revises el contenido actual del /directorio-expositores y detectes si hay alguna marca que:
+
+ya esté en el directorio
+tenga logo disponible
+pero todavía no esté incluida en el carrusel de “Las Mejores Marcas Presentes”
+
+Si encuentras casos así:
+
+agrégalos también al carrusel
+manteniendo coherencia visual y sin duplicados
+5. Consideración importante sobre logos faltantes
+
+Hay marcas que todavía no están agregadas al directorio porque aún no tengo su información completa o su logo correspondiente.
+
+Por lo tanto:
+
+solo agrega al carrusel las marcas cuyo logo ya esté disponible
+no inventes logos ni uses placeholders improvisados
+si una marca aún no tiene logo cargado o disponible, déjala pendiente
+6. Objetivo UX/UI
+Mantener consistencia entre el carrusel de logos y el directorio de expositores
+Asegurar que las marcas visibles en Expo Espacio Público estén actualizadas
+Mejorar coherencia visual entre Home, Expo y Directorio
+Evitar logos obsoletos, repetidos o faltantes cuando ya existe material disponible
+7. Criterios de diseño
+Mantén el mismo estilo visual actual del carrusel
+Respeta proporciones, padding, nitidez y alineación de los logos
+Asegúrate de que el carrusel siga funcionando bien en desktop y mobile
+No deformes ni escales incorrectamente los logos
+Evita duplicados
+Mantén consistencia entre las dos páginas donde aparece el carrusel
+8. Restricciones
+No afectar otras secciones fuera de:
+Home
+/expo-espacio-publico
+/directorio-expositores
+No usar logos incorrectos o placeholders
+No agregar al carrusel marcas sin logo disponible
+No romper el funcionamiento responsive del carrusel ni del directorio
+Resultado esperado
+
+El carrusel “Las Mejores Marcas Presentes” en Home y /expo-espacio-publico debe eliminar los logos de DIHLA y BENITO, agregar los logos de BKT, dyce, Aquakita, DEACERO y Con Vida Tu Parque, y también incluir cualquier otra marca que ya esté en el directorio y tenga logo disponible pero aún no aparezca en el carrusel. Además, en /directorio-expositores deben actualizarse correctamente los logos de Fundición Gamboa, Play Club, Productos Jumbo y Boden.

@@ -4,22 +4,25 @@
 import parquesAlegresLogoUrl from "@assets/Parques_Alegres_1766080172845.png";
 import parquesMexicoLogoUrl from "@assets/Parques_de_Mexico_1766080172846.png";
 import jimumexLogoUrl from "@assets/Jimumex_1766080172847.png";
-import playClubLogoUrl from "@assets/Play_Club_1766080172847.png";
+import playClubLogoUrl from "@assets/Play_Club_1777482668293.png";
 import deportanLogoUrl from "@assets/Deportan_1766080172847.png";
 import hunterLogoUrl from "@assets/Hunter_1766080172848.png";
 import muscoLogoUrl from "@assets/Musco_1766080172848.png";
-import bodenLogoUrl from "@assets/Boden_1766080172848.png";
+import bodenLogoUrl from "@assets/Boden_1777482668293.png";
 import bugyLogoUrl from "@assets/Bugy_1766080172848.png";
 import rainBirdLogoUrl from "@assets/Rain_Bird_1766080172849.png";
-import dihlaLogoUrl from "@assets/DIHLA_1766080172849.png";
 import cdtLogoUrl from "@assets/CDT_1766080172849.png";
-import jumboLogoUrl from "@assets/Jumbo_1766080172849.png";
+import jumboLogoUrl from "@assets/Productos_Jumbo_1777482668292.png";
 import proludicLogoUrl from "@assets/Proludic_1766080172850.png";
 import parkSysLogoUrl from "@assets/ParkSys_1766080172850.png";
 import tourMateLogoUrl from "@assets/Tour_Mate_1770137791667.png";
-import fundicionGamboaLogoUrl from "@assets/Fundicion_Gamboa_1770137791670.png";
-import benitoLogoUrl from "@assets/Benito_1770137791671.png";
+import fundicionGamboaLogoUrl from "@assets/Fundicion_Gamboa_1777482668293.png";
 import vermeerLogoUrl from "@assets/Vermeer_1770320575703.png";
+import bktLogoUrl from "@assets/BKT_1777482668293.png";
+import dyceLogoUrl from "@assets/dyce_1777482668293.png";
+import aquakitaLogoUrl from "@assets/Aquakita_1777482668292.png";
+import deaceroLogoUrl from "@assets/DEACERO_1777481340896.png";
+import conVidaParqueLogoUrl from "@assets/Con_Vida_tu_Parque_1777481331114.png";
 
 export interface Expositor {
   id: string;
@@ -33,7 +36,6 @@ export const expositores: Expositor[] = [
   { id: 'proludic', logo: proludicLogoUrl, name: 'Proludic', url: 'https://www.proludic.com/' },
   { id: 'jumbo', logo: jumboLogoUrl, name: 'Productos Jumbo', url: 'https://www.productosjumbo.com/' },
   { id: 'cdt', logo: cdtLogoUrl, name: 'CDT Centro de Desarrollo Turístico', url: 'https://cdt.org.mx/' },
-  { id: 'dihla', logo: dihlaLogoUrl, name: 'DIHLA', url: 'https://dihla.com.mx/' },
   { id: 'rainbird', logo: rainBirdLogoUrl, name: 'Rain Bird', url: 'https://www.rainbird.com/es' },
   { id: 'bugy', logo: bugyLogoUrl, name: 'Grupo Bugy Proyectos Recreativos', url: 'https://bugy.mx/' },
   { id: 'boden', logo: bodenLogoUrl, name: 'Boden Eco Superficie', url: 'https://www.bodeneco.com/' },
@@ -46,8 +48,12 @@ export const expositores: Expositor[] = [
   { id: 'parquesalegres', logo: parquesAlegresLogoUrl, name: 'Parques Alegres', url: 'https://parquesalegres.org/' },
   { id: 'tourmate', logo: tourMateLogoUrl, name: 'Tour Mate Systems', url: 'https://www.tourmate.com/' },
   { id: 'fundiciongamboa', logo: fundicionGamboaLogoUrl, name: 'Fundición Gamboa', url: 'https://www.fundiciongamboa.com/' },
-  { id: 'benito', logo: benitoLogoUrl, name: 'Benito', url: 'https://www.benito.com/' },
   { id: 'vermeer', logo: vermeerLogoUrl, name: 'Vermeer México', url: 'https://vermeermexico.com/' },
+  { id: 'bkt', logo: bktLogoUrl, name: 'BKT Mobiliario Urbano', url: 'https://www.bktmobiliario.com/' },
+  { id: 'dyce', logo: dyceLogoUrl, name: 'DYCE', url: 'https://www.dyce.mx/' },
+  { id: 'aquakita', logo: aquakitaLogoUrl, name: 'Aquakita', url: '#' },
+  { id: 'deacero', logo: deaceroLogoUrl, name: 'DEACERO', url: 'https://www.deacero.com/' },
+  { id: 'convidaparque', logo: conVidaParqueLogoUrl, name: 'Con Vida Tu Parque', url: '#' },
 ];
 
 // Utility function to shuffle brands for random display order
