@@ -680,6 +680,25 @@ export default function DirectorioExpositores() {
         @page { @top-left { content: ""; } }
         @page { @top-center { content: ""; } }
         @page { @bottom-left { content: ""; } }
+
+        /* Cada publicidad ocupa exactamente una página completa */
+        @media print {
+          .ads-page {
+            page-break-before: always !important;
+            break-before: page !important;
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+            height: 269mm !important;
+            max-height: 269mm !important;
+            overflow: hidden !important;
+          }
+          .ads-page img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+            display: block !important;
+          }
+        }
       `}</style>
 
       {/* Screen-only UI */}
@@ -859,18 +878,30 @@ export default function DirectorioExpositores() {
           {adsUrls.map((url, i) => (
             <div
               key={i}
+              className="ads-page"
               style={{
                 pageBreakBefore: 'always',
+                breakBefore: 'page' as any,
                 pageBreakInside: 'avoid',
+                breakInside: 'avoid' as any,
+                /* A4 content area: 297mm − 14mm top − 14mm bottom = 269mm */
+                height: '269mm',
+                overflow: 'hidden',
                 lineHeight: 0,
-                margin: '-14mm -10mm',
-                width: 'calc(100% + 20mm)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <img
                 src={url}
                 alt={`Publicidad ${i + 1}`}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
               />
             </div>
           ))}
