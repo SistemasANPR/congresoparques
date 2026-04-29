@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from "react";
-import { Search, X, Globe, Facebook, Instagram, Phone, Smartphone, FileText, ExternalLink, Building2, Printer } from "lucide-react";
+import { Search, X, Globe, Facebook, Instagram, Phone, Smartphone, FileText, ExternalLink, Building2, Printer, Loader2 } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
@@ -568,7 +568,25 @@ export default function DirectorioExpositores() {
   const [coverUrl, setCoverUrl] = useState<string | null>(null);
   const [adsUrls, setAdsUrls] = useState<string[]>([]);
   const [shouldPrint, setShouldPrint] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const originalTitleRef = useRef(document.title);
+
+  // Preload PDF.js in the background so it's ready when user clicks
+  useEffect(() => {
+    const preload = () => {
+      if ((window as any).pdfjsLib) return;
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+      script.onload = () => {
+        (window as any).pdfjsLib.GlobalWorkerOptions.workerSrc =
+          'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+      };
+      document.head.appendChild(script);
+    };
+    // Defer to after main render
+    const id = requestIdleCallback ? requestIdleCallback(preload) : setTimeout(preload, 2000) as any;
+    return () => { try { cancelIdleCallback?.(id); } catch {} };
+  }, []);
 
   // Trigger print after all pages are injected into DOM
   useEffect(() => {
@@ -576,6 +594,7 @@ export default function DirectorioExpositores() {
       const timer = setTimeout(() => {
         window.print();
         setShouldPrint(false);
+        setIsGenerating(false);
         setTimeout(() => { document.title = originalTitleRef.current; }, 1500);
       }, 150);
       return () => clearTimeout(timer);
@@ -602,14 +621,18 @@ export default function DirectorioExpositores() {
   };
 
   const handleDownloadPDF = async () => {
+    if (isGenerating) return;
+    setIsGenerating(true);
     document.title = 'CATÁLOGO EXPO ESPACIO PÚBLICO 2026';
 
+    // Already rendered — just trigger print immediately
     if (coverUrl && adsUrls.length > 0) {
       setShouldPrint(true);
       return;
     }
 
     try {
+      // Wait for PDF.js if the preload hasn't finished yet
       if (!(window as any).pdfjsLib) {
         await new Promise<void>((resolve, reject) => {
           const script = document.createElement('script');
@@ -635,6 +658,7 @@ export default function DirectorioExpositores() {
       setShouldPrint(true);
     } catch (err) {
       console.error('PDF render failed, printing without extras:', err);
+      setIsGenerating(false);
       window.print();
       setTimeout(() => { document.title = originalTitleRef.current; }, 1500);
     }
@@ -788,13 +812,28 @@ export default function DirectorioExpositores() {
               </span>
               <button
                 onClick={handleDownloadPDF}
-                title="Descargar directorio en PDF"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0e0477] text-white text-sm font-bold hover:bg-[#35219b] transition-colors"
-                style={{ fontFamily: "Montserrat, sans-serif" }}
+                disabled={isGenerating}
+                title={isGenerating ? "Generando PDF…" : "Descargar directorio en PDF"}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-white text-sm font-bold transition-colors ${
+                  isGenerating
+                    ? "bg-[#35219b] cursor-not-allowed opacity-80"
+                    : "bg-[#0e0477] hover:bg-[#35219b]"
+                }`}
+                style={{ fontFamily: "Montserrat, sans-serif", minWidth: "max-content" }}
               >
-                <Printer className="w-4 h-4" />
-                <span className="hidden sm:inline">Descargar Directorio PDF</span>
-                <span className="sm:hidden">PDF</span>
+                {isGenerating ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span className="hidden sm:inline">Generando PDF…</span>
+                    <span className="sm:hidden">…</span>
+                  </>
+                ) : (
+                  <>
+                    <Printer className="w-4 h-4" />
+                    <span className="hidden sm:inline">Descargar Directorio PDF</span>
+                    <span className="sm:hidden">PDF</span>
+                  </>
+                )}
               </button>
             </div>
           </div>

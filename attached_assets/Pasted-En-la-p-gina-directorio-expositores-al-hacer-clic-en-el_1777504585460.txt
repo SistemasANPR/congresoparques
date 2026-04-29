@@ -1,0 +1,42 @@
+En la página /directorio-expositores, al hacer clic en el botón “Descargar Directorio PDF”, el proceso tarda demasiado en abrir la ventana de impresión o generación del PDF. Esto provoca que parezca que el clic no respondió, y puede hacer que el usuario vuelva a presionar el botón por segunda vez.
+
+Problema detectado
+
+Actualmente hay una demora perceptible entre el clic del usuario y la apertura de la ventana de impresión/PDF.
+Desde experiencia de usuario, esto genera incertidumbre y da la impresión de que el botón no funciona.
+
+Cambio solicitado
+
+Quiero mejorar esta interacción para que el proceso se sienta más rápido, más claro y evite dobles clics innecesarios.
+
+Objetivos
+Reducir, si es posible, el tiempo de respuesta antes de abrir la ventana de impresión/PDF.
+Si no se puede reducir mucho el tiempo real, al menos dar una respuesta visual inmediata al usuario.
+Evitar que el usuario haga clic dos veces pensando que no funcionó.
+Instrucciones específicas
+Optimiza la acción del botón “Descargar Directorio PDF” para que responda de forma más eficiente.
+Si el proceso necesita unos segundos, agrega una señal visual inmediata al hacer clic, por ejemplo:
+estado de carga
+texto temporal como “Generando PDF…”
+spinner o indicador visual discreto
+desactivar temporalmente el botón mientras se procesa
+Una vez iniciado el proceso, evita múltiples clics seguidos sobre el mismo botón.
+El estado de carga debe sentirse integrado al diseño del sitio y no verse improvisado.
+Si es posible, mejora también el rendimiento real del proceso para que la apertura sea más rápida.
+Objetivo UX/UI
+Dar certeza inmediata de que el clic sí fue recibido.
+Evitar frustración o confusión.
+Hacer que la descarga/generación del PDF se perciba más profesional y confiable.
+Criterios de diseño
+El botón debe mostrar feedback inmediato al usuario.
+La interacción debe ser clara, limpia y consistente con el estilo del sitio.
+El estado de carga no debe romper el layout.
+Cuando el proceso termine o se abra la ventana, el botón debe volver a su estado normal si corresponde.
+Restricciones
+No cambiar el objetivo del botón ni su funcionalidad principal.
+No romper la generación actual del PDF.
+No permitir clics duplicados mientras el proceso ya está corriendo.
+Mantener consistencia visual con el resto del sitio.
+Resultado esperado
+
+En /directorio-expositores, el botón “Descargar Directorio PDF” debe sentirse más responsivo. El usuario debe recibir feedback visual inmediato al hacer clic, el sistema debe evitar dobles clics innecesarios, y si es posible también debe optimizarse el tiempo real de apertura de la ventana de impresión/PDF.
