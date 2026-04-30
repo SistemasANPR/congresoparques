@@ -543,14 +543,27 @@ export default function DirectorioExpositores() {
     const styleId = "hide-newsletter-directorio";
     const style = document.createElement("style");
     style.id = styleId;
+    // Hide ActiveCampaign form bar and any fixed-bottom overlay on this page.
+    // Using broad selectors to catch dynamically injected elements on iOS Safari.
     style.textContent = `
       ._form_15_, ._form_15_ *,
       [class*="_form_15"],
-      .no-print[class*="fixed"][class*="bottom"] { display: none !important; }
+      [id*="_form_15"],
+      ._ac_newsletter_,
+      [class*="fixed"][class*="bottom-0"] { display: none !important; visibility: hidden !important; }
     `;
     document.head.appendChild(style);
+
+    // MutationObserver fallback for iOS Safari where the script may inject after React mounts
+    const observer = new MutationObserver(() => {
+      const el = document.querySelector('._form_15_') as HTMLElement | null;
+      if (el) el.style.setProperty('display', 'none', 'important');
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
     return () => {
       document.getElementById(styleId)?.remove();
+      observer.disconnect();
     };
   }, []);
 
@@ -583,9 +596,14 @@ export default function DirectorioExpositores() {
       };
       document.head.appendChild(script);
     };
-    // Defer to after main render
-    const id = requestIdleCallback ? requestIdleCallback(preload) : setTimeout(preload, 2000) as any;
-    return () => { try { cancelIdleCallback?.(id); } catch {} };
+    // Defer to after main render — Safari doesn't support requestIdleCallback
+    if (typeof requestIdleCallback !== 'undefined') {
+      const id = requestIdleCallback(preload);
+      return () => cancelIdleCallback(id);
+    } else {
+      const id = setTimeout(preload, 2000);
+      return () => clearTimeout(id);
+    }
   }, []);
 
   // Trigger print after all pages are injected into DOM
@@ -705,6 +723,23 @@ export default function DirectorioExpositores() {
         @page { @top-center { content: ""; } }
         @page { @bottom-left { content: ""; } }
 
+        /* iOS Safari: -webkit-sticky fallback for sticky search bar */
+        .search-controls-bar {
+          position: -webkit-sticky;
+          position: sticky;
+        }
+
+        /* iOS Safari: prevent rubber-band scroll glitch on card grid */
+        .card-grid-scroll {
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* iOS Safari: prevent tap highlight on icon buttons */
+        a, button {
+          -webkit-tap-highlight-color: transparent;
+          touch-action: manipulation;
+        }
+
         /* Cada publicidad ocupa exactamente una página completa */
         @media print {
           .ads-page {
@@ -779,8 +814,8 @@ export default function DirectorioExpositores() {
           </div>
         </div>
 
-        {/* Sticky controls */}
-        <div className="no-print bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
+        {/* Sticky controls — top offset matches the fixed header height at each breakpoint */}
+        <div className="no-print bg-white border-b border-gray-200 search-controls-bar top-[100px] md:top-[116px] lg:top-[132px] z-40 shadow-sm">
           <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row gap-3 items-center justify-between">
             <div className="relative w-full sm:max-w-md">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6847f6]" />
@@ -790,7 +825,12 @@ export default function DirectorioExpositores() {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Buscar expositor..."
                 className="w-full pl-9 pr-9 py-2.5 rounded-xl border-2 border-[#6847f6]/30 focus:border-[#6847f6] focus:outline-none text-sm"
-                style={{ fontFamily: "Montserrat, sans-serif", color: "#0e0477" }}
+                style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  color: "#0e0477",
+                  /* iOS Safari: font-size ≥ 16px prevents auto-zoom on focus */
+                  fontSize: '16px',
+                }}
               />
               {query && (
                 <button

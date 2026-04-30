@@ -1,0 +1,38 @@
+En la página /directorio-expositores hay un problema de compatibilidad: la página no se visualiza correctamente en dispositivos iPhone / Safari, pero sí funciona en Android.
+
+No asumas una sola causa. Quiero que hagas una revisión completa de compatibilidad para iOS Safari y corrijas lo necesario para que la página funcione y se visualice bien en iPhone, sin romper Android ni desktop.
+
+Objetivo
+
+Detectar y corregir los problemas que estén impidiendo que /directorio-expositores funcione correctamente en iPhone/Safari.
+
+Qué revisar
+
+Revisa especialmente posibles problemas de compatibilidad de Safari/iOS en:
+
+JavaScript moderno no soportado o mal transpiliado
+errores de ejecución que bloqueen el render
+position: fixed, sticky, overflow, 100vh, min-height: 100vh
+transform, filter, backdrop-filter, clip-path, mask
+z-index, overlays, modales o capas que puedan estar tapando el contenido
+iframes, visores PDF o embeds
+carga de imágenes, blobs, archivos externos o enlaces que Safari maneje distinto
+scroll interno de contenedores
+interacción de botones o scripts flotantes
+problemas con librerías que funcionen en Chrome pero fallen en Safari
+Instrucciones
+identifica qué parte de la página está causando el fallo en iPhone
+aplica una solución compatible con Safari/iOS
+si hay efectos visuales avanzados que rompen la visualización en iPhone, usa un fallback más seguro solo para Safari/iOS
+mantén la experiencia visual lo más parecida posible a la actual
+no rompas la versión Android ni desktop
+no elimines contenido del directorio
+si hay elementos flotantes, overlays o scripts que estén tapando la página en iPhone, corrígelos
+si hay un visor o componente no compatible, reemplázalo por una alternativa más estable para iPhone
+Importante
+
+No quiero un rediseño. Quiero una corrección de compatibilidad.
+
+Resultado esperado
+
+La página /directorio-expositores debe visualizarse y funcionar correctamente en iPhone/Safari, manteniendo el diseño actual lo más posible y sin afectar Android ni escritorio.

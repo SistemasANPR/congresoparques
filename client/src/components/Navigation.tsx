@@ -334,7 +334,7 @@ export function Navigation() {
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
           <div className="md:hidden pb-3" id="mobile-menu" data-testid="mobile-menu">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#6847f6]/95 backdrop-blur-md border-t border-white/20 rounded-md">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-[#5035e0] border-t border-white/20 rounded-md">
               {/* Mobile Acerca de Accordion */}
               <div>
                 <button
