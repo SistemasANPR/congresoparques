@@ -292,7 +292,6 @@ export default function Landing() {
         top: elementPosition,
         behavior: 'smooth'
       });
-      setMobileMenuOpen(false);
     }
   };
 
@@ -466,10 +465,7 @@ export default function Landing() {
           {
             id: "miembros",
             text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
-          },
-          {
-          },
-          {
+          },          {
             id: "estudiantes",
             text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },

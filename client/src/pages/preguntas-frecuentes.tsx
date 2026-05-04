@@ -443,10 +443,7 @@ export default function PreguntasFrecuentes() {
           {
             id: "miembros",
             text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
-          },
-          {
-          },
-          {
+          },          {
             id: "estudiantes",
             text: "PRECIO ESPECIAL PARA ESTUDIANTES",
           },

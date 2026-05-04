@@ -127,37 +127,17 @@ export default function Programa() {
   const searchRef = useRef<HTMLDivElement>(null);
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // PDF cover state
-  const [coverPageUrl, setCoverPageUrl] = useState<string | null>(null);
-  const [shouldPrint, setShouldPrint] = useState(false);
-  const originalTitleRef = useRef(document.title);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const printRef = useRef<HTMLDivElement>(null);
 
-  // Trigger print after cover image is injected into the DOM
-  useEffect(() => {
-    if (shouldPrint && coverPageUrl) {
-      const timer = setTimeout(() => {
-        window.print();
-        setShouldPrint(false);
-        setTimeout(() => {
-          document.title = originalTitleRef.current;
-        }, 1500);
-      }, 120);
-      return () => clearTimeout(timer);
-    }
-  }, [shouldPrint, coverPageUrl]);
-
-  // Render cover PDF via PDF.js and trigger print
   const handleDownloadPDF = async () => {
-    document.title = 'PROGRAMA CONGRESO PARQUES 2026';
-
-    if (coverPageUrl) {
-      // Already rendered — just print
-      setShouldPrint(true);
-      return;
-    }
-
+    if (isGenerating) return;
+    setIsGenerating(true);
     try {
-      // Dynamically load PDF.js from CDN
+      const { default: jsPDF } = await import('jspdf');
+      const { default: html2canvas } = await import('html2canvas');
+
+      // 1. Load PDF.js
       if (!(window as any).pdfjsLib) {
         await new Promise<void>((resolve, reject) => {
           const script = document.createElement('script');
@@ -170,24 +150,77 @@ export default function Programa() {
           'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
       }
 
+      // 2. Render portada to data URL
       const pdfjsLib = (window as any).pdfjsLib;
-      const pdf = await pdfjsLib.getDocument('/portada-programa.pdf').promise;
-      const page = await pdf.getPage(1);
+      const coverPdf = await pdfjsLib.getDocument('/portada-programa.pdf').promise;
+      const coverPage = await coverPdf.getPage(1);
+      const coverViewport = coverPage.getViewport({ scale: 3 });
+      const coverCanvas = document.createElement('canvas');
+      coverCanvas.width = coverViewport.width;
+      coverCanvas.height = coverViewport.height;
+      await coverPage.render({ canvasContext: coverCanvas.getContext('2d')!, viewport: coverViewport }).promise;
+      const coverDataUrl = coverCanvas.toDataURL('image/jpeg', 0.92);
 
-      // Render at 3× scale for crisp quality on mobile
-      const viewport = page.getViewport({ scale: 3 });
-      const canvas = document.createElement('canvas');
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-      const ctx = canvas.getContext('2d')!;
-      await page.render({ canvasContext: ctx, viewport }).promise;
+      // 3. Show print section off-screen for html2canvas
+      const printEl = printRef.current;
+      if (!printEl) throw new Error('Print section not found');
+      printEl.classList.remove('hidden');
+      printEl.style.position = 'fixed';
+      printEl.style.top = '0px';
+      printEl.style.left = '-9999px';
+      printEl.style.width = '794px';
+      printEl.style.background = '#fff';
+      printEl.style.zIndex = '-1';
 
-      const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-      setCoverPageUrl(dataUrl);
-      setShouldPrint(true);
+      // Wait for fonts/layout to settle
+      await new Promise(r => setTimeout(r, 800));
+
+      // 4. Capture with html2canvas
+      const contentCanvas = await html2canvas(printEl, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: 794,
+        scrollX: 0,
+        scrollY: 0,
+      });
+
+      // 5. Restore hidden state
+      printEl.style.position = '';
+      printEl.style.top = '';
+      printEl.style.left = '';
+      printEl.style.width = '';
+      printEl.style.background = '';
+      printEl.style.zIndex = '';
+      printEl.classList.add('hidden');
+
+      // 6. Build jsPDF
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+      // First page: portada from PDF.js (crisp quality)
+      pdf.addImage(coverDataUrl, 'JPEG', 0, 0, 210, 297);
+
+      // Remaining pages: html2canvas content split into A4 slices
+      const imgData = contentCanvas.toDataURL('image/jpeg', 0.92);
+      const imgW = 210;
+      const imgH = (contentCanvas.height * 210) / contentCanvas.width;
+      const pageH = 297;
+      let heightLeft = imgH;
+      let pos = 0;
+      while (heightLeft > 0) {
+        pdf.addPage();
+        pdf.addImage(imgData, 'JPEG', 0, pos, imgW, imgH);
+        heightLeft -= pageH;
+        pos -= pageH;
+      }
+
+      // 7. Download
+      pdf.save('Programa-Congreso-Parques-2026.pdf');
     } catch (err) {
-      console.error('Cover render failed, printing without cover:', err);
-      setShouldPrint(true);
+      console.error('PDF generation failed:', err);
+    } finally {
+      setIsGenerating(false);
     }
   };
 
@@ -491,10 +524,7 @@ export default function Programa() {
             {
               id: "miembros",
               text: "20% DE DESCUENTO PARA MIEMBROS ANPR",
-            },
-            {
-            },
-            {
+            },            {
               id: "estudiantes",
               text: "PRECIO ESPECIAL PARA ESTUDIANTES",
             },
@@ -518,11 +548,21 @@ export default function Programa() {
         <div className="no-print bg-white py-4 text-center border-b border-gray-100 shadow-sm">
           <button
             onClick={handleDownloadPDF}
-            className="inline-flex items-center gap-2 bg-[#0e0477] hover:bg-[#35219b] text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wide transition-colors shadow-md"
+            disabled={isGenerating}
+            className="inline-flex items-center gap-2 bg-[#0e0477] hover:bg-[#35219b] disabled:opacity-60 text-white px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-wide transition-colors shadow-md"
             style={{ fontFamily: 'Montserrat, sans-serif' }}
           >
-            <Printer className="w-5 h-5" />
-            Descargar Programa en PDF
+            {isGenerating ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                Generando PDF…
+              </>
+            ) : (
+              <>
+                <Printer className="w-5 h-5" />
+                Descargar Programa en PDF
+              </>
+            )}
           </button>
         </div>
         
@@ -898,25 +938,10 @@ export default function Programa() {
           ═══════════════════════════════════════════════════ */}
       {!loading && programa.length > 0 && (
         <div
+          ref={printRef}
           className="hidden print:block"
           style={{ fontFamily: 'Montserrat, sans-serif', background: '#fff' }}
         >
-          {/* Portada externa — imagen del PDF adjunto, página completa */}
-          {coverPageUrl && (
-            <div
-              style={{
-                pageBreakAfter: 'always',
-                pageBreakInside: 'avoid',
-                lineHeight: 0,
-              }}
-            >
-              <img
-                src={coverPageUrl}
-                alt="Portada Programa Congreso Parques 2026"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-              />
-            </div>
-          )}
 
           {/* Portada interna del programa — fluye hacia el primer día sin salto */}
           <div

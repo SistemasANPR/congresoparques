@@ -577,52 +577,11 @@ export default function DirectorioExpositores() {
     );
   }, [query]);
 
-  // PDF cover + ads state
-  const [coverUrl, setCoverUrl] = useState<string | null>(null);
-  const [adsUrls, setAdsUrls] = useState<string[]>([]);
-  const [shouldPrint, setShouldPrint] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
-  const originalTitleRef = useRef(document.title);
-
-  // Preload PDF.js in the background so it's ready when user clicks
-  useEffect(() => {
-    const preload = () => {
-      if ((window as any).pdfjsLib) return;
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
-      script.onload = () => {
-        (window as any).pdfjsLib.GlobalWorkerOptions.workerSrc =
-          'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
-      };
-      document.head.appendChild(script);
-    };
-    // Defer to after main render — Safari doesn't support requestIdleCallback
-    if (typeof requestIdleCallback !== 'undefined') {
-      const id = requestIdleCallback(preload);
-      return () => cancelIdleCallback(id);
-    } else {
-      const id = setTimeout(preload, 2000);
-      return () => clearTimeout(id);
-    }
-  }, []);
-
-  // Trigger print after all pages are injected into DOM
-  useEffect(() => {
-    if (shouldPrint && coverUrl && adsUrls.length > 0) {
-      const timer = setTimeout(() => {
-        window.print();
-        setShouldPrint(false);
-        setIsGenerating(false);
-        setTimeout(() => { document.title = originalTitleRef.current; }, 1500);
-      }, 150);
-      return () => clearTimeout(timer);
-    }
-  }, [shouldPrint, coverUrl, adsUrls]);
 
   // Render all pages of a PDF to data URLs using PDF.js
   const renderPdfPages = async (pdfjsLib: any, url: string, scale = 2.5): Promise<string[]> => {
     const pdf = await pdfjsLib.getDocument(url).promise;
-    const pages: string[] = [];
     const renders = Array.from({ length: pdf.numPages }, (_, i) =>
       pdf.getPage(i + 1).then(async (page: any) => {
         const viewport = page.getViewport({ scale });
@@ -634,23 +593,17 @@ export default function DirectorioExpositores() {
       })
     );
     const results = await Promise.all(renders);
-    results.sort((a, b) => a.index - b.index).forEach(r => pages.push(r.url));
-    return pages;
+    return results.sort((a, b) => a.index - b.index).map(r => r.url);
   };
 
   const handleDownloadPDF = async () => {
     if (isGenerating) return;
     setIsGenerating(true);
-    document.title = 'CATÁLOGO EXPO ESPACIO PÚBLICO 2026';
-
-    // Already rendered — just trigger print immediately
-    if (coverUrl && adsUrls.length > 0) {
-      setShouldPrint(true);
-      return;
-    }
-
     try {
-      // Wait for PDF.js if the preload hasn't finished yet
+      const { default: jsPDF } = await import('jspdf');
+      const { default: html2canvas } = await import('html2canvas');
+
+      // 1. Load PDF.js
       if (!(window as any).pdfjsLib) {
         await new Promise<void>((resolve, reject) => {
           const script = document.createElement('script');
@@ -662,23 +615,85 @@ export default function DirectorioExpositores() {
         (window as any).pdfjsLib.GlobalWorkerOptions.workerSrc =
           'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
       }
-
       const pdfjsLib = (window as any).pdfjsLib;
 
-      // Render cover (1 page) and all ads pages in parallel
+      // 2. Render portada + ads in parallel
       const [coverPages, adsPages] = await Promise.all([
         renderPdfPages(pdfjsLib, '/portada-catalogo-expo.pdf', 3),
         renderPdfPages(pdfjsLib, '/publicidades-expo.pdf', 2.5),
       ]);
 
-      setCoverUrl(coverPages[0] ?? null);
-      setAdsUrls(adsPages);
-      setShouldPrint(true);
+      // 3. Show PrintCatalog off-screen for html2canvas
+      const printEl = document.getElementById('print-catalog') as HTMLElement | null;
+      if (!printEl) throw new Error('PrintCatalog not found');
+      printEl.classList.remove('hidden');
+      printEl.style.position = 'fixed';
+      printEl.style.top = '0px';
+      printEl.style.left = '-9999px';
+      printEl.style.width = '794px';
+      printEl.style.background = '#fff';
+      printEl.style.padding = '20px';
+      printEl.style.zIndex = '-1';
+
+      // Wait for logos (proxy images) to load
+      await new Promise(r => setTimeout(r, 1200));
+
+      // 4. Capture with html2canvas
+      const contentCanvas = await html2canvas(printEl, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: 794,
+        scrollX: 0,
+        scrollY: 0,
+      });
+
+      // 5. Restore hidden state
+      printEl.style.position = '';
+      printEl.style.top = '';
+      printEl.style.left = '';
+      printEl.style.width = '';
+      printEl.style.background = '';
+      printEl.style.padding = '';
+      printEl.style.zIndex = '';
+      printEl.classList.add('hidden');
+
+      // 6. Build jsPDF
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+      // Portada pages (from PDF.js)
+      coverPages.forEach((dataUrl, i) => {
+        if (i > 0) pdf.addPage();
+        pdf.addImage(dataUrl, 'JPEG', 0, 0, 210, 297);
+      });
+
+      // Content pages (html2canvas split into A4 slices)
+      const imgData = contentCanvas.toDataURL('image/jpeg', 0.92);
+      const imgW = 210;
+      const imgH = (contentCanvas.height * 210) / contentCanvas.width;
+      const pageH = 297;
+      let heightLeft = imgH;
+      let pos = 0;
+      while (heightLeft > 0) {
+        pdf.addPage();
+        pdf.addImage(imgData, 'JPEG', 0, pos, imgW, imgH);
+        heightLeft -= pageH;
+        pos -= pageH;
+      }
+
+      // Ads pages (from PDF.js)
+      adsPages.forEach((dataUrl) => {
+        pdf.addPage();
+        pdf.addImage(dataUrl, 'JPEG', 0, 0, 210, 297);
+      });
+
+      // 7. Download
+      pdf.save('Catalogo-Expo-Espacio-Publico-2026.pdf');
     } catch (err) {
-      console.error('PDF render failed, printing without extras:', err);
+      console.error('PDF generation failed:', err);
+    } finally {
       setIsGenerating(false);
-      window.print();
-      setTimeout(() => { document.title = originalTitleRef.current; }, 1500);
     }
   };
 
@@ -933,58 +948,8 @@ export default function DirectorioExpositores() {
         <Footer />
       </div>
 
-      {/* ── Portada externa — primera página del PDF ── */}
-      {coverUrl && (
-        <div
-          className="hidden print:block"
-          style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid', lineHeight: 0 }}
-        >
-          <img
-            src={coverUrl}
-            alt="Portada Catálogo Expo Espacio Público 2026"
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-          />
-        </div>
-      )}
-
       {/* Print-only catalog — rendered for ALL expositores regardless of search filter */}
       <PrintCatalog items={expositores} />
-
-      {/* ── Publicidades — últimas páginas del PDF ── */}
-      {adsUrls.length > 0 && (
-        <div className="hidden print:block">
-          {adsUrls.map((url, i) => (
-            <div
-              key={i}
-              className="ads-page"
-              style={{
-                pageBreakBefore: 'always',
-                breakBefore: 'page' as any,
-                pageBreakInside: 'avoid',
-                breakInside: 'avoid' as any,
-                /* A4 content area: 297mm − 14mm top − 14mm bottom = 269mm */
-                height: '269mm',
-                overflow: 'hidden',
-                lineHeight: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <img
-                src={url}
-                alt={`Publicidad ${i + 1}`}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  display: 'block',
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

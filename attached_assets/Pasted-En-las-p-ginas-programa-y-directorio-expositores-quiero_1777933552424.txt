@@ -1,0 +1,75 @@
+En las páginas /programa y /directorio-expositores, quiero cambiar por completo la lógica actual de descarga de PDF.
+
+Problema actual
+
+Actualmente, al presionar el botón de descarga en distintos dispositivos móviles, se abre la opción de impresión / guardar como PDF del navegador.
+Eso permite que cada dispositivo o usuario use formatos distintos como:
+
+Carta
+A4
+Legal
+otros tamaños o escalas
+
+Como resultado, aunque en escritorio el diseño del PDF se vea correcto, en móviles la maquetación cambia:
+
+se desconfiguran las páginas
+aparecen márgenes excesivos
+parte del contenido de una página se pasa a otra
+el documento final deja de verse consistente entre usuarios
+Cambio solicitado
+
+Quiero que al presionar el botón de descarga:
+
+ya no se abra la ventana de impresión del navegador
+ya no dependa de la configuración de impresión del dispositivo
+se genere y descargue automáticamente un PDF final ya cerrado
+ese PDF debe conservar siempre el mismo diseño, tamaño de página, márgenes, saltos de página y estructura visual
+el usuario no debe tener posibilidad de alterar la maquetación mediante opciones de impresión
+Objetivo
+
+Quiero que todos los usuarios descarguen exactamente el mismo archivo PDF, sin importar:
+
+si están en iPhone
+Android
+tablet
+desktop
+o el navegador que usen
+Instrucciones específicas
+Reemplaza la lógica actual basada en window.print() o impresión del navegador por una generación real de PDF
+El botón debe descargar directamente el archivo PDF final
+El documento debe venir preconfigurado y no depender del cuadro de impresión del dispositivo
+Mantén el diseño actual del programa y del directorio tal como ya fue trabajado
+Respeta:
+paginación
+tamaños de página definidos
+márgenes
+colores
+iconos
+portada y anexos cuando existan
+Asegúrate de que el PDF descargado sea consistente para todos los usuarios
+Aplicación
+
+Esto debe aplicarse a:
+
+/programa
+/directorio-expositores
+Criterios UX/UI
+el botón debe sentirse como una descarga real, no como una impresión
+el usuario debe obtener un PDF uniforme y confiable
+debe evitarse cualquier posibilidad de que el dispositivo cambie el formato del documento
+la experiencia debe ser más simple, más rápida y más profesional
+Restricciones
+no abrir la ventana de impresión
+no depender de ajustes manuales del usuario
+no romper el diseño actual del PDF
+no modificar la versión web visible de estas páginas
+mantener consistencia entre todos los dispositivos
+Resultado esperado
+
+Al hacer clic en descargar en /programa o /directorio-expositores, el sistema debe generar y descargar directamente un PDF final fijo, sin abrir la ventana de impresión y sin permitir que el formato cambie según el dispositivo. Así, todos los usuarios descargarán exactamente el mismo documento, con la misma paginación y diseño.
+
+Versión compacta
+
+En /programa y /directorio-expositores, reemplaza la lógica actual de descarga basada en la ventana de impresión del navegador. No quiero que se abra el cuadro de imprimir/guardar como PDF, porque en móviles cada usuario puede cambiar tamaño de papel, márgenes o escala y eso desconfigura el documento.
+
+Quiero que al hacer clic en descargar se genere y descargue directamente un PDF final ya cerrado, con tamaño, márgenes, paginación y diseño fijos, sin posibilidad de que el usuario altere el formato desde opciones de impresión. Debe verse igual para todos los usuarios y en todos los dispositivos, sin modificar la versión web.
