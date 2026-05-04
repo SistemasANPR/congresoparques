@@ -164,24 +164,32 @@ export default function Programa() {
       // 3. Show print section off-screen for html2canvas
       const printEl = printRef.current;
       if (!printEl) throw new Error('Print section not found');
+      // Content area matches original @page CSS: margin 14mm top/bottom, 10mm left/right
+      // A4 = 210×297mm → content area = 190×269mm → at 96dpi: 718×1014px
+      const CONTENT_W_PX = 718;
+      const MARGIN_L = 10;   // mm left
+      const MARGIN_T = 14;   // mm top/bottom
+      const CONTENT_W = 190; // mm
+      const CONTENT_H = 269; // mm (297 - 14*2)
+
       printEl.classList.remove('hidden');
       printEl.style.position = 'fixed';
       printEl.style.top = '0px';
       printEl.style.left = '-9999px';
-      printEl.style.width = '794px';
+      printEl.style.width = `${CONTENT_W_PX}px`;
       printEl.style.background = '#fff';
       printEl.style.zIndex = '-1';
 
       // Wait for fonts/layout to settle
       await new Promise(r => setTimeout(r, 800));
 
-      // 4. Capture with html2canvas
+      // 4. Capture with html2canvas at content width
       const contentCanvas = await html2canvas(printEl, {
         scale: 2,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        width: 794,
+        width: CONTENT_W_PX,
         scrollX: 0,
         scrollY: 0,
       });
@@ -198,21 +206,20 @@ export default function Programa() {
       // 6. Build jsPDF
       const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
 
-      // First page: portada from PDF.js (crisp quality)
+      // First page: portada full-bleed (no margins, matches @page :first { margin: 0 })
       pdf.addImage(coverDataUrl, 'JPEG', 0, 0, 210, 297);
 
-      // Remaining pages: html2canvas content split into A4 slices
+      // Content pages: html2canvas at 190mm width, placed with original margins
       const imgData = contentCanvas.toDataURL('image/jpeg', 0.92);
-      const imgW = 210;
-      const imgH = (contentCanvas.height * 210) / contentCanvas.width;
-      const pageH = 297;
+      const imgH = (contentCanvas.height * CONTENT_W) / contentCanvas.width;
       let heightLeft = imgH;
-      let pos = 0;
+      let pageIdx = 0;
       while (heightLeft > 0) {
         pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', 0, pos, imgW, imgH);
-        heightLeft -= pageH;
-        pos -= pageH;
+        // Shift image up so each page shows the next CONTENT_H slice, with MARGIN_T at top
+        pdf.addImage(imgData, 'JPEG', MARGIN_L, MARGIN_T - pageIdx * CONTENT_H, CONTENT_W, imgH);
+        heightLeft -= CONTENT_H;
+        pageIdx++;
       }
 
       // 7. Download
