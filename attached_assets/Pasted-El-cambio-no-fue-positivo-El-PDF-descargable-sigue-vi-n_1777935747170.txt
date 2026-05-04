@@ -1,0 +1,62 @@
+El cambio no fue positivo. El PDF descargable sigue viéndose peor que antes y necesito que lo regreses con mucha más precisión a la configuración anterior, que ya funcionaba bien para móviles.
+
+Referencia correcta
+
+Te comparto un archivo PDF anterior para que lo uses como referencia visual y técnica, porque esa versión estaba mucho mejor resuelta.
+
+Esa versión anterior tenía estas características correctas:
+medida aproximada de 298 x 496
+márgenes mejor equilibrados
+el texto no se cortaba
+los tamaños de texto eran correctos para móviles
+la maquetación se veía mejor proporcionada
+el documento se sentía optimizado para lectura en celular
+la portada se veía nítida, con buena calidad visual, sin pixelarse
+Problema actual
+
+La versión nueva:
+
+se ve fea
+perdió la proporción correcta
+tiene peores márgenes
+ya no respeta bien la medida que funcionaba
+la legibilidad empeoró
+el acomodo del contenido ya no se ve tan bien como antes
+la portada ahora se ve pixelada, cuando antes se veía bien y con mejor calidad
+Cambio solicitado
+
+Quiero que uses el PDF adjunto como referencia y restaures el diseño del PDF descargable para que vuelva a verse como esa versión anterior.
+
+Debes recuperar específicamente:
+la proporción de página similar a 298 x 496
+márgenes parecidos a esa versión
+tamaños tipográficos adecuados para móviles
+una composición donde el texto no se corte
+el layout y escala general que se veía bien en celular
+la calidad visual correcta de la portada, evitando que se vea pixelada o borrosa
+Importante
+No quiero que vuelvas a cambiar la lógica de descarga directa
+No quiero regresar al sistema de impresión
+Solo quiero que el diseño y formato del PDF vuelva a parecerse al PDF de referencia que adjunto
+Instrucciones
+compara la versión actual con el PDF adjunto
+toma el PDF adjunto como referencia principal de:
+tamaño de página
+márgenes
+escala
+legibilidad
+proporción del contenido
+calidad visual de la portada
+corrige la versión actual para que recupere esa calidad visual
+asegúrate de que la portada conserve buena resolución y no se rasterice o comprima en exceso
+Restricciones
+no volver a window.print()
+no abrir diálogo de impresión
+no mantener el tamaño carta actual
+no dejar textos cortados
+no pixelar la portada
+no alterar innecesariamente el contenido
+no rediseñar desde cero: solo recuperar la configuración buena anterior
+Resultado esperado
+
+El PDF debe seguir descargándose directamente, pero recuperar el diseño que tenía antes: proporción similar a 298 x 496, mejores márgenes, texto legible para móviles, una maquetación limpia donde el contenido no se corte, y una portada nítida y bien renderizada, como en la versión anterior.

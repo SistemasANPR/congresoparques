@@ -150,27 +150,33 @@ export default function Programa() {
           'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
       }
 
-      // 2. Render portada to data URL
+      // Page dimensions matching reference PDF: 298×496 pt (≈105×175mm)
+      // Narrower page → text appears larger on mobile screens (higher zoom factor)
+      const PAGE_W = 298;    // pt
+      const PAGE_H = 496;    // pt
+      const MARGIN_L = 10;   // pt
+      const MARGIN_T = 14;   // pt
+      const CONTENT_W = PAGE_W - MARGIN_L * 2; // 278pt
+      const CONTENT_H = PAGE_H - MARGIN_T * 2; // 468pt
+      // html2canvas element width: 278pt × (96px/72pt) ≈ 371px
+      const CONTENT_W_PX = Math.round(CONTENT_W * 96 / 72);
+
+      // 2. Render portada to PNG (lossless — prevents pixelation)
       const pdfjsLib = (window as any).pdfjsLib;
       const coverPdf = await pdfjsLib.getDocument('/portada-programa.pdf').promise;
       const coverPage = await coverPdf.getPage(1);
-      const coverViewport = coverPage.getViewport({ scale: 3 });
+      // Scale=4 for crisp quality at the smaller target page size
+      const coverViewport = coverPage.getViewport({ scale: 4 });
       const coverCanvas = document.createElement('canvas');
       coverCanvas.width = coverViewport.width;
       coverCanvas.height = coverViewport.height;
       await coverPage.render({ canvasContext: coverCanvas.getContext('2d')!, viewport: coverViewport }).promise;
-      const coverDataUrl = coverCanvas.toDataURL('image/jpeg', 0.92);
+      // PNG: lossless, no JPEG artifacts on the portada
+      const coverDataUrl = coverCanvas.toDataURL('image/png');
 
       // 3. Show print section off-screen for html2canvas
       const printEl = printRef.current;
       if (!printEl) throw new Error('Print section not found');
-      // Content area matches original @page CSS: margin 14mm top/bottom, 10mm left/right
-      // A4 = 210×297mm → content area = 190×269mm → at 96dpi: 718×1014px
-      const CONTENT_W_PX = 718;
-      const MARGIN_L = 10;   // mm left
-      const MARGIN_T = 14;   // mm top/bottom
-      const CONTENT_W = 190; // mm
-      const CONTENT_H = 269; // mm (297 - 14*2)
 
       printEl.classList.remove('hidden');
       printEl.style.position = 'fixed';
@@ -183,9 +189,9 @@ export default function Programa() {
       // Wait for fonts/layout to settle
       await new Promise(r => setTimeout(r, 800));
 
-      // 4. Capture with html2canvas at content width
+      // 4. Capture with html2canvas — scale=3 for sharper text
       const contentCanvas = await html2canvas(printEl, {
-        scale: 2,
+        scale: 3,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
@@ -203,20 +209,19 @@ export default function Programa() {
       printEl.style.zIndex = '';
       printEl.classList.add('hidden');
 
-      // 6. Build jsPDF
-      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      // 6. Build jsPDF at reference dimensions
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: [PAGE_W, PAGE_H] });
 
-      // First page: portada full-bleed (no margins, matches @page :first { margin: 0 })
-      pdf.addImage(coverDataUrl, 'JPEG', 0, 0, 210, 297);
+      // First page: portada full-bleed (PNG, no compression)
+      pdf.addImage(coverDataUrl, 'PNG', 0, 0, PAGE_W, PAGE_H);
 
-      // Content pages: html2canvas at 190mm width, placed with original margins
-      const imgData = contentCanvas.toDataURL('image/jpeg', 0.92);
+      // Content pages: split html2canvas image into CONTENT_H slices with margins
+      const imgData = contentCanvas.toDataURL('image/jpeg', 0.95);
       const imgH = (contentCanvas.height * CONTENT_W) / contentCanvas.width;
       let heightLeft = imgH;
       let pageIdx = 0;
       while (heightLeft > 0) {
         pdf.addPage();
-        // Shift image up so each page shows the next CONTENT_H slice, with MARGIN_T at top
         pdf.addImage(imgData, 'JPEG', MARGIN_L, MARGIN_T - pageIdx * CONTENT_H, CONTENT_W, imgH);
         heightLeft -= CONTENT_H;
         pageIdx++;
