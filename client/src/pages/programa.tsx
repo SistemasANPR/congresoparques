@@ -134,9 +134,6 @@ export default function Programa() {
     if (isGenerating) return;
     setIsGenerating(true);
     try {
-      const { default: jsPDF } = await import('jspdf');
-      const { default: html2canvas } = await import('html2canvas');
-
       // 1. Load PDF.js
       if (!(window as any).pdfjsLib) {
         await new Promise<void>((resolve, reject) => {
@@ -150,85 +147,37 @@ export default function Programa() {
           'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
       }
 
-      // Page dimensions matching reference PDF: 298×496 pt (≈105×175mm)
-      // Narrower page → text appears larger on mobile screens (higher zoom factor)
-      const PAGE_W = 298;    // pt
-      const PAGE_H = 496;    // pt
-      const MARGIN_L = 10;   // pt
-      const MARGIN_T = 14;   // pt
-      const CONTENT_W = PAGE_W - MARGIN_L * 2; // 278pt
-      const CONTENT_H = PAGE_H - MARGIN_T * 2; // 468pt
-      // html2canvas element width: 278pt × (96px/72pt) ≈ 371px
-      const CONTENT_W_PX = Math.round(CONTENT_W * 96 / 72);
-
-      // 2. Render portada to PNG (lossless — prevents pixelation)
+      // 2. Render portada PDF to high-quality PNG (lossless, scale=4 for crisp quality)
       const pdfjsLib = (window as any).pdfjsLib;
       const coverPdf = await pdfjsLib.getDocument('/portada-programa.pdf').promise;
       const coverPage = await coverPdf.getPage(1);
-      // Scale=4 for crisp quality at the smaller target page size
       const coverViewport = coverPage.getViewport({ scale: 4 });
       const coverCanvas = document.createElement('canvas');
       coverCanvas.width = coverViewport.width;
       coverCanvas.height = coverViewport.height;
       await coverPage.render({ canvasContext: coverCanvas.getContext('2d')!, viewport: coverViewport }).promise;
-      // PNG: lossless, no JPEG artifacts on the portada
-      const coverDataUrl = coverCanvas.toDataURL('image/png');
+      const portadaDataUrl = coverCanvas.toDataURL('image/png');
 
-      // 3. Show print section off-screen for html2canvas
-      const printEl = printRef.current;
-      if (!printEl) throw new Error('Print section not found');
+      // 3. Generate PDF using @react-pdf/renderer — real vector text, no rasterization
+      const [{ pdf: renderPdf }, { ProgramaPDF }] = await Promise.all([
+        import('@react-pdf/renderer'),
+        import('../components/ProgramaPDF'),
+      ]);
 
-      printEl.classList.remove('hidden');
-      printEl.style.position = 'fixed';
-      printEl.style.top = '0px';
-      printEl.style.left = '-9999px';
-      printEl.style.width = `${CONTENT_W_PX}px`;
-      printEl.style.background = '#fff';
-      printEl.style.zIndex = '-1';
+      const element = renderPdf(
+        ProgramaPDF({ portadaDataUrl, programa, fechasDisponibles }) as any
+      );
+      const blob = await element.toBlob();
 
-      // Wait for fonts/layout to settle
-      await new Promise(r => setTimeout(r, 800));
-
-      // 4. Capture with html2canvas — scale=3 for sharper text
-      const contentCanvas = await html2canvas(printEl, {
-        scale: 3,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: CONTENT_W_PX,
-        scrollX: 0,
-        scrollY: 0,
-      });
-
-      // 5. Restore hidden state
-      printEl.style.position = '';
-      printEl.style.top = '';
-      printEl.style.left = '';
-      printEl.style.width = '';
-      printEl.style.background = '';
-      printEl.style.zIndex = '';
-      printEl.classList.add('hidden');
-
-      // 6. Build jsPDF at reference dimensions
-      const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: [PAGE_W, PAGE_H] });
-
-      // First page: portada full-bleed (PNG, no compression)
-      pdf.addImage(coverDataUrl, 'PNG', 0, 0, PAGE_W, PAGE_H);
-
-      // Content pages: split html2canvas image into CONTENT_H slices with margins
-      const imgData = contentCanvas.toDataURL('image/jpeg', 0.95);
-      const imgH = (contentCanvas.height * CONTENT_W) / contentCanvas.width;
-      let heightLeft = imgH;
-      let pageIdx = 0;
-      while (heightLeft > 0) {
-        pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', MARGIN_L, MARGIN_T - pageIdx * CONTENT_H, CONTENT_W, imgH);
-        heightLeft -= CONTENT_H;
-        pageIdx++;
-      }
-
-      // 7. Download
-      pdf.save('Programa-Congreso-Parques-2026.pdf');
+      // 4. Download
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Programa-Congreso-Parques-2026.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     } catch (err) {
       console.error('PDF generation failed:', err);
     } finally {

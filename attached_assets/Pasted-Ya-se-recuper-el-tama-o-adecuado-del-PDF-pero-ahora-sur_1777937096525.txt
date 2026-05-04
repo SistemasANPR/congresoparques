@@ -1,0 +1,56 @@
+Ya se recuperó el tamaño adecuado del PDF, pero ahora surgieron nuevos problemas importantes que deben corregirse.
+
+Problemas detectados
+El texto ahora está rasterizado o convertido en imagen, no en texto real.
+Al hacer zoom, los textos se pixelean.
+Antes esto no pasaba: el texto era nítido y escalable.
+Quiero que el PDF vuelva a usar texto real, no texto convertido en imagen.
+Hay textos que se están cortando.
+Revisa la maquetación para que ningún título, subtítulo, nombre de ponente, horario o bloque de contenido quede truncado o incompleto.
+La información debe salir actualizada desde la página.
+Asegúrate de que el PDF se genere con la información actual y sincronizada de la página /programa, no con contenido desactualizado ni con una versión cacheada o estática vieja.
+La portada debe verse bien.
+Te adjunto nuevamente la portada para que la uses.
+No quiero que la portada se pixele ni se vea borrosa.
+Debe integrarse con buena calidad visual, manteniendo nitidez adecuada.
+Cambio solicitado
+
+Quiero que optimices nuevamente el PDF descargable para que conserve el tamaño correcto que ya se recuperó, pero corrigiendo estos problemas de calidad y maquetación.
+
+Debe cumplir con esto:
+mantener el tamaño/formato de página correcto
+usar texto real vectorial o seleccionable, no texto rasterizado
+evitar que los textos se corten
+tomar la información actualizada directamente de la página
+mantener una portada nítida, sin pixelación
+conservar la descarga directa del PDF
+mejorar el diseño general para que se vea limpio, profesional y bien optimizado para móvil
+Importante
+No regreses la función de imprimir
+No abras el diálogo de impresión
+Mantén la descarga directa
+No conviertas el contenido entero en imagen
+El PDF debe ser un documento real, bien generado, con texto legible al hacer zoom
+Instrucciones específicas
+Usa la portada adjunta como primera página del PDF, asegurando buena resolución y sin compresión excesiva.
+Revisa la exportación para que el contenido textual permanezca como texto real dentro del PDF.
+Corrige saltos, cajas, anchos y márgenes para evitar cortes de texto.
+Verifica que la información se obtenga de la versión actual de la página /programa.
+Optimiza el documento para visualización en móvil, pero sin sacrificar nitidez ni calidad tipográfica.
+Restricciones
+no volver a window.print()
+no rasterizar el contenido textual
+no dejar textos cortados
+no pixelar la portada
+no cambiar nuevamente el tamaño correcto que ya se recuperó
+no usar screenshots como base del PDF
+no desactualizar la información respecto a la página
+Resultado esperado
+
+El PDF debe seguir descargándose directamente, con el tamaño correcto que ya se recuperó, pero ahora con:
+
+texto real y nítido al hacer zoom
+ningún texto cortado
+información actualizada desde la página
+portada con buena calidad
+y un diseño general más limpio, optimizado y profesional.
