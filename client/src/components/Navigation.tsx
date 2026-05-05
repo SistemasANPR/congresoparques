@@ -28,6 +28,9 @@ import {
 } from "lucide-react";
 import logoUrl from "@assets/LOGO Congreso Parques_1758315663051.png";
 
+// Cambiar a true para reactivar Convocatorias en el menú
+const SHOW_CONVOCATORIAS = false;
+
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
@@ -222,6 +225,8 @@ export function Navigation() {
               </div>
 
               {/* Convocatorias Dropdown */}
+              {/* Convocatorias — activar cambiando SHOW_CONVOCATORIAS a true */}
+              {SHOW_CONVOCATORIAS && (
               <div
                 className="relative"
                 onMouseEnter={() => setConvocatoriasDropdownOpen(true)}
@@ -284,6 +289,7 @@ export function Navigation() {
                   </div>
                 )}
               </div>
+              )}
 
               {/* Expo Espacio Público - Direct Link */}
               <Link
@@ -485,7 +491,8 @@ export function Navigation() {
                 )}
               </div>
 
-              {/* Mobile Convocatorias Accordion */}
+              {/* Mobile Convocatorias Accordion — activar cambiando SHOW_CONVOCATORIAS a true */}
+              {SHOW_CONVOCATORIAS && (
               <div>
                 <button
                   onClick={() => setMobileConvocatoriasOpen(!mobileConvocatoriasOpen)}
@@ -545,6 +552,7 @@ export function Navigation() {
                   </div>
                 )}
               </div>
+              )}
 
               {/* Mobile Expo Espacio Público - Direct Link */}
               <Link

@@ -76,6 +76,9 @@ import logoExpoEspacioPublicoUrl from "@assets/logo-expo-espacio-publico-2026.pn
 import { BrandMarquee } from "@/components/BrandMarquee";
 import { HexagonPhoto } from "@/components/HexagonPhoto";
 
+// Cambiar a true para reactivar la sección de Convocatorias
+const SHOW_CONVOCATORIAS = false;
+
 
 interface StatCounterProps {
   target: number;
@@ -268,7 +271,7 @@ export default function Landing() {
 
     // Observe all main sections except header and footer
     const sections = [
-      'info', 'experiencias', 'ejes', 'convocatorias', 'precios', 'legado', 'aliados'
+      'info', 'experiencias', 'ejes', ...(SHOW_CONVOCATORIAS ? ['convocatorias'] : []), 'precios', 'legado', 'aliados'
     ];
     
     sections.forEach(sectionId => {
@@ -1052,8 +1055,8 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Convocatorias Section */}
-      <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219B' }}>
+      {/* Convocatorias Section — activar cambiando SHOW_CONVOCATORIAS a true */}
+      {SHOW_CONVOCATORIAS && <section id="convocatorias" className="py-16 section-animate animate-fadeInLeft relative overflow-hidden" style={{ backgroundColor: '#35219B' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl md:text-4xl text-center mb-12 text-white uppercase section-title" data-testid="calls-title">Convocatorias 2026</h2>
@@ -1124,7 +1127,7 @@ export default function Landing() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* Pricing Section */}
       <section id="precios" className="py-16 bg-white section-animate animate-fadeInUp">
