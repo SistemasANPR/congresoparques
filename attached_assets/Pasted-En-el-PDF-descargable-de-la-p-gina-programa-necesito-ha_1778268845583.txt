@@ -1,0 +1,70 @@
+En el PDF descargable de la página /programa, necesito hacer un ajuste de contenido y de paginación, sin modificar el formato ni el tamaño actual del PDF, ya que esa parte ya quedó optimizada para dispositivos móviles.
+
+1. Eliminar texto introductorio repetido
+
+Quiero que elimines del PDF descargable este bloque introductorio:
+
+PROGRAMA DEL CONGRESO
+IX Congreso Internacional de Parques Urbanos y Espacio Público
+13 · 14 · 15 Mayo 2026 · Tijuana, México
+Motivo
+
+Ese texto ya no es necesario porque ahora el PDF ya tiene portada, y esa portada ya cumple esa función.
+Por lo tanto, este bloque introductorio está duplicando información.
+
+2. Aclaración importante sobre los cortes de contenido
+
+Quiero aclarar mejor la instrucción anterior sobre “no cortar bloques”, porque no me refería a mantener juntos bloques completos de conferencias si eso genera huecos grandes.
+
+Lo que sí quiero evitar
+
+Quiero evitar que se corte la caja o tarjeta individual de cada conferencia de forma torpe entre una página y otra.
+
+Es decir:
+
+una conferencia individual debería mantenerse completa dentro de una misma página si es posible
+no quiero que la información de una conferencia quede partida a la mitad entre páginas si se puede evitar
+Lo que sí se puede separar
+
+Los bloques de conferencias como:
+
+Sesiones Educativas Bloque 1
+Sesiones Educativas Bloque 2
+Sesiones Educativas Bloque 3
+etc.
+
+sí se pueden separar entre páginas si eso ayuda a que el documento fluya mejor.
+
+No es necesario que todo el bloque permanezca junto en una sola página, porque eso está generando demasiado espacio en blanco entre bloques.
+
+3. Objetivo de maquetación
+
+Quiero lograr este equilibrio:
+
+que el PDF siga viéndose ordenado
+que cada día inicie arriba, como ya se pidió
+que las conferencias individuales no se partan feo
+pero que los bloques sí puedan fluir entre páginas
+evitando grandes espacios en blanco innecesarios
+4. Importante
+No cambies el tamaño del PDF
+No cambies la proporción ni el formato actual
+No alteres la optimización para móviles
+Solo ajusta:
+eliminación del texto introductorio duplicado
+lógica de paginación del contenido
+Restricciones
+no modificar la portada
+no cambiar el tamaño ni formato del PDF
+no volver a meter huecos grandes por intentar mantener bloques completos juntos
+no cortar de forma torpe la información individual de cada conferencia
+no modificar la versión web de /programa
+Resultado esperado
+
+El PDF descargable de /programa debe:
+
+eliminar el texto introductorio repetido porque ya existe una portada
+mantener el formato móvil actual
+permitir que los bloques de conferencias fluyan entre páginas
+pero procurar que cada conferencia individual quede completa dentro de una misma página
+evitar espacios en blanco innecesarios entre bloques

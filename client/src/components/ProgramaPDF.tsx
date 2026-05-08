@@ -270,7 +270,8 @@ function DayContent({ fecha, items }: { fecha: string; items: ProgramaItem[] }) 
         const hasContenido = !!(item.contenido && item.contenido.length > 0);
 
         return (
-          <View key={item.id} style={[S.sessionCard, { borderLeftColor: pc.bg }]} wrap={false}>
+          // Bloques con sub-contenido fluyen entre páginas; sesiones simples se mantienen intactas
+          <View key={item.id} style={[S.sessionCard, { borderLeftColor: pc.bg }]} wrap={!hasContenido}>
             <View style={S.sessionHeader}>
               <View style={S.badgeRow}>
                 <View style={[S.badge, { backgroundColor: pc.bg }]}>
@@ -369,14 +370,9 @@ export function ProgramaPDF({ portadaDataUrl, programa, fechasDisponibles }: Pro
         <Image src={portadaDataUrl} style={S.coverImage} />
       </Page>
 
-      {/* Primera página de contenido: banner + día 1 */}
+      {/* Primera página de contenido: día 1 (portada ya cumple función introductoria) */}
       {days.length > 0 && (
         <Page size={PAGE_SIZE} style={S.contentPage}>
-          <View style={S.banner} wrap={false}>
-            <Text style={S.bannerTitle}>PROGRAMA DEL CONGRESO</Text>
-            <Text style={S.bannerSub}>IX Congreso Internacional de Parques Urbanos y Espacio Público</Text>
-            <Text style={S.bannerDate}>13 · 14 · 15 Mayo 2026  ·  Tijuana, México</Text>
-          </View>
           <DayContent fecha={days[0].fecha} items={days[0].items} />
           <PageFooter />
         </Page>
