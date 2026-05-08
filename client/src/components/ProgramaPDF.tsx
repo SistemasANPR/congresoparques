@@ -1,4 +1,11 @@
-import { Document, Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, View, Text, Image, StyleSheet, Font, Svg, Path, Circle, G } from '@react-pdf/renderer';
+
+// Register Antonio Bold for day headers
+Font.register({
+  family: 'Antonio',
+  src: '/fonts/Antonio-Bold.ttf',
+  fontWeight: 'bold',
+});
 
 interface Ponente {
   id: string;
@@ -75,12 +82,47 @@ function formatDate(dateStr: string): string {
 }
 
 const TALLERES_FIJO_KEYWORDS = [
-  'forraje hidrop', 'movilidad con perspectiva', 'operación integral', 'operacion integral',
+  'forraje hidrop',
+  'movilidad con perspectiva',
+  'operación integral',
+  'operacion integral',
+  'parque como aula viva',
 ];
+
+const TALLERES_HORARIOS: Record<string, string> = {
+  'parque como aula viva': '8:00 AM – 1:00 PM',
+};
+
+const TALLERES_DEFAULT_HORARIO = '9:00 AM – 1:00 PM';
 
 function getTallerHorario(titulo: string): string | null {
   const lower = titulo.toLowerCase();
-  return TALLERES_FIJO_KEYWORDS.some(k => lower.includes(k)) ? '9:00 AM – 1:00 PM' : null;
+  const match = Object.keys(TALLERES_HORARIOS).find(k => lower.includes(k));
+  if (match) return TALLERES_HORARIOS[match];
+  return TALLERES_FIJO_KEYWORDS.some(k => lower.includes(k)) ? TALLERES_DEFAULT_HORARIO : null;
+}
+
+// Minimalist person icon (speaker) — 10×10 viewBox
+function PersonIcon() {
+  return (
+    <Svg viewBox="0 0 10 10" style={{ width: 8, height: 8, marginRight: 2, marginTop: 0.5 }}>
+      <Circle cx="5" cy="3" r="2" fill="#6847f6" />
+      <Path d="M1 9.5 C1 7 2.8 6 5 6 C7.2 6 9 7 9 9.5" fill="#6847f6" />
+    </Svg>
+  );
+}
+
+// Minimalist map-pin icon (location) — 10×12 viewBox
+function PinIcon() {
+  return (
+    <Svg viewBox="0 0 10 13" style={{ width: 7, height: 9, marginRight: 2, marginTop: 0.5 }}>
+      <Path
+        d="M5 0.5 C2.5 0.5 0.5 2.5 0.5 5 C0.5 8 5 12.5 5 12.5 C5 12.5 9.5 8 9.5 5 C9.5 2.5 7.5 0.5 5 0.5Z"
+        fill="#9ca3af"
+      />
+      <Circle cx="5" cy="5" r="1.8" fill="#ffffff" />
+    </Svg>
+  );
 }
 
 const PAGE_SIZE: [number, number] = [298, 496];
@@ -102,33 +144,6 @@ const S = StyleSheet.create({
     backgroundColor: '#ffffff',
     fontFamily: 'Helvetica',
   },
-  banner: {
-    backgroundColor: '#0e0477',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    marginBottom: 7,
-    alignItems: 'center',
-  },
-  bannerTitle: {
-    color: '#ffffff',
-    fontSize: 13,
-    fontFamily: 'Helvetica-Bold',
-    textAlign: 'center',
-    marginBottom: 3,
-  },
-  bannerSub: {
-    color: '#bbbbdd',
-    fontSize: 7,
-    textAlign: 'center',
-    marginBottom: 3,
-  },
-  bannerDate: {
-    color: '#BCCE16',
-    fontSize: 8,
-    fontFamily: 'Helvetica-Bold',
-    textAlign: 'center',
-  },
   dayHeader: {
     backgroundColor: '#0e0477',
     borderRadius: 6,
@@ -148,7 +163,9 @@ const S = StyleSheet.create({
   dayText: {
     color: '#ffffff',
     fontSize: 11,
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Antonio',
+    fontWeight: 'bold',
+    textTransform: 'capitalize',
   },
   sessionCard: {
     borderWidth: 1,
@@ -231,16 +248,26 @@ const S = StyleSheet.create({
     marginTop: 1,
     lineHeight: 1.3,
   },
-  subSpeakers: {
+  speakersRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginTop: 2,
+  },
+  speakersText: {
     color: '#4b5563',
     fontSize: 8,
-    marginTop: 2,
     lineHeight: 1.4,
+    flex: 1,
   },
-  subLocation: {
+  locationRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginTop: 1,
+  },
+  locationText: {
     color: '#9ca3af',
     fontSize: 7,
-    marginTop: 1,
+    flex: 1,
   },
   footer: {
     borderTopWidth: 1,
@@ -262,7 +289,7 @@ function DayContent({ fecha, items }: { fecha: string; items: ProgramaItem[] }) 
     <>
       <View style={S.dayHeader} wrap={false}>
         <View style={S.dayDot} />
-        <Text style={S.dayText}>{formatDate(fecha)}</Text>
+        <Text style={S.dayText}>{formatDate(fecha).toUpperCase()}</Text>
       </View>
 
       {items.map((item) => {
@@ -270,7 +297,6 @@ function DayContent({ fecha, items }: { fecha: string; items: ProgramaItem[] }) 
         const hasContenido = !!(item.contenido && item.contenido.length > 0);
 
         return (
-          // Bloques con sub-contenido fluyen entre páginas; sesiones simples se mantienen intactas
           <View key={item.id} style={[S.sessionCard, { borderLeftColor: pc.bg }]} wrap={!hasContenido}>
             <View style={S.sessionHeader}>
               <View style={S.badgeRow}>
@@ -303,8 +329,8 @@ function DayContent({ fecha, items }: { fecha: string; items: ProgramaItem[] }) 
                     : '';
 
                   const locationStr = [
-                    c.ubicacion ? `Ubicación: ${c.ubicacion}` : null,
-                    c.capacidad ? `Capacidad: ${c.capacidad}` : null,
+                    c.ubicacion ? c.ubicacion : null,
+                    c.capacidad ? `Cap. ${c.capacidad}` : null,
                   ].filter(Boolean).join(' · ');
 
                   return (
@@ -323,10 +349,16 @@ function DayContent({ fecha, items }: { fecha: string; items: ProgramaItem[] }) 
                         <Text style={S.subSubtitle}>{c.subtitulo}</Text>
                       ) : null}
                       {speakerStr ? (
-                        <Text style={S.subSpeakers}>{speakerStr}</Text>
+                        <View style={S.speakersRow}>
+                          <PersonIcon />
+                          <Text style={S.speakersText}>{speakerStr}</Text>
+                        </View>
                       ) : null}
                       {locationStr ? (
-                        <Text style={S.subLocation}>{locationStr}</Text>
+                        <View style={S.locationRow}>
+                          <PinIcon />
+                          <Text style={S.locationText}>{locationStr}</Text>
+                        </View>
                       ) : null}
                     </View>
                   );
@@ -370,7 +402,7 @@ export function ProgramaPDF({ portadaDataUrl, programa, fechasDisponibles }: Pro
         <Image src={portadaDataUrl} style={S.coverImage} />
       </Page>
 
-      {/* Primera página de contenido: día 1 (portada ya cumple función introductoria) */}
+      {/* Día 1 */}
       {days.length > 0 && (
         <Page size={PAGE_SIZE} style={S.contentPage}>
           <DayContent fecha={days[0].fecha} items={days[0].items} />
@@ -378,7 +410,7 @@ export function ProgramaPDF({ portadaDataUrl, programa, fechasDisponibles }: Pro
         </Page>
       )}
 
-      {/* Días 2 y 3: cada uno en su propia página, siempre desde arriba */}
+      {/* Días 2 y 3: cada uno en su propia página */}
       {days.slice(1).map(({ fecha, items }) => (
         <Page key={fecha} size={PAGE_SIZE} style={S.contentPage}>
           <DayContent fecha={fecha} items={items} />
