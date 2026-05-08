@@ -1,0 +1,138 @@
+En la página /directorio-expositores, necesito actualizar el contenido del directorio y sincronizar esos cambios con el carrusel de logos de la Home y de la página /expo-espacio-publico.
+
+Importante
+Mantén todas las tarjetas del directorio con el mismo tamaño visual.
+Si alguna tarjeta tiene mucha información, usa scroll interno en el área de contenido para no desalinear el grid.
+En el PDF descargable, sí puedes permitir que el área de información sea más grande para que el texto largo se vea mejor y no quede comprimido.
+Revisa que no se repitan logos ni tarjetas.
+Si una marca ya existe en el carrusel y ese logo ya está bien resuelto, reutilízalo también en el directorio cuando corresponda.
+Ejemplo: Parques Alegres.
+1. Eliminar AQUAKITA
+
+Elimina AQUAKITA en ambos lugares:
+
+del directorio de expositores
+del carrusel de logos de:
+Home
+/expo-espacio-publico
+
+No debe seguir apareciendo en ninguna de esas secciones.
+
+2. Agregar nuevas tarjetas al directorio
+Consejo de Desarrollo Económico de Ensenada
+Nombre de empresa: Consejo de Desarrollo Económico de Ensenada
+Contacto: Alejandro Flores
+Teléfono: 6461417479
+Celular: 6461417479
+Facebook: https://www.facebook.com/CodeenMx
+Instagram: https://www.instagram.com/codeen_mx/
+Página web: https://www.codeen.com.mx/
+Descripción: El Consejo de Desarrollo Económico de Ensenada (CODEEN) es un organismo empresarial con 28 años de experiencia y que tiene como propósito impulsar acciones que fortalezcan el desarrollo económico de forma integral, estratégica, sustentable y sostenible de los Municipios de Ensenada y San Quintín.
+Documento descargable: no disponible por ahora
+Logo: usar el archivo adjunto correspondiente
+Proyecto Fronterizo de Educación Ambiental, A.C.
+Nombre de empresa: Proyecto Fronterizo de Educación Ambiental, A.C.
+Contacto: Frank Adrián Sauz Barragán
+Teléfono: 6646300590
+Celular: 6643570363
+Facebook: https://www.facebook.com/pfea.org/?locale=es_LA
+Instagram: https://www.instagram.com/proyectofronterizo/?hl=es
+Página web: https://pfea.org/
+Descripción: Organización Civil Ambiental Tijuanense que durante más de 30 años ha promovido y protegido el entorno de la región fronteriza a través de la ciencia y la participación ciudadana; así como el manejo y conservación del Parque de Conservación Los Sauces, el cual es un espacio vital para la biodiversidad de la región que alberca nuestra Casa Cuenca.
+Documento descargable: no disponible por ahora
+Logo: usar el archivo adjunto correspondiente
+BIOVERDE
+Nombre de empresa: BIOVERDE
+Contacto: JESUS PELAYO
+Teléfono: 6642241071
+Celular: 6643570363
+Página web: www.bioverde.com.mx
+Descripción: SERVICIOS INTEGRALES EN AREAS VERDES Y JARDINES.
+Documento descargable: https://drive.google.com/open?id=1bKJLYeAm7rI_3_F45tEeWU2Xq5lmCypJ
+Logo: usar el archivo adjunto correspondiente
+Consejo de Desarrollo Económico de Tijuana
+Nombre de empresa: Consejo de Desarrollo Económico de Tijuana
+Contacto: Aaron Victorio Escalante
+Teléfono: +52 1 661 110 9785
+Celular: +52 1 661 110 9785
+Facebook: https://www.facebook.com/CDTijuana?locale=es_LA
+Instagram: https://www.instagram.com/proyectofronterizo/?hl=es
+Página web: https://cdt.org.mx/
+Descripción: CDT es una institución privada sin fines de lucro en la que se conjugan las voluntades del Gobierno del Estado, Municipio de Tijuana y la Iniciativa Privada, en un esfuerzo de planeación y ejecución de proyectos de largo plazo de la ciudad para elevar el desarrollo económico y social de Tijuana.
+Documento descargable: no disponible por ahora
+Logo: usar el archivo adjunto correspondiente
+Consejo Consultivo de Desarrollo Económico de Playas de Rosarito
+Nombre de empresa: Consejo Consultivo de Desarrollo Económico de Playas de Rosarito
+Contacto: Martha Mendoza Montes
+Teléfono: 6611127581
+Celular: 6611127581
+Facebook: https://www.facebook.com/ccderinfo/
+Instagram: https://www.instagram.com/stories/ccderrosarito/
+Página web: https://online.fliphtml5.com/SeaOfOpportunities/znkx/#p=1
+Descripción: El Consejo Consultivo de Desarrollo Económico de Playas de Rosarito (CCDER) es un organismo ciudadano que impulsa el crecimiento económico del municipio mediante la participación de empresarios, académicos y líderes comunitarios. Su función central es analizar, evaluar y proponer proyectos estratégicos que fortalezcan la competitividad local, diversifiquen la economía y mejoren las condiciones para la inversión. Opera como un puente entre sociedad, gobierno y sector productivo, promoviendo iniciativas que generen empleo, innovación y desarrollo sostenible. Además, revisa y dictamina proyectos que pueden acceder a fondos estatales, asegurando transparencia, viabilidad técnica y alineación con los planes de desarrollo de Baja California.
+Documento descargable: no disponible por ahora
+Logo: usar el archivo adjunto correspondiente
+Parques Alegres
+Nombre de empresa: Parques Alegres
+Contacto: Carolina López Cruz
+Teléfono: 6674774978
+Celular: 6674774978
+Facebook: https://www.facebook.com/parquesalegres
+Instagram: https://www.instagram.com/stories/ccderrosarito/
+Página web: https://parquesalegres.org/
+Descripción: El Consejo Consultivo de Desarrollo Económico de Playas de Rosarito (CCDER) es un organismo ciudadano que impulsa el crecimiento económico del municipio mediante la participación de empresarios, académicos y líderes comunitarios. Su función central es analizar, evaluar y proponer proyectos estratégicos que fortalezcan la competitividad local, diversifiquen la economía y mejoren las condiciones para la inversión. Opera como un puente entre sociedad, gobierno y sector productivo, promoviendo iniciativas que generen empleo, innovación y desarrollo sostenible. Además, revisa y dictamina proyectos que pueden acceder a fondos estatales, asegurando transparencia, viabilidad técnica y alineación con los planes de desarrollo de Baja California.
+Documento descargable: https://drive.google.com/open?id=1CPnhtm8e_jLIR926tnw0DiEAZlLh25tG
+Logo: reutiliza el logo ya existente en el carrusel/directorio si ya está correcto
+3. Reglas de visualización para las tarjetas del directorio
+Mantén el mismo alto y tamaño visual en todas las tarjetas del directorio.
+Si una tarjeta tiene texto largo, usa scroll interno solo en la zona de información para conservar uniformidad.
+No dejes que unas tarjetas crezcan más que otras en la versión web.
+En el PDF descargable, sí puedes ampliar el área de texto para que la lectura sea más cómoda y no dependa de scroll.
+4. Actualizar carrusel de logos
+
+En la sección “Las Mejores Marcas Presentes” de:
+
+Home
+/expo-espacio-publico
+
+haz estos cambios:
+
+elimina AQUAKITA
+agrega los logos nuevos que sí tengan archivo disponible y que correspondan a las marcas agregadas al directorio
+revisa que no haya duplicados
+sincroniza el carrusel con el directorio usando los logos correctos y actualizados
+
+Si alguna marca nueva tiene logo adjunto y debe aparecer también en el carrusel, agrégala.
+Si un logo ya existe y está correcto, reutilízalo.
+
+5. Validaciones importantes
+
+Antes de cerrar los cambios:
+
+revisa que no se repitan marcas ni logos
+revisa que no haya duplicidad entre nombres similares
+revisa que cada red social y página web esté correctamente vinculada
+usa íconos para web, Facebook e Instagram, no URLs visibles como texto
+si un documento descargable no existe, no muestres botón vacío
+si una red social no existe, no muestres ese ícono
+6. Detección de posibles inconsistencias
+
+Si detectas que alguno de los datos compartidos parece estar repetido, equivocado o reutilizado por error entre marcas, señálalo claramente antes de aplicarlo de forma definitiva.
+Ejemplos posibles a revisar:
+
+Instagram de Consejo de Desarrollo Económico de Tijuana
+Instagram de Parques Alegres
+Descripción de Parques Alegres, que parece coincidir con la de CCDER
+
+No inventes datos. Si algo parece inconsistente, repórtalo.
+
+Restricciones
+No romper el diseño actual del directorio
+No deformar logos
+No mostrar URLs como texto plano
+No dejar botones vacíos
+No cambiar el tamaño base ya aprobado de las tarjetas web
+No afectar responsive
+Resultado esperado
+
+La página /directorio-expositores debe agregar correctamente las nuevas tarjetas, eliminar AQUAKITA, mantener todas las tarjetas del mismo tamaño con scroll interno si hace falta, y reflejar estos cambios también en el carrusel de logos de Home y /expo-espacio-publico, evitando duplicados y reutilizando logos ya existentes cuando sea correcto.

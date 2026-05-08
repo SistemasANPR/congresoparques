@@ -25,6 +25,12 @@ import logoRainBird from "@assets/Rain_Bird_1776810194156.png";
 import logoMusco from "@assets/Musco_1776810194159.png";
 import logoConVidaParque from "@assets/Con_Vida_tu_Parque_1777481331114.png";
 import logoDeacero from "@assets/DEACERO_1777481340896.png";
+import logoParquesAlegres from "@assets/Parques_Alegres_1766080172845.png";
+import logoCDT from "@assets/CDT_1766080172849.png";
+import logoCODEEN from "@assets/CODEEN_1778274356981.png";
+import logoProyectoFronterizo from "@assets/PROYECTO_FRONTERIZO_1778274356981.png";
+import logoBioverde from "@assets/BIOVERDE_1778274356981.png";
+import logoCCDER from "@assets/CCDER_1778274356976.png";
 
 interface Expositor {
   id: number;
@@ -301,6 +307,84 @@ const expositores: Expositor[] = [
     logo: logoDeacero,
     pdfId: "1BwsABC-H6a8TcRftIqnXxqaqGPW2SN_W",
   },
+  {
+    id: 21,
+    nombre: "CODEEN",
+    contacto: "Alejandro Flores",
+    telefono: "6461417479",
+    celular: "6461417479",
+    facebook: "https://www.facebook.com/CodeenMx",
+    instagram: "https://www.instagram.com/codeen_mx/",
+    web: "https://www.codeen.com.mx/",
+    descripcion: "El Consejo de Desarrollo Económico de Ensenada (CODEEN) es un organismo empresarial con 28 años de experiencia que tiene como propósito impulsar acciones que fortalezcan el desarrollo económico de forma integral, estratégica, sustentable y sostenible de los Municipios de Ensenada y San Quintín.",
+    logo: logoCODEEN,
+    pdfId: "",
+  },
+  {
+    id: 22,
+    nombre: "Proyecto Fronterizo de Educación Ambiental, A.C.",
+    contacto: "Frank Adrián Sauz Barragán",
+    telefono: "6646300590",
+    celular: "6643570363",
+    facebook: "https://www.facebook.com/pfea.org/?locale=es_LA",
+    instagram: "https://www.instagram.com/proyectofronterizo/?hl=es",
+    web: "https://pfea.org/",
+    descripcion: "Organización Civil Ambiental Tijuanense que durante más de 30 años ha promovido y protegido el entorno de la región fronteriza a través de la ciencia y la participación ciudadana; así como el manejo y conservación del Parque de Conservación Los Sauces, espacio vital para la biodiversidad de la región.",
+    logo: logoProyectoFronterizo,
+    pdfId: "",
+  },
+  {
+    id: 23,
+    nombre: "BIOVERDE",
+    contacto: "JESUS PELAYO",
+    telefono: "6642241071",
+    celular: "6643570363",
+    facebook: "",
+    instagram: "",
+    web: "https://www.bioverde.com.mx/",
+    descripcion: "Servicios integrales en áreas verdes y jardines.",
+    logo: logoBioverde,
+    pdfId: "1bKJLYeAm7rI_3_F45tEeWU2Xq5lmCypJ",
+  },
+  {
+    id: 24,
+    nombre: "Consejo de Desarrollo Económico de Tijuana",
+    contacto: "Aaron Victorio Escalante",
+    telefono: "+52 1 661 110 9785",
+    celular: "+52 1 661 110 9785",
+    facebook: "https://www.facebook.com/CDTijuana?locale=es_LA",
+    instagram: "",
+    web: "https://cdt.org.mx/",
+    descripcion: "CDT es una institución privada sin fines de lucro en la que se conjugan las voluntades del Gobierno del Estado, Municipio de Tijuana y la Iniciativa Privada, en un esfuerzo de planeación y ejecución de proyectos de largo plazo para elevar el desarrollo económico y social de Tijuana.",
+    logo: logoCDT,
+    pdfId: "",
+  },
+  {
+    id: 25,
+    nombre: "Consejo Consultivo de Desarrollo Económico de Playas de Rosarito",
+    contacto: "Martha Mendoza Montes",
+    telefono: "6611127581",
+    celular: "6611127581",
+    facebook: "https://www.facebook.com/ccderinfo/",
+    instagram: "https://www.instagram.com/ccderrosarito/",
+    web: "https://online.fliphtml5.com/SeaOfOpportunities/znkx/#p=1",
+    descripcion: "El Consejo Consultivo de Desarrollo Económico de Playas de Rosarito (CCDER) es un organismo ciudadano que impulsa el crecimiento económico del municipio mediante la participación de empresarios, académicos y líderes comunitarios. Analiza, evalúa y propone proyectos estratégicos que fortalezcan la competitividad local y mejoren las condiciones para la inversión.",
+    logo: logoCCDER,
+    pdfId: "",
+  },
+  {
+    id: 26,
+    nombre: "Parques Alegres",
+    contacto: "Carolina López Cruz",
+    telefono: "6674774978",
+    celular: "6674774978",
+    facebook: "https://www.facebook.com/parquesalegres",
+    instagram: "",
+    web: "https://parquesalegres.org/",
+    descripcion: "Parques Alegres impulsa la creación, mejoramiento y mantenimiento de parques y espacios recreativos comunitarios en México, generando bienestar y transformación social desde el espacio público.",
+    logo: logoParquesAlegres,
+    pdfId: "1CPnhtm8e_jLIR926tnw0DiEAZlLh25tG",
+  },
 ];
 
 function normalizeUrl(url: string): string {
@@ -345,9 +429,9 @@ function ExpositorCard({ exp }: { exp: Expositor }) {
   const web = normalizeUrl(exp.web);
 
   return (
-    <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300 h-[390px]">
       {/* Logo */}
-      <div className="bg-white border-b border-gray-100 flex items-center justify-center p-5 h-32">
+      <div className="bg-white border-b border-gray-100 flex items-center justify-center p-5 h-32 shrink-0">
         <img
           src={exp.logo}
           alt={`Logo ${exp.nombre}`}
@@ -356,16 +440,16 @@ function ExpositorCard({ exp }: { exp: Expositor }) {
       </div>
 
       {/* Body */}
-      <div className="p-5 flex flex-col flex-1">
+      <div className="p-5 flex flex-col flex-1 min-h-0">
         <h3
-          className="text-sm font-black text-[#0e0477] mb-2 leading-tight"
+          className="text-sm font-black text-[#0e0477] mb-2 leading-tight shrink-0"
           style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           {exp.nombre}
         </h3>
 
         <p
-          className="text-xs text-gray-600 leading-relaxed mb-4 flex-1"
+          className="text-xs text-gray-600 leading-relaxed mb-3 flex-1 overflow-y-auto pr-1"
           style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           {exp.descripcion}

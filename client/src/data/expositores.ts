@@ -20,9 +20,12 @@ import fundicionGamboaLogoUrl from "@assets/Fundicion_Gamboa_1777482668293.png";
 import vermeerLogoUrl from "@assets/Vermeer_1770320575703.png";
 import bktLogoUrl from "@assets/BKT_1777482668293.png";
 import dyceLogoUrl from "@assets/dyce_1777482668293.png";
-import aquakitaLogoUrl from "@assets/Aquakita_1777482668292.png";
 import deaceroLogoUrl from "@assets/DEACERO_1777481340896.png";
 import conVidaParqueLogoUrl from "@assets/Con_Vida_tu_Parque_1777481331114.png";
+import codeenLogoUrl from "@assets/CODEEN_1778274356981.png";
+import proyectoFronterizoLogoUrl from "@assets/PROYECTO_FRONTERIZO_1778274356981.png";
+import bioverdeLogoUrl from "@assets/BIOVERDE_1778274356981.png";
+import ccderLogoUrl from "@assets/CCDER_1778274356976.png";
 
 export interface Expositor {
   id: string;
@@ -51,9 +54,12 @@ export const expositores: Expositor[] = [
   { id: 'vermeer', logo: vermeerLogoUrl, name: 'Vermeer México', url: 'https://vermeermexico.com/' },
   { id: 'bkt', logo: bktLogoUrl, name: 'BKT Mobiliario Urbano', url: 'https://www.bktmobiliario.com/' },
   { id: 'dyce', logo: dyceLogoUrl, name: 'DYCE', url: 'https://www.dyce.mx/' },
-  { id: 'aquakita', logo: aquakitaLogoUrl, name: 'Aquakita', url: '#' },
   { id: 'deacero', logo: deaceroLogoUrl, name: 'DEACERO', url: 'https://www.deacero.com/' },
   { id: 'convidaparque', logo: conVidaParqueLogoUrl, name: 'Con Vida Tu Parque', url: '#' },
+  { id: 'codeen', logo: codeenLogoUrl, name: 'CODEEN', url: 'https://www.codeen.com.mx/' },
+  { id: 'proyectofronterizo', logo: proyectoFronterizoLogoUrl, name: 'Proyecto Fronterizo de Educación Ambiental', url: 'https://pfea.org/' },
+  { id: 'bioverde', logo: bioverdeLogoUrl, name: 'BIOVERDE', url: 'https://www.bioverde.com.mx/' },
+  { id: 'ccder', logo: ccderLogoUrl, name: 'CCDER', url: 'https://online.fliphtml5.com/SeaOfOpportunities/znkx/#p=1' },
 ];
 
 // Utility function to shuffle brands for random display order
