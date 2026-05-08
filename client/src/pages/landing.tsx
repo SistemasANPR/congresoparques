@@ -1585,10 +1585,8 @@ export default function Landing() {
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-8 max-w-6xl">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <a 
-                href="https://expoespaciopublico.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Link
+                href="/expo-espacio-publico"
                 className="expo-logo-link block transition-transform duration-300 hover:scale-105"
                 data-testid="expo-logo-link"
               >
@@ -1598,7 +1596,7 @@ export default function Landing() {
                   className="w-full max-w-[160px] lg:max-w-[200px] h-auto object-contain"
                   loading="lazy"
                 />
-              </a>
+              </Link>
             </div>
             
             {/* Text Content with Hierarchy */}
