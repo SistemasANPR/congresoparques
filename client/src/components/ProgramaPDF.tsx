@@ -83,6 +83,8 @@ function getTallerHorario(titulo: string): string | null {
   return TALLERES_FIJO_KEYWORDS.some(k => lower.includes(k)) ? '9:00 AM – 1:00 PM' : null;
 }
 
+const PAGE_SIZE: [number, number] = [298, 496];
+
 const S = StyleSheet.create({
   coverPage: {
     padding: 0,
@@ -94,7 +96,7 @@ const S = StyleSheet.create({
   },
   contentPage: {
     paddingTop: 14,
-    paddingBottom: 20,
+    paddingBottom: 24,
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: '#ffffff',
@@ -132,7 +134,7 @@ const S = StyleSheet.create({
     borderRadius: 6,
     paddingVertical: 5,
     paddingHorizontal: 10,
-    marginBottom: 4,
+    marginBottom: 6,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -255,113 +257,138 @@ const S = StyleSheet.create({
   },
 });
 
+function DayContent({ fecha, items }: { fecha: string; items: ProgramaItem[] }) {
+  return (
+    <>
+      <View style={S.dayHeader} wrap={false}>
+        <View style={S.dayDot} />
+        <Text style={S.dayText}>{formatDate(fecha)}</Text>
+      </View>
+
+      {items.map((item) => {
+        const pc = getTipoColor(item.tipo);
+        const hasContenido = !!(item.contenido && item.contenido.length > 0);
+
+        return (
+          <View key={item.id} style={[S.sessionCard, { borderLeftColor: pc.bg }]} wrap={false}>
+            <View style={S.sessionHeader}>
+              <View style={S.badgeRow}>
+                <View style={[S.badge, { backgroundColor: pc.bg }]}>
+                  <Text style={[S.badgeText, { color: pc.fg }]}>
+                    {item.tipo.toUpperCase()}
+                  </Text>
+                </View>
+                <Text style={S.sessionTime}>
+                  {formatTime(item.inicio)} – {formatTime(item.fin)}
+                </Text>
+              </View>
+              <Text style={S.sessionTitle}>
+                {item.titulo.replace(/\*$/, '')}
+              </Text>
+            </View>
+
+            {hasContenido && (
+              <View style={S.subZone}>
+                {item.contenido!.map((c) => {
+                  const isTalleresMat = item.titulo.toLowerCase().includes('talleres matutinos');
+                  const horarioFijo = isTalleresMat ? getTallerHorario(c.titulo) : null;
+                  const hasPonentes = !!(c.ponentes && c.ponentes.length > 0);
+
+                  const speakerStr = hasPonentes
+                    ? c.ponentes!.map((p, i) => {
+                        const info = [p.cargo, p.empresa].filter(Boolean).join(', ');
+                        return `${i > 0 ? ' · ' : ''}${p.nombre}${info ? ` (${info})` : ''}`;
+                      }).join('')
+                    : '';
+
+                  const locationStr = [
+                    c.ubicacion ? `Ubicación: ${c.ubicacion}` : null,
+                    c.capacidad ? `Capacidad: ${c.capacidad}` : null,
+                  ].filter(Boolean).join(' · ');
+
+                  return (
+                    <View key={c.id} style={S.subCard} wrap={false}>
+                      <View style={S.subHeaderRow}>
+                        <Text style={S.subTitle}>{c.titulo.replace(/\*$/, '')}</Text>
+                        {!isTalleresMat && c.hora_inicio ? (
+                          <Text style={S.subTime}>
+                            {formatTime(c.hora_inicio)}–{formatTime(c.hora_fin)}
+                          </Text>
+                        ) : horarioFijo ? (
+                          <Text style={S.subTime}>{horarioFijo}</Text>
+                        ) : null}
+                      </View>
+                      {c.subtitulo ? (
+                        <Text style={S.subSubtitle}>{c.subtitulo}</Text>
+                      ) : null}
+                      {speakerStr ? (
+                        <Text style={S.subSpeakers}>{speakerStr}</Text>
+                      ) : null}
+                      {locationStr ? (
+                        <Text style={S.subLocation}>{locationStr}</Text>
+                      ) : null}
+                    </View>
+                  );
+                })}
+              </View>
+            )}
+          </View>
+        );
+      })}
+    </>
+  );
+}
+
+function PageFooter() {
+  return (
+    <View style={S.footer} fixed>
+      <Text
+        style={S.footerText}
+        render={({ pageNumber, totalPages }) =>
+          `congresoparques.com · IX Congreso Internacional · Tijuana 2026  ·  ${pageNumber}/${totalPages}`
+        }
+      />
+    </View>
+  );
+}
+
 export function ProgramaPDF({ portadaDataUrl, programa, fechasDisponibles }: ProgramaPDFProps) {
+  const days = fechasDisponibles
+    .map(fecha => ({
+      fecha,
+      items: programa
+        .filter(item => item.fecha === fecha)
+        .sort((a, b) => a.inicio.localeCompare(b.inicio)),
+    }))
+    .filter(d => d.items.length > 0);
+
   return (
     <Document>
-      <Page size={[298, 496]} style={S.coverPage}>
+      {/* Portada */}
+      <Page size={PAGE_SIZE} style={S.coverPage}>
         <Image src={portadaDataUrl} style={S.coverImage} />
       </Page>
 
-      <Page size={[298, 496]} style={S.contentPage}>
-        <View style={S.banner}>
-          <Text style={S.bannerTitle}>PROGRAMA DEL CONGRESO</Text>
-          <Text style={S.bannerSub}>IX Congreso Internacional de Parques Urbanos y Espacio Público</Text>
-          <Text style={S.bannerDate}>13 · 14 · 15 Mayo 2026  ·  Tijuana, México</Text>
-        </View>
+      {/* Primera página de contenido: banner + día 1 */}
+      {days.length > 0 && (
+        <Page size={PAGE_SIZE} style={S.contentPage}>
+          <View style={S.banner} wrap={false}>
+            <Text style={S.bannerTitle}>PROGRAMA DEL CONGRESO</Text>
+            <Text style={S.bannerSub}>IX Congreso Internacional de Parques Urbanos y Espacio Público</Text>
+            <Text style={S.bannerDate}>13 · 14 · 15 Mayo 2026  ·  Tijuana, México</Text>
+          </View>
+          <DayContent fecha={days[0].fecha} items={days[0].items} />
+          <PageFooter />
+        </Page>
+      )}
 
-        {fechasDisponibles.map((fecha, diaIdx) => {
-          const items = programa
-            .filter(item => item.fecha === fecha)
-            .sort((a, b) => a.inicio.localeCompare(b.inicio));
-          if (items.length === 0) return null;
-
-          return (
-            <View key={fecha}>
-              <View style={[S.dayHeader, diaIdx > 0 ? { marginTop: 8 } : {}]}>
-                <View style={S.dayDot} />
-                <Text style={S.dayText}>{formatDate(fecha)}</Text>
-              </View>
-
-              {items.map((item) => {
-                const pc = getTipoColor(item.tipo);
-                const hasContenido = !!(item.contenido && item.contenido.length > 0);
-
-                return (
-                  <View key={item.id} style={[S.sessionCard, { borderLeftColor: pc.bg }]}>
-                    <View style={S.sessionHeader} wrap={false}>
-                      <View style={S.badgeRow}>
-                        <View style={[S.badge, { backgroundColor: pc.bg }]}>
-                          <Text style={[S.badgeText, { color: pc.fg }]}>
-                            {item.tipo.toUpperCase()}
-                          </Text>
-                        </View>
-                        <Text style={S.sessionTime}>
-                          {formatTime(item.inicio)} – {formatTime(item.fin)}
-                        </Text>
-                      </View>
-                      <Text style={S.sessionTitle}>
-                        {item.titulo.replace(/\*$/, '')}
-                      </Text>
-                    </View>
-
-                    {hasContenido && (
-                      <View style={S.subZone}>
-                        {item.contenido!.map((c) => {
-                          const isTalleresMat = item.titulo.toLowerCase().includes('talleres matutinos');
-                          const horarioFijo = isTalleresMat ? getTallerHorario(c.titulo) : null;
-                          const hasPonentes = !!(c.ponentes && c.ponentes.length > 0);
-
-                          const speakerStr = hasPonentes
-                            ? c.ponentes!.map((p, i) => {
-                                const info = [p.cargo, p.empresa].filter(Boolean).join(', ');
-                                return `${i > 0 ? ' · ' : ''}${p.nombre}${info ? ` (${info})` : ''}`;
-                              }).join('')
-                            : '';
-
-                          const locationStr = [
-                            c.ubicacion ? `Ubicación: ${c.ubicacion}` : null,
-                            c.capacidad ? `Capacidad: ${c.capacidad}` : null,
-                          ].filter(Boolean).join(' · ');
-
-                          return (
-                            <View key={c.id} style={S.subCard}>
-                              <View style={S.subHeaderRow}>
-                                <Text style={S.subTitle}>{c.titulo.replace(/\*$/, '')}</Text>
-                                {!isTalleresMat && c.hora_inicio ? (
-                                  <Text style={S.subTime}>
-                                    {formatTime(c.hora_inicio)}–{formatTime(c.hora_fin)}
-                                  </Text>
-                                ) : horarioFijo ? (
-                                  <Text style={S.subTime}>{horarioFijo}</Text>
-                                ) : null}
-                              </View>
-                              {c.subtitulo ? (
-                                <Text style={S.subSubtitle}>{c.subtitulo}</Text>
-                              ) : null}
-                              {speakerStr ? (
-                                <Text style={S.subSpeakers}>{speakerStr}</Text>
-                              ) : null}
-                              {locationStr ? (
-                                <Text style={S.subLocation}>{locationStr}</Text>
-                              ) : null}
-                            </View>
-                          );
-                        })}
-                      </View>
-                    )}
-                  </View>
-                );
-              })}
-            </View>
-          );
-        })}
-
-        <View style={S.footer} fixed>
-          <Text style={S.footerText} render={({ pageNumber, totalPages }) =>
-            `congresoparques.com · IX Congreso Internacional · Tijuana 2026  ·  ${pageNumber}/${totalPages}`
-          } />
-        </View>
-      </Page>
+      {/* Días 2 y 3: cada uno en su propia página, siempre desde arriba */}
+      {days.slice(1).map(({ fecha, items }) => (
+        <Page key={fecha} size={PAGE_SIZE} style={S.contentPage}>
+          <DayContent fecha={fecha} items={items} />
+          <PageFooter />
+        </Page>
+      ))}
     </Document>
   );
 }
