@@ -11,7 +11,7 @@ import muscoLogoUrl from "@assets/Musco_1766080172848.png";
 import bodenLogoUrl from "@assets/Boden_1777482668293.png";
 import bugyLogoUrl from "@assets/Bugy_1766080172848.png";
 import rainBirdLogoUrl from "@assets/Rain_Bird_1766080172849.png";
-import cdtLogoUrl from "@assets/CDT_1766080172849.png";
+import cdtLogoUrl from "@assets/logo_nuevo_cdt_1778616098687.png";
 import jumboLogoUrl from "@assets/Productos_Jumbo_1777482668292.png";
 import proludicLogoUrl from "@assets/Proludic_1766080172850.png";
 import parkSysLogoUrl from "@assets/ParkSys_1766080172850.png";

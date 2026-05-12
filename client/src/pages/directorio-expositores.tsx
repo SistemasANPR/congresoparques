@@ -29,7 +29,7 @@ import logoMusco from "@assets/Musco_1776810194159.png";
 import logoConVidaParque from "@assets/Con_Vida_tu_Parque_1777481331114.png";
 import logoDeacero from "@assets/DEACERO_1777481340896.png";
 import logoParquesAlegres from "@assets/Parques_Alegres_1766080172845.png";
-import logoCDT from "@assets/CDT_1766080172849.png";
+import logoCDT from "@assets/logo_nuevo_cdt_1778616098687.png";
 import logoCODEEN from "@assets/CODEEN_1778274356981.png";
 import logoProyectoFronterizo from "@assets/PROYECTO_FRONTERIZO_1778274356981.png";
 import logoBioverde from "@assets/BIOVERDE_1778274356981.png";
