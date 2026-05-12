@@ -1,0 +1,155 @@
+Actúa como un desarrollador frontend senior especializado en generación avanzada de PDFs web, optimización de rendimiento y diseño editorial responsive.
+
+Necesito realizar mejoras en el PDF descargable de la página:
+`/directorio-expositores`
+
+IMPORTANTE:
+- Analiza primero la implementación actual del PDF antes de modificar código.
+- Identifica qué librería se utiliza actualmente para generar el PDF.
+- Explica brevemente qué está causando:
+  - pixelación,
+  - lentitud,
+  - cortes de contenido,
+  - y problemas de distribución.
+- Después implementa los cambios.
+
+OBJETIVOS PRINCIPALES:
+1. Mejorar drásticamente la calidad visual del PDF.
+2. Reducir tiempo de generación y peso del archivo.
+3. Mantener compatibilidad móvil.
+4. Mejorar distribución editorial del contenido.
+5. Evitar cortes de tarjetas o información.
+6. Mantener el diseño web intacto y modificar únicamente la versión PDF.
+
+==================================================
+CALIDAD DEL TEXTO Y TIPOGRAFÍAS
+==================================================
+
+Actualmente los textos del PDF se ven pixelados al hacer zoom.
+
+Quiero que TODAS las tipografías del PDF sean TEXTO REAL NATIVO DEL PDF, NO imágenes, NO screenshots y NO texto convertido a curvas/vector shapes.
+
+IMPORTANTE:
+- El texto debe seguir siendo seleccionable.
+- El usuario debe poder copiar y pegar información del PDF.
+- El texto debe conservar búsqueda dentro del documento.
+- El texto NO debe rasterizarse.
+- El texto NO debe exportarse como canvas.
+- El texto NO debe convertirse en paths/vector outlines.
+
+Necesito:
+- renderizado tipográfico real del PDF,
+- fuentes embebidas correctamente,
+- nitidez perfecta al hacer zoom,
+- y compatibilidad de selección/copiado.
+
+Evita:
+- html2canvas para texto,
+- screenshots de contenedores,
+- rasterización de páginas completas,
+- o cualquier técnica que convierta texto en imagen.
+
+La portada original fue proporcionada como archivo vectorial, pero actualmente se exporta pixelada.
+
+Quiero conservar la portada en:
+- calidad vectorial,
+- SVG nativo,
+- o máxima resolución posible SIN rasterizar innecesariamente.
+
+Verifica:
+- si el archivo vectorial original sigue disponible,
+- y reutilízalo correctamente dentro del PDF.
+
+==================================================
+DISTRIBUCIÓN Y LAYOUT DE TARJETAS
+==================================================
+
+Actualmente algunas tarjetas cortan información o se dividen incorrectamente entre páginas.
+
+Necesito:
+- evitar cortes de contenido,
+- evitar que una tarjeta quede partida entre páginas,
+- y mantener toda la información agrupada correctamente.
+
+IMPORTANTE:
+- La vista web NO debe modificarse.
+- Los cambios de layout deben aplicarse SOLO al PDF.
+
+La medida actual del PDF está optimizada para dispositivos móviles y quiero conservar ese tamaño/base.
+
+SIN EMBARGO:
+redistribuye internamente los elementos de cada tarjeta para aprovechar mejor el espacio.
+
+==================================================
+CAMBIO DE POSICIÓN DE LOGOS
+==================================================
+
+Actualmente los logos aparecen del lado izquierdo de cada tarjeta.
+
+Quiero que en la versión PDF:
+- los logos se coloquen en la parte superior,
+- centrados o bien alineados,
+- y con mayor tamaño visual.
+
+La mayoría de logos tienen proporción horizontal, así que esto ayudará a:
+- mejorar legibilidad,
+- aprovechar el ancho disponible,
+- y hacer el diseño más limpio.
+
+IMPORTANTE:
+- este cambio aplica SOLO al PDF,
+- la versión web debe permanecer exactamente igual.
+
+==================================================
+PUBLICIDADES TAMAÑO CARTA
+==================================================
+
+Al final del documento existen páginas de publicidad.
+
+Los archivos originales están en proporción tamaño carta.
+
+Actualmente se están estirando verticalmente para ajustarse al nuevo formato.
+
+Quiero que:
+- se respete la proporción original,
+- NO se deformen,
+- NO se estiren verticalmente,
+- y mantengan buena calidad.
+
+Puedes:
+- centrar las publicidades,
+- agregar márgenes si es necesario,
+- o adaptar el layout para conservar proporciones correctamente.
+
+Respeta el ancho máximo disponible sin deformar la imagen.
+
+También agregaré dos nuevas publicidades que deben integrarse correctamente siguiendo estas mismas reglas.
+
+==================================================
+RENDIMIENTO Y OPTIMIZACIÓN
+==================================================
+
+Actualmente el PDF tarda demasiado en generarse y descargar.
+
+Necesito optimización REAL de rendimiento.
+
+Analiza e implementa mejoras como:
+- reducción de renders innecesarios,
+- lazy processing si aplica,
+- compresión inteligente de imágenes,
+- reutilización de assets,
+- evitar screenshots gigantes,
+- evitar renderizados redundantes,
+- optimización de tipografías,
+- reducción de memoria,
+- y mejor manejo de páginas múltiples.
+
+IMPORTANTE:
+Reducir peso SIN perder calidad visual.
+
+Prioridades:
+1. texto real seleccionable,
+2. calidad tipográfica,
+3. estabilidad,
+4. velocidad,
+5. peso optimizado.

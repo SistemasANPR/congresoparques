@@ -1,10 +1,13 @@
-import { useState, useMemo, useRef, useEffect } from "react";
-import { Search, X, Globe, Facebook, Instagram, Phone, Smartphone, FileText, ExternalLink, Building2, Printer, Loader2 } from "lucide-react";
+import { useState, useMemo, useEffect } from "react";
+import { Search, X, Globe, Facebook, Instagram, Phone, Smartphone, FileText, ExternalLink, Printer, Loader2 } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
 import SupportSection from "@/components/SupportSection";
+import { pdf } from '@react-pdf/renderer';
+import { CatalogoPDF } from "@/components/CatalogoPDF";
 import expoLogoUrl from "@assets/LOGO EXPO ESPACIO PUBLICO 2026 NEGATIVO_1762801531047.png";
+import cdtAdImageUrl from "@assets/WhatsApp_Image_2026-05-08_at_12.31.20_PM_1778548455199.jpeg";
 
 import logoJumbo from "@assets/Productos_Jumbo_1777482668292.png";
 import logoBKT from "@assets/BKT_1776810194158.png";
@@ -663,31 +666,33 @@ export default function DirectorioExpositores() {
 
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // Render all pages of a PDF to PNG data URLs using PDF.js (PNG = lossless, no pixelation)
-  const renderPdfPages = async (pdfjsLib: any, url: string, scale = 3): Promise<string[]> => {
-    const pdf = await pdfjsLib.getDocument(url).promise;
-    const renders = Array.from({ length: pdf.numPages }, (_, i) =>
-      pdf.getPage(i + 1).then(async (page: any) => {
-        const viewport = page.getViewport({ scale });
-        const canvas = document.createElement('canvas');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        await page.render({ canvasContext: canvas.getContext('2d')!, viewport }).promise;
-        return { index: i, url: canvas.toDataURL('image/png') };
-      })
+  // Render all pages of a PDF file to PNG data URLs via PDF.js
+  const renderPdfToPng = async (
+    pdfjsLib: any,
+    url: string,
+    scale = 2,
+  ): Promise<string[]> => {
+    const doc = await pdfjsLib.getDocument(url).promise;
+    const pages = await Promise.all(
+      Array.from({ length: doc.numPages }, (_, i) =>
+        doc.getPage(i + 1).then(async (page: any) => {
+          const vp = page.getViewport({ scale });
+          const canvas = document.createElement('canvas');
+          canvas.width = vp.width;
+          canvas.height = vp.height;
+          await page.render({ canvasContext: canvas.getContext('2d')!, viewport: vp }).promise;
+          return { index: i, dataUrl: canvas.toDataURL('image/jpeg', 0.92) };
+        }),
+      ),
     );
-    const results = await Promise.all(renders);
-    return results.sort((a, b) => a.index - b.index).map(r => r.url);
+    return pages.sort((a, b) => a.index - b.index).map(r => r.dataUrl);
   };
 
   const handleDownloadPDF = async () => {
     if (isGenerating) return;
     setIsGenerating(true);
     try {
-      const { default: jsPDF } = await import('jspdf');
-      const { default: html2canvas } = await import('html2canvas');
-
-      // 1. Load PDF.js
+      // 1. Load PDF.js once (cached on window after first use)
       if (!(window as any).pdfjsLib) {
         await new Promise<void>((resolve, reject) => {
           const script = document.createElement('script');
@@ -701,87 +706,34 @@ export default function DirectorioExpositores() {
       }
       const pdfjsLib = (window as any).pdfjsLib;
 
-      // 2. Render portada + ads in parallel
-      const [coverPages, adsPages] = await Promise.all([
-        renderPdfPages(pdfjsLib, '/portada-catalogo-expo.pdf', 3),
-        renderPdfPages(pdfjsLib, '/publicidades-expo.pdf', 2.5),
+      // 2. Render all PDF assets in parallel (scale 2 — sharp yet fast)
+      const [coverUrls, publicidadUrls, bioverdeUrls] = await Promise.all([
+        renderPdfToPng(pdfjsLib, '/portada-catalogo-expo.pdf', 2.5),
+        renderPdfToPng(pdfjsLib, '/publicidades-expo.pdf', 2),
+        renderPdfToPng(pdfjsLib, '/bioverde-flyer.pdf', 2),
       ]);
 
-      // Page dimensions matching reference PDF: 298×496 pt (≈105×175mm)
-      // Narrower page → text appears larger on mobile screens (higher zoom factor)
-      const PAGE_W = 298;    // pt
-      const PAGE_H = 496;    // pt
-      const MARGIN_L = 10;   // pt
-      const MARGIN_T = 14;   // pt
-      const CONTENT_W = PAGE_W - MARGIN_L * 2; // 278pt
-      const CONTENT_H = PAGE_H - MARGIN_T * 2; // 468pt
-      // html2canvas element width: 278pt × (96px/72pt) ≈ 371px
-      const CONTENT_W_PX = Math.round(CONTENT_W * 96 / 72);
+      // 3. Build the @react-pdf Document and generate blob
+      //    All card text is REAL selectable PDF text — no canvas/screenshot involved
+      const blob = await pdf(
+        <CatalogoPDF
+          expositores={expositores}
+          coverUrls={coverUrls}
+          publicidadUrls={publicidadUrls}
+          cdtAdUrl={cdtAdImageUrl}
+          bioverdeUrls={bioverdeUrls}
+        />
+      ).toBlob();
 
-      // 3. Show PrintCatalog off-screen for html2canvas
-      const printEl = document.getElementById('print-catalog') as HTMLElement | null;
-      if (!printEl) throw new Error('PrintCatalog not found');
-
-      printEl.classList.remove('hidden');
-      printEl.style.position = 'fixed';
-      printEl.style.top = '0px';
-      printEl.style.left = '-9999px';
-      printEl.style.width = `${CONTENT_W_PX}px`;
-      printEl.style.background = '#fff';
-      printEl.style.zIndex = '-1';
-
-      // Wait for logos (proxy images) to load
-      await new Promise(r => setTimeout(r, 1200));
-
-      // 4. Capture with html2canvas — scale=3 for sharper text
-      const contentCanvas = await html2canvas(printEl, {
-        scale: 3,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: CONTENT_W_PX,
-        scrollX: 0,
-        scrollY: 0,
-      });
-
-      // 5. Restore hidden state
-      printEl.style.position = '';
-      printEl.style.top = '';
-      printEl.style.left = '';
-      printEl.style.width = '';
-      printEl.style.background = '';
-      printEl.style.zIndex = '';
-      printEl.classList.add('hidden');
-
-      // 6. Build jsPDF at reference dimensions
-      const pdf = new jsPDF({ orientation: 'portrait', unit: 'pt', format: [PAGE_W, PAGE_H] });
-
-      // Portada pages: full-bleed PNG (lossless — no pixelation)
-      coverPages.forEach((dataUrl, i) => {
-        if (i > 0) pdf.addPage();
-        pdf.addImage(dataUrl, 'PNG', 0, 0, PAGE_W, PAGE_H);
-      });
-
-      // Content pages: split html2canvas image into CONTENT_H slices with margins
-      const imgData = contentCanvas.toDataURL('image/jpeg', 0.95);
-      const imgH = (contentCanvas.height * CONTENT_W) / contentCanvas.width;
-      let heightLeft = imgH;
-      let pageIdx = 0;
-      while (heightLeft > 0) {
-        pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', MARGIN_L, MARGIN_T - pageIdx * CONTENT_H, CONTENT_W, imgH);
-        heightLeft -= CONTENT_H;
-        pageIdx++;
-      }
-
-      // Ads pages: full-bleed PNG
-      adsPages.forEach((dataUrl) => {
-        pdf.addPage();
-        pdf.addImage(dataUrl, 'PNG', 0, 0, PAGE_W, PAGE_H);
-      });
-
-      // 7. Download
-      pdf.save('Catalogo-Expo-Espacio-Publico-2026.pdf');
+      // 4. Trigger download
+      const objectUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = objectUrl;
+      a.download = 'Catalogo-Expo-Espacio-Publico-2026.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(objectUrl);
     } catch (err) {
       console.error('PDF generation failed:', err);
     } finally {
