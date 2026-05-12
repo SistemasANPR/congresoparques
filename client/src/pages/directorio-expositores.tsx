@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { Search, X, Globe, Facebook, Instagram, Phone, Smartphone, FileText, ExternalLink, Printer, Loader2 } from "lucide-react";
+import { Search, X, Globe, Facebook, Instagram, Phone, Smartphone, FileText, ExternalLink, Printer, Loader2, ArrowUpDown } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
@@ -654,15 +654,26 @@ export default function DirectorioExpositores() {
     };
   }, []);
 
+  const [sortOrder, setSortOrder] = useState<'none' | 'az' | 'za'>('none');
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return expositores;
-    return expositores.filter(
-      (e) =>
-        e.nombre.toLowerCase().includes(q) ||
-        e.descripcion.toLowerCase().includes(q)
-    );
-  }, [query]);
+    const base = q
+      ? expositores.filter(
+          (e) =>
+            e.nombre.toLowerCase().includes(q) ||
+            e.descripcion.toLowerCase().includes(q),
+        )
+      : expositores;
+
+    if (sortOrder === 'az') {
+      return [...base].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+    }
+    if (sortOrder === 'za') {
+      return [...base].sort((a, b) => b.nombre.localeCompare(a.nombre, 'es'));
+    }
+    return base;
+  }, [query, sortOrder]);
 
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -714,10 +725,13 @@ export default function DirectorioExpositores() {
       ]);
 
       // 3. Build the @react-pdf Document and generate blob
-      //    All card text is REAL selectable PDF text — no canvas/screenshot involved
+      //    PDF always uses alphabetical order, regardless of web sort selection
+      const pdfExpositores = [...expositores].sort((a, b) =>
+        a.nombre.localeCompare(b.nombre, 'es'),
+      );
       const blob = await pdf(
         <CatalogoPDF
-          expositores={expositores}
+          expositores={pdfExpositores}
           coverUrls={coverUrls}
           publicidadUrls={publicidadUrls}
           cdtAdUrl={cdtAdImageUrl}
@@ -900,14 +914,45 @@ export default function DirectorioExpositores() {
               )}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 flex-wrap justify-end">
               <span
-                className="text-sm text-gray-500"
+                className="text-sm text-gray-400 mr-1 hidden sm:inline"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 {filtered.length}{" "}
                 {filtered.length === 1 ? "expositor" : "expositores"}
               </span>
+
+              {/* Sort controls */}
+              <div className="flex items-center gap-1 bg-gray-100 rounded-xl p-1">
+                <button
+                  onClick={() => setSortOrder(sortOrder === 'az' ? 'none' : 'az')}
+                  title="Ordenar A → Z"
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all duration-150 ${
+                    sortOrder === 'az'
+                      ? 'bg-[#6847f6] text-white shadow-sm'
+                      : 'text-gray-500 hover:text-[#6847f6] hover:bg-white'
+                  }`}
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  <ArrowUpDown className="w-3 h-3" />
+                  A–Z
+                </button>
+                <button
+                  onClick={() => setSortOrder(sortOrder === 'za' ? 'none' : 'za')}
+                  title="Ordenar Z → A"
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all duration-150 ${
+                    sortOrder === 'za'
+                      ? 'bg-[#6847f6] text-white shadow-sm'
+                      : 'text-gray-500 hover:text-[#6847f6] hover:bg-white'
+                  }`}
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  <ArrowUpDown className="w-3 h-3 rotate-180" />
+                  Z–A
+                </button>
+              </div>
+
               <button
                 onClick={handleDownloadPDF}
                 disabled={isGenerating}

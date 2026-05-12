@@ -1,0 +1,74 @@
+La mejora anterior quedó muy bien, pero ahora necesito optimizar mejor el aprovechamiento del espacio en el PDF.
+
+Actualmente, en páginas donde solamente caben 2 tarjetas, queda demasiado espacio en blanco y visualmente se siente vacío y poco eficiente.
+
+Necesito que mejores el sistema de distribución editorial del PDF para aprovechar mejor el espacio disponible.
+
+OBJETIVOS:
+- reducir espacios vacíos innecesarios,
+- mejorar densidad visual,
+- mantener buena legibilidad,
+- y lograr un documento más compacto y profesional.
+
+IMPORTANTE:
+- NO quiero que se vea saturado.
+- Debe seguir respirando visualmente.
+- Pero actualmente hay demasiado espacio desperdiciado.
+
+--------------------------------------------------
+OPTIMIZACIÓN DE LAYOUT
+--------------------------------------------------
+
+Analiza cuál de estas soluciones es más adecuada e impleméntala:
+
+- reducir dinámicamente el alto de página del PDF,
+- ajustar márgenes verticales,
+- reducir espacios internos excesivos,
+- optimizar paddings y separación entre tarjetas,
+- permitir mejor redistribución vertical,
+- o usar un sistema de altura flexible por página.
+
+IMPORTANTE:
+- NO reduzcas el tamaño del texto de forma agresiva.
+- Mantén legibilidad y estética premium.
+- Evita cortes de tarjetas.
+- Mantén cada tarjeta agrupada correctamente.
+
+La idea es que el PDF se sienta:
+- más compacto,
+- mejor distribuido,
+- editorialmente más inteligente,
+- y visualmente equilibrado.
+
+--------------------------------------------------
+ORDENAMIENTO DE TARJETAS EN LA WEB
+--------------------------------------------------
+
+También necesito agregar controles de ordenamiento en la versión web.
+
+Agregar botones o controles visibles para ordenar las tarjetas por nombre de empresa:
+
+Opciones:
+- Orden alfabético (A-Z)
+- Orden inverso (Z-A)
+
+REQUISITOS:
+- Debe actualizarse dinámicamente en frontend.
+- Mantener animaciones y responsive.
+- Mantener diseño consistente con la web.
+- Los controles deben verse modernos, minimalistas y bien integrados visualmente.
+- Evita estilos genéricos.
+
+IMPORTANTE:
+- El PDF descargable debe generarse SIEMPRE en orden alfabético por defecto, independientemente del orden visual seleccionado por el usuario en la web.
+
+--------------------------------------------------
+RESTRICCIONES
+--------------------------------------------------
+
+- NO rompas el diseño actual.
+- NO modifiques lógica no relacionada.
+- NO afectes rendimiento.
+- Mantén arquitectura existente.
+- Mantén separación entre versión web y versión PDF.
+- Usa buenas prácticas y componentes reutilizables.

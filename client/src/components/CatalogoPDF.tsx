@@ -2,7 +2,9 @@ import { Document, Page, View, Text, Image, StyleSheet } from '@react-pdf/render
 
 const PAGE_W = 298;
 const PAGE_H = 496;
-const PAD = 10;
+const PAD = 9;
+const COL_GAP = 5;
+const COL_W = (PAGE_W - PAD * 2 - COL_GAP) / 2; // ≈ 137.5 pt per column
 
 export interface ExpositorPDF {
   id: number;
@@ -31,84 +33,13 @@ function normalizeUrl(u: string) {
 }
 
 const s = StyleSheet.create({
+  /* ── Cover / Ads ─────────────────────────────────── */
   coverPage: { padding: 0, backgroundColor: '#000' },
   coverImg: { width: PAGE_W, height: PAGE_H },
-
-  contentPage: {
-    padding: PAD,
-    paddingTop: PAD,
-    backgroundColor: '#f1f5f9',
-  },
-
-  card: {
-    backgroundColor: '#ffffff',
-    borderRadius: 6,
-    border: '1pt solid #e2e8f0',
-    padding: 9,
-    marginBottom: 7,
-  },
-
-  logoBox: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 52,
-    marginBottom: 7,
-  },
-  logo: {
-    maxHeight: 50,
-    maxWidth: 200,
-    objectFit: 'contain',
-  },
-
-  divider: {
-    height: 1,
-    backgroundColor: '#e2e8f0',
-    marginBottom: 7,
-  },
-
-  nombre: {
-    fontFamily: 'Helvetica-Bold',
-    fontSize: 8.5,
-    color: '#0e0477',
-    marginBottom: 4,
-  },
-
-  descripcion: {
-    fontFamily: 'Helvetica',
-    fontSize: 7,
-    color: '#4b5563',
-    lineHeight: 1.45,
-    marginBottom: 5,
-  },
-
-  contactRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginBottom: 3,
-  },
-  contactText: {
-    fontFamily: 'Helvetica',
-    fontSize: 6.5,
-    color: '#6b7280',
-  },
-
-  urlRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 5,
-    marginTop: 2,
-  },
-  urlText: {
-    fontFamily: 'Helvetica',
-    fontSize: 6.5,
-    color: '#6847f6',
-  },
 
   adPage: {
     padding: 0,
     backgroundColor: '#ffffff',
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -117,15 +48,101 @@ const s = StyleSheet.create({
     height: PAGE_H,
     objectFit: 'contain',
   },
+
+  /* ── Content page ────────────────────────────────── */
+  contentPage: {
+    padding: PAD,
+    backgroundColor: '#eef2f7',
+  },
+
+  /* ── Row: two cards side-by-side ─────────────────── */
+  row: {
+    flexDirection: 'row',
+    gap: COL_GAP,
+    marginBottom: 5,
+  },
+
+  /* ── Card ────────────────────────────────────────── */
+  card: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    borderRadius: 5,
+    border: '1pt solid #dde3ef',
+    padding: 7,
+  },
+  cardEmpty: {
+    flex: 1,
+  },
+
+  /* ── Logo ────────────────────────────────────────── */
+  logoBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 42,
+    marginBottom: 5,
+  },
+  logo: {
+    maxHeight: 40,
+    maxWidth: COL_W - 14,
+    objectFit: 'contain',
+  },
+
+  divider: {
+    height: 1,
+    backgroundColor: '#e2e8f0',
+    marginBottom: 5,
+  },
+
+  /* ── Typography ──────────────────────────────────── */
+  nombre: {
+    fontFamily: 'Helvetica-Bold',
+    fontSize: 7.5,
+    color: '#0e0477',
+    marginBottom: 3,
+  },
+  descripcion: {
+    fontFamily: 'Helvetica',
+    fontSize: 6.5,
+    color: '#4b5563',
+    lineHeight: 1.4,
+    marginBottom: 4,
+  },
+  contactText: {
+    fontFamily: 'Helvetica',
+    fontSize: 6,
+    color: '#6b7280',
+    marginBottom: 1,
+  },
+  urlText: {
+    fontFamily: 'Helvetica',
+    fontSize: 6,
+    color: '#6847f6',
+    marginTop: 2,
+  },
+
+  /* ── Page footer ─────────────────────────────────── */
+  pageFooter: {
+    position: 'absolute',
+    bottom: 5,
+    left: PAD,
+    right: PAD,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  footerText: {
+    fontFamily: 'Helvetica',
+    fontSize: 5.5,
+    color: '#9ca3af',
+  },
 });
 
-function ExpositorCard({ exp }: { exp: ExpositorPDF }) {
+function CardCell({ exp }: { exp: ExpositorPDF }) {
   const web = normalizeUrl(exp.web);
-  const hasTel = !!(exp.telefono || exp.celular);
   const uniqueCel = exp.celular && exp.celular !== exp.telefono;
 
   return (
-    <View style={s.card} wrap={false}>
+    <View style={s.card}>
       <View style={s.logoBox}>
         <Image src={exp.logo} style={s.logo} />
       </View>
@@ -138,22 +155,14 @@ function ExpositorCard({ exp }: { exp: ExpositorPDF }) {
         <Text style={s.descripcion}>{exp.descripcion}</Text>
       ) : null}
 
-      {hasTel && (
-        <View style={s.contactRow}>
-          {exp.telefono ? (
-            <Text style={s.contactText}>Tel: {exp.telefono}</Text>
-          ) : null}
-          {uniqueCel ? (
-            <Text style={s.contactText}>Cel: {exp.celular}</Text>
-          ) : null}
-        </View>
-      )}
-
-      {web ? (
-        <View style={s.urlRow}>
-          <Text style={s.urlText}>{web}</Text>
-        </View>
+      {exp.telefono ? (
+        <Text style={s.contactText}>Tel: {exp.telefono}</Text>
       ) : null}
+      {uniqueCel ? (
+        <Text style={s.contactText}>Cel: {exp.celular}</Text>
+      ) : null}
+
+      {web ? <Text style={s.urlText}>{web}</Text> : null}
     </View>
   );
 }
@@ -165,34 +174,48 @@ export function CatalogoPDF({
   cdtAdUrl,
   bioverdeUrls,
 }: CatalogoPDFProps) {
+  // Group cards into pairs for the 2-column grid
+  const rows: ExpositorPDF[][] = [];
+  for (let i = 0; i < expositores.length; i += 2) {
+    rows.push(expositores.slice(i, i + 2));
+  }
+
   return (
     <Document
       title="Catálogo Expo Espacio Público 2026"
       author="ANPR México"
       subject="Directorio de Expositores · Tijuana, 13–15 de mayo 2026"
     >
+      {/* ── Cover ──────────────────────────────────── */}
       {coverUrls.map((url, i) => (
         <Page key={`cover-${i}`} size={[PAGE_W, PAGE_H]} style={s.coverPage}>
           <Image src={url} style={s.coverImg} />
         </Page>
       ))}
 
+      {/* ── Content: 2-column grid, auto-paginated ── */}
       <Page size={[PAGE_W, PAGE_H]} style={s.contentPage}>
-        {expositores.map((exp) => (
-          <ExpositorCard key={exp.id} exp={exp} />
+        {rows.map((pair, i) => (
+          <View key={i} style={s.row} wrap={false}>
+            <CardCell exp={pair[0]} />
+            {pair[1] ? <CardCell exp={pair[1]} /> : <View style={s.cardEmpty} />}
+          </View>
         ))}
       </Page>
 
+      {/* ── Publicidades ───────────────────────────── */}
       {publicidadUrls.map((url, i) => (
         <Page key={`pub-${i}`} size={[PAGE_W, PAGE_H]} style={s.adPage}>
           <Image src={url} style={s.adImg} />
         </Page>
       ))}
 
+      {/* ── CDT ad ─────────────────────────────────── */}
       <Page size={[PAGE_W, PAGE_H]} style={s.adPage}>
         <Image src={cdtAdUrl} style={s.adImg} />
       </Page>
 
+      {/* ── BIOVERDE flyer ─────────────────────────── */}
       {bioverdeUrls.map((url, i) => (
         <Page key={`bioverde-${i}`} size={[PAGE_W, PAGE_H]} style={s.adPage}>
           <Image src={url} style={s.adImg} />
