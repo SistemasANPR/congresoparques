@@ -1,0 +1,129 @@
+Necesito realizar unos ajustes específicos en el PDF descargable de la página:
+
+`/directorio-expositores`
+
+IMPORTANTE:
+Antes de modificar código, analiza cómo se están construyendo actualmente:
+- las tarjetas del PDF,
+- la fuente de datos,
+- el sistema de inserción de publicidades,
+- y el flujo de optimización de imágenes.
+
+Después implementa únicamente los cambios solicitados sin afectar el resto del documento.
+
+--------------------------------------------------
+CORREGIR DUPLICADO DE PROLUDIC
+--------------------------------------------------
+
+Actualmente la empresa “Proludic” aparece duplicada dentro del PDF.
+
+Necesito:
+- eliminar la tarjeta duplicada,
+- verificar por qué se está renderizando dos veces,
+- y asegurar que solamente exista una entrada de Proludic en el documento final.
+
+IMPORTANTE:
+- revisa si el problema viene de:
+  - duplicación en datos,
+  - render doble,
+  - merge incorrecto,
+  - o generación repetida en el flujo PDF.
+
+No hagas una solución temporal; corrige la causa real del duplicado.
+
+--------------------------------------------------
+CAMBIO DE NOMBRE
+--------------------------------------------------
+
+Actualmente aparece el nombre:
+
+`Proludic (Stand 2)`
+
+Necesito cambiarlo simplemente a:
+
+`Proludic`
+
+IMPORTANTE:
+- aplicar el cambio tanto en PDF como en cualquier fuente de datos relacionada si corresponde,
+- evitando inconsistencias futuras.
+
+--------------------------------------------------
+AGREGAR NUEVA PUBLICIDAD
+--------------------------------------------------
+
+Voy a adjuntar una nueva publicidad para agregar al final del documento PDF.
+
+Necesito que:
+- se integre correctamente en la secuencia de páginas publicitarias,
+- conserve su proporción original,
+- NO se deforme,
+- NO se estire verticalmente,
+- y mantenga buena calidad visual.
+
+Respeta las mismas reglas editoriales ya implementadas para las demás publicidades:
+- centrado adecuado,
+- escalado proporcional,
+- buena distribución visual,
+- y consistencia con el resto del documento.
+
+--------------------------------------------------
+OPTIMIZACIÓN DE PUBLICIDADES PDF
+--------------------------------------------------
+
+Actualmente las publicidades del final del PDF hacen que el documento:
+- pese demasiado,
+- tarde más en generarse,
+- y tarde más en descargarse.
+
+Necesito optimizar específicamente esas páginas publicitarias SIN perder calidad visual.
+
+IMPORTANTE:
+- NO quiero imágenes pixeladas.
+- NO quiero compresión agresiva.
+- NO quiero pérdida visible de nitidez.
+- Deben seguir viéndose profesionales e impresas con calidad premium.
+
+Implementa optimizaciones inteligentes como:
+- compresión moderada de imágenes,
+- conversión eficiente de formatos si conviene,
+- resizing inteligente según resolución real necesaria,
+- lazy processing si aplica,
+- reutilización de assets,
+- y eliminación de metadata innecesaria.
+
+OBJETIVO:
+- reducir peso y tiempo de generación,
+- manteniendo excelente calidad visual al hacer zoom.
+
+IMPORTANTE:
+- Mantener textos y logos de publicidad nítidos.
+- Evitar artefactos de compresión.
+- Mantener proporciones correctas.
+- Mantener buena resolución para impresión y lectura.
+
+Busca el mejor balance entre:
+1. calidad visual,
+2. velocidad de generación,
+3. peso del archivo,
+4. y rendimiento general.
+
+--------------------------------------------------
+RESTRICCIONES IMPORTANTES
+--------------------------------------------------
+
+- NO modificar diseño general del sitio.
+- NO afectar la versión web visible.
+- NO romper el orden alfabético ya implementado.
+- NO alterar otras tarjetas.
+- NO modificar lógica no relacionada.
+- Mantener optimización y rendimiento del PDF.
+- Mantener texto seleccionable y calidad premium.
+
+Antes de implementar:
+1. analiza el origen del duplicado,
+2. explica brevemente la causa,
+3. analiza cómo se procesan actualmente las imágenes publicitarias,
+4. propone estrategia de optimización,
+5. implementa la corrección correcta,
+6. agrega la nueva publicidad,
+7. y verifica que el PDF siga generándose correctamente.

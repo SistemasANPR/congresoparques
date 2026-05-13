@@ -272,19 +272,6 @@ const expositores: Expositor[] = [
     pdfId: "16LKeH86jtokcE8i1Ycr8m4E7JIjtreAd",
   },
   {
-    id: 18,
-    nombre: "Proludic (Stand 2)",
-    contacto: "",
-    telefono: "331 264 6254",
-    celular: "331 803 8313",
-    facebook: "https://www.facebook.com/proludic.argentina",
-    instagram: "https://www.instagram.com/proludic.argentina",
-    web: "https://www.proludic.es",
-    descripcion: "Proludic diseña y crea, desde hace más de 35 años, áreas de juegos y de deporte para todos. Sus instalaciones innovadoras y de calidad equipan espacios públicos en todo el mundo.",
-    logo: logoProludic,
-    pdfId: "1EKTE1aHIq2F1NjxaWtwV3yfGxCaRN5GI",
-  },
-  {
     id: 19,
     nombre: "Consejo de Desarrollo Económico de Tecate",
     contacto: "German Ramirez Sanchez",
@@ -692,7 +679,7 @@ export default function DirectorioExpositores() {
           canvas.width = vp.width;
           canvas.height = vp.height;
           await page.render({ canvasContext: canvas.getContext('2d')!, viewport: vp }).promise;
-          return { index: i, dataUrl: canvas.toDataURL('image/jpeg', 0.92) };
+          return { index: i, dataUrl: canvas.toDataURL('image/jpeg', 0.82) };
         }),
       ),
     );
@@ -719,9 +706,9 @@ export default function DirectorioExpositores() {
 
       // 2. Render all PDF assets in parallel (scale 2 — sharp yet fast)
       const [coverUrls, publicidadUrls, bioverdeUrls] = await Promise.all([
-        renderPdfToPng(pdfjsLib, '/portada-catalogo-expo.pdf', 2.5),
-        renderPdfToPng(pdfjsLib, '/publicidades-expo.pdf', 2),
-        renderPdfToPng(pdfjsLib, '/bioverde-flyer.pdf', 2),
+        renderPdfToPng(pdfjsLib, '/portada-catalogo-expo.pdf', 2),
+        renderPdfToPng(pdfjsLib, '/publicidades-expo.pdf', 1.5),
+        renderPdfToPng(pdfjsLib, '/bioverde-flyer.pdf', 1.5),
       ]);
 
       // 3. Build the @react-pdf Document and generate blob
