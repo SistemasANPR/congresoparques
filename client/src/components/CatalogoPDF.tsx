@@ -24,6 +24,7 @@ interface CatalogoPDFProps {
   publicidadUrls: string[];
   cdtAdUrl: string;
   bioverdeUrls: string[];
+  parquesAlegresUrls: string[];
 }
 
 function normalizeUrl(u: string) {
@@ -173,6 +174,7 @@ export function CatalogoPDF({
   publicidadUrls,
   cdtAdUrl,
   bioverdeUrls,
+  parquesAlegresUrls,
 }: CatalogoPDFProps) {
   // Group cards into pairs for the 2-column grid
   const rows: ExpositorPDF[][] = [];
@@ -218,6 +220,13 @@ export function CatalogoPDF({
       {/* ── BIOVERDE flyer ─────────────────────────── */}
       {bioverdeUrls.map((url, i) => (
         <Page key={`bioverde-${i}`} size={[PAGE_W, PAGE_H]} style={s.adPage}>
+          <Image src={url} style={s.adImg} />
+        </Page>
+      ))}
+
+      {/* ── Parques Alegres flyer ───────────────────── */}
+      {parquesAlegresUrls.map((url, i) => (
+        <Page key={`parques-alegres-${i}`} size={[PAGE_W, PAGE_H]} style={s.adPage}>
           <Image src={url} style={s.adImg} />
         </Page>
       ))}

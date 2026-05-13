@@ -705,10 +705,11 @@ export default function DirectorioExpositores() {
       const pdfjsLib = (window as any).pdfjsLib;
 
       // 2. Render all PDF assets in parallel (scale 2 — sharp yet fast)
-      const [coverUrls, publicidadUrls, bioverdeUrls] = await Promise.all([
+      const [coverUrls, publicidadUrls, bioverdeUrls, parquesAlegresUrls] = await Promise.all([
         renderPdfToPng(pdfjsLib, '/portada-catalogo-expo.pdf', 2),
         renderPdfToPng(pdfjsLib, '/publicidades-expo.pdf', 1.5),
         renderPdfToPng(pdfjsLib, '/bioverde-flyer.pdf', 1.5),
+        renderPdfToPng(pdfjsLib, '/parques-alegres-flyer.pdf', 1.5),
       ]);
 
       // 3. Build the @react-pdf Document and generate blob
@@ -723,6 +724,7 @@ export default function DirectorioExpositores() {
           publicidadUrls={publicidadUrls}
           cdtAdUrl={cdtAdImageUrl}
           bioverdeUrls={bioverdeUrls}
+          parquesAlegresUrls={parquesAlegresUrls}
         />
       ).toBlob();
 
