@@ -46,6 +46,7 @@ import {
   Download
 } from "lucide-react";
 import { AnnouncementBanner } from "@/components/AnnouncementBanner";
+import VideoPopup from "@/components/VideoPopup";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Link } from "wouter";
@@ -463,6 +464,7 @@ export default function Landing() {
 
   return (
     <div className="bg-background text-foreground">
+      <VideoPopup />
       <AnnouncementBanner
         messages={[
           {
