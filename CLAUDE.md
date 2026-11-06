@@ -187,9 +187,13 @@ sesion.
   van ahi.
 - Commits locales permitidos sin pedir confirmacion cada vez. **Push nunca sin
   peticion explicita.**
-- Remoto: `origin` = `https://github.com/SistemasANPR/congresoparques.git`. La
-  identidad de Git configurada en esta maquina es la del usuario; verificarla
-  antes del primer push.
+- Remoto: `origin` = `https://github.com/SistemasANPR/congresoparques.git`.
+- **Cuenta de GitHub de este proyecto: `Antonio1491`.** Es la unica cuenta con la
+  que se hace push aqui (`credential.username` fijado en la config local del
+  repo y cuenta activa de `gh`). No usar `support-parksys` en este proyecto.
+  Verificar con `gh auth status` antes de un push. La cuenta necesita permiso
+  de escritura en `SistemasANPR/congresoparques` [PENDIENTE: invitacion como
+  colaborador; a 2026-11-06 solo tiene lectura y el push da 403].
 
 ---
 
@@ -299,7 +303,8 @@ Entorno (comprobado en esta maquina):
 - El servidor Express usa el puerto 5000 (`PORT`); Vite en desarrollo, 5173.
 - `npm install` avisa de 5 paquetes con scripts de instalacion sin aprobar
   (`bufferutil`, `core-js`, `esbuild` x3) y de vulnerabilidades en `npm audit`.
-- La identidad de Git local y el remoto `origin` son los del usuario.
+- Cuenta de GitHub del proyecto: `Antonio1491` (ver §5). La identidad de commits
+  (`user.name`/`user.email`) es la configurada globalmente en la maquina.
 
 ## Anexo B. Convenciones de trabajo
 
