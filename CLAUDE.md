@@ -191,9 +191,9 @@ sesion.
 - **Cuenta de GitHub de este proyecto: `Antonio1491`.** Es la unica cuenta con la
   que se hace push aqui (`credential.username` fijado en la config local del
   repo y cuenta activa de `gh`). No usar `support-parksys` en este proyecto.
-  Verificar con `gh auth status` antes de un push. La cuenta necesita permiso
-  de escritura en `SistemasANPR/congresoparques` [PENDIENTE: invitacion como
-  colaborador; a 2026-11-06 solo tiene lectura y el push da 403].
+  Verificar con `gh auth status` antes de un push. La cuenta es colaboradora con
+  permiso de escritura en `SistemasANPR/congresoparques` (verificado el
+  2026-11-06; `staging` ya existe en `origin`).
 
 ---
 
